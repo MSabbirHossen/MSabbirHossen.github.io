@@ -9,11 +9,13 @@ import Card from '../common/Card';
 export default function GitHubStats() {
   const { github } = portfolioData.personalInfo;
   const hasGitHubUsername = Boolean(github?.match(/github\.com\/([^/]+)/)?.[1]);
-  const [stats, setStats] = useState({ public_repos: 0, followers: 0, following: 0 });
+  const [stats, setStats] = useState({ publicRepos: 0, followers: 0, following: 0 });
   const [displayStats, setDisplayStats] = useState({
-    public_repos: 0,
+    publicRepos: 0,
     followers: 0,
     following: 0,
+    totalStars: 0,
+    totalForks: 0,
   });
   const [loading, setLoading] = useState(hasGitHubUsername);
   const [fetchError, setFetchError] = useState(null);
@@ -59,9 +61,11 @@ export default function GitHubStats() {
       const easeOut = 1 - (1 - progress) ** 3;
 
       setDisplayStats({
-        public_repos: Math.round(target.public_repos * easeOut),
+        publicRepos: Math.round(target.publicRepos * easeOut),
         followers: Math.round(target.followers * easeOut),
         following: Math.round(target.following * easeOut),
+        totalStars: Math.round(target.totalStars * easeOut),
+        totalForks: Math.round(target.totalForks * easeOut),
       });
 
       if (progress < 1) {
@@ -82,7 +86,7 @@ export default function GitHubStats() {
     {
       label: 'Repositories',
       icon: FaCodeBranch,
-      value: displayStats.public_repos,
+      value: displayStats.publicRepos,
     },
     {
       label: 'Followers',
@@ -94,16 +98,16 @@ export default function GitHubStats() {
       icon: FaGithub,
       value: displayStats.following,
     },
-    // {
-    //   label: 'Stars',
-    //   icon: FaStar,
-    //   value: displayStats.totalStars,
-    // },
-    // {
-    //   label: 'Forks',
-    //   icon: FaCodeBranch,
-    //   value: displayStats.totalForks,
-    // },
+    {
+      label: 'Stars',
+      icon: FaStar,
+      value: displayStats.totalStars,
+    },
+    {
+      label: 'Forks',
+      icon: FaCodeBranch,
+      value: displayStats.totalForks,
+    },
   ];
 
   return (
@@ -178,11 +182,11 @@ export default function GitHubStats() {
               </p>
               <p className="text-center">
                 {' '}
-                <img src="https://github-readme-stats.vercel.app/api?username=MSabbirHossen&show_icons=true&theme=github_dark&hide_border=true" />{' '}
+                <img src="https://github-readme-stats-git-masterrstaa-rickstaa.vercel.app/api?username=MSabbirHossen&show_icons=true&theme=github_dark" />{' '}
               </p>
               <p className="text-center">
                 {' '}
-                <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=MSabbirHossen&layout=compact&theme=github_dark&hide_border=true" />{' '}
+                <img src="https://github-readme-stats-git-masterrstaa-rickstaa.vercel.app/api/top-langs/?username=MSabbirHossen&layout=compact&theme=github_dark" />{' '}
               </p>
             </div>
 
