@@ -4,5 +4,75 @@
   "following": 4,
   "totalStars": 6,
   "totalForks": 0,
-  "updatedAt": "2026-07-08T02:45:13.429Z"
+  "topLanguages": [
+    {
+      "name": "JavaScript",
+      "count": 27
+    },
+    {
+      "name": "HTML",
+      "count": 12
+    },
+    {
+      "name": "CSS",
+      "count": 1
+    }
+  ],
+  "recentRepos": [
+    {
+      "name": "Portfolio",
+      "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/Portfolio",
+      "updated": "2026-07-08T06:03:11Z"
+    },
+    {
+      "name": "MSabbirHossen",
+      "description": "Full-Stack Web Developer • Cybersecurity Learner • Student at IUM • Lifelong Student\"",
+      "language": null,
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/MSabbirHossen",
+      "updated": "2026-07-06T08:07:40Z"
+    },
+    {
+      "name": "Digital-Life-Lessons-Server",
+      "description": null,
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/Digital-Life-Lessons-Server",
+      "updated": "2026-07-05T11:16:38Z"
+    },
+    {
+      "name": "Digital-Life-Lessons-Client-",
+      "description": null,
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/Digital-Life-Lessons-Client-",
+      "updated": "2026-07-05T11:09:39Z"
+    },
+    {
+      "name": "Prompt-Engineering",
+      "description": null,
+      "language": null,
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/Prompt-Engineering",
+      "updated": "2026-07-02T20:18:25Z"
+    },
+    {
+      "name": "Md_Sabbir_Hossen",
+      "description": "Full-Stack Web Developer • Cybersecurity Learner • Student at IUM • Lifelong Student\"",
+      "language": null,
+      "stars": 1,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/Md_Sabbir_Hossen",
+      "updated": "2026-07-02T12:47:30Z"
+    }
+  ],
+  "updatedAt": "2026-07-08T06:07:09.192Z"
 }
