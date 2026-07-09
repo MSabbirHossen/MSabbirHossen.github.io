@@ -26,20 +26,11 @@
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/Portfolio",
-      "updated": "2026-07-09T03:21:48Z"
-    },
-    {
-      "name": "MSabbirHossen",
-      "description": "Full-Stack Web Developer • Cybersecurity Learner • Student at IUM • Lifelong Student\"",
-      "language": null,
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/MSabbirHossen",
-      "updated": "2026-07-06T08:07:40Z"
+      "updated": "2026-07-09T12:09:45Z"
     },
     {
       "name": "Digital-Life-Lessons-Server",
-      "description": null,
+      "description": "No description available",
       "language": "JavaScript",
       "stars": 0,
       "forks": 0,
@@ -48,7 +39,7 @@
     },
     {
       "name": "Digital-Life-Lessons-Client-",
-      "description": null,
+      "description": "No description available",
       "language": "JavaScript",
       "stars": 0,
       "forks": 0,
@@ -57,22 +48,31 @@
     },
     {
       "name": "Prompt-Engineering",
-      "description": null,
-      "language": null,
+      "description": "No description available",
+      "language": "Unknown",
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/Prompt-Engineering",
       "updated": "2026-07-02T20:18:25Z"
     },
     {
-      "name": "Md_Sabbir_Hossen",
-      "description": "Full-Stack Web Developer • Cybersecurity Learner • Student at IUM • Lifelong Student\"",
-      "language": null,
-      "stars": 1,
+      "name": "Personal_App-Store_Authentication",
+      "description": "A modern, responsive web application for discovering, browsing, and managing applications. Built with React and Vite, featuring real-time search, sorting, and local app installation tracking.",
+      "language": "JavaScript",
+      "stars": 0,
       "forks": 0,
-      "url": "https://github.com/MSabbirHossen/Md_Sabbir_Hossen",
-      "updated": "2026-07-02T12:47:30Z"
+      "url": "https://github.com/MSabbirHossen/Personal_App-Store_Authentication",
+      "updated": "2026-07-02T07:52:04Z"
+    },
+    {
+      "name": "Digital-Life-Lessons",
+      "description": "A comprehensive platform where users can create, share, and discover meaningful life lessons and personal growth insights. Built with React, Node.js, Express, MongoDB, Firebase, and Stripe.",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/Digital-Life-Lessons",
+      "updated": "2026-07-02T07:44:05Z"
     }
   ],
-  "updatedAt": "2026-07-09T09:40:44.819Z"
+  "updatedAt": "2026-07-09T15:11:15.427Z"
 }
