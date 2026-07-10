@@ -4,6 +4,7 @@ import { portfolioData } from '../../data/portfolioData';
 import Typography from '../common/Typography';
 import Card from '../common/Card';
 import Badge from '../common/Badge';
+import Reveal from '../animations/Reveal';
 
 export default function Education() {
   const { education } = portfolioData;
@@ -21,13 +22,15 @@ export default function Education() {
           <div className="absolute left-4 top-0 h-full w-px bg-gradient-to-b from-accent-primary/60 via-accent-secondary/40 to-transparent md:left-1/2" />
 
           {education.map((edu, idx) => (
-            <motion.div
+            <Reveal
               key={`${edu.institution}-${idx}`}
-              className={`relative mb-10 flex items-start gap-6 md:mb-12 ${idx % 2 === 0 ? 'md:justify-start' : 'md:justify-end'}`}
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.45, delay: idx * 0.08 }}
+              className={`relative mb-10 flex items-start gap-6 md:mb-12 ${
+                idx % 2 === 0 ? 'md:justify-start' : 'md:justify-end'
+              }`}
+              y={18}
+              duration={0.45}
+              delay={idx * 0.08}
+              amount={0.2}
             >
               <div className="absolute left-0 top-5 flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-dark-surface text-accent-secondary md:left-1/2 md:-translate-x-1/2">
                 <FaGraduationCap className="h-4 w-4" aria-hidden="true" />
@@ -51,7 +54,7 @@ export default function Education() {
                   )}
                 </Card>
               </div>
-            </motion.div>
+            </Reveal>
           ))}
         </div>
       </div>

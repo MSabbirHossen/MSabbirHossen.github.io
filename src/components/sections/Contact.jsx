@@ -8,6 +8,7 @@ import Button from '../common/Button';
 import Card from '../common/Card';
 import Input from '../common/Input';
 import emailjs from '@emailjs/browser';
+import Reveal from '../animations/Reveal';
 
 export default function Contact() {
   const { personalInfo } = portfolioData;
@@ -51,12 +52,7 @@ export default function Contact() {
         </Typography>
 
         <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.5 }}
-          >
+          <Reveal y={18} duration={0.5} amount={0.2}>
             <Card className="h-full space-y-6">
               <div>
                 <Typography variant="subtitle" className="text-slate-100">
@@ -113,14 +109,9 @@ export default function Contact() {
                 </Button>
               </form>
             </Card>
-          </motion.div>
+          </Reveal>
 
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.5, delay: 0.08 }}
-          >
+          <Reveal y={18} duration={0.5} delay={0.08} amount={0.2}>
             <Card className="h-full space-y-5">
               <Typography variant="subtitle" className="text-slate-100">
                 Contact details
@@ -161,7 +152,7 @@ export default function Contact() {
                 </div>
               </div>
             </Card>
-          </motion.div>
+          </Reveal>
         </div>
       </div>
     </section>

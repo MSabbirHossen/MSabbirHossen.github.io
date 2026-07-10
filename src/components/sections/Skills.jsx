@@ -4,6 +4,7 @@ import { portfolioData } from '../../data/portfolioData';
 import Typography from '../common/Typography';
 import Badge from '../common/Badge';
 import Card from '../common/Card';
+import Reveal from '../animations/Reveal';
 
 export default function Skills() {
   const { skills } = portfolioData;
@@ -28,14 +29,7 @@ export default function Skills() {
 
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {skills.map((cat) => (
-            <motion.div
-              key={cat.category}
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.45 }}
-              whileHover={{ y: -4 }}
-            >
+            <Reveal key={cat.category} y={18} duration={0.45} amount={0.2} whileHover={{ y: -4 }}>
               <Card className="h-full space-y-5">
                 <div className="flex items-center gap-3">
                   <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-accent-primary/10 text-accent-secondary">
@@ -62,7 +56,7 @@ export default function Skills() {
                   ))}
                 </div>
               </Card>
-            </motion.div>
+            </Reveal>
           ))}
         </div>
       </div>

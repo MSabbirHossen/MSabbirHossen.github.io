@@ -7,6 +7,7 @@ import Card from '../common/Card';
 import Button from '../common/Button';
 import { Link } from 'react-router-dom';
 import { FaArrowRight, FaCode, FaGithub, FaGlobe } from 'react-icons/fa';
+import Reveal from '../animations/Reveal';
 
 export default function Projects() {
   const { projects } = portfolioData;
@@ -55,12 +56,12 @@ export default function Projects() {
             transition={{ duration: 0.2 }}
           >
             {filteredProjects.map((proj, index) => (
-              <motion.div
+              <Reveal
                 key={proj.id}
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.45, delay: index * 0.06 }}
+                y={18}
+                duration={0.45}
+                delay={index * 0.06}
+                amount={0.2}
                 whileHover={{ y: -4 }}
               >
                 <Card className="flex h-full flex-col justify-between space-y-5 bg-white p-6 shadow-md dark:bg-gray-800">
@@ -141,7 +142,7 @@ export default function Projects() {
                     </Link>
                   </div>
                 </Card>
-              </motion.div>
+              </Reveal>
             ))}
           </motion.div>
         </AnimatePresence>

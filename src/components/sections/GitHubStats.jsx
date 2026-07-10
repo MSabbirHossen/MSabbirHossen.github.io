@@ -5,6 +5,7 @@ import { FaGithub, FaUsers, FaCodeBranch, FaStar } from 'react-icons/fa';
 import { portfolioData } from '../../data/portfolioData';
 import Typography from '../common/Typography';
 import Card from '../common/Card';
+import Reveal from '../animations/Reveal';
 
 export default function GitHubStats() {
   const { github } = portfolioData.personalInfo;
@@ -144,12 +145,11 @@ export default function GitHubStats() {
                 const Icon = card.icon;
 
                 return (
-                  <motion.div
+                  <Reveal
                     key={card.label}
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.2 }}
-                    transition={{ duration: 0.45 }}
+                    y={16}
+                    duration={0.45}
+                    amount={0.2}
                     whileHover={{ y: -4 }}
                   >
                     <Card className="space-y-4 p-6 text-center">
@@ -163,7 +163,7 @@ export default function GitHubStats() {
                         {card.value}
                       </Typography>
                     </Card>
-                  </motion.div>
+                  </Reveal>
                 );
               })}
             </div>

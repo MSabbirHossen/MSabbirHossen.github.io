@@ -1,5 +1,6 @@
 import AnimatedNumber from './AnimatedNumber';
 import { motion } from 'framer-motion';
+import Reveal from '../animations/Reveal';
 import { FaCodeBranch, FaGithub, FaStar, FaBook, FaUsers } from 'react-icons/fa';
 import Card from '../common/Card';
 import Typography from '../common/Typography';
@@ -47,33 +48,9 @@ export default function StatsCards({ stats }) {
         const Icon = iconMap[card.key];
 
         return (
-          <motion.div
-            key={card.key}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 0.4,
-              delay: index * 0.08,
-            }}
-          >
+          <Reveal key={card.key} y={20} delay={index * 0.08} duration={0.4}>
             <Card className="h-full p-8 text-center border border-slate-700/40 backdrop-blur-md hover:shadow-xl hover:shadow-primary-500/10 transition-all duration-300 group">
-              <div
-                className="
-      mx-auto
-      flex
-      h-14
-      w-14
-      items-center
-      justify-center
-      rounded-2xl
-      bg-primary-500/10
-      text-primary-500
-      transition-transform
-      duration-300
-      group-hover:scale-110
-  "
-              >
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-primary-500/10 text-primary-500 transition-transform duration-300 group-hover:scale-110">
                 <Icon className="text-xl" />
               </div>
 
@@ -86,7 +63,7 @@ export default function StatsCards({ stats }) {
               </Typography>
               <div className="mx-auto w-10 border-t border-slate-700"></div>
             </Card>
-          </motion.div>
+          </Reveal>
         );
       })}
     </div>

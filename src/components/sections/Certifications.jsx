@@ -4,6 +4,7 @@ import { portfolioData } from '../../data/portfolioData';
 import Typography from '../common/Typography';
 import Card from '../common/Card';
 import Badge from '../common/Badge';
+import Reveal from '../animations/Reveal';
 
 export default function Certifications() {
   const { certifications } = portfolioData;
@@ -19,14 +20,7 @@ export default function Certifications() {
 
         <div className="grid gap-6 md:grid-cols-2">
           {certifications.map((cert, idx) => (
-            <motion.div
-              key={cert.id}
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.45, delay: idx * 0.08 }}
-              whileHover={{ y: -4 }}
-            >
+            <Reveal key={cert.id} y={18} delay={idx * 0.08} duration={0.45} whileHover={{ y: -4 }}>
               <Card className="h-full space-y-5">
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex items-center gap-3">
@@ -61,7 +55,7 @@ export default function Certifications() {
                   </a>
                 </div>
               </Card>
-            </motion.div>
+            </Reveal>
           ))}
         </div>
       </div>
