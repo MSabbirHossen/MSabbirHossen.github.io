@@ -1,3 +1,5 @@
+import Card from '../common/Card';
+
 export default function ProjectCard() {
-  return null;
+  return <Card className="p-6">Project Card</Card>;
 }
