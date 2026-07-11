@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import Reveal from '../animations/Reveal';
 import { FaBook, FaCodeBranch, FaExternalLinkAlt, FaStar } from 'react-icons/fa';
 import Card from '../common/Card';
 import Typography from '../common/Typography';
@@ -39,25 +40,10 @@ export default function RecentRepos({ repos }) {
 
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {repos.map((repo, index) => (
-          <motion.a
-            key={repo.name}
-            href={repo.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 0.45,
-              delay: index * 0.08,
-            }}
-            whileHover={{
-              y: -6,
-              scale: 1.02,
-            }}
-          >
-            <Card
-              className="
+          <Reveal key={repo.name} delay={index * 0.08}>
+            <a href={repo.url} target="_blank" rel="noopener noreferrer">
+              <Card
+                className="
       h-full
       p-6
       flex
@@ -70,54 +56,55 @@ export default function RecentRepos({ repos }) {
       duration-300
       group
   "
-            >
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-500/10 text-primary-500">
-                  <FaBook />
+              >
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-500/10 text-primary-500">
+                    <FaBook />
+                  </div>
+
+                  <Typography variant="subtitle" className="font-semibold">
+                    {repo.name}
+                  </Typography>
                 </div>
 
-                <Typography variant="subtitle" className="font-semibold">
-                  {repo.name}
+                <Typography variant="body" className="mt-2 line-clamp-2 text-slate-400">
+                  {repo.description || 'No description provided.'}
                 </Typography>
-              </div>
 
-              <Typography variant="body" className="mt-2 line-clamp-2 text-slate-400">
-                {repo.description || 'No description provided.'}
-              </Typography>
+                <div className="mt-6 flex items-end justify-between">
+                  <div className="mt-4 flex items-center gap-3 text-sm">
+                    <span
+                      className="rounded-full px-3 py-1 text-xs font-bold"
+                      style={{
+                        backgroundColor: `${colors[repo.language] || '#3B82F6'}22`,
+                        color: colors[repo.language] || '#3B82F6',
+                      }}
+                    >
+                      {repo.language}
+                    </span>
 
-              <div className="mt-6 flex items-end justify-between">
-                <div className="mt-4 flex items-center gap-3 text-sm">
-                  <span
-                    className="rounded-full px-3 py-1 text-xs font-bold"
-                    style={{
-                      backgroundColor: `${colors[repo.language] || '#3B82F6'}22`,
-                      color: colors[repo.language] || '#3B82F6',
-                    }}
-                  >
-                    {repo.language}
-                  </span>
+                    <span className="flex items-center gap-1 text-slate-400">
+                      <FaStar />
+                      {repo.stars}
+                    </span>
 
-                  <span className="flex items-center gap-1 text-slate-400">
-                    <FaStar />
-                    {repo.stars}
-                  </span>
+                    <span className="flex items-center gap-1  text-slate-400">
+                      <FaCodeBranch />
+                      {repo.forks}
+                    </span>
+                  </div>
 
-                  <span className="flex items-center gap-1  text-slate-400">
-                    <FaCodeBranch />
-                    {repo.forks}
-                  </span>
+                  <div className="flex items-center gap-2 text-sm font-medium text-primary-500 group-hover:translate-x-1  transition-transform">
+                    View Repository
+                    <FaExternalLinkAlt className="text-xs" />
+                  </div>
                 </div>
-
-                <div className="flex items-center gap-2 text-sm font-medium text-primary-500 group-hover:translate-x-1  transition-transform">
-                  View Repository
-                  <FaExternalLinkAlt className="text-xs" />
-                </div>
-              </div>
-              <Typography variant="caption" className="mt-4 text-slate-500 mx-auto xl:mx-0">
-                {timeAgo(repo.updated)}
-              </Typography>
-            </Card>
-          </motion.a>
+                <Typography variant="caption" className="mt-4 text-slate-500 mx-auto xl:mx-0">
+                  {timeAgo(repo.updated)}
+                </Typography>
+              </Card>
+            </a>
+          </Reveal>
         ))}
       </div>
     </div>

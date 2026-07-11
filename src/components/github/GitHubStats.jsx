@@ -7,6 +7,7 @@ import StatsCards from './StatsCards';
 import LanguagesChart from './LanguagesChart';
 import RecentRepos from './RecentRepos';
 import { FaGithub } from 'react-icons/fa';
+import Reveal from '../animations/Reveal';
 
 export default function GitHubStats() {
   const [stats, setStats] = useState(null);
@@ -86,30 +87,40 @@ export default function GitHubStats() {
           GitHub Analytics
         </Typography>
 
-        <StatsCards stats={stats} />
+        <Reveal>
+          <StatsCards stats={stats} />
+        </Reveal>
 
-        <LanguagesChart languages={stats.topLanguages} />
+        <Reveal delay={0.15}>
+          <LanguagesChart languages={stats.topLanguages} />
+        </Reveal>
 
-        <RecentRepos repos={stats.recentRepos} />
+        <Reveal delay={0.3}>
+          <RecentRepos repos={stats.recentRepos} />
+        </Reveal>
 
-        {/* Contribution Snake */}
+        <Reveal delay={0.45}>
+          {/* Snake */}
 
-        <div className="mt-14">
-          <Typography
-            variant="h3"
-            className="mb-6 text-center text-primary-600 dark:text-primary-400"
-          >
-            Contribution Activity
-          </Typography>
+          {/* Contribution Snake */}
 
-          <Card className="p-6">
-            <img
-              className="mx-auto w-full max-w-5xl"
-              src="https://raw.githubusercontent.com/MSabbirHossen/MSabbirHossen/output/github-contribution-grid-snake-dark.svg"
-              alt="Contribution Snake"
-            />
-          </Card>
-        </div>
+          <div className="mt-14">
+            <Typography
+              variant="h3"
+              className="mb-6 text-center text-primary-600 dark:text-primary-400"
+            >
+              Contribution Activity
+            </Typography>
+
+            <Card className="p-6">
+              <img
+                className="mx-auto w-full max-w-5xl"
+                src="https://raw.githubusercontent.com/MSabbirHossen/MSabbirHossen/output/github-contribution-grid-snake-dark.svg"
+                alt="Contribution Snake"
+              />
+            </Card>
+          </div>
+        </Reveal>
 
         {/* Profile Views */}
 
