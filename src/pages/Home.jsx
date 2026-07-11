@@ -8,6 +8,8 @@ const Projects = lazy(() => import('../components/sections/Projects'));
 const Certifications = lazy(() => import('../components/sections/Certifications'));
 const Education = lazy(() => import('../components/sections/Education'));
 const GitHubStats = lazy(() => import('../components/github/GitHubStats'));
+const CurrentFocus = lazy(() => import('../components/current-focus/CurrentFocus.jsx'));
+const Experience = lazy(() => import('../components/experience/Experience'));
 const Contact = lazy(() => import('../components/sections/Contact'));
 
 export default function Home() {
@@ -26,8 +28,10 @@ export default function Home() {
         <GitHubStats />
         <Projects />
         <Skills />
+        {/* <Experience /> */}
         <Certifications />
         <Education />
+        <CurrentFocus />
         <Contact />
       </Suspense>
     </div>

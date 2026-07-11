@@ -311,12 +311,46 @@ export const portfolioData = {
   ],
 
   experience: [
-    // {
-    //   period: 'Future-Ready',
-    //   role: 'Full Stack MERN Developer & Security Auditor',
-    //   company: 'Freelance & Open Source Projects',
-    //   desc: 'Actively building MERN stack projects, contributing to open-source tools, and auditing code for cybersecurity safety.',
-    // },
+    {
+      period: 'Future-Ready',
+      role: 'Full Stack MERN Developer & Security Auditor',
+      company: 'Freelance & Open Source Projects',
+      desc: 'Actively building MERN stack projects, contributing to open-source tools, and auditing code for cybersecurity safety.',
+    },
+  ],
+  currentFocus: [
+    {
+      title: 'Full Stack MERN Development',
+      organization: 'Personal & Open Source Projects',
+      period: '2025 – Present',
+      description:
+        'Building scalable full-stack web applications using MongoDB, Express.js, React, and Node.js while following modern development practices.',
+      icon: 'code',
+    },
+    {
+      title: 'AI Engineering',
+      organization: 'Independent Learning',
+      period: 'Ongoing',
+      description:
+        'Learning prompt engineering, LLM integration, AI APIs, and practical AI-powered application development.',
+      icon: 'ai',
+    },
+    {
+      title: 'Cybersecurity & OSINT',
+      organization: 'Independent Study',
+      period: 'Ongoing',
+      description:
+        'Developing skills in web security, secure coding, penetration testing fundamentals, and OSINT methodologies.',
+      icon: 'security',
+    },
+    {
+      title: 'Open Source',
+      organization: 'GitHub',
+      period: 'Ongoing',
+      description:
+        'Publishing projects publicly, improving documentation, and contributing to the open-source ecosystem.',
+      icon: 'github',
+    },
   ],
 
   projects: [
