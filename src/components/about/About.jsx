@@ -1,15 +1,17 @@
 import { portfolioData } from '../../data/portfolioData';
+
 import SectionWrapper from '../common/SectionWrapper';
+
 import AboutHeader from './AboutHeader';
 import JourneyCard from './JourneyCard';
 import LanguagesCard from './LanguagesCard';
 import QuickFactsCard from './QuickFactsCard';
-import StatsGrid from './StatsGrid';
-
-import { AboutIntro, QuickFacts, AboutStats, Languages } from '../about';
+import AboutStats from './AboutStats';
 
 export default function About() {
   const { personalInfo } = portfolioData;
+  const { mission, tagline, title, journey, values, vision, languages, studyingAt, location } =
+    personalInfo;
 
   const stats = [
     {
@@ -35,24 +37,19 @@ export default function About() {
       id="about"
       eyebrow="About"
       title="About Me"
-      description={personalInfo.mission}
+      tagline={tagline}
+      description={mission}
       innerClassName="space-y-10"
+      className="mx-auto max-w-6xl px-6"
     >
-      <AboutHeader mission={personalInfo.mission} />
-
       <div className="grid gap-6 lg:grid-cols-[1.5fr_0.8fr]">
-        <JourneyCard journey={personalInfo.journey} />
-
-        <QuickFactsCard
-          title={personalInfo.title}
-          studyingAt={personalInfo.studyingAt}
-          location={personalInfo.location}
-        />
+        <JourneyCard journey={journey} />
+        <QuickFactsCard title={title} studyingAt={studyingAt} location={location} />
       </div>
 
-      <StatsGrid stats={stats} />
+      <AboutStats stats={stats} />
 
-      <LanguagesCard languages={personalInfo.languages} />
+      <LanguagesCard languages={languages} />
     </SectionWrapper>
   );
 }

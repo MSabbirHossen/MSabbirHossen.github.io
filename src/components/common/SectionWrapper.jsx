@@ -6,6 +6,7 @@ export default function SectionWrapper({
   eyebrow,
   title,
   description,
+  tagline,
   children,
   className = '',
   innerClassName = '',
@@ -20,7 +21,7 @@ export default function SectionWrapper({
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
     >
-      {(eyebrow || title || description) && (
+      {(eyebrow || title || description || tagline) && (
         <div className={`section-heading mb-12 ${headerClassName}`}>
           {eyebrow && (
             <Typography variant="eyebrow" as="p">
@@ -35,6 +36,11 @@ export default function SectionWrapper({
           {description && (
             <Typography variant="lead" as="p" className="section-copy">
               {description}
+            </Typography>
+          )}
+          {tagline && (
+            <Typography variant="body" as="p" className="section-tagline">
+              {tagline}
             </Typography>
           )}
         </div>

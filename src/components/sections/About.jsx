@@ -8,6 +8,7 @@ import AboutStats from '../about/AboutStats';
 import LanguageProgress from '../about/LanguageProgress';
 import JourneyCard from '../about/JourneyCard.jsx';
 import QuickFactsCard from '../about/QuickFactsCard.jsx';
+import AboutHeader from '../about/AboutHeader.jsx';
 
 export default function About() {
   const { personalInfo } = portfolioData;
@@ -81,7 +82,7 @@ export default function About() {
     >
       <div className="mx-auto max-w-6xl px-6">
         {/* Heading */}
-        <motion.div variants={itemVariants} className="mx-auto mb-14 max-w-3xl text-center">
+        {/* <motion.div variants={itemVariants} className="mx-auto mb-14 max-w-3xl text-center">
           <Typography variant="h2" className="mb-5 text-primary-600 dark:text-primary-400">
             About Me
           </Typography>
@@ -90,7 +91,8 @@ export default function About() {
             {mission} <br /> Building a future where faith, knowledge, and technology empower the
             Ummah.
           </Typography>
-        </motion.div>
+        </motion.div> */}
+        <AboutHeader title="About Me" mission={mission} tagline={personalInfo.tagline} />
 
         {/* Journey + Profile */}
         <div className="grid gap-6 lg:grid-cols-[1.5fr_0.8fr]">

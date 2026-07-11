@@ -1,47 +1,40 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-
-import Typography from '../common/Typography';
 import Card from '../common/Card';
+import Typography from '../common/Typography';
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0 },
-};
-
-const LanguagesCard = ({ languages }) => {
+export default function LanguageProgress({ languages }) {
   return (
-    <div>
-      {/* Languages */}
-      <motion.div variants={itemVariants} className="mt-10">
-        <Typography variant="subtitle" className="mb-5 text-slate-100">
-          🌍 Languages
-        </Typography>
+    <div className="mt-10">
+      <Typography variant="subtitle" className="mb-5 text-slate-100">
+        🌍 Languages
+      </Typography>
 
-        <Card>
-          <div className="space-y-5">
-            {languages.map((lang) => (
-              <div key={lang.name}>
-                <div className="mb-2 flex justify-between">
-                  <span className="font-medium text-slate-200">{lang.name}</span>
+      <Card>
+        <div className="space-y-5">
+          {languages.map((lang) => (
+            <div key={lang.name}>
+              <div className="mb-2 flex justify-between">
+                <span className="font-medium text-slate-200">{lang.name}</span>
 
-                  <span className="text-sm text-primary-400">{lang.level}</span>
-                </div>
-
-                <div className="h-2 rounded-full bg-slate-700">
-                  <div
-                    className="h-2 rounded-full bg-cyan-500 transition-all duration-700"
-                    style={{ width: `${lang.percentage}%` }}
-                  />
-                </div>
+                <span className="text-sm text-primary-400">{lang.level}</span>
               </div>
-            ))}
-          </div>
-        </Card>
-      </motion.div>
-      ;
+
+              <div className="h-2 rounded-full bg-slate-700 overflow-hidden">
+                <motion.div
+                  initial={{ width: 0 }}
+                  whileInView={{ width: `${lang.percentage}%` }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 1,
+                    ease: 'easeOut',
+                  }}
+                  className="h-full rounded-full bg-cyan-500"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </Card>
     </div>
   );
-};
-
-export default LanguagesCard;
+}
