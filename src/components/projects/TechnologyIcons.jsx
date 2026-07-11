@@ -1,6 +1,7 @@
 import { FaCode } from 'react-icons/fa';
 
-export default function TechnologyIcons({ technologies }) {
+export default function TechnologyIcons({ project }) {
+  const { technologies } = project;
   const visibleTech = technologies.slice(0, 4);
   const remaining = technologies.length - visibleTech.length;
 

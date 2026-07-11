@@ -5,43 +5,21 @@ import ProjectLinks from './ProjectLinks';
 import ProjectMeta from './ProjectMeta';
 import ProjectStatusBadge from './ProjectStatusBadge';
 import ProjectHeader from './ProjectHeader';
+import ProjectImage from './ProjectImage';
 
 export default function ProjectCard({ project }) {
-  const { title, overview, technologies, githubUrl, liveUrl } = project;
-  // {<Card>
-
-  // <ProjectImage />
-
-  // Description
-
-  // <ProjectMeta />
-
-  // <TechnologyIcons />
-
-  // <ProjectLinks />
-
-  // </Card>
-  // }
   return (
-    <Card className="flex h-full flex-col justify-between space-y-5 bg-white p-6 shadow-md dark:bg-gray-800">
-      <div className="overflow-hidden rounded-xl">
-        <img
-          src={`${import.meta.env.BASE_URL}${project.screenshots[0]}`}
-          alt={project.title}
-          className="h-52 w-full object-cover transition duration-500 hover:scale-105"
-        />
-      </div>
-      <div className="space-y-3">
-        <ProjectHeader title="Portfolio Website" featured status="Completed" project={project} />
+    <Card className="flex h-full flex-col justify-between space-y-5">
+      <ProjectImage project={project} />
 
-        <Typography variant="body" className="text-slate-700 dark:text-slate-300">
-          {overview.length > 120 ? `${overview.substring(0, 120)}...` : overview}
-        </Typography>
-      </div>
-      <div>
-        <ProjectMeta project={project} />
-      </div>{' '}
-      <TechnologyIcons technologies={technologies} />
+      <ProjectHeader project={project} />
+
+      <Typography variant="body">{project.overview}</Typography>
+
+      <ProjectMeta project={project} />
+
+      <TechnologyIcons project={project} />
+
       <ProjectLinks project={project} />
     </Card>
   );
