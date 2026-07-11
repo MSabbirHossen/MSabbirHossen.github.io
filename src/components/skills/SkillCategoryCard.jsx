@@ -25,7 +25,12 @@ export default function SkillCategoryCard({ category }) {
 
         <div className="flex flex-wrap gap-2">
           {category.items.map(({ name, icon: SkillIcon }) => (
-            <Badge key={name} variant="primary" className="flex items-center gap-2 px-3 py-2">
+            <Badge
+              as="span"
+              key={name}
+              variant="primary"
+              className="flex items-center gap-2 px-3 py-2"
+            >
               {SkillIcon && <SkillIcon className="h-4 w-4 shrink-0" />}
               <span>{name}</span>
             </Badge>
