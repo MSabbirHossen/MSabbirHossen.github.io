@@ -8,9 +8,9 @@ export default function ProjectLinks({ project }) {
   return (
     <div className="mt-auto space-y-4">
       <div className="flex items-center justify-around gap-5">
-        {project.githubUrl && (
+        {githubUrl && (
           <a
-            href={project.githubUrl}
+            href={githubUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 text-sm text-accent-primary hover:underline"
@@ -20,9 +20,9 @@ export default function ProjectLinks({ project }) {
           </a>
         )}
 
-        {project.liveUrl && (
+        {liveUrl && (
           <a
-            href={project.liveUrl}
+            href={liveUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 text-sm text-accent-primary hover:underline"

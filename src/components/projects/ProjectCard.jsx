@@ -14,7 +14,7 @@ export default function ProjectCard({ project }) {
 
       <ProjectHeader project={project} />
 
-      <Typography variant="body">
+      <Typography variant="body" className="text-justify text-sm">
         {project.overview.length > 120
           ? `${project.overview.substring(0, 120)}...`
           : project.overview}
