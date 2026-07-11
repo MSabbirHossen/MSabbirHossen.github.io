@@ -14,11 +14,14 @@ export default function ProjectCard({ project }) {
 
       <ProjectHeader project={project} />
 
-      <Typography variant="body">{project.overview}</Typography>
-
-      <ProjectMeta project={project} />
+      <Typography variant="body">
+        {project.overview.length > 100
+          ? `${project.overview.substring(0, 90)}...`
+          : project.overview}
+      </Typography>
 
       <TechnologyIcons project={project} />
+      <ProjectMeta project={project} />
 
       <ProjectLinks project={project} />
     </Card>
