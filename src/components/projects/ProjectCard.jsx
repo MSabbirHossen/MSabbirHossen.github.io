@@ -27,40 +27,7 @@ export default function ProjectCard({ project }) {
         </Typography>
       </div>
 
-      <div className="flex flex-wrap items-center gap-3">
-        {(() => {
-          const visibleTech = project.technologies.slice(0, 4);
-          const remaining = project.technologies.length - visibleTech.length;
-
-          return (
-            <>
-              {/* {visibleTech.map((tech, techIndex) => {
-                const Icon = tech.icon ?? FaCode;
-
-                return (
-                  <div
-                    key={tech.name + techIndex}
-                    title={tech.name}
-                    className="group flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-indigo-400 hover:text-indigo-600 dark:border-slate-700 dark:bg-slate-800"
-                  >
-                    <Icon className="text-xl transition-transform duration-300 group-hover:scale-110" />
-                  </div>
-                );
-              })} */}
-              <TechnologyIcons technologies={project.technologies} />
-{/* 
-              {remaining > 0 && (
-                <div
-                  title={`${remaining} more technologies`}
-                  className="flex h-11 w-11 items-center justify-center rounded-xl border border-dashed border-slate-300 bg-slate-50 text-sm font-semibold text-slate-600 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-300"
-                >
-                  +{remaining}
-                </div>
-              )} */}
-            </>
-          );
-        })()}
-      </div>
+      <TechnologyIcons technologies={project.technologies} />
 
       {/* <div className="mt-auto flex flex-wrap gap-3 justify-between items-center text-slate-700 dark:text-slate-300">
         {project.githubUrl && (
