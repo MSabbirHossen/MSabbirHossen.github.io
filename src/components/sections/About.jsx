@@ -5,6 +5,7 @@ import Badge from '../common/Badge';
 import Card from '../common/Card';
 import CountUp from 'react-countup';
 import AboutStats from '../about/AboutStats';
+import LanguageProgress from '../about/LanguageProgress';
 
 export default function About() {
   const { personalInfo } = portfolioData;
@@ -139,9 +140,16 @@ export default function About() {
         </div>
 
         {/* Stats */}
-        <div className="mt-8 grid grid-cols-2 gap-5 md:grid-cols-4">
-          <AboutStats stats={stats} />
-        </div>
+        {/* <div className="mt-8 grid grid-cols-2 gap-5 md:grid-cols-4">
+          {stats.map((stat) => (
+            <div key={stat.label} className="rounded-xl border p-6 text-center">
+              <h3 className="text-3xl font-bold text-primary-400">{stat.value}</h3>
+
+              <p>{stat.label}</p>
+            </div>
+          ))}
+        </div> */}
+        <AboutStats stats={stats} />
 
         {/* Values */}
 
@@ -189,7 +197,7 @@ export default function About() {
         </motion.div> */}
 
         {/* Languages */}
-
+{/* 
         <motion.div variants={itemVariants} className="mt-10">
           <Typography variant="subtitle" className="mb-5 text-slate-100">
             🌍 Languages
@@ -215,7 +223,8 @@ export default function About() {
               ))}
             </div>
           </Card>
-        </motion.div>
+        </motion.div> */}
+        <LanguageProgress languages={languages} />
       </div>
     </motion.section>
   );
