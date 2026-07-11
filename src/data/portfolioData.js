@@ -447,6 +447,9 @@ export const portfolioData = {
       duration: '2 Weeks',
       teamSize: '1',
       client: 'Personal',
+      difficulty: 'Advanced',
+
+      featuredOrder: 1,
       features: [
         'Lesson CRUD operations with public/private visibility',
         'Lesson reporting system',
@@ -550,6 +553,8 @@ export const portfolioData = {
       duration: '2 Weeks',
       teamSize: '1',
       client: 'Personal',
+      difficulty: 'Advanced',
+      featuredOrder: 2,
     },
     {
       id: 'online-game-library',
@@ -593,6 +598,8 @@ export const portfolioData = {
       duration: 'a Weeks',
       teamSize: '1',
       client: 'Personal',
+      difficulty: 'Advanced',
+      featuredOrder: 1,
       keyFeatures: [
         'Browse comprehensive game library with indie and AAA titles',
         'Advanced search and category filtering with real-time results',
@@ -682,6 +689,8 @@ export const portfolioData = {
       duration: '3 Weeks',
       teamSize: '1',
       client: 'Personal',
+      difficulty: 'Advanced',
+      featuredOrder: 4,
     },
 
     ///////////////////////////////////////////////
@@ -714,6 +723,8 @@ export const portfolioData = {
       githubUrl: 'https://github.com',
       liveUrl: 'https://sabbir.dev',
       screenshots: ['/screenshots/portfolio-hero.png'],
+      difficulty: 'Advanced',
+      featuredOrder: 5,
     },
     {
       id: 'exploratory-lab',
@@ -735,6 +746,8 @@ export const portfolioData = {
       githubUrl: 'https://github.com',
       liveUrl: 'https://lab.sabbir.dev',
       screenshots: ['/screenshots/lab-interface.png'],
+      difficulty: 'Advanced',
+      featuredOrder: 6,
       featured: false,
     },
     {
@@ -758,6 +771,8 @@ export const portfolioData = {
       githubUrl: 'https://github.com',
       liveUrl: 'https://tracker.sabbir.dev',
       screenshots: ['/screenshots/tracker-dashboard.png'],
+      difficulty: 'Advanced',
+      featuredOrder: 7,
       featured: false,
     },
   ],

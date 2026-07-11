@@ -3,10 +3,26 @@ import Card from '../common/Card';
 import TechnologyIcons from './TechnologyIcons';
 import ProjectLinks from './ProjectLinks';
 import ProjectMeta from './ProjectMeta';
+import ProjectStatusBadge from './ProjectStatusBadge';
 
 export default function ProjectCard({ project }) {
   const { title, overview, technologies, githubUrl, liveUrl } = project;
+  // {<Card>
 
+  // <ProjectImage />
+
+  // <ProjectHeader />
+
+  // Description
+
+  // <ProjectMeta />
+
+  // <TechnologyIcons />
+
+  // <ProjectLinks />
+
+  // </Card>
+  // }
   return (
     <Card className="flex h-full flex-col justify-between space-y-5 bg-white p-6 shadow-md dark:bg-gray-800">
       <div className="overflow-hidden rounded-xl">
@@ -21,10 +37,8 @@ export default function ProjectCard({ project }) {
           {title}
         </Typography>
         <div>
-          <span className="rounded-full bg-green-500/10 px-3 py-1 text-xs font-semibold text-green-400">
-            {project.status}
-          </span>
-        </div>
+          <ProjectStatusBadge status={project.status} />
+        </div>{' '}
         <Typography variant="body" className="text-slate-700 dark:text-slate-300">
           {overview.length > 120 ? `${overview.substring(0, 120)}...` : overview}
         </Typography>
