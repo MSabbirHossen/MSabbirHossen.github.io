@@ -4,7 +4,7 @@ import Hero from '../components/sections/Hero';
 
 const About = lazy(() => import('../components/about/About.jsx'));
 const Skills = lazy(() => import('../components/skills/Skills.jsx'));
-const Projects = lazy(() => import('../components/sections/Projects'));
+const Projects = lazy(() => import('../components/projects/Projects.jsx'));
 const Certifications = lazy(() => import('../components/sections/Certifications'));
 const Education = lazy(() => import('../components/sections/Education'));
 const GitHubStats = lazy(() => import('../components/github/GitHubStats'));

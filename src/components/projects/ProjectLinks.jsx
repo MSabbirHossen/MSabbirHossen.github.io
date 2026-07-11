@@ -2,11 +2,13 @@ import { Link } from 'react-router-dom';
 import { FaArrowRight, FaGithub, FaGlobe } from 'react-icons/fa';
 
 export default function ProjectLinks({ project }) {
+  const { githubUrl, liveUrl } = project;
+
   return (
     <div className="mt-auto flex flex-wrap items-center justify-between gap-3 text-slate-700 dark:text-slate-300">
-      {project.githubUrl && (
+      {githubUrl && (
         <a
-          href={project.githubUrl}
+          href={githubUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 text-sm font-medium text-accent-primary transition hover:underline"
@@ -17,9 +19,9 @@ export default function ProjectLinks({ project }) {
         </a>
       )}
 
-      {project.liveUrl && (
+      {liveUrl && (
         <a
-          href={project.liveUrl}
+          href={liveUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 text-sm font-medium text-accent-primary transition hover:underline"

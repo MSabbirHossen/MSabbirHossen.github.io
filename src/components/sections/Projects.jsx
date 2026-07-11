@@ -1,13 +1,5 @@
 import { useMemo, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { portfolioData } from '../../data/portfolioData';
-import Typography from '../common/Typography';
-import Badge from '../common/Badge';
-import Card from '../common/Card';
-import Button from '../common/Button';
-import { Link } from 'react-router-dom';
-import { FaArrowRight, FaCode, FaGithub, FaGlobe } from 'react-icons/fa';
-import Reveal from '../animations/Reveal';
 import SectionWrapper from '../common/SectionWrapper';
 import ProjectFilters from '../projects/ProjectFilters';
 import ProjectGrid from '../projects/ProjectGrid';
@@ -36,13 +28,6 @@ export default function Projects() {
       innerClassName="space-y-10"
     >
       <div className="mx-auto max-w-5xl px-4">
-        <Typography
-          variant="h2"
-          className="mb-8 text-center text-primary-600 dark:text-primary-400"
-        >
-          Featured Projects
-        </Typography>
-
         <ProjectFilters
           categories={categories}
           activeCategory={activeCategory}
