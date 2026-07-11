@@ -9,7 +9,20 @@ import ProjectImage from './ProjectImage';
 
 export default function ProjectCard({ project }) {
   return (
-    <Card className="flex h-full flex-col justify-between space-y-5">
+    <Card
+      className="flex h-full flex-col justify-between space-y-5 group
+transition-all
+duration-300
+hover:shadow-2xl
+hover:shadow-accent-primary/10"
+      whileHover={{
+        y: -8,
+        transition: {
+          duration: 0.25,
+          ease: 'easeOut',
+        },
+      }}
+    >
       <ProjectImage project={project} />
 
       <ProjectHeader project={project} />

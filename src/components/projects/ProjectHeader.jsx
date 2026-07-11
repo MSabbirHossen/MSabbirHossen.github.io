@@ -13,10 +13,18 @@ export default function ProjectHeader({ project }) {
           </span>
         )}
 
-        <ProjectStatusBadge status={status} />
+        <ProjectStatusBadge
+          whileHover={{
+            scale: 1.05,
+          }}
+          status={status}
+        />
       </div>
 
-      <Typography variant="subtitle" className="leading-tight text-slate-900 dark:text-white">
+      <Typography
+        variant="subtitle"
+        className="leading-tight text-slate-900 dark:text-white group-hover:text-accent-secondary"
+      >
         {title}
       </Typography>
     </div>

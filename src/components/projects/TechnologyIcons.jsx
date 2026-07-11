@@ -19,7 +19,12 @@ export default function TechnologyIcons({ project }) {
             hover:text-accent-secondary
             dark:border-slate-700 dark:bg-slate-800"
           >
-            <Icon className="text-xl transition-transform duration-300 group-hover:scale-110" />
+            <Icon
+              className="text-xl transition-transform duration-300 group-hover:scale-110"
+              transition={{
+                delay: index * 0.05,
+              }}
+            />
           </div>
         );
       })}

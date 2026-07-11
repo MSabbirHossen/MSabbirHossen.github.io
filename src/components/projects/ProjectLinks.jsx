@@ -35,7 +35,7 @@ export default function ProjectLinks({ project }) {
 
       <Button as={Link} to={`/projects/${project.id}`} size="sm" className="w-full">
         View Details
-        <FaArrowRight />
+        <FaArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
       </Button>
     </div>
   );
