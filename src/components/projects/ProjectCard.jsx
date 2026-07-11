@@ -28,38 +28,6 @@ export default function ProjectCard({ project }) {
       </div>
 
       <TechnologyIcons technologies={project.technologies} />
-
-      {/* <div className="mt-auto flex flex-wrap gap-3 justify-between items-center text-slate-700 dark:text-slate-300">
-        {project.githubUrl && (
-          <a
-            href={project.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm flex items-center gap-2 font-medium text-accent-primary hover:underline"
-          >
-            <FaGithub></FaGithub>
-            GitHub
-          </a>
-        )}
-        {project.liveUrl && (
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm flex items-center gap-2 font-medium text-accent-primary hover:underline"
-          >
-            <FaGlobe></FaGlobe>
-            Live Demo
-          </a>
-        )}
-        <Link
-          to={`/projects/${project.id}`}
-          className="text-sm flex items-center gap-2 font-medium text-accent-primary hover:underline"
-        >
-          Details
-          <FaArrowRight></FaArrowRight>
-        </Link>
-      </div> */}
       <ProjectLinks project={project} />
     </Card>
   );
