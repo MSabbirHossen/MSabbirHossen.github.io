@@ -329,7 +329,7 @@ export const portfolioData = {
     },
     {
       title: 'AI Engineering',
-      organization: 'Independent Learning',
+      organization: 'Self-Directed Learning',
       period: 'Ongoing',
       description:
         'Learning prompt engineering, LLM integration, AI APIs, and practical AI-powered application development.',
@@ -337,7 +337,7 @@ export const portfolioData = {
     },
     {
       title: 'Cybersecurity & OSINT',
-      organization: 'Independent Study',
+      organization: 'Self-Directed Learning',
       period: 'Ongoing',
       description:
         'Developing skills in web security, secure coding, penetration testing fundamentals, and OSINT methodologies.',
@@ -345,7 +345,7 @@ export const portfolioData = {
     },
     {
       title: 'Open Source',
-      organization: 'GitHub',
+      organization: 'Open Source Community',
       period: 'Ongoing',
       description:
         'Publishing projects publicly, improving documentation, and contributing to the open-source ecosystem.',
