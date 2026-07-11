@@ -8,7 +8,7 @@ export default function ProjectHeader({ project }) {
     <div className="space-y-3">
       <div className="flex flex-wrap items-center gap-2">
         {featured && (
-          <span className="rounded-full bg-yellow-500/10 px-3 py-1 text-xs font-semibold text-yellow-400 border border-yellow-500/20">
+          <span className="rounded-full border border-yellow-500/30 bg-yellow-500/10 px-3 py-1 text-xs font-semibold text-yellow-300">
             ⭐ Featured
           </span>
         )}
@@ -16,7 +16,7 @@ export default function ProjectHeader({ project }) {
         <ProjectStatusBadge status={status} />
       </div>
 
-      <Typography variant="subtitle" className="text-slate-900 dark:text-slate-100">
+      <Typography variant="subtitle" className="leading-tight text-slate-900 dark:text-white">
         {title}
       </Typography>
     </div>
