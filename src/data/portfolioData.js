@@ -439,7 +439,8 @@ export const portfolioData = {
         'Real-time lesson notifications, lesson recommendations using AI, comment threading and nested discussions, lesson statistics dashboard, social sharing analytics, and mobile app development.',
       githubUrl: 'https://github.com/MSabbirHossen/Digital-Life-Lessons',
       liveUrl: 'https://digital-life-lessons-client.vercel.app/',
-      screenshots: ['/screenshots/digital-life-lessons-hero.png'],
+      screenshots: ['screenshots/digital-life-lessons-hero.png'],
+      featured: true,
       features: [
         'Lesson CRUD operations with public/private visibility',
         'Lesson reporting system',
@@ -535,7 +536,8 @@ export const portfolioData = {
         'Add bulk import operations for large datasets, implement real-time notifications using WebSockets, add advanced search and filtering with pagination, create admin dashboard for system analytics, add payment integration for premium features, implement AI-powered product recommendations.',
       githubUrl: 'https://github.com/MSabbirHossen/export-import-project',
       liveUrl: 'https://import-export-hub-client.vercel.app/',
-      screenshots: ['/screenshots/import-export-hub-hero.png'],
+      featured: true,
+      screenshots: ['screenshots/import-export-hub-hero.png'],
     },
     {
       id: 'online-game-library',
@@ -571,7 +573,8 @@ export const portfolioData = {
         'Integrate real-time game library updates from API, add user game library/wishlist feature, implement social features (reviews, ratings, community discussions), and optimize performance with code splitting.',
       githubUrl: 'https://github.com/MSabbirHossen/Online-Game-Library',
       liveUrl: 'https://online-game-library.web.app/',
-      screenshots: ['/screenshots/game-library-hero.png'],
+      featured: true,
+      screenshots: ['screenshots/game-library-hero.png'],
       keyFeatures: [
         'Browse comprehensive game library with indie and AAA titles',
         'Advanced search and category filtering with real-time results',
@@ -653,7 +656,8 @@ export const portfolioData = {
         'Complete Profile page with user data editing, implement banner slider with auto-rotating content, add newsletter signup section, integrate advanced animations with Framer Motion, and deploy to Firebase Hosting with production domain setup.',
       githubUrl: 'https://github.com/MSabbirHossen/Personal_App-Store_Authentication',
       liveUrl: 'https://personal-app-store-89cac.web.app/',
-      screenshots: ['/screenshots/app-store-hero.png'],
+      featured: false,
+      screenshots: ['screenshots/app-store-hero.png'],
     },
 
     ///////////////////////////////////////////////
@@ -682,6 +686,7 @@ export const portfolioData = {
         'Mastered the new Tailwind v4 @theme configuration pipeline and learned how to implement clean dark mode switches with zero dependencies.',
       futureImprovements:
         'Integrate the floating AI Portfolio Assistant to read and speak in real-time, pulling details from the portfolio database.',
+      featured: false,
       githubUrl: 'https://github.com',
       liveUrl: 'https://sabbir.dev',
       screenshots: ['/screenshots/portfolio-hero.png'],
@@ -706,6 +711,7 @@ export const portfolioData = {
       githubUrl: 'https://github.com',
       liveUrl: 'https://lab.sabbir.dev',
       screenshots: ['/screenshots/lab-interface.png'],
+      featured: false,
     },
     {
       id: 'learning-tracker',
@@ -728,6 +734,7 @@ export const portfolioData = {
       githubUrl: 'https://github.com',
       liveUrl: 'https://tracker.sabbir.dev',
       screenshots: ['/screenshots/tracker-dashboard.png'],
+      featured: false,
     },
   ],
   preferredCollaboration: [
