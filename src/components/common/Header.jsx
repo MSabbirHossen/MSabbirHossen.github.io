@@ -5,16 +5,7 @@ import { HiMenu, HiMoon, HiSun, HiX } from 'react-icons/hi';
 import { portfolioData } from '../../data/portfolioData';
 import { useTheme } from '../../contexts/ThemeContext';
 
-const NAV_LINKS = [
-  { name: 'Home', href: 'hero' },
-  { name: 'About', href: 'about' },
-  { name: 'GitHub Stats', href: 'github-stats' },
-  { name: 'Projects', href: 'projects' },
-  { name: 'Skills', href: 'skills' },
-  { name: 'Certifications', href: 'certifications' },
-  { name: 'Education', href: 'education' },
-  { name: 'Contact', href: 'contact' },
-];
+import { NAV_LINKS } from '../../data/navigation';
 
 export default function Header() {
   const { theme, toggleTheme } = useTheme();
@@ -117,23 +108,23 @@ export default function Header() {
             </a>
           ))}
 
-          {/* <button
+          <button
             onClick={toggleTheme}
             className="rounded-full border border-slate-200 p-2 text-slate-800 transition-colors hover:bg-slate-100 dark:border-slate-800 dark:text-slate-200 dark:hover:bg-slate-800"
             aria-label="Toggle Theme"
           >
             {theme === 'dark' ? <HiSun className="h-5 w-5" /> : <HiMoon className="h-5 w-5" />}
-          </button> */}
+          </button>
         </nav>
 
         <div className="flex items-center space-x-4 md:hidden">
-          {/* <button
+          <button
             onClick={toggleTheme}
             className="rounded-full border border-slate-200 p-2 text-slate-800 transition-colors hover:bg-slate-100 dark:border-slate-800 dark:text-slate-200 dark:hover:bg-slate-800"
             aria-label="Toggle Theme"
           >
             {theme === 'dark' ? <HiSun className="h-5 w-5" /> : <HiMoon className="h-5 w-5" />}
-          </button> */}
+          </button>
 
           <button
             onClick={() => setIsOpen((value) => !value)}
