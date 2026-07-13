@@ -1,11 +1,7 @@
 import { motion } from 'framer-motion';
 import { NAV_LINKS } from '../../data/navigation';
 
-export default function NavLinks({
-  activeSection,
-  onNavigate,
-  mobile = false,
-}) {
+export default function NavLinks({ activeSection, onNavigate, mobile = false }) {
   return (
     <>
       {NAV_LINKS.map((link) => (
