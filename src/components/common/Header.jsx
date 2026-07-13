@@ -6,6 +6,7 @@ import { portfolioData } from '../../data/portfolioData';
 import { useTheme } from '../../contexts/ThemeContext';
 
 import { NAV_LINKS } from '../../data/navigation';
+import NavLinks from '../layout/NavLinks.jsx';
 
 export default function Header() {
   const { theme, toggleTheme } = useTheme();
@@ -91,22 +92,9 @@ export default function Header() {
           {name}
         </Link>
 
+        {/* Desktop Navigation */}
         <nav className="hidden items-center space-x-8 md:flex">
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.name}
-              href={`#${link.href}`}
-              onClick={(e) => handleNavClick(e, link.href)}
-              aria-current={activeSection === link.href ? 'page' : undefined}
-              className={`text-sm font-medium transition-colors hover:text-accent-primary ${
-                activeSection === link.href
-                  ? 'text-accent-primary'
-                  : 'text-slate-600 dark:text-slate-300'
-              }`}
-            >
-              {link.name}
-            </a>
-          ))}
+          <NavLinks activeSection={activeSection} onNavigate={handleNavClick} />
 
           <button
             onClick={toggleTheme}
@@ -138,6 +126,7 @@ export default function Header() {
         </div>
       </div>
 
+      {/* Mobile Navigation */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -149,21 +138,7 @@ export default function Header() {
             className="glass absolute left-0 top-full w-full border-t border-slate-200 px-6 py-6 shadow-xl dark:border-slate-800 md:hidden"
           >
             <div className="flex flex-col space-y-4">
-              {NAV_LINKS.map((link) => (
-                <a
-                  key={link.name}
-                  href={`#${link.href}`}
-                  onClick={(e) => handleNavClick(e, link.href)}
-                  aria-current={activeSection === link.href ? 'page' : undefined}
-                  className={`border-b border-slate-100 py-2 text-base font-medium transition-colors hover:text-accent-primary dark:border-slate-800/50 ${
-                    activeSection === link.href
-                      ? 'text-accent-primary'
-                      : 'text-slate-700 dark:text-slate-300'
-                  }`}
-                >
-                  {link.name}
-                </a>
-              ))}
+              <NavLinks mobile activeSection={activeSection} onNavigate={handleNavClick} />
             </div>
           </motion.div>
         )}
