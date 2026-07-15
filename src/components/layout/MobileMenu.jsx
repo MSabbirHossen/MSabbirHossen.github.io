@@ -3,6 +3,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 import React from 'react';
 import NavLinks from './NavLinks';
 import { forwardRef } from 'react';
+import Button from '../common/Button';
+import { FaFileAlt } from 'react-icons/fa';
 
 const MobileMenu = forwardRef(function MobileMenu({ isOpen, activeSection, onNavigate }, ref) {
   return (
@@ -19,6 +21,17 @@ const MobileMenu = forwardRef(function MobileMenu({ isOpen, activeSection, onNav
         >
           <div className="flex flex-col space-y-4">
             <NavLinks mobile activeSection={activeSection} onNavigate={onNavigate} />
+            <Button
+              as="a"
+              href="/resume/Md_Sabbir_Hossen_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              size="sm"
+              variant="primary"
+            >
+              <FaFileAlt className="h-4 w-4" />
+              Resume
+            </Button>
           </div>
         </motion.div>
       )}

@@ -7,8 +7,10 @@ import { NAV_LINKS } from '../../data/navigation';
 import NavLinks from '../layout/NavLinks.jsx';
 import ThemeToggle from '../layout/ThemeToggle';
 import MobileMenu from '../layout/MobileMenu.jsx';
+import { FaFileAlt } from 'react-icons/fa';
 
 import { useRef } from 'react';
+import Button from './Button.jsx';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -151,6 +153,17 @@ export default function Header() {
           <NavLinks activeSection={activeSection} onNavigate={handleNavClick} />
 
           <ThemeToggle />
+          <Button
+            as="a"
+            href="/resume/Md_Sabbir_Hossen_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            size="sm"
+            variant="primary"
+          >
+            <FaFileAlt className="h-4 w-4" />
+            Resume
+          </Button>
         </nav>
 
         <div className="flex items-center space-x-4 md:hidden">
