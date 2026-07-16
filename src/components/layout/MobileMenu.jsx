@@ -1,10 +1,15 @@
 import { AnimatePresence, motion } from 'framer-motion';
+import { portfolioData } from '../../data/portfolioData';
 
 import React from 'react';
 import NavLinks from './NavLinks';
 import { forwardRef } from 'react';
 import Button from '../common/Button';
 import { FaFileAlt } from 'react-icons/fa';
+import { HiX } from 'react-icons/hi';
+
+const { personalInfo } = portfolioData;
+const { name } = personalInfo;
 
 const MobileMenu = forwardRef(function MobileMenu(
   { isOpen, setIsOpen, activeSection, onNavigate },
@@ -40,6 +45,15 @@ md:hidden
 "
           >
             <div className="flex h-full flex-col gap-6 p-6">
+              <header className="flex items-center justify-between border-b border-cyan-800 pb-4">
+                <h2 className="text-xl font-semibold text-slate-100">{name}</h2>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="rounded-md p-2 text-slate-400 hover:bg-slate-700"
+                >
+                  <HiX className="h-6 w-6" />
+                </button>
+              </header>
               <NavLinks mobile activeSection={activeSection} onNavigate={onNavigate} />
               <Button
                 as="a"
