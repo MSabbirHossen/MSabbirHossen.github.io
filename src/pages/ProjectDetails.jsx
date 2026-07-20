@@ -8,6 +8,7 @@ import Card from '../components/common/Card';
 import Typography from '../components/common/Typography';
 import ProjectNotFound from '../components/project-details/ProjectNotFound';
 import ProjectHero from '../components/project-details/ProjectHero';
+import ProjectTechStack from '../components/project-details/ProjectTechStack';
 
 export default function ProjectDetails() {
   const { slug } = useParams();
@@ -33,27 +34,7 @@ export default function ProjectDetails() {
 
           <div className="space-y-8">
             {/* Technologies */}
-
-            <Card className="space-y-6">
-              <Typography variant="subtitle">Tech Stack</Typography>
-
-              <div className="flex flex-wrap gap-4">
-                {project.technologies.map((tech) => {
-                  const Icon = tech.icon;
-
-                  return (
-                    <div
-                      key={tech.name}
-                      className="flex w-28 flex-col items-center gap-3 rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-1 hover:border-indigo-500 dark:border-slate-700 dark:bg-slate-900"
-                    >
-                      {Icon && <Icon className="text-3xl text-indigo-500" />}
-
-                      <p className="text-center text-xs font-medium">{tech.name}</p>
-                    </div>
-                  );
-                })}
-              </div>
-            </Card>
+            <ProjectTechStack technologies={project.technologies} />
 
             {/* Architecture */}
 
