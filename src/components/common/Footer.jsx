@@ -3,6 +3,7 @@ import FooterBottom from '../footer/FooterBottom';
 import FooterLinks from '../footer/FooterLinks';
 import FooterResources from '../footer/FooterResources';
 import FooterSocials from '../footer/FooterSocials';
+import BackToTopButton from '../footer/BackToTopButton';
 
 export default function Footer() {
   return (
@@ -20,6 +21,7 @@ export default function Footer() {
       <FooterSocials />
       {/* Bottom */}
       <FooterBottom />
+      <BackToTopButton />
     </footer>
   );
 }
