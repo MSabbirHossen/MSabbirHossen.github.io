@@ -1,17 +1,13 @@
 import { Helmet } from 'react-helmet-async';
-import { Link, useParams } from 'react-router-dom';
-import { FaArrowLeft, FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
+import { useParams } from 'react-router-dom';
 
 import { portfolioData } from '../data/portfolioData';
 
-import Card from '../components/common/Card';
-import Typography from '../components/common/Typography';
-import ProjectNotFound from '../components/project-details/ProjectNotFound';
-import ProjectHero from '../components/project-details/ProjectHero';
-import ProjectTechStack from '../components/project-details/ProjectTechStack';
 import ProjectPreview from '../ProjectPreview';
-import ProjectLinkCard from '../components/project-details/ProjectLinkCard';
+import ProjectHero from '../components/project-details/ProjectHero';
 import ProjectLinks from '../components/project-details/ProjectLinks';
+import ProjectNotFound from '../components/project-details/ProjectNotFound';
+import ProjectTechStack from '../components/project-details/ProjectTechStack';
 import ProjectBulletList from '../components/project-details/ProjectBulletList';
 import ProjectApiEndpoints from '../components/project-details/ProjectApiEndpoints';
 
@@ -19,8 +15,6 @@ export default function ProjectDetails() {
   const { slug } = useParams();
 
   const project = portfolioData.projects.find((item) => item.id === slug);
-  // console.log('portfolioData.projects', portfolioData.projects.screenshots);
-  // console.log('Selected Project:', project.screenshots); // Debugging line to check the project object
 
   if (!project) {
     return <ProjectNotFound />;
@@ -37,24 +31,14 @@ export default function ProjectDetails() {
         <ProjectHero project={project} />
 
         <div className="grid gap-8 lg:grid-cols-[2fr_1fr]">
-          {/* LEFT */}
-
           <div className="space-y-8">
-            {/* Technologies */}
             <ProjectTechStack technologies={project.technologies} />
-
-            {/* Architecture */}
 
             <ProjectBulletList title="Architecture" items={project.architecture} />
 
-            {/* Challenges */}
             <ProjectBulletList title="Challenges" items={project.challenges} />
 
-            {/* Lessons */}
-
             <ProjectBulletList title="Lessons Learned" items={project.lessonsLearned} />
-
-            {/* Features */}
 
             {project.features && (
               <ProjectBulletList
@@ -65,21 +49,13 @@ export default function ProjectDetails() {
               />
             )}
 
-            {/* API */}
             <ProjectApiEndpoints endpoints={project.apiEndpoints} />
           </div>
 
-          {/* RIGHT */}
-
           <div className="space-y-8">
-            {/* Links */}
-
             <ProjectLinks githubUrl={project.githubUrl} liveUrl={project.liveUrl} />
 
-            {/* Future */}
-
             <ProjectBulletList title="Future Improvements" items={project.futureImprovements} />
-            {/* Screenshot */}
 
             <ProjectPreview title={project.title} screenshots={project.screenshots} />
           </div>
