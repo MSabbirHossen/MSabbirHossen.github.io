@@ -36,10 +36,10 @@ export default function Home() {
       <GitHubStats />
       <Projects />
       <Skills />
-      <Certifications />
-      <Education />
-      <CurrentFocus />
       <Contact />
+      {/* <Certifications /> */}
+      {/* <Education /> */}
+      <CurrentFocus />
     </div>
   );
 }

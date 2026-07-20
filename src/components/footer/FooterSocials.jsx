@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaEnvelope, FaGithub, FaLinkedin, FaMapMarkerAlt } from 'react-icons/fa';
 import { portfolioData } from '../../data/portfolioData';
 
 const FooterSocials = () => {
@@ -15,7 +15,7 @@ const FooterSocials = () => {
   ];
 
   return (
-    <div>
+    <div className="max-w-7xl mx-auto flex flex-col items-center md:items-end px-4 gap-3">
       <div className="flex items-center gap-4">
         {socialLinks.map((link, idx) => (
           <a
@@ -30,6 +30,29 @@ const FooterSocials = () => {
           </a>
         ))}
       </div>
+      <span
+        className="flex items-center gap-1.5 text-xs
+rounded-md
+text-slate-500
+transition-colors
+hover:text-accent-primary
+focus-visible:outline-none
+focus-visible:ring-2
+focus-visible:ring-accent-primary
+focus-visible:ring-offset-2
+dark:text-slate-400
+dark:focus-visible:ring-offset-slate-900
+"
+      >
+        <FaMapMarkerAlt className="w-3.5 h-3.5" />{' '}
+        <a
+          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(personalInfo.location)}`}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {personalInfo.location}
+        </a>
+      </span>
     </div>
   );
 };

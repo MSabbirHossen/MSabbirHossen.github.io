@@ -1,21 +1,22 @@
-import React from 'react';
+import Typography from '../common/Typography';
 import { portfolioData } from '../../data/portfolioData';
 
-const FooterBrand = () => {
-    const { personalInfo } = portfolioData;
+export default function FooterBrand() {
+  const { personalInfo } = portfolioData;
+
   return (
-    <div>
-      {/* Identity & Tagline */}
-      <div className="text-center md:text-left">
-        <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100">
-          {personalInfo.brandName} (MS's personal Brand)
-        </h3>
-        <p className="text-sm text-slate-500 dark:text-slate-400 mt-1 max-w-md">
-          {personalInfo.brandTagline}
-        </p>
-      </div>
+    <div className="space-y-4">
+      <Typography variant="caption" className="uppercase tracking-[0.2em] text-accent-primary">
+        MS's Personal Brand
+      </Typography>
+
+      <Typography variant="h4" className="text-slate-900 dark:text-slate-100">
+        {personalInfo.brandName}
+      </Typography>
+
+      <Typography variant="body" className="max-w-sm text-slate-500 dark:text-slate-400">
+        {personalInfo.brandTagline}
+      </Typography>
     </div>
   );
-};
-
-export default FooterBrand;
+}
