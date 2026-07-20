@@ -7,7 +7,8 @@ export default function ProjectImage({ project }) {
   return (
     <div className="group relative overflow-hidden rounded-2xl">
       <img
-        src={`${import.meta.env.BASE_URL}${image}`}
+        // src={`${import.meta.env.BASE_URL}${image}`}
+        src={image}
         alt={title}
         loading="lazy"
         className="aspect-video w-full object-cover transition-all duration-500 group-hover:scale-105 group-hover:brightness-90"

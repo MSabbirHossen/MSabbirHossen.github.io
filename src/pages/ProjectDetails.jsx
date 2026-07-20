@@ -9,11 +9,14 @@ import Typography from '../components/common/Typography';
 import ProjectNotFound from '../components/project-details/ProjectNotFound';
 import ProjectHero from '../components/project-details/ProjectHero';
 import ProjectTechStack from '../components/project-details/ProjectTechStack';
+import ProjectPreview from '../ProjectPreview';
 
 export default function ProjectDetails() {
   const { slug } = useParams();
 
   const project = portfolioData.projects.find((item) => item.id === slug);
+  // console.log('portfolioData.projects', portfolioData.projects.screenshots);
+  console.log('Selected Project:', project.screenshots); // Debugging line to check the project object
 
   if (!project) {
     return <ProjectNotFound />;
@@ -171,19 +174,7 @@ export default function ProjectDetails() {
 
             {/* Screenshot */}
 
-            {project.screenshots?.length > 0 && (
-              <Card>
-                <Typography variant="subtitle" className="mb-5">
-                  Preview
-                </Typography>
-
-                <img
-                  src={project.screenshots[0]}
-                  alt={project.title}
-                  className="rounded-xl border"
-                />
-              </Card>
-            )}
+            <ProjectPreview title={project.title} screenshots={project.screenshots} />
           </div>
         </div>
       </div>
