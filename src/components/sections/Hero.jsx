@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaArrowDown, FaDownload, FaFacebook } from 'react-icons/fa';
+import { FaArrowDown, FaDownload } from 'react-icons/fa';
 import heroImage from '../../assets/hero.png';
 import { portfolioData } from '../../data/portfolioData';
 import Typography from '../common/Typography';
 import Button from '../common/Button';
-import { FaF } from 'react-icons/fa6';
+
+import HeroActions from '../hero/HeroActions';
 
 export default function Hero() {
   const { personalInfo } = portfolioData;
@@ -46,17 +47,13 @@ export default function Hero() {
             </Typography> */}
           </div>
 
-          <div className="flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
-            <Button variant="outline" size="lg" href={github} icon={FaGithub}>
-              GitHub
-            </Button>
-            <Button variant="ghost" size="lg" href={linkedin} icon={FaLinkedin}>
-              LinkedIn
-            </Button>
-            <Button variant="ghost" size="lg" href={facebook} icon={FaFacebook}>
-              Facebook
-            </Button>
-          </div>
+          <HeroActions
+            github={github}
+            linkedin={linkedin}
+            facebook={facebook}
+            resumeUrl={resumeUrl}
+            onContact={scrollToContact}
+          />
           <div className="flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
             <Button variant="outline" size="lg" href={resumeUrl} icon={FaDownload}>
               Download Resume
