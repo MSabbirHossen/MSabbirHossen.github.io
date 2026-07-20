@@ -11,6 +11,7 @@ import ProjectHero from '../components/project-details/ProjectHero';
 import ProjectTechStack from '../components/project-details/ProjectTechStack';
 import ProjectPreview from '../ProjectPreview';
 import ProjectLinkCard from '../components/project-details/ProjectLinkCard';
+import ProjectLinks from '../components/project-details/ProjectLinks';
 
 export default function ProjectDetails() {
   const { slug } = useParams();
@@ -125,17 +126,7 @@ export default function ProjectDetails() {
           <div className="space-y-8">
             {/* Links */}
 
-            <Card className="space-y-5">
-              <Typography variant="subtitle">Project Links</Typography>
-
-              <ProjectLinkCard icon={FaGithub} title="GitHub Repository" href={project.githubUrl} />
-
-              <ProjectLinkCard
-                icon={FaExternalLinkAlt}
-                title="Live Website"
-                href={project.liveUrl}
-              />
-            </Card>
+            <ProjectLinks githubUrl={project.githubUrl} liveUrl={project.liveUrl} />
 
             {/* Future */}
 
