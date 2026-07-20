@@ -70,6 +70,11 @@ export const portfolioData = {
     linkedin: 'https://www.linkedin.com/in/ms-hossen/',
     facebook: 'https://web.facebook.com/sabb1rhossen/',
     resumeUrl: 'https://drive.google.com/file/d/1BjOd3cSea8D16ljYYM8A_LS9g4H3PuAl/view?usp=sharing',
+
+    hero: {
+      focusTitle: 'Currently focused on',
+      focusItems: ['React', 'MERN Stack', 'AI Tools', 'Secure Development'],
+    },
     languages: [
       {
         name: 'Bengali',
