@@ -47,14 +47,7 @@ export default function ProjectDetails() {
             <ProjectBulletList title="Architecture" items={project.architecture} />
 
             {/* Challenges */}
-
-            <Card>
-              <Typography variant="subtitle" className="mb-4">
-                Challenges
-              </Typography>
-
-              <Typography variant="body">{project.challenges}</Typography>
-            </Card>
+            <ProjectBulletList title="Challenges" items={project.challenges} />
 
             {/* Lessons */}
 

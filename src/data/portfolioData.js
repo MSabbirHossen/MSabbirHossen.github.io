@@ -435,10 +435,18 @@ export const portfolioData = {
         'Database: MongoDB with Mongoose schemas for Users, Lessons, Comments, Favorites, and Reports.',
         'Security: Helmet for headers, CORS configuration, rate limiting, input validation.',
       ],
-      challenges:
-        'Integrating Firebase authentication across client and server, managing premium content access control with Stripe webhooks, implementing admin moderation systems, and handling real-time UI updates across multiple user roles.',
-      lessonsLearned:
-        'Mastered MERN full-stack development with third-party integrations (Firebase, Stripe), role-based access control, complex state management patterns, and secure API design with token validation and rate limiting.',
+      challenges: [
+        'Integrating Firebase authentication across client and server,',
+        'Managing premium content access control with Stripe webhooks,',
+        'Implementing admin moderation systems,',
+        'And handling real-time UI updates across multiple user roles.',
+      ],
+      lessonsLearned: [
+        'Mastered MERN full-stack development with third-party integrations (Firebase, Stripe),' +
+          'Role-based access control,' +
+          'Complex state management patterns,' +
+          'secure API design with token validation and rate limiting.',
+      ],
       futureImprovements:
         'Real-time lesson notifications, lesson recommendations using AI, comment threading and nested discussions, lesson statistics dashboard, social sharing analytics, and mobile app development.',
       githubUrl: 'https://github.com/MSabbirHossen/Digital-Life-Lessons',
