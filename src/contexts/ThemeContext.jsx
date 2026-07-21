@@ -10,13 +10,13 @@ export const ThemeProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    const body = document.body;
+    const root = document.documentElement;
     if (theme === 'light') {
-      body.classList.add('light');
-      body.classList.remove('dark');
+      root.classList.add('light');
+      root.classList.remove('dark');
     } else {
-      body.classList.add('dark');
-      body.classList.remove('light');
+      root.classList.add('dark');
+      root.classList.remove('light');
     }
     localStorage.setItem('portfolio-theme', theme);
   }, [theme]);

@@ -3,9 +3,9 @@ import { useParams } from 'react-router-dom';
 
 import { portfolioData } from '../data/portfolioData';
 
-import ProjectPreview from '../ProjectPreview';
 import ProjectHero from '../components/project-details/ProjectHero';
 import ProjectLinks from '../components/project-details/ProjectLinks';
+import ProjectPreview from '../components/project-details/ProjectPreview';
 import ProjectNotFound from '../components/project-details/ProjectNotFound';
 import ProjectTechStack from '../components/project-details/ProjectTechStack';
 import ProjectBulletList from '../components/project-details/ProjectBulletList';
