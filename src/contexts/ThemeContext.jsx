@@ -3,11 +3,11 @@ import { createContext, useContext, useEffect, useState } from 'react';
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  // Dark mode is default, as requested
+  // Initialize theme state from localStorage or default to 'system'
   const [theme, setTheme] = useState(() => {
-    const saved = localStorage.getItem('portfolio-theme');
-    return saved ? saved : 'dark';
+    return localStorage.getItem('portfolio-theme') ?? 'system';
   });
+  const [resolvedTheme, setResolvedTheme] = useState('dark');
 
   useEffect(() => {
     const root = document.documentElement;
@@ -25,7 +25,18 @@ export const ThemeProvider = ({ children }) => {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
   };
 
-  return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>;
+  return (
+    <ThemeContext.Provider
+      value={{
+        theme,
+        resolvedTheme,
+        setTheme,
+        toggleTheme,
+      }}
+    >
+      {children}
+    </ThemeContext.Provider>
+  );
 };
 
 export const useTheme = () => {
