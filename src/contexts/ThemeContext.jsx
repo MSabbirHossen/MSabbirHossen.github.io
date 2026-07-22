@@ -44,9 +44,6 @@ export const ThemeProvider = ({ children }) => {
     localStorage.setItem('portfolio-theme', theme);
   }, [theme]);
 
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
-  };
 
   return (
     <ThemeContext.Provider
@@ -54,7 +51,6 @@ export const ThemeProvider = ({ children }) => {
         theme,
         resolvedTheme,
         setTheme,
-        toggleTheme,
       }}
     >
       {children}
