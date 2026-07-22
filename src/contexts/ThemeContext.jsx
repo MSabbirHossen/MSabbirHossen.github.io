@@ -18,32 +18,34 @@ export const ThemeProvider = ({ children }) => {
 
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
-    const handleChange = () => {
-      const activeTheme = getSystemTheme();
-
-      setResolvedTheme(activeTheme);
-
+    const applyTheme = (activeTheme) => {
       const root = document.documentElement;
 
       root.classList.remove('light', 'dark');
       root.classList.add(activeTheme);
+
+      setResolvedTheme(activeTheme);
     };
 
-    mediaQuery.addEventListener('change', handleChange);
+    mediaQuery.addEventListener('change', (e) => applyTheme(e.matches ? 'dark' : 'light'));
 
     return () => {
-      mediaQuery.removeEventListener('change', handleChange);
+      mediaQuery.removeEventListener('change', (e) => applyTheme(e.matches ? 'dark' : 'light'));
     };
   }, [theme]);
 
   useEffect(() => {
     const root = document.documentElement;
+
     const activeTheme = theme === 'system' ? getSystemTheme() : theme;
+
     setResolvedTheme(activeTheme);
+
+    root.classList.remove('light', 'dark');
+    root.classList.add(activeTheme);
 
     localStorage.setItem('portfolio-theme', theme);
   }, [theme]);
-
 
   return (
     <ThemeContext.Provider

@@ -41,6 +41,31 @@
 
 --color-light-border: #d8e0eb;
 --color-light-border-hover: #c2d0e0;
+
+/* Semantic colors */
+
+/* Text */
+--color-text-primary-dark: #f8fafc;
+--color-text-secondary-dark: #cbd5e1;
+--color-text-muted-dark: #94a3b8;
+
+--color-text-primary-light: #0f172a;
+--color-text-secondary-light: #334155;
+--color-text-muted-light: #64748b;
+
+/* Surfaces */
+--surface-base-dark: rgba(21, 27, 45, 0.78);
+--surface-elevated-dark: rgba(26, 34, 56, 0.92);
+
+--surface-base-light: #ffffff;
+--surface-elevated-light: #fbfcff;
+
+/* Borders */
+--border-default-dark: rgba(255,255,255,.06);
+--border-hover-dark: rgba(255,255,255,.12);
+
+--border-default-light: rgba(148,163,184,.18);
+--border-hover-light: rgba(99,102,241,.25);
 }
 
 /* ─── Base layer ─── */
@@ -136,24 +161,45 @@ html.light .glass {
 }
 
 .surface {
-  background: rgba(21, 27, 45, 0.78);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--surface-base-dark);
+  border: 1px solid var(--border-default-dark);
   box-shadow: var(--shadow-soft);
+  transition:
+    background-color .3s ease,
+    border-color .3s ease,
+    box-shadow .3s ease,
+    transform .25s ease;
 }
 
-html.light .surface{
-
-background:#fff;
-
-border:1px solid rgba(148,163,184,.18);
-
-box-shadow:
-
-0 8px 30px rgba(15,23,42,.05),
-
-0 20px 60px rgba(15,23,42,.08);
-
+html.light .surface {
+  background: var(--surface-base-light);
+  border: 1px solid var(--border-default-light);
+  box-shadow:
+    0 10px 30px rgba(15,23,42,.05),
+    0 24px 60px rgba(15,23,42,.08);
 }
+
+.surface-hover {
+  transition: all .25s ease;
+}
+
+.surface-hover:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-accent-primary);
+}
+
+.border-default {
+  border: 1px solid var(--border-default-dark);
+}
+
+html.light .border-default {
+  border-color: var(--border-default-light);
+}
+
+.card-base {
+  @apply surface rounded-2xl;
+}
+
 .page-shell {
   width: min(100%, 80rem);
   margin-inline: auto;
@@ -192,6 +238,30 @@ box-shadow:
   font-size: 1rem;
   line-height: 1.75;
   color: #94a3b8;
+}
+
+.text-primary {
+  color: var(--color-text-primary-dark);
+}
+
+.text-secondary {
+  color: var(--color-text-secondary-dark);
+}
+
+.text-muted {
+  color: var(--color-text-muted-dark);
+}
+
+html.light .text-primary {
+  color: var(--color-text-primary-light);
+}
+
+html.light .text-secondary {
+  color: var(--color-text-secondary-light);
+}
+
+html.light .text-muted {
+  color: var(--color-text-muted-light);
 }
 
 html.light .section-copy {
