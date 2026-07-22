@@ -157,7 +157,7 @@ export default function Header() {
         <nav className="hidden items-center space-x-8 md:flex">
           <NavLinks activeSection={activeSection} onNavigate={handleNavClick} />
 
-          <ThemeToggle />
+          {/* <ThemeToggle /> */}
           <Button
             as="a"
             href="/resume/Md_Sabbir_Hossen_Resume.pdf"
@@ -172,12 +172,12 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center space-x-4 md:hidden">
-          <ThemeToggle />
+          {/* <ThemeToggle /> */}
 
           <button
             ref={toggleButtonRef}
             onClick={() => setIsOpen((value) => !value)}
-            className="rounded-md p-2 text-slate-800 transition-colors hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800"
+            className="rounded-md p-2 text-slate-800 transition-colors surface-hover dark:text-slate-200 dark:hover:bg-slate-800"
             aria-label="Toggle menu"
             aria-expanded={isOpen}
             aria-controls="mobile-navigation"
