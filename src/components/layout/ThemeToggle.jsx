@@ -68,7 +68,7 @@ export default function ThemeToggle() {
           text-slate-600
           transition-all
           hover:text-accent-primary
-          dark:text-slate-300
+          text-secondary
           dark:hover:text-accent-primary
           focus-visible:outline-none
           focus-visible:ring-2
@@ -124,7 +124,7 @@ export default function ThemeToggle() {
                   ${
                     theme === value
                       ? 'bg-accent-primary/10 text-accent-primary'
-                      : 'text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800'
+                      : 'text-slate-600 hover:bg-slate-100 text-secondary dark:hover:bg-slate-800'
                   }
                 `}
               >

@@ -37,9 +37,9 @@ h-screen
 w-[80%]
 max-w-sm
 z-50
-bg-slate-900/95
+surface
 backdrop-blur-xl
-border-l border-slate-800
+border-l border-default
 shadow-2xl
 md:hidden
 "
@@ -49,7 +49,7 @@ md:hidden
                 <h2 className="text-xl font-semibold text-slate-100">{name}</h2>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="rounded-md p-2 text-slate-400 hover:bg-slate-700"
+                  className="rounded-md p-2 text-muted hover:bg-slate-700"
                 >
                   <HiX className="h-6 w-6" />
                 </button>
@@ -73,7 +73,7 @@ md:hidden
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-40 bg-slate-900/50 backdrop-blur-sm md:hidden"
+            className="fixed inset-0 z-40 surface backdrop-blur-sm md:hidden"
             onClick={() => setIsOpen(false)}
           ></motion.aside>
         </>

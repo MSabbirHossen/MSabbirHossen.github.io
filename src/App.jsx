@@ -12,6 +12,8 @@ import Skills from './components/skills/Skills';
 import About from './components/about/About';
 import Certifications from './components/sections/Certifications';
 import Education from './components/sections/Education';
+import Projects from './components/projects/Projects';
+import Contact from './components/sections/Contact';
 
 export default function App() {
   return (
@@ -21,13 +23,16 @@ export default function App() {
           <Routes>
             <Route path="/" element={<MainLayout />}>
               <Route index element={<Home />} />
+              <Route path="about" element={<About />} />
+              <Route path="projects" element={<Projects />} />
               <Route path="projects/:slug" element={<ProjectDetails />} />
               <Route path="project/:id" element={<Navigate to="/" replace />} />
               <Route path="skills" element={<Skills />} />
-              <Route path="about" element={<About />} />
-              <Route path="certifications" element={<Certifications />} />
-              <Route path="github-stats" element={<GitHubStats />} />
+              <Route path="contact" element={<Contact />} />
+
               <Route path="education" element={<Education />} />
+              <Route path="github-stats" element={<GitHubStats />} />
+              <Route path="certifications" element={<Certifications />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Route>
           </Routes>

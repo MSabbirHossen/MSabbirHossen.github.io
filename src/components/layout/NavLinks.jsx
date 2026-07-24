@@ -26,15 +26,15 @@ focus-visible:ring-offset-2
 focus-visible:ring-offset-white
 dark:focus-visible:ring-offset-slate-900 ${
               mobile
-                ? `border-b border-slate-100 py-2 text-base font-medium dark:border-slate-800/50 ${
+                ? `border-b border-slate-100 py-2 text-base font-medium border-default ${
                     activeSection === link.href
                       ? 'text-accent-primary'
-                      : 'text-slate-700 dark:text-slate-300'
+                      : 'text-slate-700 text-secondary'
                   }`
                 : `text-sm font-medium ${
                     activeSection === link.href
                       ? 'text-accent-primary'
-                      : 'text-slate-600 dark:text-slate-300'
+                      : 'text-slate-600  text-secondary'
                   }`
             }`}
           >
