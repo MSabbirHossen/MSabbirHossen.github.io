@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import Typography from '../common/Typography';
 
 const itemVariants = {
@@ -7,8 +7,13 @@ const itemVariants = {
 };
 
 export default function AboutHeader({ title, mission, tagline }) {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
-    <motion.div variants={itemVariants} className="mx-auto mb-14 max-w-3xl text-center">
+    <motion.div
+      variants={shouldReduceMotion ? undefined : itemVariants}
+      className="mx-auto mb-14 max-w-3xl text-center"
+    >
       <Typography variant="h2" className="mb-5 text-primary">
         {title}
       </Typography>

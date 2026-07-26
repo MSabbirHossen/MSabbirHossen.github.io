@@ -1,8 +1,10 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import Card from '../common/Card';
 import Typography from '../common/Typography';
 
 export default function LanguageProgress({ languages }) {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <div className="mt-10">
       <Typography variant="subtitle" className="mb-5 text-primary">
@@ -21,11 +23,11 @@ export default function LanguageProgress({ languages }) {
 
               <div className="h-2 overflow-hidden rounded-full bg-surface/70">
                 <motion.div
-                  initial={{ width: 0 }}
+                  initial={shouldReduceMotion ? false : { width: 0 }}
                   whileInView={{ width: `${lang.percentage}%` }}
                   viewport={{ once: true }}
                   transition={{
-                    duration: 1,
+                    duration: shouldReduceMotion ? 0 : 1,
                     ease: 'easeOut',
                   }}
                   className="h-full rounded-full bg-accent-secondary"

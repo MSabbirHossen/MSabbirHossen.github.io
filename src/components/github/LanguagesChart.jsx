@@ -1,8 +1,10 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import Typography from '../common/Typography';
 import Card from '../common/Card';
 
 export default function LanguagesChart({ languages }) {
+  const shouldReduceMotion = useReducedMotion();
+
   if (!languages?.length) return null;
 
   const total = languages.reduce((sum, lang) => sum + lang.count, 0);
@@ -66,12 +68,12 @@ export default function LanguagesChart({ languages }) {
 
               <div className="h-4 overflow-hidden rounded-full bg-surface/70">
                 <motion.div
-                  initial={{ width: 0 }}
+                  initial={shouldReduceMotion ? false : { width: 0 }}
                   whileInView={{ width: `${percent}%` }}
                   viewport={{ once: true }}
                   transition={{
-                    duration: 1,
-                    delay: index * 0.15,
+                    duration: shouldReduceMotion ? 0 : 1,
+                    delay: shouldReduceMotion ? 0 : index * 0.15,
                     ease: 'easeOut',
                   }}
                   style={{

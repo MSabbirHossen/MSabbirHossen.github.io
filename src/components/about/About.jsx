@@ -2,7 +2,6 @@ import { portfolioData } from '../../data/portfolioData';
 
 import SectionWrapper from '../common/SectionWrapper';
 
-import AboutHeader from './AboutHeader';
 import JourneyCard from './JourneyCard';
 import LanguagesCard from './LanguagesCard';
 import QuickFactsCard from './QuickFactsCard';
@@ -10,8 +9,7 @@ import AboutStats from './AboutStats';
 
 export default function About() {
   const { personalInfo } = portfolioData;
-  const { mission, tagline, title, journey, values, vision, languages, studyingAt, location } =
-    personalInfo;
+  const { mission, tagline, title, journey, languages, studyingAt, location } = personalInfo;
 
   const stats = [
     {

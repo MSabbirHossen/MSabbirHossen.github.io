@@ -1,5 +1,4 @@
 import AnimatedNumber from './AnimatedNumber';
-import { motion } from 'framer-motion';
 import Reveal from '../animations/Reveal';
 import { FaCodeBranch, FaGithub, FaStar, FaBook, FaUsers } from 'react-icons/fa';
 import Card from '../common/Card';

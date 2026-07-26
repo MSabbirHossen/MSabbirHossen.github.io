@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import Typography from './Typography';
 
 export default function SectionWrapper({
@@ -12,14 +12,16 @@ export default function SectionWrapper({
   innerClassName = '',
   headerClassName = '',
 }) {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <motion.section
       id={id}
       className={`section-shell ${className}`}
-      initial={{ opacity: 0, y: 24 }}
+      initial={shouldReduceMotion ? false : { opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
+      transition={{ duration: shouldReduceMotion ? 0 : 0.6, ease: 'easeOut' }}
     >
       {(eyebrow || title || description || tagline) && (
         <div className={`section-heading mb-12 ${headerClassName}`}>

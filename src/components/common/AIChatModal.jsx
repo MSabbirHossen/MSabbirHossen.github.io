@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { FaPaperPlane, FaTimes } from 'react-icons/fa';
 import Button from './Button';
 import Card from './Card';
@@ -15,6 +15,7 @@ export default function AIChatModal({
   onChange,
   onSend,
 }) {
+  const shouldReduceMotion = useReducedMotion();
   const messageListRef = useRef(null);
   const dialogRef = useRef(null);
   const inputRef = useRef(null);
@@ -80,18 +81,18 @@ export default function AIChatModal({
       {isOpen && (
         <motion.div
           className="fixed inset-0 z-40 flex items-end justify-center bg-slate-950/60 px-4 py-6 backdrop-blur-sm sm:items-center"
-          initial={{ opacity: 0 }}
+          initial={shouldReduceMotion ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.2 }}
+          exit={shouldReduceMotion ? undefined : { opacity: 0 }}
+          transition={{ duration: shouldReduceMotion ? 0 : 0.2 }}
           onMouseDown={onClose}
         >
           <motion.div
             ref={dialogRef}
-            initial={{ opacity: 0, y: 24, scale: 0.98 }}
+            initial={shouldReduceMotion ? false : { opacity: 0, y: 24, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 24, scale: 0.98 }}
-            transition={{ duration: 0.25, ease: 'easeOut' }}
+            exit={shouldReduceMotion ? undefined : { opacity: 0, y: 24, scale: 0.98 }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.25, ease: 'easeOut' }}
             onMouseDown={(event) => event.stopPropagation()}
             onKeyDown={handleKeyDown}
             role="dialog"

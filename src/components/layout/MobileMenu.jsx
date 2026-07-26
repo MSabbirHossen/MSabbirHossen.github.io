@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { portfolioData } from '../../data/portfolioData';
 import { forwardRef } from 'react';
 import NavLinks from './NavLinks';
@@ -13,6 +13,8 @@ const MobileMenu = forwardRef(function MobileMenu(
   { isOpen, setIsOpen, activeSection, onNavigate },
   ref
 ) {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -23,13 +25,14 @@ const MobileMenu = forwardRef(function MobileMenu(
             role="dialog"
             aria-modal="true"
             aria-label="Mobile navigation"
-            initial={{ x: '100%' }}
+            initial={shouldReduceMotion ? false : { x: '100%' }}
             animate={{ x: 0 }}
-            exit={{ x: '100%' }}
+            exit={shouldReduceMotion ? undefined : { x: '100%' }}
             transition={{
               type: 'spring',
-              stiffness: 350,
-              damping: 32,
+              stiffness: shouldReduceMotion ? 0 : 350,
+              damping: shouldReduceMotion ? 0 : 32,
+              duration: shouldReduceMotion ? 0 : undefined,
             }}
             className="fixed right-0 top-0 z-50 h-screen w-[82%] max-w-sm border-l border-default bg-dark-surface/95 shadow-2xl backdrop-blur-xl md:hidden"
           >
@@ -66,10 +69,10 @@ const MobileMenu = forwardRef(function MobileMenu(
 
           <motion.button
             type="button"
-            initial={{ opacity: 0 }}
+            initial={shouldReduceMotion ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
+            exit={shouldReduceMotion ? undefined : { opacity: 0 }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.25 }}
             className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm md:hidden"
             onClick={() => setIsOpen(false)}
             aria-label="Close navigation menu"

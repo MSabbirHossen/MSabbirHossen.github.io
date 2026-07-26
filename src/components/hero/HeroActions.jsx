@@ -1,8 +1,7 @@
-import React from 'react';
 import Button from '../common/Button';
 import { FaFacebook, FaGithub, FaLinkedin } from 'react-icons/fa';
 
-const HeroActions = ({ github, linkedin, facebook, resumeUrl, onContact }) => {
+const HeroActions = ({ github, linkedin, facebook }) => {
   const socialLinks = [
     {
       label: 'GitHub',

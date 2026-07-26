@@ -5,7 +5,11 @@ export default function useCountAnimation(target, duration = 1200) {
   const frameRef = useRef(null);
 
   useEffect(() => {
-    const start = performance.now();
+    if (typeof window === 'undefined') {
+      return undefined;
+    }
+
+    const start = window.performance.now();
 
     const animate = (now) => {
       const progress = Math.min((now - start) / duration, 1);
@@ -19,15 +23,15 @@ export default function useCountAnimation(target, duration = 1200) {
       setValue(Math.round(target * eased));
 
       if (progress < 1) {
-        frameRef.current = requestAnimationFrame(animate);
+        frameRef.current = window.requestAnimationFrame(animate);
       }
     };
 
-    frameRef.current = requestAnimationFrame(animate);
+    frameRef.current = window.requestAnimationFrame(animate);
 
     return () => {
       if (frameRef.current) {
-        cancelAnimationFrame(frameRef.current);
+        window.cancelAnimationFrame(frameRef.current);
       }
     };
   }, [target, duration]);

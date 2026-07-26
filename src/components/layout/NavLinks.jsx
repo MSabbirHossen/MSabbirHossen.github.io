@@ -1,7 +1,9 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { NAV_LINKS } from '../../data/navigation';
 
 export default function NavLinks({ activeSection, onNavigate, mobile = false }) {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <>
       {NAV_LINKS.map((link) => {
@@ -32,8 +34,9 @@ export default function NavLinks({ activeSection, onNavigate, mobile = false }) 
                 className="absolute -bottom-1 left-0 h-0.5 w-full rounded-full bg-accent-primary"
                 transition={{
                   type: 'spring',
-                  stiffness: 500,
-                  damping: 35,
+                  stiffness: shouldReduceMotion ? 0 : 500,
+                  damping: shouldReduceMotion ? 0 : 35,
+                  duration: shouldReduceMotion ? 0 : undefined,
                 }}
               />
             )}

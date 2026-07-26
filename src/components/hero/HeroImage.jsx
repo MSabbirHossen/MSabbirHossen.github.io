@@ -1,22 +1,23 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import heroImage from '../../assets/hero.png';
 
 import { floatingAnimation, heroImageVariants } from './heroVariants';
 
 const HeroImage = () => {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <motion.div
       className="relative mx-auto w-full max-w-md"
       variants={heroImageVariants}
-      initial="hidden"
+      initial={shouldReduceMotion ? false : 'hidden'}
       animate="visible"
     >
       <div className="absolute -inset-4 rounded-[2rem] bg-linear-to-br from-accent-primary/30 via-accent-secondary/20 to-transparent blur-2xl" />
       <motion.div
         className="relative glass rounded-[2rem] border border-default p-5 shadow-2xl shadow-black/20"
-        animate={floatingAnimation.animate}
-        transition={floatingAnimation.transition}
+        animate={shouldReduceMotion ? undefined : floatingAnimation.animate}
+        transition={shouldReduceMotion ? undefined : floatingAnimation.transition}
       >
         <div className="overflow-hidden rounded-[1.5rem] border border-default surface">
           <img

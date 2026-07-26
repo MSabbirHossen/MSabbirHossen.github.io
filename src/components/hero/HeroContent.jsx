@@ -1,5 +1,4 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { FaArrowDown, FaDownload } from 'react-icons/fa';
 
 import Typography from '../common/Typography';
@@ -8,13 +7,14 @@ import HeroActions from './HeroActions';
 import { heroContentVariants } from './heroVariants';
 
 const HeroContent = ({ personalInfo, onContact }) => {
+  const shouldReduceMotion = useReducedMotion();
   const { name, title, secondaryTitle, github, linkedin, facebook, resumeUrl } = personalInfo;
 
   return (
     <motion.div
       className="space-y-7 text-center lg:text-left"
       variants={heroContentVariants}
-      initial="hidden"
+      initial={shouldReduceMotion ? false : 'hidden'}
       animate="visible"
     >
       <div className="space-y-4">
@@ -35,13 +35,7 @@ const HeroContent = ({ personalInfo, onContact }) => {
             </Typography> */}
       </div>
 
-      <HeroActions
-        github={github}
-        linkedin={linkedin}
-        facebook={facebook}
-        resumeUrl={resumeUrl}
-        onContact={onContact}
-      />
+      <HeroActions github={github} linkedin={linkedin} facebook={facebook} />
       <div className="flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
         <Button variant="outline" size="lg" href={resumeUrl} icon={FaDownload}>
           Download Resume

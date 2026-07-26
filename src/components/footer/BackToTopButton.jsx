@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { FaArrowUp } from 'react-icons/fa';
 
 export default function BackToTopButton() {
   const [visible, setVisible] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,10 +31,10 @@ export default function BackToTopButton() {
           type="button"
           onClick={scrollToTop}
           aria-label="Back to top"
-          initial={{ opacity: 0, scale: 0.8, y: 20 }}
+          initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.8, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.8, y: 20 }}
-          transition={{ duration: 0.25 }}
+          exit={shouldReduceMotion ? undefined : { opacity: 0, scale: 0.8, y: 20 }}
+          transition={{ duration: shouldReduceMotion ? 0 : 0.25 }}
           className="
             fixed bottom-6 right-6 z-50
             flex h-12 w-12 items-center justify-center

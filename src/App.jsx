@@ -14,6 +14,7 @@ import Certifications from './components/sections/Certifications';
 import Education from './components/sections/Education';
 import Projects from './components/projects/Projects';
 import Contact from './components/sections/Contact';
+import NotFound from './pages/NotFound';
 
 export default function App() {
   return (
@@ -33,7 +34,7 @@ export default function App() {
               <Route path="education" element={<Education />} />
               <Route path="github-stats" element={<GitHubStats />} />
               <Route path="certifications" element={<Certifications />} />
-              <Route path="*" element={<Navigate to="/" replace />} />
+              <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>
         </BrowserRouter>

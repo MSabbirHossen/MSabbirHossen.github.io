@@ -2,12 +2,21 @@ import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
 const ThemeContext = createContext();
 
-const getSystemTheme = () =>
-  window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+const getSystemTheme = () => {
+  if (typeof window === 'undefined') {
+    return 'dark';
+  }
+
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+};
 
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('portfolio-theme') ?? 'system';
+    if (typeof window === 'undefined') {
+      return 'system';
+    }
+
+    return window.localStorage.getItem('portfolio-theme') ?? 'system';
   });
   const [systemTheme, setSystemTheme] = useState(() => getSystemTheme());
 
@@ -17,6 +26,10 @@ export const ThemeProvider = ({ children }) => {
   );
 
   useEffect(() => {
+    if (typeof window === 'undefined') {
+      return undefined;
+    }
+
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
     const handleChange = (event) => {
@@ -31,12 +44,16 @@ export const ThemeProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
+    if (typeof document === 'undefined' || typeof window === 'undefined') {
+      return;
+    }
+
     const root = document.documentElement;
 
     root.classList.remove('light', 'dark');
     root.classList.add(resolvedTheme);
 
-    localStorage.setItem('portfolio-theme', theme);
+    window.localStorage.setItem('portfolio-theme', theme);
   }, [resolvedTheme, theme]);
 
   return (

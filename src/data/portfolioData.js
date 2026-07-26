@@ -18,7 +18,6 @@ import {
   SiPrettier,
   SiReact,
   SiReactrouter,
-  SiRender,
   SiStripe,
   SiTailwindcss,
   SiVercel,
@@ -38,17 +37,10 @@ import {
   FaServer,
   FaShieldAlt,
   FaTachometerAlt,
-  FaGithub,
-  FaGlobe,
-  FaArrowRight,
   FaArrowsAltH,
   FaCalendarAlt,
   FaCss3,
   FaChartArea,
-  FaEnvelope,
-  FaMapMarkerAlt,
-  FaLinkedin,
-  FaFacebook,
 } from 'react-icons/fa';
 
 // VS Code

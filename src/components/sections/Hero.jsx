@@ -1,4 +1,3 @@
-import heroImage from '../../assets/hero.png';
 import { portfolioData } from '../../data/portfolioData';
 
 import HeroImage from '../hero/HeroImage';
@@ -6,8 +5,6 @@ import HeroContent from '../hero/HeroContent';
 
 export default function Hero() {
   const { personalInfo } = portfolioData;
-  const { name, title, secondaryTitle, tagline, github, linkedin, facebook, resumeUrl } =
-    personalInfo;
 
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
@@ -22,11 +19,7 @@ export default function Hero() {
       <div className="relative mx-auto grid w-full max-w-7xl items-center gap-12 px-6 lg:grid-cols-[1.2fr_0.8fr]">
         <HeroContent personalInfo={personalInfo} onContact={scrollToContact} />
 
-        <HeroImage
-          image={heroImage}
-          focusTitle={personalInfo.hero.focusTitle}
-          focusItems={personalInfo.hero.focusItems}
-        />
+        <HeroImage />
       </div>
     </section>
   );

@@ -9,7 +9,7 @@ const ProjectNotFound = () => {
       <Typography variant="h2">Project not found</Typography>
 
       <Typography variant="body" className="mt-4 text-slate-500">
-        The project you requested doesn't exist.
+        The project you requested does not exist.
       </Typography>
 
       <Link to="/" className="mt-8 inline-flex items-center gap-2 text-indigo-600 hover:underline">

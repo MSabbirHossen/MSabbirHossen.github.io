@@ -1,5 +1,15 @@
 import { portfolioData } from './portfolioData';
-import { FaFile, FaGithub, FaLinkedin, FaFacebook, FaEnvelope, FaCertificate, FaGraduationCap, FaStar, FaUser } from 'react-icons/fa';
+import {
+  FaFile,
+  FaGithub,
+  FaLinkedin,
+  FaFacebook,
+  FaEnvelope,
+  FaCertificate,
+  FaGraduationCap,
+  FaStar,
+  FaUser,
+} from 'react-icons/fa';
 
 const { personalInfo } = portfolioData;
 const { github, linkedin, email, facebook } = personalInfo;

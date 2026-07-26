@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { FaGraduationCap } from 'react-icons/fa';
 import { portfolioData } from '../../data/portfolioData';
 import Typography from '../common/Typography';

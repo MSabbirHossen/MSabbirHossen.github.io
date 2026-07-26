@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { HiMoon, HiSun, HiDesktopComputer, HiChevronDown, HiCheck } from 'react-icons/hi';
 
 import { useTheme } from '../../contexts/ThemeContext';
@@ -8,6 +8,7 @@ export default function ThemeToggle() {
   const { theme, resolvedTheme, setTheme } = useTheme();
   const [open, setOpen] = useState(false);
   const menuRef = useRef(null);
+  const shouldReduceMotion = useReducedMotion();
 
   const CurrentIcon = resolvedTheme === 'dark' ? HiMoon : HiSun;
 
@@ -74,10 +75,10 @@ export default function ThemeToggle() {
         {open && (
           <motion.div
             role="menu"
-            initial={{ opacity: 0, y: -8, scale: 0.96 }}
+            initial={shouldReduceMotion ? false : { opacity: 0, y: -8, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -8, scale: 0.96 }}
-            transition={{ duration: 0.15 }}
+            exit={shouldReduceMotion ? undefined : { opacity: 0, y: -8, scale: 0.96 }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.15 }}
             className="glass absolute right-0 top-full z-50 mt-2 w-44 overflow-hidden rounded-xl shadow-xl"
           >
             {themeOptions.map(({ value, label, icon: Icon }) => (

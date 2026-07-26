@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { FaCertificate, FaExternalLinkAlt } from 'react-icons/fa';
 import { portfolioData } from '../../data/portfolioData';
 import Typography from '../common/Typography';
@@ -38,9 +37,6 @@ export default function Certifications() {
                 </div>
 
                 <div className="text-right">
-                  {/* <Typography variant="body" className="text-slate-400">
-                    Credential ID: {cert.id}
-                  </Typography> */}
                   <a
                     href={cert.link}
                     target="_blank"
