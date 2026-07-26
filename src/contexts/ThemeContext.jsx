@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
 const ThemeContext = createContext();
 
@@ -6,46 +6,38 @@ const getSystemTheme = () =>
   window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 
 export const ThemeProvider = ({ children }) => {
-  const [resolvedTheme, setResolvedTheme] = useState('dark');
-
-  // Initialize theme state from localStorage or default to 'system'
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('portfolio-theme') ?? 'system';
   });
+  const [systemTheme, setSystemTheme] = useState(() => getSystemTheme());
+
+  const resolvedTheme = useMemo(
+    () => (theme === 'system' ? systemTheme : theme),
+    [systemTheme, theme]
+  );
 
   useEffect(() => {
-    if (theme !== 'system') return;
-
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
-    const applyTheme = (activeTheme) => {
-      const root = document.documentElement;
-
-      root.classList.remove('light', 'dark');
-      root.classList.add(activeTheme);
-
-      setResolvedTheme(activeTheme);
+    const handleChange = (event) => {
+      setSystemTheme(event.matches ? 'dark' : 'light');
     };
 
-    mediaQuery.addEventListener('change', (e) => applyTheme(e.matches ? 'dark' : 'light'));
+    mediaQuery.addEventListener('change', handleChange);
 
     return () => {
-      mediaQuery.removeEventListener('change', (e) => applyTheme(e.matches ? 'dark' : 'light'));
+      mediaQuery.removeEventListener('change', handleChange);
     };
-  }, [theme]);
+  }, []);
 
   useEffect(() => {
     const root = document.documentElement;
 
-    const activeTheme = theme === 'system' ? getSystemTheme() : theme;
-
-    setResolvedTheme(activeTheme);
-
     root.classList.remove('light', 'dark');
-    root.classList.add(activeTheme);
+    root.classList.add(resolvedTheme);
 
     localStorage.setItem('portfolio-theme', theme);
-  }, [theme]);
+  }, [resolvedTheme, theme]);
 
   return (
     <ThemeContext.Provider
