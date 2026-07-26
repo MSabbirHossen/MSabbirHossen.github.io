@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react';
 import Typography from '../common/Typography';
 import Card from '../common/Card';
-import { formatDistanceToNow } from 'date-fns';
 
 import StatsCards from './StatsCards';
 import LanguagesChart from './LanguagesChart';
 import RecentRepos from './RecentRepos';
 import { FaGithub } from 'react-icons/fa';
 import Reveal from '../animations/Reveal';
+
+const REFERENCE_NOW = Date.now();
+const SECTION_DESCRIPTION =
+  'Public repository activity, language mix, and recent work that show how I build, document, and iterate in public.';
 
 export default function GitHubStats() {
   const [stats, setStats] = useState(null);
@@ -41,7 +44,10 @@ export default function GitHubStats() {
       <section id="github-stats" className="py-20">
         <div className="mx-auto max-w-6xl px-4">
           <Typography variant="h2" className="text-center text-primary">
-            GitHub Analytics
+            GitHub Activity Snapshot
+          </Typography>
+          <Typography variant="body" className="mt-3 text-center text-secondary">
+            {SECTION_DESCRIPTION}
           </Typography>
 
           <Card className="mt-8 p-8 text-center text-secondary">Loading GitHub statistics...</Card>
@@ -55,7 +61,10 @@ export default function GitHubStats() {
       <section id="github-stats" className="py-20">
         <div className="mx-auto max-w-6xl px-4">
           <Typography variant="h2" className="text-center text-primary">
-            GitHub Analytics
+            GitHub Activity Snapshot
+          </Typography>
+          <Typography variant="body" className="mt-3 text-center text-secondary">
+            {SECTION_DESCRIPTION}
           </Typography>
 
           <Card className="mt-8 p-8 text-center text-secondary">{error}</Card>
@@ -65,7 +74,7 @@ export default function GitHubStats() {
   }
 
   function timeAgo(date) {
-    const diff = Date.now() - new Date(date).getTime();
+    const diff = REFERENCE_NOW - new Date(date).getTime();
 
     const hours = Math.floor(diff / 3600000);
 
@@ -80,8 +89,11 @@ export default function GitHubStats() {
   return (
     <section id="github-stats" className="py-20 glass">
       <div className="mx-auto max-w-6xl px-4">
-        <Typography variant="h2" className="mb-10 text-center text-primary">
-          GitHub Analytics
+        <Typography variant="h2" className="text-center text-primary">
+          GitHub Activity Snapshot
+        </Typography>
+        <Typography variant="body" className="mt-3 text-center text-secondary">
+          {SECTION_DESCRIPTION}
         </Typography>
 
         <Reveal>
@@ -111,6 +123,9 @@ export default function GitHubStats() {
                 className="mx-auto w-full max-w-5xl"
                 src="https://raw.githubusercontent.com/MSabbirHossen/MSabbirHossen/output/github-contribution-grid-snake-dark.svg"
                 alt="Contribution Snake"
+                loading="lazy"
+                decoding="async"
+                referrerPolicy="no-referrer"
               />
             </Card>
           </div>
@@ -123,6 +138,9 @@ export default function GitHubStats() {
             <img
               src="https://komarev.com/ghpvc/?username=MSabbirHossen&label=Profile%20Views&color=3B82F6&style=for-the-badge"
               alt="Profile Views"
+              loading="lazy"
+              decoding="async"
+              referrerPolicy="no-referrer"
             />
           </Card>
         </div>

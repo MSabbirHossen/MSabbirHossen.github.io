@@ -21,7 +21,7 @@ const FooterSocials = () => {
             key={link.label}
             href={link.href}
             target={link.href.startsWith('http') ? '_blank' : undefined}
-            rel={link.href.startsWith('http') ? 'noreferrer' : undefined}
+            rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
             className="rounded-full border border-default p-2 text-secondary transition-colors hover:text-accent-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg"
             aria-label={link.label}
           >
@@ -34,7 +34,7 @@ const FooterSocials = () => {
         <a
           href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(personalInfo.location)}`}
           target="_blank"
-          rel="noreferrer"
+          rel="noopener noreferrer"
           className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg"
         >
           {personalInfo.location}

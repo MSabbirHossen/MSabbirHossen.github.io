@@ -10,6 +10,11 @@ export default function ProjectFilters({ categories, activeCategory, setActiveCa
           size="sm"
           onClick={() => setActiveCategory(category)}
           aria-pressed={activeCategory === category}
+          className={
+            activeCategory === category
+              ? 'ring-1 ring-accent-primary/30 light:shadow-md light:shadow-accent-primary/20'
+              : 'light:hover:border-accent-primary/40 light:hover:shadow-sm light:hover:shadow-slate-900/8'
+          }
         >
           {category}
         </Button>

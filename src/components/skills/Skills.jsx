@@ -8,8 +8,8 @@ export default function Skills() {
   return (
     <SectionWrapper
       id="skills"
-      title="Technical Expertise"
-      description="Technologies, tools, and domains I use to build modern web applications and continuously expand my expertise."
+      title="Technical Stack"
+      description="My core stack is grouped by how I build, ship, and keep learning so the strongest capabilities are easy to scan."
       className="glass"
     >
       <div className="mx-auto grid max-w-5xl gap-6 px-4 md:grid-cols-2 xl:grid-cols-3">

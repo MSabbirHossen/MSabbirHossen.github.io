@@ -7,9 +7,9 @@ export default function Contact() {
   return (
     <SectionWrapper
       id="contact"
-      eyebrow="Get In Touch"
-      title="Contact Me"
-      description="Whether you have a project, an opportunity, or just want to connect, I'd love to hear from you."
+      eyebrow="Contact"
+      title="Open to Opportunities"
+      description="Available for full-time roles, freelance projects, and collaborations involving MERN, AI-assisted features, and security-minded development."
       className="py-20 glass"
     >
       <div className="mx-auto max-w-6xl px-4">

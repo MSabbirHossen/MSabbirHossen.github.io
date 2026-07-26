@@ -23,7 +23,7 @@ export default function Projects() {
       id="projects"
       eyebrow="Portfolio"
       title="Featured Projects"
-      description="A selection of full-stack, AI-powered, and frontend applications showcasing my development journey."
+      description="Selected work that shows how I solve problems, choose a stack, implement the solution, and deliver something usable."
       className="glass"
       innerClassName="space-y-10"
     >

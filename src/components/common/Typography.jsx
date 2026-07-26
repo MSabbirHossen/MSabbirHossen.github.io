@@ -15,7 +15,7 @@ export default function Typography({
     h6: 'text-secondary text-sm font-semibold uppercase tracking-[0.2em] sm:text-base',
     body: 'text-secondary text-sm leading-relaxed sm:text-base',
     subtitle: 'text-secondary text-base font-medium sm:text-lg md:text-xl',
-    caption: 'text-muted text-xs',
+    caption: 'text-muted text-xs font-medium tracking-[0.02em]',
     eyebrow: 'text-xs font-semibold uppercase tracking-[0.35em] text-accent-secondary',
     lead: 'text-secondary text-lg leading-relaxed sm:text-xl',
   };

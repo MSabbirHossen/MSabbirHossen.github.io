@@ -14,19 +14,15 @@ export default function Card({
 }) {
   const base = 'rounded-2xl transition-all duration-300 overflow-hidden';
 
-  const surface = glass ? 'glass' : 'bg-dark-card border border-dark-border';
+  const surface = glass ? 'glass' : 'surface border-default';
 
-  const lightSurface = glass ? '' : 'light:bg-light-card light:border-light-border';
-
-  const hoverStyle = hover
-    ? 'hover:-translate-y-1 hover:shadow-xl hover:shadow-accent-primary/5 hover:border-dark-border-hover light:hover:border-light-border-hover light:hover:shadow-lg'
-    : '';
+  const hoverStyle = hover ? 'surface-hover' : '';
 
   const gradientBorder = gradient ? 'gradient-border' : '';
 
   return (
     <Tag
-      className={`${base} ${surface} ${lightSurface} ${hoverStyle} ${gradientBorder} ${padding} ${className}`}
+      className={`${base} ${surface} ${hoverStyle} ${gradientBorder} ${padding} ${className}`}
       {...props}
     >
       {children}

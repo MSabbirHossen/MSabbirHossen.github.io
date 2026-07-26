@@ -103,19 +103,19 @@ export default function AIChatModal({
             className="w-full max-w-md"
           >
             <Card className="flex max-h-[80vh] flex-col overflow-hidden p-0">
-              <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
+              <div className="flex items-center justify-between border-b border-default px-5 py-4">
                 <div>
-                  <Typography id="ai-chat-title" variant="subtitle" className="text-slate-100">
+                  <Typography id="ai-chat-title" variant="subtitle" className="text-primary">
                     AI Portfolio Assistant
                   </Typography>
-                  <Typography id="ai-chat-description" variant="caption" className="text-slate-400">
+                  <Typography id="ai-chat-description" variant="caption" className="text-muted">
                     Mock assistant for future integration
                   </Typography>
                 </div>
                 <button
                   type="button"
                   onClick={onClose}
-                  className="rounded-full p-2 text-slate-400 transition-colors hover:bg-white/5 hover:text-white"
+                  className="rounded-full p-2 text-muted transition-colors hover:bg-accent-primary/10 hover:text-primary"
                   aria-label="Close AI assistant"
                 >
                   <FaTimes className="h-4 w-4" aria-hidden="true" />
@@ -132,7 +132,7 @@ export default function AIChatModal({
                       className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
                         message.role === 'user'
                           ? 'bg-accent-primary text-white'
-                          : 'bg-white/5 text-slate-200'
+                          : 'surface border border-default text-secondary'
                       }`}
                     >
                       {message.content}
@@ -142,21 +142,21 @@ export default function AIChatModal({
 
                 {isTyping && (
                   <div className="flex justify-start">
-                    <div className="rounded-2xl bg-white/5 px-4 py-3 text-sm text-slate-300">
+                    <div className="surface rounded-2xl border border-default px-4 py-3 text-sm text-muted">
                       Typing...
                     </div>
                   </div>
                 )}
               </div>
 
-              <div className="border-t border-white/10 px-5 py-4">
+              <div className="border-t border-default px-5 py-4">
                 <div className="mb-3 flex flex-wrap gap-2">
                   {quickPrompts.map((prompt) => (
                     <button
                       key={prompt}
                       type="button"
                       onClick={() => onSend(prompt)}
-                      className="rounded-full border border-white/10 px-3 py-1.5 text-xs font-medium text-slate-300 transition-colors hover:border-accent-primary/40 hover:text-white"
+                      className="rounded-full border border-default px-3 py-1.5 text-xs font-medium text-secondary transition-colors hover:border-accent-primary/40 hover:text-accent-primary"
                     >
                       {prompt}
                     </button>
@@ -176,7 +176,7 @@ export default function AIChatModal({
                     onChange={(event) => onChange(event.target.value)}
                     rows={2}
                     placeholder="Ask about the portfolio..."
-                    className="min-h-[52px] flex-1 resize-none rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-100 outline-none placeholder:text-slate-500 focus:border-accent-primary focus:ring-2 focus:ring-accent-primary/20"
+                    className="min-h-[52px] flex-1 resize-none rounded-2xl border border-default bg-surface px-4 py-3 text-sm text-primary outline-none placeholder:text-muted focus:border-accent-primary focus:ring-2 focus:ring-accent-primary/20"
                   />
                   <Button
                     type="submit"

@@ -11,7 +11,12 @@ export default function Education() {
     <section id="education" className="py-20 glass">
       <div className="mx-auto max-w-5xl px-4">
         <Typography variant="h2" className="mb-8 text-center text-primary">
-          Education
+          Academic Background
+        </Typography>
+
+        <Typography variant="body" className="mx-auto mb-8 max-w-3xl text-center text-secondary">
+          Formal study in computer science, science, and language learning that supports my
+          technical growth and communication skills.
         </Typography>
 
         <div className="relative">

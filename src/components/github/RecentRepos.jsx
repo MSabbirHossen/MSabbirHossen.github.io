@@ -1,8 +1,9 @@
-import { motion } from 'framer-motion';
 import Reveal from '../animations/Reveal';
 import { FaBook, FaCodeBranch, FaExternalLinkAlt, FaStar } from 'react-icons/fa';
 import Card from '../common/Card';
 import Typography from '../common/Typography';
+
+const REFERENCE_NOW = Date.now();
 
 export default function RecentRepos({ repos }) {
   if (!repos?.length) return null;
@@ -17,7 +18,7 @@ export default function RecentRepos({ repos }) {
   };
 
   function timeAgo(date) {
-    const diff = Date.now() - new Date(date).getTime();
+    const diff = REFERENCE_NOW - new Date(date).getTime();
 
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
 
@@ -41,7 +42,12 @@ export default function RecentRepos({ repos }) {
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {repos.map((repo, index) => (
           <Reveal key={repo.name} delay={index * 0.08}>
-            <a href={repo.url} target="_blank" rel="noopener noreferrer">
+            <a
+              href={repo.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Open ${repo.name} repository in a new tab`}
+            >
               <Card className="group flex h-full flex-col justify-between border border-default p-6 transition-all duration-300 hover:border-accent-primary/30">
                 <div className="flex items-center gap-3">
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent-primary/10 text-accent-primary">

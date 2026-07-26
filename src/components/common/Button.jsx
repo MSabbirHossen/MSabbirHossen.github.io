@@ -24,25 +24,19 @@ const Button = forwardRef(function Button(
   ref
 ) {
   const baseStyle =
-    'inline-flex items-center justify-center gap-2 font-semibold rounded-xl transition-all duration-300 cursor-pointer focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed select-none';
+    'inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all duration-300 cursor-pointer select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg disabled:opacity-50 disabled:cursor-not-allowed';
 
   const variants = {
     primary:
-      'bg-accent-primary hover:bg-accent-primary-dark active:bg-accent-primary-dark text-white shadow-lg shadow-accent-primary/20 hover:shadow-accent-primary/30 hover:-translate-y-0.5 active:translate-y-0',
+      'bg-accent-primary text-white shadow-lg shadow-accent-primary/20 hover:-translate-y-0.5 hover:bg-accent-primary-dark hover:shadow-accent-primary/30 active:translate-y-0 active:bg-accent-primary-dark',
     secondary:
-      'bg-accent-secondary hover:bg-accent-secondary-dark active:bg-accent-secondary-dark text-white shadow-lg shadow-accent-secondary/20 hover:shadow-accent-secondary/30 hover:-translate-y-0.5 active:translate-y-0',
+      'bg-accent-secondary text-white shadow-lg shadow-accent-secondary/20 hover:-translate-y-0.5 hover:bg-accent-secondary-dark hover:shadow-accent-secondary/30 active:translate-y-0 active:bg-accent-secondary-dark',
     outline:
-      'border border-dark-border hover:border-accent-primary/50 text-slate-300 hover:text-accent-primary-light bg-transparent hover:bg-accent-primary/5',
+      'border border-default bg-transparent text-secondary hover:border-accent-primary/50 hover:bg-accent-primary/5 hover:text-accent-primary active:bg-accent-primary/10',
     ghost:
-      'text-slate-400 hover:text-accent-primary-light hover:bg-accent-primary/5 bg-transparent',
+      'bg-transparent text-secondary hover:bg-accent-primary/5 hover:text-accent-primary active:bg-accent-primary/10',
     danger:
       'bg-accent-danger hover:bg-red-600 active:bg-red-700 text-white shadow-lg shadow-red-500/20',
-  };
-
-  /* Light mode overrides */
-  const lightVariants = {
-    outline: 'light:border-light-border light:text-slate-600 light:hover:text-accent-primary',
-    ghost: 'light:text-slate-500 light:hover:text-accent-primary light:hover:bg-accent-primary/5',
   };
 
   const sizes = {
@@ -79,7 +73,7 @@ const Button = forwardRef(function Button(
   return (
     <Tag
       ref={ref}
-      className={`${baseStyle} ${variants[variant]} ${lightVariants[variant] || ''} ${sizes[size]} ${className}`}
+      className={`${baseStyle} ${variants[variant]} ${sizes[size]} ${className}`}
       onClick={handleClick}
       disabled={Tag === 'button' ? disabled || loading : undefined}
       aria-busy={loading || undefined}

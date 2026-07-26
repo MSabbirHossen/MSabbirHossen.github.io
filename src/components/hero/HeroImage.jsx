@@ -23,6 +23,8 @@ const HeroImage = () => {
           <img
             src={heroImage}
             alt="Md. Sabbir Hossen portrait illustration"
+            decoding="async"
+            fetchPriority="high"
             className="h-full w-full object-cover"
           />
         </div>

@@ -10,7 +10,7 @@ export default function AIChatButton({ onClick, isOpen }) {
       onClick={onClick}
       aria-label={isOpen ? 'Close AI assistant' : 'Open AI assistant'}
       aria-expanded={isOpen}
-      className="fixed bottom-6 right-6 z-40 inline-flex items-center gap-3 rounded-full border border-white/10 bg-dark-card px-4 py-3 text-sm font-semibold text-white shadow-2xl shadow-black/30 backdrop-blur-xl transition-colors hover:bg-dark-card-hover dark:bg-dark-card"
+      className="fixed bottom-6 right-6 z-40 inline-flex items-center gap-3 rounded-full border border-default surface px-4 py-3 text-sm font-semibold text-primary shadow-2xl shadow-black/20 backdrop-blur-xl transition-colors hover:bg-accent-primary/10"
       initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: shouldReduceMotion ? 0 : 0.4, ease: 'easeOut' }}

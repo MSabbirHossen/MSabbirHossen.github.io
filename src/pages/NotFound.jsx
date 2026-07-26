@@ -8,6 +8,7 @@ export default function NotFound() {
       <Helmet>
         <title>Page Not Found | Md. Sabbir Hossen</title>
         <meta name="description" content="The page you are looking for could not be found." />
+        <meta name="robots" content="noindex,follow" />
       </Helmet>
 
       <Typography variant="h2">404 - Page not found</Typography>

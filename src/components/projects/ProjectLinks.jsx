@@ -13,7 +13,7 @@ export default function ProjectLinks({ project }) {
             href={githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-sm font-medium text-accent-primary transition-colors hover:text-accent-secondary hover:underline"
+            className="flex items-center gap-2 rounded-lg px-2 py-1 text-sm font-medium text-accent-primary underline-offset-4 transition-all duration-300 hover:text-accent-secondary hover:underline focus-visible:ring-2 focus-visible:ring-accent-primary/30"
           >
             <FaGithub />
             GitHub
@@ -25,7 +25,7 @@ export default function ProjectLinks({ project }) {
             href={liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-sm font-medium text-accent-primary transition-colors hover:text-accent-secondary hover:underline"
+            className="flex items-center gap-2 rounded-lg px-2 py-1 text-sm font-medium text-accent-primary underline-offset-4 transition-all duration-300 hover:text-accent-secondary hover:underline focus-visible:ring-2 focus-visible:ring-accent-primary/30"
           >
             <FaGlobe />
             Live Demo
@@ -33,7 +33,12 @@ export default function ProjectLinks({ project }) {
         )}
       </div>
 
-      <Button as={Link} to={`/projects/${project.id}`} size="sm" className="w-full">
+      <Button
+        as={Link}
+        to={`/projects/${project.id}`}
+        size="sm"
+        className="w-full light:shadow-md light:shadow-accent-primary/20 light:hover:shadow-lg light:hover:shadow-accent-primary/25"
+      >
         View Details
         <FaArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
       </Button>

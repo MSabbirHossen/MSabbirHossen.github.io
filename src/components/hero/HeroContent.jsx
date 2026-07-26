@@ -38,10 +38,10 @@ const HeroContent = ({ personalInfo, onContact }) => {
       <HeroActions github={github} linkedin={linkedin} facebook={facebook} />
       <div className="flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
         <Button variant="outline" size="lg" href={resumeUrl} icon={FaDownload}>
-          Download Resume
+          View Resume
         </Button>
         <Button variant="primary" size="lg" onClick={onContact} icon={FaArrowDown}>
-          Get in Touch
+          Open to Opportunities
         </Button>
       </div>
     </motion.div>

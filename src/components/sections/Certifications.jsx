@@ -11,7 +11,12 @@ export default function Certifications() {
     <section id="certifications" className="py-20 glass">
       <div className="mx-auto max-w-5xl px-4">
         <Typography variant="h2" className="mb-8 text-center text-primary">
-          Certifications
+          Certifications & Training
+        </Typography>
+
+        <Typography variant="body" className="mx-auto mb-8 max-w-3xl text-center text-secondary">
+          Courses and certificates that reinforce my web development fundamentals, tooling, and
+          commitment to continuous improvement.
         </Typography>
 
         <div className="grid gap-6 md:grid-cols-2">

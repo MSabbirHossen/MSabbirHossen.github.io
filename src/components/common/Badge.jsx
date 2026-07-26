@@ -7,15 +7,12 @@ export default function Badge({
   ...props
 }) {
   const baseStyle =
-    'inline-flex items-center gap-1.5 text-xs font-medium tracking-wide transition-colors';
+    'inline-flex items-center gap-1.5 text-xs font-semibold tracking-[0.02em] transition-colors';
 
   const variants = {
-    primary:
-      'bg-indigo-50 text-indigo-700 dark:bg-indigo-950/30 dark:text-indigo-300 border border-indigo-100/30 dark:border-indigo-900/30',
-    secondary:
-      'bg-cyan-50 text-cyan-700 dark:bg-cyan-950/30 dark:text-cyan-300 border border-cyan-100/30 dark:border-cyan-900/30',
-    neutral:
-      'bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-300 border border-slate-200/40 dark:border-slate-700/40',
+    primary: 'border border-accent-primary/25 bg-accent-primary/10 text-accent-primary',
+    secondary: 'border border-accent-secondary/25 bg-accent-secondary/10 text-accent-secondary',
+    neutral: 'border border-default bg-surface/70 text-secondary',
   };
 
   const presentations = {

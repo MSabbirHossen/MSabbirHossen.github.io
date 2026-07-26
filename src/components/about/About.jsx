@@ -8,24 +8,26 @@ import QuickFactsCard from './QuickFactsCard';
 import AboutStats from './AboutStats';
 
 export default function About() {
-  const { personalInfo } = portfolioData;
+  const { personalInfo, projects, certifications, skills } = portfolioData;
   const { mission, tagline, title, journey, languages, studyingAt, location } = personalInfo;
+
+  const technologyCount = skills.reduce((total, category) => total + category.items.length, 0);
 
   const stats = [
     {
-      value: '4+',
-      label: 'Projects',
+      value: String(projects.length),
+      label: 'Projects built',
     },
     {
-      value: '5+',
-      label: 'Certificates',
+      value: String(certifications.length),
+      label: 'Certifications',
     },
     {
-      value: '30+',
-      label: 'Technologies',
+      value: String(technologyCount),
+      label: 'Stack skills',
     },
     {
-      value: '5',
+      value: String(languages.length),
       label: 'Languages',
     },
   ];
@@ -34,7 +36,7 @@ export default function About() {
     <SectionWrapper
       id="about"
       eyebrow="About"
-      title="About Me"
+      title="Developer Profile"
       tagline={tagline}
       description={mission}
       innerClassName="space-y-10"

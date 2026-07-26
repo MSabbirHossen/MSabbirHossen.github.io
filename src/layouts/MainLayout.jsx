@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router-dom';
+import AIChatButton from '../components/common/AIChatButton';
 import Header from '../components/layout/Header';
 import Footer from '../components/footer/Footer';
 import AIChatModal from '../components/common/AIChatModal';
@@ -14,7 +15,7 @@ export default function MainLayout() {
         <Outlet />
       </main>
       <Footer />
-      {/* <AIChatButton onClick={chat.toggleChat} isOpen={chat.isOpen} /> */}
+      <AIChatButton onClick={chat.toggleChat} isOpen={chat.isOpen} />
       <AIChatModal
         isOpen={chat.isOpen}
         messages={chat.messages}
