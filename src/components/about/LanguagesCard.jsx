@@ -5,7 +5,7 @@ import Typography from '../common/Typography';
 export default function LanguageProgress({ languages }) {
   return (
     <div className="mt-10">
-      <Typography variant="subtitle" className="mb-5 text-slate-100">
+      <Typography variant="subtitle" className="mb-5 text-primary">
         🌍 Languages
       </Typography>
 
@@ -14,12 +14,12 @@ export default function LanguageProgress({ languages }) {
           {languages.map((lang) => (
             <div key={lang.name}>
               <div className="mb-2 flex justify-between">
-                <span className="font-medium text-slate-200">{lang.name}</span>
+                <span className="font-medium text-primary">{lang.name}</span>
 
-                <span className="text-sm text-primary-400">{lang.level}</span>
+                <span className="text-sm text-accent-secondary">{lang.level}</span>
               </div>
 
-              <div className="h-2 rounded-full bg-slate-700 overflow-hidden">
+              <div className="h-2 overflow-hidden rounded-full bg-surface/70">
                 <motion.div
                   initial={{ width: 0 }}
                   whileInView={{ width: `${lang.percentage}%` }}
@@ -28,7 +28,7 @@ export default function LanguageProgress({ languages }) {
                     duration: 1,
                     ease: 'easeOut',
                   }}
-                  className="h-full rounded-full bg-cyan-500"
+                  className="h-full rounded-full bg-accent-secondary"
                 />
               </div>
             </div>

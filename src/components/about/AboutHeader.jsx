@@ -9,11 +9,11 @@ const itemVariants = {
 export default function AboutHeader({ title, mission, tagline }) {
   return (
     <motion.div variants={itemVariants} className="mx-auto mb-14 max-w-3xl text-center">
-      <Typography variant="h2" className="mb-5 text-primary-600 dark:text-primary-400">
+      <Typography variant="h2" className="mb-5 text-primary">
         {title}
       </Typography>
 
-      <Typography variant="body" className="text-lg leading-relaxed text-slate-300">
+      <Typography variant="body" className="text-lg leading-relaxed text-secondary">
         {mission}
         <br />
         {tagline}
