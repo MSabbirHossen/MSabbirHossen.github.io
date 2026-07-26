@@ -18,7 +18,7 @@ export default function SkillCategoryCard({ category }) {
             <Icon className="h-5 w-5" aria-hidden="true" />
           </span>
 
-          <Typography variant="subtitle" className="text-slate-100">
+          <Typography variant="subtitle" className="text-primary">
             {category.category}
           </Typography>
         </div>

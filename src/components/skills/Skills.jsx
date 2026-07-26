@@ -10,9 +10,9 @@ export default function Skills() {
       id="skills"
       title="Technical Expertise"
       description="Technologies, tools, and domains I use to build modern web applications and continuously expand my expertise."
-      className="bg-gray-50 dark:bg-gray-900 glass"
+      className="glass"
     >
-      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3 mx-auto max-w-5xl px-4">
+      <div className="mx-auto grid max-w-5xl gap-6 px-4 md:grid-cols-2 xl:grid-cols-3">
         {skills.map((category) => (
           <SkillCategoryCard key={category.category} category={category} />
         ))}
