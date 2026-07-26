@@ -34,7 +34,7 @@ export default function RecentRepos({ repos }) {
 
   return (
     <div className="mt-10">
-      <Typography variant="h3" className="mb-6 text-center text-primary-600 dark:text-primary-400">
+      <Typography variant="h3" className="mb-6 text-center text-primary">
         Recent Repositories
       </Typography>
 
@@ -42,32 +42,18 @@ export default function RecentRepos({ repos }) {
         {repos.map((repo, index) => (
           <Reveal key={repo.name} delay={index * 0.08}>
             <a href={repo.url} target="_blank" rel="noopener noreferrer">
-              <Card
-                className="
-      h-full
-      p-6
-      flex
-      flex-col
-      justify-between
-      border
-      border-slate-700/30
-      hover:border-primary-500/30
-      transition-all
-      duration-300
-      group
-  "
-              >
+              <Card className="group flex h-full flex-col justify-between border border-default p-6 transition-all duration-300 hover:border-accent-primary/30">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-500/10 text-primary-500">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent-primary/10 text-accent-primary">
                     <FaBook />
                   </div>
 
-                  <Typography variant="subtitle" className="font-semibold">
+                  <Typography variant="subtitle" className="font-semibold text-primary">
                     {repo.name}
                   </Typography>
                 </div>
 
-                <Typography variant="body" className="mt-2 line-clamp-2 text-slate-400">
+                <Typography variant="body" className="mt-2 line-clamp-2 text-secondary">
                   {repo.description || 'No description provided.'}
                 </Typography>
 
@@ -83,23 +69,23 @@ export default function RecentRepos({ repos }) {
                       {repo.language}
                     </span>
 
-                    <span className="flex items-center gap-1 text-slate-400">
+                    <span className="flex items-center gap-1 text-secondary">
                       <FaStar />
                       {repo.stars}
                     </span>
 
-                    <span className="flex items-center gap-1  text-slate-400">
+                    <span className="flex items-center gap-1 text-secondary">
                       <FaCodeBranch />
                       {repo.forks}
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-2 text-sm font-medium text-primary-500 group-hover:translate-x-1  transition-transform">
+                  <div className="flex items-center gap-2 text-sm font-medium text-accent-primary transition-transform group-hover:translate-x-1">
                     View Repository
                     <FaExternalLinkAlt className="text-xs" />
                   </div>
                 </div>
-                <Typography variant="caption" className="mt-4 text-slate-500 mx-auto xl:mx-0">
+                <Typography variant="caption" className="mx-auto mt-4 text-muted xl:mx-0">
                   {timeAgo(repo.updated)}
                 </Typography>
               </Card>

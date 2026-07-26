@@ -23,17 +23,19 @@ export default function LanguagesChart({ languages }) {
 
   return (
     <div className="mt-12">
-      <Typography variant="h3" className="mb-6 text-center text-primary-600 dark:text-primary-400">
+      <Typography variant="h3" className="mb-6 text-center text-primary">
         Top Languages
       </Typography>
 
       <Card className="space-y-5">
-        <div className="mb-6 border-b border-slate-700 pb-4">
-          <Typography variant="subtitle" className="font-semibold">
+        <div className="mb-6 border-b border-default pb-4">
+          <Typography variant="subtitle" className="font-semibold text-primary">
             Language Distribution
           </Typography>
 
-          <Typography variant="caption">Based on your public repositories</Typography>
+          <Typography variant="caption" className="text-muted">
+            Based on your public repositories
+          </Typography>
         </div>
         {languages.map((lang, index) => {
           const percent = (lang.count / total) * 100;
@@ -50,17 +52,19 @@ export default function LanguagesChart({ languages }) {
                   />
 
                   <div>
-                    <Typography variant="body" className="font-semibold text-slate-200">
+                    <Typography variant="body" className="font-semibold text-primary">
                       {lang.name}
                     </Typography>
 
-                    <Typography variant="caption">{lang.count} repositories</Typography>
+                    <Typography variant="caption" className="text-muted">
+                      {lang.count} repositories
+                    </Typography>
                   </div>
                 </div>
-                <span className="text-sm text-slate-400">{percent.toFixed(0)}%</span>
+                <span className="text-sm text-secondary">{percent.toFixed(0)}%</span>
               </div>
 
-              <div className="h-4 overflow-hidden rounded-full bg-slate-800">
+              <div className="h-4 overflow-hidden rounded-full bg-surface/70">
                 <motion.div
                   initial={{ width: 0 }}
                   whileInView={{ width: `${percent}%` }}

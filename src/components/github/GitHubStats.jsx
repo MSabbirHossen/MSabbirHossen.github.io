@@ -40,11 +40,11 @@ export default function GitHubStats() {
     return (
       <section id="github-stats" className="py-20">
         <div className="mx-auto max-w-6xl px-4">
-          <Typography variant="h2" className="text-center">
+          <Typography variant="h2" className="text-center text-primary">
             GitHub Analytics
           </Typography>
 
-          <Card className="mt-8 p-8 text-center">Loading GitHub statistics...</Card>
+          <Card className="mt-8 p-8 text-center text-secondary">Loading GitHub statistics...</Card>
         </div>
       </section>
     );
@@ -54,11 +54,11 @@ export default function GitHubStats() {
     return (
       <section id="github-stats" className="py-20">
         <div className="mx-auto max-w-6xl px-4">
-          <Typography variant="h2" className="text-center">
+          <Typography variant="h2" className="text-center text-primary">
             GitHub Analytics
           </Typography>
 
-          <Card className="mt-8 p-8 text-center">{error}</Card>
+          <Card className="mt-8 p-8 text-center text-secondary">{error}</Card>
         </div>
       </section>
     );
@@ -78,12 +78,9 @@ export default function GitHubStats() {
     return `Updated ${days} day${days > 1 ? 's' : ''} ago`;
   }
   return (
-    <section id="github-stats" className="py-20 bg-gray-50 dark:bg-gray-900">
+    <section id="github-stats" className="py-20 glass">
       <div className="mx-auto max-w-6xl px-4">
-        <Typography
-          variant="h2"
-          className="mb-10 text-center text-primary-600 dark:text-primary-400"
-        >
+        <Typography variant="h2" className="mb-10 text-center text-primary">
           GitHub Analytics
         </Typography>
 
@@ -105,10 +102,7 @@ export default function GitHubStats() {
           {/* Contribution Snake */}
 
           <div className="mt-14">
-            <Typography
-              variant="h3"
-              className="mb-6 text-center text-primary-600 dark:text-primary-400"
-            >
+            <Typography variant="h3" className="mb-6 text-center text-primary">
               Contribution Activity
             </Typography>
 
@@ -139,21 +133,7 @@ export default function GitHubStats() {
             href="https://github.com/MSabbirHossen"
             target="_blank"
             rel="noopener noreferrer"
-            className="
-      inline-flex
-      items-center
-      gap-3
-      rounded-xl
-      bg-primary-600
-      px-6
-      py-3
-      font-semibold
-      text-white
-      transition-all
-      duration-300
-      hover:scale-105
-      hover:bg-primary-700
-    "
+            className="inline-flex items-center gap-3 rounded-xl bg-accent-primary px-6 py-3 font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent-primary-dark"
           >
             <FaGithub />
             Visit GitHub Profile

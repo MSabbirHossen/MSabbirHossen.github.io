@@ -49,19 +49,19 @@ export default function StatsCards({ stats }) {
 
         return (
           <Reveal key={card.key} y={20} delay={index * 0.08} duration={0.4}>
-            <Card className="h-full p-8 text-center border border-slate-700/40 backdrop-blur-md hover:shadow-xl hover:shadow-primary-500/10 transition-all duration-300 group">
-              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-primary-500/10 text-primary-500 transition-transform duration-300 group-hover:scale-110">
+            <Card className="group h-full border border-default p-8 text-center transition-all duration-300 hover:shadow-xl hover:shadow-accent-primary/10">
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-accent-primary/10 text-accent-primary transition-transform duration-300 group-hover:scale-110">
                 <Icon className="text-xl" />
               </div>
 
-              <Typography variant="body" className="font-medium text-slate-400">
+              <Typography variant="body" className="mt-4 font-medium text-secondary">
                 {card.label}
               </Typography>
 
-              <Typography variant="h2" className="font-extrabold text-primary-500">
+              <Typography variant="h2" className="mt-2 font-extrabold text-primary">
                 <AnimatedNumber value={card.value} />
               </Typography>
-              <div className="mx-auto w-10 border-t border-slate-700"></div>
+              <div className="mx-auto mt-4 w-10 border-t border-default"></div>
             </Card>
           </Reveal>
         );
