@@ -27,6 +27,7 @@ export default function BackToTopButton() {
     <AnimatePresence>
       {visible && (
         <motion.button
+          type="button"
           onClick={scrollToTop}
           aria-label="Back to top"
           initial={{ opacity: 0, scale: 0.8, y: 20 }}
@@ -45,6 +46,8 @@ export default function BackToTopButton() {
             focus-visible:ring-2
             focus-visible:ring-accent-primary
             focus-visible:ring-offset-2
+            focus-visible:ring-offset-light-bg
+            dark:focus-visible:ring-offset-dark-bg
           "
         >
           <FaArrowUp className="h-4 w-4" title="Back to Top" />

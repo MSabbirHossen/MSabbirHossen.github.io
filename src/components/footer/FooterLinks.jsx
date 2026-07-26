@@ -3,8 +3,8 @@ import { FOOTER_LINKS } from '../../data/navigation';
 
 const FooterLinks = () => {
   return (
-    <div>
-      <Typography variant="subtitle" className="mb-4 text-slate-800 dark:text-slate-100">
+    <nav aria-label="Footer navigation">
+      <Typography variant="subtitle" className="mb-4 text-primary">
         Explore
       </Typography>
 
@@ -15,16 +15,15 @@ const FooterLinks = () => {
               href={link.href}
               className="
                 rounded-md
-                text-slate-500
+                text-secondary
                 transition-colors
                 hover:text-accent-primary
                 focus-visible:outline-none
                 focus-visible:ring-2
                 focus-visible:ring-accent-primary
                 focus-visible:ring-offset-2
-                dark:text-slate-400
-                dark:focus-visible:ring-offset-slate-900
-                dark:hover:text-accent-primary
+                focus-visible:ring-offset-light-bg
+                dark:focus-visible:ring-offset-dark-bg
               "
             >
               {link.icon && (
@@ -37,7 +36,7 @@ const FooterLinks = () => {
           </li>
         ))}
       </ul>
-    </div>
+    </nav>
   );
 };
 
