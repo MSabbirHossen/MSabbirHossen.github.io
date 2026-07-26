@@ -7,17 +7,17 @@ export default function Typography({
   ...props
 }) {
   const styles = {
-    h1: 'text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white',
-    h2: 'text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100',
-    h3: 'text-xl sm:text-2xl font-semibold text-slate-900 dark:text-slate-100',
-    h4: 'text-lg sm:text-xl font-semibold text-slate-900 dark:text-slate-100',
-    h5: 'text-base sm:text-lg font-semibold text-slate-900 dark:text-slate-100',
-    h6: 'text-sm sm:text-base font-semibold uppercase tracking-[0.2em] text-slate-600 dark:text-slate-400',
-    body: 'text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed',
-    subtitle: 'text-base sm:text-lg md:text-xl font-medium text-slate-700 dark:text-slate-300',
-    caption: 'text-xs text-slate-500 dark:text-slate-500',
+    h1: 'text-primary text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl',
+    h2: 'text-primary text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl',
+    h3: 'text-primary text-xl font-semibold sm:text-2xl',
+    h4: 'text-primary text-lg font-semibold sm:text-xl',
+    h5: 'text-primary text-base font-semibold sm:text-lg',
+    h6: 'text-secondary text-sm font-semibold uppercase tracking-[0.2em] sm:text-base',
+    body: 'text-secondary text-sm leading-relaxed sm:text-base',
+    subtitle: 'text-secondary text-base font-medium sm:text-lg md:text-xl',
+    caption: 'text-muted text-xs',
     eyebrow: 'text-xs font-semibold uppercase tracking-[0.35em] text-accent-secondary',
-    lead: 'text-lg sm:text-xl text-slate-500 dark:text-slate-300 leading-relaxed',
+    lead: 'text-secondary text-lg leading-relaxed sm:text-xl',
   };
 
   const semanticTag = as || (variant in styles ? variant : 'p');
