@@ -16,7 +16,7 @@ export default function Education() {
         </Typography>
 
         <div className="relative">
-          <div className="absolute left-4 top-0 h-full w-px bg-gradient-to-b from-accent-primary/60 via-accent-secondary/40 to-transparent md:left-1/2" />
+          <div className="absolute left-4 top-0 h-full w-px bg-linear-to-b from-accent-primary/60 via-accent-secondary/40 to-transparent md:left-1/2" />
 
           {education.map((edu, idx) => (
             <Reveal

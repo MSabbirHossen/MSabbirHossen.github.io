@@ -12,7 +12,7 @@ const HeroImage = () => {
       initial="hidden"
       animate="visible"
     >
-      <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-accent-primary/30 via-accent-secondary/20 to-transparent blur-2xl" />
+      <div className="absolute -inset-4 rounded-[2rem] bg-linear-to-br from-accent-primary/30 via-accent-secondary/20 to-transparent blur-2xl" />
       <motion.div
         className="relative glass rounded-[2rem] border border-default p-5 shadow-2xl shadow-black/20"
         animate={floatingAnimation.animate}
