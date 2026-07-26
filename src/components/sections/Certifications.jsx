@@ -9,12 +9,9 @@ import Reveal from '../animations/Reveal';
 export default function Certifications() {
   const { certifications } = portfolioData;
   return (
-    <section id="certifications" className="py-20 bg-gray-50 dark:bg-gray-900 glass">
+    <section id="certifications" className="py-20 glass">
       <div className="mx-auto max-w-5xl px-4">
-        <Typography
-          variant="h2"
-          className="mb-8 text-center text-primary-600 dark:text-primary-400"
-        >
+        <Typography variant="h2" className="mb-8 text-center text-primary">
           Certifications
         </Typography>
 
@@ -28,10 +25,10 @@ export default function Certifications() {
                       <FaCertificate className="h-5 w-5" aria-hidden="true" />
                     </span>
                     <div>
-                      <Typography variant="subtitle" className="text-slate-100">
+                      <Typography variant="subtitle" className="text-primary">
                         {cert.title}
                       </Typography>
-                      <Typography variant="caption" className="text-slate-400">
+                      <Typography variant="caption" className="text-muted">
                         {cert.issuer}
                       </Typography>
                     </div>
@@ -48,7 +45,7 @@ export default function Certifications() {
                     href={cert.link}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-end gap-2 text-sm font-medium text-accent-secondary hover:underline"
+                    className="inline-flex items-end gap-2 text-sm font-medium text-accent-secondary transition-colors hover:text-accent-primary hover:underline"
                   >
                     Verify
                     <FaExternalLinkAlt className="h-3.5 w-3.5" aria-hidden="true" />
