@@ -8,27 +8,14 @@ import ProjectImage from './ProjectImage';
 
 export default function ProjectCard({ project }) {
   return (
-    <Card
-      className="flex h-full flex-col justify-between space-y-5 group
-transition-all
-duration-300
-hover:shadow-2xl
-hover:shadow-accent-primary/10"
-      whileHover={{
-        y: -8,
-        transition: {
-          duration: 0.25,
-          ease: 'easeOut',
-        },
-      }}
-    >
+    <Card className="group flex h-full flex-col justify-between space-y-5 border-default light:hover:border-accent-primary/35 light:hover:shadow-xl light:hover:shadow-slate-900/10">
       <ProjectImage project={project} />
 
       <ProjectHeader project={project} />
 
-      <Typography variant="body" className="text-justify text-sm text-secondary">
-        {project.overview.length > 120
-          ? `${project.overview.substring(0, 120)}...`
+      <Typography variant="body" className="text-justify text-sm text-muted">
+        {project.overview.length > 160
+          ? `${project.overview.substring(0, 160)}...`
           : project.overview}
       </Typography>
       {/* <ProjectMeta project={project} /> */}
