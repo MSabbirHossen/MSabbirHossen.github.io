@@ -86,25 +86,24 @@ export default function Header() {
         <Link
           to="/"
           onClick={(e) => handleNavClick(e, 'hero')}
-          className="text-xl font-bold text-slate-900 transition-opacity hover:opacity-80 dark:text-slate-100"
+          className="text-xl font-semibold text-primary transition-opacity hover:opacity-80"
         >
           {name}
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden items-center space-x-8 md:flex">
+        <nav className="hidden items-center gap-8 md:flex" aria-label="Primary navigation">
           <NavLinks activeSection={activeSection} onNavigate={handleNavClick} />
-
           <ThemeToggle />
         </nav>
 
-        <div className="flex items-center space-x-4 md:hidden">
+        <div className="flex items-center gap-3 md:hidden">
           <ThemeToggle />
 
           <button
+            type="button"
             onClick={() => setIsOpen((value) => !value)}
-            className="rounded-md p-2 text-slate-800 transition-colors hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800"
-            aria-label="Toggle menu"
+            className="rounded-lg p-2 text-primary transition-colors hover:bg-accent-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg"
+            aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={isOpen}
             aria-controls="mobile-navigation"
           >
@@ -113,8 +112,12 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Navigation */}
-      <MobileMenu isOpen={isOpen} activeSection={activeSection} onNavigate={handleNavClick} />
+      <MobileMenu
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        activeSection={activeSection}
+        onNavigate={handleNavClick}
+      />
     </header>
   );
 }

@@ -1,9 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { portfolioData } from '../../data/portfolioData';
-
-import React from 'react';
-import NavLinks from './NavLinks';
 import { forwardRef } from 'react';
+import NavLinks from './NavLinks';
 import Button from '../common/Button';
 import { FaFileAlt } from 'react-icons/fa';
 import { HiX } from 'react-icons/hi';
@@ -22,6 +20,9 @@ const MobileMenu = forwardRef(function MobileMenu(
           <motion.div
             id="mobile-navigation"
             ref={ref}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile navigation"
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
@@ -30,31 +31,25 @@ const MobileMenu = forwardRef(function MobileMenu(
               stiffness: 350,
               damping: 32,
             }}
-
-            className="
-fixed right-0 top-0
-h-screen
-w-[80%]
-max-w-sm
-z-50
-surface
-backdrop-blur-xl
-border-l border-default
-shadow-2xl
-md:hidden
-"
+            className="fixed right-0 top-0 z-50 h-screen w-[82%] max-w-sm border-l border-default bg-dark-surface/95 shadow-2xl backdrop-blur-xl md:hidden"
           >
             <div className="flex h-full flex-col gap-6 p-6">
-              <header className="flex items-center justify-between border-b border-cyan-800 pb-4">
-                <h2 className="text-xl font-semibold text-slate-100">{name}</h2>
+              <header className="flex items-center justify-between border-b border-default pb-4">
+                <h2 className="text-xl font-semibold text-primary">{name}</h2>
                 <button
+                  type="button"
                   onClick={() => setIsOpen(false)}
-                  className="rounded-md p-2 text-muted hover:bg-slate-700"
+                  className="rounded-lg p-2 text-secondary transition-colors hover:bg-accent-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg"
+                  aria-label="Close navigation menu"
                 >
                   <HiX className="h-6 w-6" />
                 </button>
               </header>
-              <NavLinks mobile activeSection={activeSection} onNavigate={onNavigate} />
+
+              <nav className="flex flex-col gap-2" aria-label="Mobile navigation links">
+                <NavLinks mobile activeSection={activeSection} onNavigate={onNavigate} />
+              </nav>
+
               <Button
                 as="a"
                 href="/resume/Md_Sabbir_Hossen_Resume.pdf"
@@ -68,14 +63,17 @@ md:hidden
               </Button>
             </div>
           </motion.div>
-          <motion.aside
+
+          <motion.button
+            type="button"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-40 surface backdrop-blur-sm md:hidden"
+            className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm md:hidden"
             onClick={() => setIsOpen(false)}
-          ></motion.aside>
+            aria-label="Close navigation menu"
+          />
         </>
       )}
     </AnimatePresence>
