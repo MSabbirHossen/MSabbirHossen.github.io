@@ -13,7 +13,7 @@ export default function ProjectLinks({ project }) {
             href={githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-sm text-accent-primary hover:underline"
+            className="flex items-center gap-2 text-sm font-medium text-accent-primary transition-colors hover:text-accent-secondary hover:underline"
           >
             <FaGithub />
             GitHub
@@ -25,7 +25,7 @@ export default function ProjectLinks({ project }) {
             href={liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-sm text-accent-primary hover:underline"
+            className="flex items-center gap-2 text-sm font-medium text-accent-primary transition-colors hover:text-accent-secondary hover:underline"
           >
             <FaGlobe />
             Live Demo

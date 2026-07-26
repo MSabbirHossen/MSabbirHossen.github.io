@@ -26,7 +26,7 @@ hover:shadow-accent-primary/10"
 
       <ProjectHeader project={project} />
 
-      <Typography variant="body" className="text-justify text-sm">
+      <Typography variant="body" className="text-justify text-sm text-secondary">
         {project.overview.length > 120
           ? `${project.overview.substring(0, 120)}...`
           : project.overview}

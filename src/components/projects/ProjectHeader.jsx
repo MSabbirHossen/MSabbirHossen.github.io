@@ -8,7 +8,7 @@ export default function ProjectHeader({ project }) {
     <div className="space-y-3">
       <div className="flex flex-wrap items-center gap-2">
         {featured && (
-          <span className="rounded-full border border-yellow-500/30 bg-yellow-500/10 px-3 py-1 text-xs font-semibold text-yellow-300">
+          <span className="rounded-full border border-accent-warning/30 bg-accent-warning/10 px-3 py-1 text-xs font-semibold text-accent-warning">
             ⭐ Featured
           </span>
         )}
@@ -23,7 +23,7 @@ export default function ProjectHeader({ project }) {
 
       <Typography
         variant="subtitle"
-        className="leading-tight text-slate-900 dark:text-white group-hover:text-accent-secondary"
+        className="leading-tight text-primary transition-colors group-hover:text-accent-secondary"
       >
         {title}
       </Typography>
