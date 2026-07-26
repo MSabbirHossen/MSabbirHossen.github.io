@@ -1,21 +1,7 @@
-import { motion } from 'framer-motion';
-import { useForm } from 'react-hook-form';
-import { toast } from 'react-toastify';
-import {
-  FaEnvelope,
-  FaFacebook,
-  FaGithub,
-  FaLinkedin,
-  FaMapMarkerAlt,
-  FaPaperPlane,
-} from 'react-icons/fa';
+import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { portfolioData } from '../../data/portfolioData';
 import Typography from '../common/Typography';
-import Button from '../common/Button';
 import Card from '../common/Card';
-import Input from '../common/Input';
-import emailjs from '@emailjs/browser';
-import Reveal from '../animations/Reveal';
 import ContactItem from './ContactItem';
 import CollaborationCard from './CollaborationCard';
 
@@ -55,11 +41,11 @@ const ContactInfo = () => {
   return (
     <div>
       <Card className="h-full space-y-4">
-        <Typography variant="subtitle" className="text-slate-100">
+        <Typography variant="subtitle" className="text-primary">
           Contact details
         </Typography>
 
-        <div className="space-y-4 text-slate-400">
+        <div className="space-y-4 text-secondary">
           {contactItems.map(({ title, icon, value, href }) => (
             <ContactItem key={title} icon={icon} title={title} href={href}>
               {value}

@@ -1,8 +1,6 @@
-import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
-import { FaEnvelope, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/fa';
-import { portfolioData } from '../../data/portfolioData';
+import { FaPaperPlane } from 'react-icons/fa';
 import Typography from '../common/Typography';
 import Button from '../common/Button';
 import Card from '../common/Card';
@@ -11,7 +9,6 @@ import emailjs from '@emailjs/browser';
 import Reveal from '../animations/Reveal';
 
 const ContactForm = () => {
-  const { personalInfo } = portfolioData;
   const {
     register,
     handleSubmit,
@@ -50,7 +47,7 @@ const ContactForm = () => {
       <Reveal y={18} duration={0.5} amount={0.2}>
         <Card className="h-full space-y-10">
           <div>
-            <Typography variant="subtitle" className="text-slate-100">
+            <Typography variant="subtitle" className="text-primary">
               Send a message
             </Typography>
           </div>
