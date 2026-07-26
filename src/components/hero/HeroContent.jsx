@@ -27,7 +27,7 @@ const HeroContent = ({ personalInfo, onContact }) => {
         <Typography variant="h1" gradient className="max-w-3xl text-balance">
           {name}
         </Typography>
-        <Typography variant="subtitle" className="max-w-2xl text-slate-300">
+        <Typography variant="subtitle" className="max-w-2xl text-secondary">
           {title}
         </Typography>
         {/* <Typography variant="body" className="max-w-2xl text-slate-400">

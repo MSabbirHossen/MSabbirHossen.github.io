@@ -26,7 +26,14 @@ const HeroActions = ({ github, linkedin, facebook, resumeUrl, onContact }) => {
   return (
     <div className="flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
       {socialLinks.map((link) => (
-        <Button key={link.label} variant={link.variant} size="lg" href={link.href} icon={link.icon}>
+        <Button
+          key={link.label}
+          variant={link.variant}
+          size="lg"
+          href={link.href}
+          icon={link.icon}
+          className="w-full sm:w-auto"
+        >
           {link.label}
         </Button>
       ))}

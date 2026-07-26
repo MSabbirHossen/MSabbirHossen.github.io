@@ -14,22 +14,22 @@ const HeroImage = () => {
     >
       <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-accent-primary/30 via-accent-secondary/20 to-transparent blur-2xl" />
       <motion.div
-        className="relative glass rounded-[2rem] border border-white/10 p-5 shadow-2xl shadow-black/20"
+        className="relative glass rounded-[2rem] border border-default p-5 shadow-2xl shadow-black/20"
         animate={floatingAnimation.animate}
         transition={floatingAnimation.transition}
       >
-        <div className="overflow-hidden rounded-[1.5rem] border border-white/10 bg-dark-surface">
+        <div className="overflow-hidden rounded-[1.5rem] border border-default surface">
           <img
             src={heroImage}
             alt="Md. Sabbir Hossen portrait illustration"
             className="h-full w-full object-cover"
           />
         </div>
-        <div className="mt-5 rounded-2xl border border-white/10 bg-white/5 p-4 text-left">
+        <div className="mt-5 rounded-2xl border border-default bg-accent-primary/5 p-4 text-left">
           <p className="text-sm uppercase tracking-[0.25em] text-accent-secondary">
             Currently focused on
           </p>
-          <p className="mt-2 text-lg font-semibold text-white">
+          <p className="mt-2 text-lg font-semibold text-primary">
             React, MERN, AI tools and Secure Development.
           </p>
         </div>
