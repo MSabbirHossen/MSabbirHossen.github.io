@@ -27,7 +27,9 @@ const ContactForm = () => {
           message: data.message,
           time: new Date().toLocaleString(),
         },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        {
+          publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+        }
       );
 
       toast.success('Message sent! Thank you for reaching out.');
