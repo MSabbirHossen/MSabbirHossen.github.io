@@ -2,7 +2,6 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { HiMenu, HiX } from 'react-icons/hi';
 import { portfolioData } from '../../data/portfolioData';
-
 import { NAV_LINKS } from '../../data/navigation';
 import NavLinks from '../layout/NavLinks.jsx';
 import ThemeToggle from '../layout/ThemeToggle';
@@ -18,24 +17,11 @@ export default function Header() {
   const sectionIds = useMemo(() => NAV_LINKS.map((link) => link.href), []);
 
   const scrollToSection = useCallback((sectionId, behavior = 'smooth') => {
-    let attempts = 0;
-    const maxAttempts = 20;
+    const element = document.getElementById(sectionId);
 
-    const tryScroll = () => {
-      const element = document.getElementById(sectionId);
-
-      if (element) {
-        element.scrollIntoView({ behavior, block: 'start' });
-        return;
-      }
-
-      if (attempts < maxAttempts) {
-        attempts += 1;
-        window.requestAnimationFrame(tryScroll);
-      }
-    };
-
-    tryScroll();
+    if (element) {
+      element.scrollIntoView({ behavior, block: 'start' });
+    }
   }, []);
 
   useEffect(() => {
@@ -52,96 +38,84 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    const hashSection = location.hash.replace('#', '');
-
-    if (location.pathname !== '/') {
-      if (!hashSection) {
-        return;
-      }
-
-      if (sectionIds.includes(hashSection)) {
-        navigate({ pathname: '/', hash: `#${hashSection}` }, { replace: true });
-        return;
-      }
-
-      navigate({ pathname: location.pathname }, { replace: true });
+    if (!location.hash) {
       return;
     }
 
-    if (!hashSection) {
-      return;
-    }
-
-    if (!sectionIds.includes(hashSection)) {
+    if (location.pathname === '/') {
       navigate('/', { replace: true });
       return;
     }
 
-    window.requestAnimationFrame(() => {
-      setActiveSection(hashSection);
-    });
-    scrollToSection(hashSection);
-  }, [location.hash, location.pathname, navigate, scrollToSection, sectionIds]);
+    navigate({ pathname: location.pathname }, { replace: true });
+  }, [location.hash, location.pathname, navigate]);
 
   useEffect(() => {
     if (location.pathname !== '/') {
       return;
     }
 
-    const Observer = window.IntersectionObserver;
-    if (!Observer) {
+    const sections = sectionIds.map((id) => document.getElementById(id)).filter(Boolean);
+    if (sections.length === 0) {
       return;
     }
 
-    const observedSections = sectionIds
-      .map((sectionId) => document.getElementById(sectionId))
-      .filter(Boolean);
+    const updateActiveSection = () => {
+      const viewportAnchor = window.scrollY + 160;
+      let nextActive = sections[0].id;
 
-    if (observedSections.length === 0) {
-      return;
-    }
-
-    const observer = new Observer(
-      (entries) => {
-        const visibleEntries = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-
-        if (visibleEntries.length > 0) {
-          setActiveSection(visibleEntries[0].target.id);
+      for (const section of sections) {
+        if (section.offsetTop <= viewportAnchor) {
+          nextActive = section.id;
         }
-      },
-      {
-        rootMargin: '-35% 0px -55% 0px',
-        threshold: [0.1, 0.25, 0.5, 0.75],
       }
-    );
 
-    observedSections.forEach((section) => observer.observe(section));
+      setActiveSection((previous) => (previous === nextActive ? previous : nextActive));
+    };
+
+    updateActiveSection();
+
+    window.addEventListener('scroll', updateActiveSection, { passive: true });
+    window.addEventListener('resize', updateActiveSection);
 
     return () => {
-      observer.disconnect();
+      window.removeEventListener('scroll', updateActiveSection);
+      window.removeEventListener('resize', updateActiveSection);
     };
   }, [location.pathname, sectionIds]);
 
-  const handleNavClick = (e, sectionId) => {
-    e.preventDefault();
-    setIsOpen(false);
-    setActiveSection(sectionId);
-
-    if (e.detail > 0 && e.currentTarget instanceof window.HTMLElement) {
-      window.requestAnimationFrame(() => {
-        e.currentTarget.blur();
-      });
-    }
-
+  useEffect(() => {
     if (location.pathname !== '/') {
-      navigate({ pathname: '/', hash: `#${sectionId}` });
       return;
     }
 
-    if (location.hash !== `#${sectionId}`) {
-      navigate({ pathname: '/', hash: `#${sectionId}` }, { replace: true });
+    const targetSection = location.state?.scrollToSection;
+    if (!targetSection || !sectionIds.includes(targetSection)) {
+      return;
+    }
+
+    scrollToSection(targetSection);
+    navigate('/', { replace: true, state: null });
+  }, [location.pathname, location.state, navigate, scrollToSection, sectionIds]);
+
+  const handleNavClick = (e, sectionId) => {
+    e.preventDefault();
+    const clickedElement = e.currentTarget;
+
+    if (e.detail > 0 && clickedElement instanceof window.HTMLElement) {
+      clickedElement.blur();
+    }
+
+    if (!sectionIds.includes(sectionId)) {
+      return;
+    }
+
+    setIsOpen(false);
+    setActiveSection(sectionId);
+
+    if (location.pathname !== '/') {
+      navigate('/', { state: { scrollToSection: sectionId } });
+      return;
     }
 
     scrollToSection(sectionId);

@@ -1,5 +1,6 @@
 import Typography from '../common/Typography';
 import { FOOTER_LINKS } from '../../data/navigation';
+import { Link } from 'react-router-dom';
 
 const FooterLinks = () => {
   return (
@@ -11,8 +12,8 @@ const FooterLinks = () => {
       <ul className="space-y-3">
         {FOOTER_LINKS.map((link) => (
           <li key={link.href}>
-            <a
-              href={link.href}
+            <Link
+              to={`/${link.href}`}
               className="
                 rounded-md
                 text-secondary
@@ -32,7 +33,7 @@ const FooterLinks = () => {
                 </span>
               )}{' '}
               {link.name}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

@@ -11,8 +11,8 @@ export default function NavLinks({ activeSection, onNavigate, mobile = false }) 
 
         return (
           <div className="relative" key={link.name}>
-            <a
-              href={`#${link.href}`}
+            <button
+              type="button"
               onClick={(e) => onNavigate(e, link.href)}
               aria-current={isActive ? 'page' : undefined}
               className={`relative rounded-md px-1 py-1 text-sm font-medium transition-all duration-300 hover:text-accent-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg ${
@@ -26,7 +26,7 @@ export default function NavLinks({ activeSection, onNavigate, mobile = false }) 
               }`}
             >
               {link.name}
-            </a>
+            </button>
 
             {isActive && !mobile && (
               <motion.div

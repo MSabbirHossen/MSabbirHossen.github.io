@@ -30,8 +30,8 @@ export const resources = [
 export const NAV_LINKS = [
   { name: 'Home', href: 'hero' },
   { name: 'About', href: 'about' },
-  { name: 'Projects', href: 'projects' },
   { name: 'Skills', href: 'skills' },
+  { name: 'Projects', href: 'projects' },
   { name: 'Contact', href: 'contact' },
 ];
 
