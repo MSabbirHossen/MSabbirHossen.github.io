@@ -1,6 +1,7 @@
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { portfolioData } from '../../data/portfolioData';
+import { portfolioData } from '../../data';
 import { forwardRef } from 'react';
+import Typography from '../common/Typography';
 import NavLinks from './NavLinks';
 import Button from '../common/Button';
 import { FaFileAlt } from 'react-icons/fa';
@@ -34,11 +35,13 @@ const MobileMenu = forwardRef(function MobileMenu(
               damping: shouldReduceMotion ? 0 : 32,
               duration: shouldReduceMotion ? 0 : undefined,
             }}
-            className="fixed right-0 top-0 z-50 h-screen w-[82%] max-w-sm border-l border-default bg-dark-surface/95 shadow-2xl backdrop-blur-xl md:hidden"
+            className="fixed right-0 top-0 z-50 h-screen w-[82%] max-w-sm border-l border-default bg-dark-surface/100 shadow-2xl backdrop-blur-xl md:hidden text-primary"
           >
             <div className="flex h-full flex-col gap-6 p-6">
-              <header className="flex items-center justify-between border-b border-default pb-4">
-                <h2 className="text-xl font-semibold text-primary">{name}</h2>
+              <header className="flex items-center justify-between border-b pb-4">
+                <Typography variant="subtitle" className="text-xl font-semibold text-primary">
+                  {name}
+                </Typography>
                 <button
                   type="button"
                   onClick={() => setIsOpen(false)}
@@ -49,7 +52,10 @@ const MobileMenu = forwardRef(function MobileMenu(
                 </button>
               </header>
 
-              <nav className="flex flex-col gap-2" aria-label="Mobile navigation links">
+              <nav
+                className="flex flex-col gap-2 text-text-primary-dark dark:text-text-primary-light"
+                aria-label="Mobile navigation links"
+              >
                 <NavLinks mobile activeSection={activeSection} onNavigate={onNavigate} />
               </nav>
 
@@ -73,7 +79,7 @@ const MobileMenu = forwardRef(function MobileMenu(
             animate={{ opacity: 1 }}
             exit={shouldReduceMotion ? undefined : { opacity: 0 }}
             transition={{ duration: shouldReduceMotion ? 0 : 0.25 }}
-            className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm md:hidden"
+            className="fixed inset-0 z-40 bg-black/25 backdrop-blur-sm md:hidden"
             onClick={() => setIsOpen(false)}
             aria-label="Close navigation menu"
           />

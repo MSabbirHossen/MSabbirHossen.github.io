@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { HiMenu, HiX } from 'react-icons/hi';
-import { portfolioData } from '../../data/portfolioData';
+import { portfolioData } from '../../data';
 import { NAV_LINKS } from '../../data/navigation';
 import NavLinks from '../layout/NavLinks.jsx';
 import ThemeToggle from '../layout/ThemeToggle';

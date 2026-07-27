@@ -1,4 +1,4 @@
-import { portfolioData } from '../../data/portfolioData';
+import { portfolioData } from '../../data';
 
 import HeroImage from '../hero/HeroImage';
 import HeroContent from '../hero/HeroContent';

@@ -1,4 +1,4 @@
-import { portfolioData } from './portfolioData';
+import { portfolioData } from './index';
 
 const { personalInfo, skills, projects, education, experience, certifications, currentFocus } =
   portfolioData;

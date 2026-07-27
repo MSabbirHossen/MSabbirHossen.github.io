@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
 
-import { portfolioData } from '../data/portfolioData';
+import { portfolioData } from '../data';
 import Card from '../components/common/Card';
 import Typography from '../components/common/Typography';
 import Reveal from '../components/animations/Reveal';
@@ -108,7 +108,7 @@ export default function ProjectDetails() {
               </Reveal>
             )}
 
-            <Reveal delay={0.15}>
+            <Reveal delay={0.15} className="md:hidden">
               <ProjectPreview title={project.title} screenshots={project.screenshots} />
             </Reveal>
           </aside>

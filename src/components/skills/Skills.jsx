@@ -1,6 +1,6 @@
 import SkillCategoryCard from './SkillCategoryCard';
 import SectionWrapper from '../common/SectionWrapper';
-import { portfolioData } from '../../data/portfolioData';
+import { portfolioData } from '../../data';
 
 export default function Skills() {
   const { skills } = portfolioData;

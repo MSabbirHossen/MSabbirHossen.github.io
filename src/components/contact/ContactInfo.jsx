@@ -1,5 +1,5 @@
 import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
-import { portfolioData } from '../../data/portfolioData';
+import { portfolioData } from '../../data';
 import Typography from '../common/Typography';
 import Card from '../common/Card';
 import ContactItem from './ContactItem';
@@ -45,7 +45,7 @@ const ContactInfo = () => {
           Contact details
         </Typography>
 
-        <div className="space-y-4 text-secondary">
+        <div className="space-y-3 text-secondary">
           {contactItems.map(({ title, icon, value, href }) => (
             <ContactItem key={title} icon={icon} title={title} href={href}>
               {value}

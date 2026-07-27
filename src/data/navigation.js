@@ -1,4 +1,4 @@
-import { portfolioData } from './portfolioData';
+import { portfolioData } from './index';
 import {
   FaFile,
   FaGithub,

@@ -1,5 +1,5 @@
 import { FaGraduationCap } from 'react-icons/fa';
-import { portfolioData } from '../../data/portfolioData';
+import { portfolioData } from '../../data';
 import Typography from '../common/Typography';
 import Card from '../common/Card';
 import Badge from '../common/Badge';

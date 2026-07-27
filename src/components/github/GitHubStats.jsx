@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react';
 import Typography from '../common/Typography';
 import Card from '../common/Card';
+import GitHubProfile from './GitHubProfile';
 
 import StatsCards from './StatsCards';
 import LanguagesChart from './LanguagesChart';
 import RecentRepos from './RecentRepos';
-import { FaGithub } from 'react-icons/fa';
 import Reveal from '../animations/Reveal';
+import Snake from './Snake';
+import ProfileViews from './ProfileViews';
+import GitHubAnalytics from './GitHubAnalytics';
 
 const REFERENCE_NOW = Date.now();
 const SECTION_DESCRIPTION =
@@ -92,7 +95,7 @@ export default function GitHubStats() {
         <Typography variant="h2" className="text-center text-primary">
           GitHub Activity Snapshot
         </Typography>
-        <Typography variant="body" className="mt-3 text-center text-secondary">
+        <Typography variant="body" className="my-3 text-center text-secondary">
           {SECTION_DESCRIPTION}
         </Typography>
 
@@ -108,55 +111,12 @@ export default function GitHubStats() {
           <RecentRepos repos={stats.recentRepos} />
         </Reveal>
 
-        <Reveal delay={0.45}>
-          {/* Snake */}
+        <GitHubAnalytics />
+        <Snake />
 
-          {/* Contribution Snake */}
+        <ProfileViews />
 
-          <div className="mt-14">
-            <Typography variant="h3" className="mb-6 text-center text-primary">
-              Contribution Activity
-            </Typography>
-
-            <Card className="p-6">
-              <img
-                className="mx-auto w-full max-w-5xl"
-                src="https://raw.githubusercontent.com/MSabbirHossen/MSabbirHossen/output/github-contribution-grid-snake-dark.svg"
-                alt="Contribution Snake"
-                loading="lazy"
-                decoding="async"
-                referrerPolicy="no-referrer"
-              />
-            </Card>
-          </div>
-        </Reveal>
-
-        {/* Profile Views */}
-
-        <div className="mt-10">
-          <Card className="flex justify-center p-6">
-            <img
-              src="https://komarev.com/ghpvc/?username=MSabbirHossen&label=Profile%20Views&color=3B82F6&style=for-the-badge"
-              alt="Profile Views"
-              loading="lazy"
-              decoding="async"
-              referrerPolicy="no-referrer"
-            />
-          </Card>
-        </div>
-
-        {/* GitHub Profile */}
-        <div className="mt-10 flex justify-center">
-          <a
-            href="https://github.com/MSabbirHossen"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 rounded-xl bg-accent-primary px-6 py-3 font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent-primary-dark"
-          >
-            <FaGithub />
-            Visit GitHub Profile
-          </a>
-        </div>
+        <GitHubProfile />
 
         {/* Last Updated */}
         <Typography variant="caption" className="mt-8 text-center block">

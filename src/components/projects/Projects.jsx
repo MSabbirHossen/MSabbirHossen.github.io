@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { portfolioData } from '../../data/portfolioData';
+import { portfolioData } from '../../data';
 import SectionWrapper from '../common/SectionWrapper';
 import ProjectFilters from '../projects/ProjectFilters';
 import ProjectGrid from '../projects/ProjectGrid';

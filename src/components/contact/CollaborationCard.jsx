@@ -1,4 +1,4 @@
-import { portfolioData } from '../../data/portfolioData';
+import { portfolioData } from '../../data';
 import Typography from '../common/Typography';
 import { FaCheckCircle, FaHandshake } from 'react-icons/fa';
 

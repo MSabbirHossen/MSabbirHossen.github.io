@@ -1,4 +1,4 @@
-import { portfolioData } from '../../data/portfolioData';
+import { portfolioData } from '../../data';
 
 import SectionWrapper from '../common/SectionWrapper';
 
@@ -38,7 +38,7 @@ export default function About() {
       eyebrow="About"
       title="Developer Profile"
       tagline={tagline}
-      description={mission}
+      // description={mission}
       innerClassName="space-y-10"
       className="mx-auto max-w-6xl px-6"
     >

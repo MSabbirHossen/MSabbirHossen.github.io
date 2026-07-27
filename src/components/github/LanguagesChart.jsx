@@ -30,7 +30,7 @@ export default function LanguagesChart({ languages }) {
       </Typography>
 
       <Card className="space-y-5">
-        <div className="mb-6 border-b border-default pb-4">
+        <div className="mb-6 border-b pb-4">
           <Typography variant="subtitle" className="font-semibold text-primary">
             Language Distribution
           </Typography>

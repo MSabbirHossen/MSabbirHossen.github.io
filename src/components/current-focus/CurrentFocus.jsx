@@ -1,4 +1,4 @@
-import { portfolioData } from '../../data/portfolioData';
+import { portfolioData } from '../../data';
 
 import SectionWrapper from '../common/SectionWrapper';
 import FocusCard from '../current-focus/FocusCard';

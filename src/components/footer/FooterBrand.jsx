@@ -1,5 +1,5 @@
 import Typography from '../common/Typography';
-import { portfolioData } from '../../data/portfolioData';
+import { portfolioData } from '../../data';
 
 export default function FooterBrand() {
   const { personalInfo } = portfolioData;

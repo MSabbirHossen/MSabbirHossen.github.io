@@ -1,11 +1,11 @@
-import { portfolioData } from '../../data/portfolioData';
+import { portfolioData } from '../../data';
 import FooterSocials from './FooterSocials';
 
 const FooterBottom = () => {
   const currentYear = new Date().getFullYear();
   const { personalInfo } = portfolioData;
   return (
-    <div className="mx-auto mt-8 flex max-w-7xl flex-col items-center justify-between gap-4 border-t border-default px-6 pt-6 text-xs text-muted sm:flex-row">
+    <div className="mx-auto mt-8 flex max-w-7xl flex-col items-center justify-between gap-4 border-t px-6 pt-6 text-xs text-muted sm:flex-row">
       <div>
         <p className="text-center sm:text-left">
           Designed & Developed by{' '}

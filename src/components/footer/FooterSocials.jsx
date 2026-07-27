@@ -1,5 +1,5 @@
 import { FaEnvelope, FaGithub, FaLinkedin, FaMapMarkerAlt } from 'react-icons/fa';
-import { portfolioData } from '../../data/portfolioData';
+import { portfolioData } from '../../data';
 
 const FooterSocials = () => {
   const { personalInfo } = portfolioData;

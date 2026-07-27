@@ -91,7 +91,7 @@ export default function RecentRepos({ repos }) {
                     <FaExternalLinkAlt className="text-xs" />
                   </div>
                 </div>
-                <Typography variant="caption" className="mx-auto mt-4 text-muted xl:mx-0">
+                <Typography variant="caption" className="mx-auto mt-4 text-muted">
                   {timeAgo(repo.updated)}
                 </Typography>
               </Card>

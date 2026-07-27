@@ -1,13 +1,13 @@
 // import { motion } from 'framer-motion';
 // import { FaCode, FaDatabase, FaRobot, FaShieldAlt, FaTools } from 'react-icons/fa';
-// import { portfolioData } from '../../data/portfolioData';
+// import { portfolioData } from '../../data';
 // import Typography from '../common/Typography';
 // import Badge from '../common/Badge';
 // import Card from '../common/Card';
 // import Reveal from '../animations/Reveal';
 import SectionWrapper from '../common/SectionWrapper';
 
-import { portfolioData } from '../../data/portfolioData';
+import { portfolioData } from '../../data';
 import SkillCategoryCard from '../skills/SkillCategoryCard';
 
 export default function Skills() {

@@ -9,8 +9,8 @@ import Reveal from '../animations/Reveal';
 
 const ProjectHero = ({ project }) => {
   const shortDescription =
-    project.overview.length > 220 ? `${project.overview.slice(0, 220)}...` : project.overview;
-  const heroTech = project.technologies?.slice(0, 8) ?? [];
+    project.overview.length > 220 ? `${project.overview.slice(0, 120)}...` : project.overview;
+  const heroTech = project.technologies?.slice(0, 5) ?? [];
   const heroImage = project.screenshots?.[0];
 
   return (
