@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { HiMenu, HiX } from 'react-icons/hi';
 import { portfolioData } from '../../data/portfolioData';
@@ -15,6 +15,28 @@ export default function Header() {
   const location = useLocation();
   const navigate = useNavigate();
   const { name } = portfolioData.personalInfo;
+  const sectionIds = useMemo(() => NAV_LINKS.map((link) => link.href), []);
+
+  const scrollToSection = useCallback((sectionId, behavior = 'smooth') => {
+    let attempts = 0;
+    const maxAttempts = 20;
+
+    const tryScroll = () => {
+      const element = document.getElementById(sectionId);
+
+      if (element) {
+        element.scrollIntoView({ behavior, block: 'start' });
+        return;
+      }
+
+      if (attempts < maxAttempts) {
+        attempts += 1;
+        window.requestAnimationFrame(tryScroll);
+      }
+    };
+
+    tryScroll();
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,56 +46,105 @@ export default function Header() {
     handleScroll();
     window.addEventListener('scroll', handleScroll);
 
-    const Observer = window.IntersectionObserver;
-    if (!Observer) {
-      return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    const hashSection = location.hash.replace('#', '');
+
+    if (location.pathname !== '/') {
+      if (!hashSection) {
+        return;
+      }
+
+      if (sectionIds.includes(hashSection)) {
+        navigate({ pathname: '/', hash: `#${hashSection}` }, { replace: true });
+        return;
+      }
+
+      navigate({ pathname: location.pathname }, { replace: true });
+      return;
     }
 
-    const observedSections = NAV_LINKS.map((link) => document.getElementById(link.href)).filter(
-      Boolean
-    );
+    if (!hashSection) {
+      return;
+    }
+
+    if (!sectionIds.includes(hashSection)) {
+      navigate('/', { replace: true });
+      return;
+    }
+
+    window.requestAnimationFrame(() => {
+      setActiveSection(hashSection);
+    });
+    scrollToSection(hashSection);
+  }, [location.hash, location.pathname, navigate, scrollToSection, sectionIds]);
+
+  useEffect(() => {
+    if (location.pathname !== '/') {
+      return;
+    }
+
+    const Observer = window.IntersectionObserver;
+    if (!Observer) {
+      return;
+    }
+
+    const observedSections = sectionIds
+      .map((sectionId) => document.getElementById(sectionId))
+      .filter(Boolean);
+
+    if (observedSections.length === 0) {
+      return;
+    }
 
     const observer = new Observer(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
+        const visibleEntries = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+        if (visibleEntries.length > 0) {
+          setActiveSection(visibleEntries[0].target.id);
+        }
       },
       {
         rootMargin: '-35% 0px -55% 0px',
-        threshold: 0.1,
+        threshold: [0.1, 0.25, 0.5, 0.75],
       }
     );
 
     observedSections.forEach((section) => observer.observe(section));
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
       observer.disconnect();
     };
-  }, []);
+  }, [location.pathname, sectionIds]);
 
   const handleNavClick = (e, sectionId) => {
     e.preventDefault();
     setIsOpen(false);
     setActiveSection(sectionId);
 
-    const scrollToSection = () => {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    };
+    if (e.detail > 0 && e.currentTarget instanceof window.HTMLElement) {
+      window.requestAnimationFrame(() => {
+        e.currentTarget.blur();
+      });
+    }
 
     if (location.pathname !== '/') {
-      navigate(`/#${sectionId}`);
-      window.setTimeout(scrollToSection, 100);
+      navigate({ pathname: '/', hash: `#${sectionId}` });
       return;
     }
 
-    scrollToSection();
+    if (location.hash !== `#${sectionId}`) {
+      navigate({ pathname: '/', hash: `#${sectionId}` }, { replace: true });
+    }
+
+    scrollToSection(sectionId);
   };
 
   return (
