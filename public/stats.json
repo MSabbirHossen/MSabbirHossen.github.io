@@ -7,7 +7,7 @@
   "topLanguages": [
     {
       "name": "JavaScript",
-      "count": 27
+      "count": 28
     },
     {
       "name": "HTML",
@@ -21,12 +21,12 @@
   "recentRepos": [
     {
       "name": "lifeos",
-      "description": "A project to track every event of life to become best version of me.",
-      "language": "Unknown",
+      "description": "No description available",
+      "language": "JavaScript",
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/lifeos",
-      "updated": "2026-07-30T08:10:37Z"
+      "updated": "2026-07-30T13:25:10Z"
     },
     {
       "name": "MSabbirHossen.github.io",
@@ -35,7 +35,7 @@
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
-      "updated": "2026-07-30T02:26:48Z"
+      "updated": "2026-07-30T08:28:42Z"
     },
     {
       "name": "Digital-Life-Lessons-Server",
@@ -74,5 +74,5 @@
       "updated": "2026-07-02T07:52:04Z"
     }
   ],
-  "updatedAt": "2026-07-30T08:27:34.841Z"
+  "updatedAt": "2026-07-30T14:02:48.899Z"
 }
