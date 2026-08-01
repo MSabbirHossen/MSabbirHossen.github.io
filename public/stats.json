@@ -20,6 +20,15 @@
   ],
   "recentRepos": [
     {
+      "name": "MSabbirHossen.github.io",
+      "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
+      "updated": "2026-08-01T13:21:39Z"
+    },
+    {
       "name": "lifeos",
       "description": "This is a project to track my personal life to became best productive version of me.",
       "language": "JavaScript",
@@ -27,15 +36,6 @@
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/lifeos",
       "updated": "2026-08-01T09:56:05Z"
-    },
-    {
-      "name": "MSabbirHossen.github.io",
-      "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
-      "language": "JavaScript",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
-      "updated": "2026-08-01T08:21:50Z"
     },
     {
       "name": "Digital-Life-Lessons-Server",
@@ -74,5 +74,5 @@
       "updated": "2026-07-02T07:52:04Z"
     }
   ],
-  "updatedAt": "2026-08-01T13:21:34.860Z"
+  "updatedAt": "2026-08-01T19:08:23.977Z"
 }
