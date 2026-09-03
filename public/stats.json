@@ -1,5 +1,5 @@
 {
-  "publicRepos": 50,
+  "publicRepos": 51,
   "followers": 4,
   "following": 6,
   "totalStars": 6,
@@ -20,13 +20,22 @@
   ],
   "recentRepos": [
     {
+      "name": "Assignment-1",
+      "description": "Foundation-Program-Assignment about to find out JS",
+      "language": "Unknown",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/Assignment-1",
+      "updated": "2026-09-03T15:54:55Z"
+    },
+    {
       "name": "MSabbirHossen.github.io",
       "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
       "language": "JavaScript",
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
-      "updated": "2026-09-03T03:19:15Z"
+      "updated": "2026-09-03T10:47:29Z"
     },
     {
       "name": "lifeos",
@@ -63,16 +72,7 @@
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/Prompt-Engineering",
       "updated": "2026-07-02T20:18:25Z"
-    },
-    {
-      "name": "Personal_App-Store_Authentication",
-      "description": "A modern, responsive web application for discovering, browsing, and managing applications. Built with React and Vite, featuring real-time search, sorting, and local app installation tracking.",
-      "language": "JavaScript",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/Personal_App-Store_Authentication",
-      "updated": "2026-07-02T07:52:04Z"
     }
   ],
-  "updatedAt": "2026-09-03T10:47:19.065Z"
+  "updatedAt": "2026-09-03T15:55:14.571Z"
 }
