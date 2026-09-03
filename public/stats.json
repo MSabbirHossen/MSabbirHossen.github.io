@@ -7,7 +7,7 @@
   "topLanguages": [
     {
       "name": "JavaScript",
-      "count": 28
+      "count": 29
     },
     {
       "name": "HTML",
@@ -22,11 +22,11 @@
     {
       "name": "Assignment-1",
       "description": "Foundation-Program-Assignment about to find out JS",
-      "language": "Unknown",
+      "language": "JavaScript",
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/Assignment-1",
-      "updated": "2026-09-03T15:54:55Z"
+      "updated": "2026-09-03T16:36:01Z"
     },
     {
       "name": "MSabbirHossen.github.io",
@@ -35,7 +35,7 @@
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
-      "updated": "2026-09-03T10:47:29Z"
+      "updated": "2026-09-03T15:55:48Z"
     },
     {
       "name": "lifeos",
@@ -74,5 +74,5 @@
       "updated": "2026-07-02T20:18:25Z"
     }
   ],
-  "updatedAt": "2026-09-03T15:55:14.571Z"
+  "updatedAt": "2026-09-03T20:36:04.961Z"
 }
