@@ -1,5 +1,5 @@
 {
-  "publicRepos": 51,
+  "publicRepos": 52,
   "followers": 4,
   "following": 7,
   "totalStars": 6,
@@ -7,7 +7,7 @@
   "topLanguages": [
     {
       "name": "JavaScript",
-      "count": 29
+      "count": 30
     },
     {
       "name": "HTML",
@@ -20,13 +20,22 @@
   ],
   "recentRepos": [
     {
+      "name": "Life-OS",
+      "description": "No description available",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/Life-OS",
+      "updated": "2026-09-09T20:41:26Z"
+    },
+    {
       "name": "MSabbirHossen.github.io",
       "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
       "language": "JavaScript",
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
-      "updated": "2026-09-09T16:15:27Z"
+      "updated": "2026-09-09T20:33:33Z"
     },
     {
       "name": "Assignment-1",
@@ -63,16 +72,7 @@
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/Digital-Life-Lessons-Client-",
       "updated": "2026-07-05T11:09:39Z"
-    },
-    {
-      "name": "Prompt-Engineering",
-      "description": "No description available",
-      "language": "Unknown",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/Prompt-Engineering",
-      "updated": "2026-07-02T20:18:25Z"
     }
   ],
-  "updatedAt": "2026-09-09T20:33:24.716Z"
+  "updatedAt": "2026-09-10T03:26:23.690Z"
 }
