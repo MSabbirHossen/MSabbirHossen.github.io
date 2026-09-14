@@ -6,10 +6,11 @@ import JourneyCard from './JourneyCard';
 import LanguagesCard from './LanguagesCard';
 import QuickFactsCard from './QuickFactsCard';
 import AboutStats from './AboutStats';
+import LanguageProgress from './LanguagesCard';
 
 export default function About() {
   const { personalInfo, projects, certifications, skills } = portfolioData;
-  const { mission, tagline, title, journey, languages, studyingAt, location } = personalInfo;
+  const { tagline, title, journey, languages, studyingAt, location } = personalInfo;
 
   const technologyCount = skills.reduce((total, category) => total + category.items.length, 0);
 
@@ -49,6 +50,12 @@ export default function About() {
 
       <AboutStats stats={stats} />
 
+      <p className="text-sm text-secondary">
+        Languages:{' '}
+        <span className="text-primary">
+          {languages.map((language) => language.name).join(' · ')}
+        </span>
+      </p>
       <LanguagesCard languages={languages} />
     </SectionWrapper>
   );

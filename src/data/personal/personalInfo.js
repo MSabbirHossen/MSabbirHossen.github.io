@@ -5,7 +5,8 @@ import { vision } from './vision';
 export const personalInfo = {
   name: 'Md. Sabbir Hossen',
   title: 'MERN Stack Developer',
-  //   secondaryTitle: 'AI-Powered Full-Stack Development',
+  secondaryTitle: 'AI Integration - Security-Aware Development',
+  availability: ['Full-time', 'Internship', 'Freelance'],
   brandName: 'Md. Sabbir Hossen',
   brandTagline: 'MERN Stack Developer building AI-assisted, security-conscious web applications.',
   mission:
@@ -18,7 +19,7 @@ export const personalInfo = {
   github: 'https://github.com/MSabbirHossen',
   linkedin: 'https://www.linkedin.com/in/ms-hossen/',
   facebook: 'https://web.facebook.com/sabb1rhossen/',
-  resumeUrl: 'https://drive.google.com/file/d/1BjOd3cSea8D16ljYYM8A_LS9g4H3PuAl/view?usp=sharing',
+  resumeUrl: '/resume/Md_Sabbir_Hossen_Resume.pdf',
   website: 'https://msabbirhossen.github.io/',
   hero: {
     focusTitle: 'Currently focused on',

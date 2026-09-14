@@ -1,70 +1,28 @@
 import { memo } from 'react';
-import { FaGithub, FaRegFilePdf } from 'react-icons/fa';
 import MessageBubble from './MessageBubble';
-import QuickActions from './QuickActions';
-import Button from '../Button';
 
-function EmptyState({ quickPrompts, featuredProjectHighlights, recentWorkHighlights, onAction }) {
+function EmptyState({ quickPrompts, onAction }) {
+  const starterPrompts = quickPrompts.filter((prompt) =>
+    ['quick-projects', 'quick-skills', 'quick-experience', 'quick-contact'].includes(prompt.id)
+  );
+
   return (
     <section
       className="space-y-4 rounded-2xl border border-default bg-surface/70 p-4"
       aria-label="Popular assistant questions"
     >
       <h3 className="text-sm font-semibold text-primary">Start with popular recruiter questions</h3>
-      <QuickActions actions={quickPrompts} onAction={onAction} label="Popular questions" />
-      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-        <Button
-          size="sm"
-          variant="outline"
-          icon={FaRegFilePdf}
-          onClick={() => onAction({ kind: 'prompt', prompt: 'Show resume' })}
-          className="justify-start"
-        >
-          Open Resume
-        </Button>
-        <Button
-          size="sm"
-          variant="outline"
-          icon={FaGithub}
-          onClick={() => onAction({ kind: 'prompt', prompt: 'Show GitHub highlights' })}
-          className="justify-start"
-        >
-          GitHub Highlights
-        </Button>
-      </div>
-
-      <div className="space-y-2" aria-label="Featured projects">
-        <p className="text-xs font-semibold uppercase tracking-wide text-muted">
-          Featured projects
-        </p>
-        <div className="flex flex-wrap gap-2">
-          {featuredProjectHighlights.map((item) => (
-            <button
-              key={item.id}
-              type="button"
-              onClick={() => onAction({ kind: 'prompt', prompt: item.prompt })}
-              className="rounded-full border border-default px-3 py-1 text-xs text-secondary transition-colors hover:border-accent-primary/40 hover:text-accent-primary"
-            >
-              {item.label}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <div className="space-y-2" aria-label="Recent work">
-        <p className="text-xs font-semibold uppercase tracking-wide text-muted">Recent work</p>
-        <div className="flex flex-wrap gap-2">
-          {recentWorkHighlights.map((item) => (
-            <button
-              key={item.id}
-              type="button"
-              onClick={() => onAction({ kind: 'prompt', prompt: item.prompt })}
-              className="rounded-full border border-default px-3 py-1 text-xs text-secondary transition-colors hover:border-accent-primary/40 hover:text-accent-primary"
-            >
-              {item.label}
-            </button>
-          ))}
-        </div>
+      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2" aria-label="Starter prompts">
+        {starterPrompts.map((prompt) => (
+          <button
+            key={prompt.id}
+            type="button"
+            onClick={() => onAction(prompt)}
+            className="rounded-xl border border-default px-3 py-2 text-left text-xs font-medium text-secondary transition-colors hover:border-accent-primary/40 hover:bg-accent-primary/5 hover:text-accent-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary/35"
+          >
+            {prompt.label}
+          </button>
+        ))}
       </div>
     </section>
   );
@@ -75,8 +33,6 @@ function MessageList({
   isTyping,
   onAction,
   quickPrompts,
-  featuredProjectHighlights,
-  recentWorkHighlights,
   hasConversation,
   messageListRef,
   typingIndicator,
@@ -90,14 +46,7 @@ function MessageList({
       aria-relevant="additions text"
       aria-label="Conversation"
     >
-      {!hasConversation && (
-        <EmptyState
-          quickPrompts={quickPrompts}
-          featuredProjectHighlights={featuredProjectHighlights}
-          recentWorkHighlights={recentWorkHighlights}
-          onAction={onAction}
-        />
-      )}
+      {!hasConversation && <EmptyState quickPrompts={quickPrompts} onAction={onAction} />}
 
       {messages.map((message, index) => {
         const isLatestAssistant =
@@ -108,7 +57,7 @@ function MessageList({
             key={message.id}
             message={message}
             onAction={onAction}
-            showInteractiveControls={isLatestAssistant}
+            showInteractiveControls={isLatestAssistant && hasConversation}
           />
         );
       })}

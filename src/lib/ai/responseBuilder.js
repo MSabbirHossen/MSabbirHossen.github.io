@@ -3,9 +3,20 @@ import { detectIntent } from './intentMatcher';
 const QUICK_FOLLOW_UPS = {
   projects: ['Tell me about this project', 'What technologies were used?', 'Show GitHub'],
   skills: ['Which skills are strongest?', 'Any AI-related skills?', 'Show MERN work'],
-  contact: ['Copy email', 'Open LinkedIn', 'Download resume'],
   default: ['Best projects', 'Show experience', 'How can I contact Sabbir?'],
 };
+
+function directFollowUp(label, actionConfig) {
+  return { label, action: actionConfig };
+}
+
+function contactFollowUps(portfolio) {
+  return [
+    directFollowUp('Copy email', { kind: 'copy-email', value: portfolio.contact.email }),
+    directFollowUp('Open LinkedIn', { kind: 'external', target: portfolio.contact.linkedin }),
+    directFollowUp('Download resume', { kind: 'external', target: portfolio.resume.publicPath }),
+  ];
+}
 
 function createProjectCard(project) {
   return {
@@ -61,7 +72,7 @@ function defaultUnknownResponse() {
   };
 }
 
-function buildProjectResponse(message, intent, knowledge, portfolio) {
+function buildProjectResponse(message, intent, knowledge, portfolio, memory) {
   const aiRelatedProjects = knowledge.getProjectsByTopic('ai');
   const mernProjects = knowledge.getProjectsByTopic('mern');
   const reactProjects = knowledge.getProjectsByTopic('react');
@@ -69,6 +80,7 @@ function buildProjectResponse(message, intent, knowledge, portfolio) {
   const queryMatch = knowledge.findProjectByQuery(message);
 
   const intentBuckets = {
+    projects: knowledge.getFeaturedProjects(3),
     react: reactProjects,
     mern: mernProjects,
     ai: aiRelatedProjects,
@@ -76,16 +88,22 @@ function buildProjectResponse(message, intent, knowledge, portfolio) {
   };
 
   const intentMatches = intentBuckets[intent] ?? [];
+  const rememberedProject =
+    intent === 'projects' && memory?.lastProjectId
+      ? knowledge.getProjectById(memory.lastProjectId)
+      : null;
 
   const projects = queryMatch
     ? [queryMatch]
-    : intentMatches.length > 0
-      ? intentMatches.slice(0, 3)
-      : aiRelatedProjects.length > 0
-        ? aiRelatedProjects.slice(0, 3)
-        : mernProjects.length > 0
-          ? mernProjects.slice(0, 3)
-          : knowledge.getFeaturedProjects(3);
+    : rememberedProject
+      ? [rememberedProject]
+      : intentMatches.length > 0
+        ? intentMatches.slice(0, 3)
+        : aiRelatedProjects.length > 0
+          ? aiRelatedProjects.slice(0, 3)
+          : mernProjects.length > 0
+            ? mernProjects.slice(0, 3)
+            : knowledge.getFeaturedProjects(3);
 
   if (!projects.length) {
     return {
@@ -104,13 +122,14 @@ function buildProjectResponse(message, intent, knowledge, portfolio) {
   const cards = projects.map(createProjectCard);
 
   return {
-    text: queryMatch
-      ? `Here is a focused breakdown of ${queryMatch.title}.`
-      : `I found ${projects.length} standout project${projects.length > 1 ? 's' : ''} to start with.`,
+    text:
+      queryMatch || rememberedProject
+        ? `Here is a focused breakdown of ${projects[0].title}.`
+        : `I found ${projects.length} standout project${projects.length > 1 ? 's' : ''} to start with.`,
     cards,
     actions: [
       action('Open Projects Section', { kind: 'scroll', target: portfolio.sections.projects }),
-      action('Open GitHub Stats', { kind: 'route', target: portfolio.routes.githubStats }),
+      action('Open GitHub Stats', { kind: 'scroll', target: portfolio.sections.githubStats }),
     ],
     followUps: QUICK_FOLLOW_UPS.projects,
     memory: {
@@ -140,10 +159,8 @@ function buildContactResponse(portfolio) {
     cards: [createContactCard(portfolio)],
     actions: [
       action('Open Contact Section', { kind: 'scroll', target: portfolio.sections.contact }),
-      action('Copy Email', { kind: 'copy-email', value: portfolio.contact.email }),
-      action('Download Resume', { kind: 'external', target: portfolio.resume.publicPath }),
     ],
-    followUps: QUICK_FOLLOW_UPS.contact,
+    followUps: contactFollowUps(portfolio),
     memory: {
       lastTopic: 'contact',
     },
@@ -169,6 +186,26 @@ function buildExperienceResponse(portfolio) {
   };
 }
 
+function buildCurrentFocusResponse(portfolio) {
+  return {
+    text: 'Here is what Sabbir is actively building and learning right now.',
+    cards: portfolio.currentFocus.map((item) => ({
+      type: 'focus',
+      title: item.title,
+      organization: item.organization,
+      period: item.period,
+      description: item.description,
+    })),
+    actions: [
+      action('Open Current Focus', { kind: 'scroll', target: portfolio.sections.currentFocus }),
+    ],
+    followUps: ['Show projects', 'Show skills', 'How can I contact Sabbir?'],
+    memory: {
+      lastTopic: 'current_focus',
+    },
+  };
+}
+
 function buildEducationResponse(portfolio) {
   const latest = portfolio.education[0];
 
@@ -176,7 +213,7 @@ function buildEducationResponse(portfolio) {
     text: latest
       ? `Latest education: ${latest.degree} at ${latest.institution}.`
       : 'Education details are available in the Education page.',
-    actions: [action('Open Education', { kind: 'route', target: portfolio.routes.education })],
+    actions: [action('Open Education', { kind: 'scroll', target: portfolio.sections.education })],
     followUps: ['Show certifications', 'Show current focus', 'Contact Sabbir'],
     memory: {
       lastTopic: 'education',
@@ -197,7 +234,7 @@ function buildCertificationResponse(knowledge, portfolio) {
       link: cert.link,
     })),
     actions: [
-      action('Open Certifications', { kind: 'route', target: portfolio.routes.certifications }),
+      action('Open Certifications', { kind: 'scroll', target: portfolio.sections.certifications }),
     ],
     followUps: ['Show skills', 'Show projects', 'How to contact Sabbir'],
     memory: {
@@ -223,7 +260,7 @@ function buildGithubResponse(portfolio) {
   return {
     text: 'GitHub highlights include activity stats, language mix, and recent repositories.',
     actions: [
-      action('Open GitHub Stats', { kind: 'route', target: portfolio.routes.githubStats }),
+      action('Open GitHub Stats', { kind: 'scroll', target: portfolio.sections.githubStats }),
       action('Open GitHub Profile', { kind: 'external', target: portfolio.github.profileUrl }),
     ],
     followUps: ['Show best projects', 'Which stack is strongest?', 'How can I contact Sabbir?'],
@@ -302,7 +339,7 @@ export function generateLocalResponse({ message, knowledge, portfolio, memory })
     case 'mern':
     case 'ai':
     case 'security':
-      return { intent, ...buildProjectResponse(message, intent, knowledge, portfolio) };
+      return { intent, ...buildProjectResponse(message, intent, knowledge, portfolio, memory) };
     case 'skills':
       return { intent, ...buildSkillsResponse(knowledge, portfolio) };
     case 'contact':
@@ -311,6 +348,8 @@ export function generateLocalResponse({ message, knowledge, portfolio, memory })
     case 'experience':
     case 'about':
       return { intent, ...buildExperienceResponse(portfolio) };
+    case 'current_focus':
+      return { intent, ...buildCurrentFocusResponse(portfolio) };
     case 'education':
       return { intent, ...buildEducationResponse(portfolio) };
     case 'certifications':
@@ -326,7 +365,14 @@ export function generateLocalResponse({ message, knowledge, portfolio, memory })
         actions: [
           action('Open Contact Section', { kind: 'scroll', target: portfolio.sections.contact }),
         ],
-        followUps: ['Show contact options', 'Show projects', 'Download resume'],
+        followUps: [
+          'Show contact options',
+          directFollowUp('Download resume', {
+            kind: 'external',
+            target: portfolio.resume.publicPath,
+          }),
+          'Show projects',
+        ],
       };
     default:
       return { intent: 'unknown', ...defaultUnknownResponse() };

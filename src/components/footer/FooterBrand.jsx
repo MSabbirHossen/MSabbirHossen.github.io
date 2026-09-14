@@ -13,6 +13,17 @@ export default function FooterBrand() {
       <Typography variant="body" className="max-w-sm text-secondary">
         {personalInfo.brandTagline}
       </Typography>
+
+      <div>
+        <Typography variant="caption" className="mb-2 text-muted">
+          Languages
+        </Typography>
+        <p className="text-sm text-secondary">
+          {personalInfo.languages
+            .map((language) => `${language.name} (${language.level})`)
+            .join(' · ')}
+        </p>
+      </div>
     </div>
   );
 }

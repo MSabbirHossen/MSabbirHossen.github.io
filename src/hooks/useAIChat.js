@@ -8,7 +8,7 @@ const WELCOME_MESSAGE = {
   id: 1,
   role: 'assistant',
   content:
-    "Hi! I'm Sabbir's AI Portfolio Assistant. I can help you discover projects, evaluate technical depth, and quickly find contact options.",
+    "Hi! I'm Sabbir's Portfolio Guide. I can help you discover projects, evaluate technical depth, and quickly find contact options.",
   followUps: ['Best projects', 'Show experience', 'How can I contact Sabbir?'],
 };
 
@@ -72,12 +72,12 @@ export default function useAIChat() {
 
   const openChat = useCallback(() => {
     setIsOpen(true);
-    setAnnouncement('Portfolio assistant opened.');
+    setAnnouncement('Portfolio guide opened.');
   }, []);
 
   const closeChat = useCallback(() => {
     setIsOpen(false);
-    setAnnouncement('Portfolio assistant closed.');
+    setAnnouncement('Portfolio guide closed.');
   }, []);
 
   const toggleChat = useCallback(() => {
@@ -173,57 +173,60 @@ export default function useAIChat() {
         window.clearTimeout(timeoutRef.current);
       }
 
-      timeoutRef.current = window.setTimeout(async () => {
-        try {
-          const response = await generateAIResponse({
-            message: text,
-            knowledge,
-            portfolio: assistantPortfolioData,
-            memory,
-          });
+      timeoutRef.current = window.setTimeout(
+        async () => {
+          try {
+            const response = await generateAIResponse({
+              message: text,
+              knowledge,
+              portfolio: assistantPortfolioData,
+              memory,
+            });
 
-          const assistantMessage = createMessage('assistant', response.text, {
-            cards: response.cards ?? [],
-            actions: response.actions ?? [],
-            followUps: response.followUps ?? [],
-            intent: response.intent,
-          });
+            const assistantMessage = createMessage('assistant', response.text, {
+              cards: response.cards ?? [],
+              actions: response.actions ?? [],
+              followUps: response.followUps ?? [],
+              intent: response.intent,
+            });
 
-          setMessages((currentMessages) => [...currentMessages, assistantMessage]);
-          setMemory((currentMemory) => ({
-            ...currentMemory,
-            lastIntent: response.intent,
-            ...(response.memory ?? {}),
-          }));
-          setAnnouncement(`Assistant replied: ${response.text}`);
-        } catch {
-          const fallbackText =
-            'I ran into an issue preparing that response. Please try again, or use the quick actions to navigate projects, skills, or contact details.';
+            setMessages((currentMessages) => [...currentMessages, assistantMessage]);
+            setMemory((currentMemory) => ({
+              ...currentMemory,
+              lastIntent: response.intent,
+              ...(response.memory ?? {}),
+            }));
+            setAnnouncement(`Assistant replied: ${response.text}`);
+          } catch {
+            const fallbackText =
+              'I ran into an issue preparing that response. Please try again, or use the quick actions to navigate projects, skills, or contact details.';
 
-          setMessages((currentMessages) => [
-            ...currentMessages,
-            createMessage('assistant', fallbackText, {
-              actions: [
-                {
-                  id: 'prompt-best-projects-fallback',
-                  kind: 'prompt',
-                  label: 'Best Projects',
-                  prompt: 'Best projects',
-                },
-                {
-                  id: 'prompt-contact-fallback',
-                  kind: 'prompt',
-                  label: 'Contact',
-                  prompt: 'How can I contact Sabbir?',
-                },
-              ],
-            }),
-          ]);
-          setAnnouncement('Assistant could not complete that response.');
-        } finally {
-          setIsTyping(false);
-        }
-      }, 550);
+            setMessages((currentMessages) => [
+              ...currentMessages,
+              createMessage('assistant', fallbackText, {
+                actions: [
+                  {
+                    id: 'prompt-best-projects-fallback',
+                    kind: 'prompt',
+                    label: 'Best Projects',
+                    prompt: 'Best projects',
+                  },
+                  {
+                    id: 'prompt-contact-fallback',
+                    kind: 'prompt',
+                    label: 'Contact',
+                    prompt: 'How can I contact Sabbir?',
+                  },
+                ],
+              }),
+            ]);
+            setAnnouncement('Assistant could not complete that response.');
+          } finally {
+            setIsTyping(false);
+          }
+        },
+        Math.min(900, Math.max(400, 400 + responseTextLength(text) * 3))
+      );
     },
     [input, isTyping, knowledge, memory]
   );
@@ -321,4 +324,8 @@ export default function useAIChat() {
     sendMessage,
     triggerAction,
   };
+}
+
+function responseTextLength(message) {
+  return Math.min(500, message.length + Math.round(message.length * 0.4));
 }

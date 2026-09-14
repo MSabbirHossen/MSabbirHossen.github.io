@@ -1,7 +1,7 @@
 import Button from '../common/Button';
-import { FaFacebook, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
-const HeroActions = ({ github, linkedin, facebook }) => {
+const HeroActions = ({ github, linkedin }) => {
   const socialLinks = [
     {
       label: 'GitHub',
@@ -13,12 +13,6 @@ const HeroActions = ({ github, linkedin, facebook }) => {
       label: 'LinkedIn',
       href: linkedin,
       icon: FaLinkedin,
-      variant: 'ghost',
-    },
-    {
-      label: 'Facebook',
-      href: facebook,
-      icon: FaFacebook,
       variant: 'ghost',
     },
   ];

@@ -46,12 +46,10 @@ export const assistantPortfolioData = {
     about: 'about',
     projects: 'projects',
     skills: 'skills',
+    education: 'education',
+    certifications: 'certifications',
+    githubStats: 'github-stats',
     contact: 'contact',
     currentFocus: 'current-focus',
-  },
-  routes: {
-    education: '/education',
-    certifications: '/certifications',
-    githubStats: '/github-stats',
   },
 };

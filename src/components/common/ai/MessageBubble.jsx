@@ -138,11 +138,26 @@ function ResponseCard({ card, onAction }) {
     );
   }
 
+  if (card.type === 'focus') {
+    return (
+      <Card className="mt-3 space-y-2 border-default p-4" hover={false}>
+        <p className="text-sm font-semibold text-primary">{card.title}</p>
+        <p className="text-xs text-secondary">{card.organization}</p>
+        <p className="text-xs text-muted">{card.period}</p>
+        <p className="text-xs leading-relaxed text-secondary">{card.description}</p>
+      </Card>
+    );
+  }
+
   return null;
 }
 
 function MessageBubble({ message, onAction, showInteractiveControls = false }) {
   const isUser = message.role === 'user';
+  const hasCards = Array.isArray(message.cards) && message.cards.length > 0;
+  const actions = Array.isArray(message.actions) ? message.actions : [];
+  const followUps = Array.isArray(message.followUps) ? message.followUps : [];
+  const suggestedItems = [...actions, ...followUps].slice(0, 3);
 
   return (
     <article className={`flex ${isUser ? 'justify-end' : 'justify-start'}`}>
@@ -151,9 +166,9 @@ function MessageBubble({ message, onAction, showInteractiveControls = false }) {
           isUser ? 'bg-accent-primary text-white' : 'surface border border-default text-secondary'
         }`}
       >
-        <p>{message.content}</p>
+        <p>{hasCards ? "Here's a closer look:" : message.content}</p>
 
-        {Array.isArray(message.cards) &&
+        {hasCards &&
           message.cards.map((card) => (
             <ResponseCard
               key={`${message.id}-${card.type}-${card.title ?? card.category ?? 'card'}`}
@@ -162,40 +177,32 @@ function MessageBubble({ message, onAction, showInteractiveControls = false }) {
             />
           ))}
 
-        {showInteractiveControls &&
-          Array.isArray(message.actions) &&
-          message.actions.length > 0 && (
-            <div className="mt-3 flex flex-wrap gap-2">
-              {message.actions.map((item) => (
-                <button
-                  key={item.id}
-                  type="button"
-                  onClick={() => onAction(item)}
-                  className="rounded-full border border-default px-3 py-1 text-xs font-medium text-secondary transition-colors hover:border-accent-primary/50 hover:text-accent-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg"
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-          )}
+        {showInteractiveControls && suggestedItems.length > 0 && (
+          <div className="mt-2 flex flex-wrap gap-2">
+            {suggestedItems.map((item, index) => {
+              const isAction =
+                typeof item === 'object' &&
+                (actions.includes(item) || (item.action && item.action.kind !== 'prompt'));
+              const label = typeof item === 'string' ? item : item.label;
+              const action =
+                typeof item === 'object'
+                  ? (item.action ?? item)
+                  : { kind: 'prompt', prompt: item, label: item };
 
-        {showInteractiveControls &&
-          Array.isArray(message.followUps) &&
-          message.followUps.length > 0 && (
-            <div className="mt-2 flex flex-wrap gap-2">
-              {message.followUps.map((followUp) => (
+              return (
                 <button
-                  key={`${message.id}-${followUp}`}
+                  key={`${message.id}-${label}-${index}`}
                   type="button"
-                  onClick={() => onAction({ kind: 'prompt', prompt: followUp, label: followUp })}
-                  className="inline-flex items-center gap-1 rounded-full border border-default/80 px-2.5 py-1 text-[11px] text-muted transition-colors hover:border-accent-primary/40 hover:text-accent-primary"
+                  onClick={() => onAction(action)}
+                  className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary/35 ${isAction ? 'bg-accent-primary text-white hover:bg-accent-primary-dark' : 'border border-default/80 text-muted hover:border-accent-primary/40 hover:text-accent-primary'}`}
                 >
-                  <FaLink className="h-2.5 w-2.5" aria-hidden="true" />
-                  {followUp}
+                  {!isAction && <FaLink className="h-2.5 w-2.5" aria-hidden="true" />}
+                  {label}
                 </button>
-              ))}
-            </div>
-          )}
+              );
+            })}
+          </div>
+        )}
       </div>
     </article>
   );

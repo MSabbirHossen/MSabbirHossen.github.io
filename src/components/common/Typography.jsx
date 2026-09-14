@@ -8,7 +8,7 @@ export default function Typography({
 }) {
   const styles = {
     h1: 'text-primary text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl',
-    h2: 'text-primary text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl',
+    h2: 'font-display text-primary text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl',
     h3: 'text-primary text-xl font-semibold sm:text-2xl',
     h4: 'text-primary text-lg font-semibold sm:text-xl',
     h5: 'text-primary text-base font-semibold sm:text-lg',

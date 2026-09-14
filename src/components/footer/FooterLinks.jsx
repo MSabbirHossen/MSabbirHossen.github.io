@@ -1,8 +1,12 @@
 import Typography from '../common/Typography';
 import { FOOTER_LINKS } from '../../data/navigation';
-import { Link } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { navigateToSection } from '../../lib/navigation';
 
 const FooterLinks = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   return (
     <nav aria-label="Footer navigation">
       <Typography variant="subtitle" className="mb-4 text-primary">
@@ -12,8 +16,11 @@ const FooterLinks = () => {
       <ul className="space-y-3">
         {FOOTER_LINKS.map((link) => (
           <li key={link.href}>
-            <Link
-              to={`/${link.href}`}
+            <a
+              href={`/#${link.href}`}
+              onClick={(event) =>
+                navigateToSection({ event, sectionId: link.href, location, navigate })
+              }
               className="
                 rounded-md
                 text-secondary
@@ -33,7 +40,7 @@ const FooterLinks = () => {
                 </span>
               )}{' '}
               {link.name}
-            </Link>
+            </a>
           </li>
         ))}
       </ul>

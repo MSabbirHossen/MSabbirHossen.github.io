@@ -1,18 +1,24 @@
+import { lazy, Suspense } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Hero from '../components/sections/Hero';
 
 import About from '../components/about/About';
 import Projects from '../components/projects/Projects';
 import Skills from '../components/skills/Skills';
-import CurrentFocus from '../components/current-focus/CurrentFocus';
+import Experience from '../components/experience/Experience';
 import Contact from '../components/sections/Contact';
+import CurrentFocus from '../components/current-focus/CurrentFocus';
+
+const GitHubStats = lazy(() => import('../components/github/GitHubStats'));
+const Education = lazy(() => import('../components/sections/Education'));
+const Certifications = lazy(() => import('../components/sections/Certifications'));
 
 export default function Home() {
   const pageTitle = 'Md. Sabbir Hossen | MERN Stack Developer Portfolio';
   const pageDescription =
     'AI-powered full-stack developer portfolio showcasing MERN projects, React engineering skills, and secure development practices.';
   const canonicalUrl = 'https://msabbirhossen.github.io/';
-  const socialImage = 'https://msabbirhossen.github.io/screenshots/digital-life-lessons-hero.png';
+  const socialImage = 'https://msabbirhossen.github.io/og-image.svg';
 
   const personSchema = {
     '@context': 'https://schema.org',
@@ -48,9 +54,15 @@ export default function Home() {
       <Hero />
       <About />
       <Skills />
+      <Experience />
       <Projects />
+      <Suspense fallback={<div className="sr-only">Loading supporting portfolio sections...</div>}>
+        <GitHubStats />
+        <Education />
+        <Certifications />
+      </Suspense>
+      <CurrentFocus compact />
       <Contact />
-      <CurrentFocus />
     </div>
   );
 }

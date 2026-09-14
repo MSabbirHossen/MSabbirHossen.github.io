@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { HiMenu, HiX } from 'react-icons/hi';
 import { portfolioData } from '../../data';
@@ -6,6 +6,7 @@ import { NAV_LINKS } from '../../data/navigation';
 import NavLinks from '../layout/NavLinks.jsx';
 import ThemeToggle from '../layout/ThemeToggle';
 import MobileMenu from '../layout/MobileMenu.jsx';
+import { scrollToSection } from '../../lib/navigation';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,14 +16,6 @@ export default function Header() {
   const navigate = useNavigate();
   const { name } = portfolioData.personalInfo;
   const sectionIds = useMemo(() => NAV_LINKS.map((link) => link.href), []);
-
-  const scrollToSection = useCallback((sectionId, behavior = 'smooth') => {
-    const element = document.getElementById(sectionId);
-
-    if (element) {
-      element.scrollIntoView({ behavior, block: 'start' });
-    }
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,6 +36,7 @@ export default function Header() {
     }
 
     if (location.pathname === '/') {
+      scrollToSection(location.hash.slice(1), 'auto');
       navigate('/', { replace: true });
       return;
     }
@@ -96,7 +90,7 @@ export default function Header() {
 
     scrollToSection(targetSection);
     navigate('/', { replace: true, state: null });
-  }, [location.pathname, location.state, navigate, scrollToSection, sectionIds]);
+  }, [location.pathname, location.state, navigate, sectionIds]);
 
   const handleNavClick = (e, sectionId) => {
     e.preventDefault();

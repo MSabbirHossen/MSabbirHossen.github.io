@@ -65,6 +65,12 @@ export default function InputArea({ input, isTyping, onChange, onSend, inputRef 
         id="assistant-input-help"
       >
         <p>Enter sends. Shift+Enter adds a new line.</p>
+        <p className="hidden items-center gap-1 sm:flex">
+          <span>Open with</span>
+          <kbd className="rounded border border-default bg-surface px-1.5 py-0.5 font-mono text-[10px]">
+            Ctrl/Cmd + K
+          </kbd>
+        </p>
         <p id="assistant-input-count" aria-live="polite">
           {input.length > 300 ? `${input.length}/${MAX_CHARS}` : ''}
         </p>

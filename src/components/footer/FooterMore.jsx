@@ -1,18 +1,28 @@
 import Typography from '../common/Typography';
+import { FOOTER_MORE_LINKS } from '../../data/navigation';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { navigateToSection } from '../../lib/navigation';
 
-import { resources } from '../../data/navigation';
+const FooterMore = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
 
-const FooterResources = () => {
   return (
-    <nav aria-label="Footer social links">
+    <nav aria-label="Footer additional links">
       <Typography variant="subtitle" className="mb-4 font-semibold text-primary">
-        Connect
+        More
       </Typography>
       <ul className="space-y-3">
-        {resources.map((link) => (
+        {FOOTER_MORE_LINKS.map((link) => (
           <li key={link.label}>
             <a
               href={link.href}
+              onClick={
+                link.external
+                  ? undefined
+                  : (event) =>
+                      navigateToSection({ event, sectionId: link.href, location, navigate })
+              }
               {...(link.external && {
                 target: '_blank',
                 rel: 'noopener noreferrer',
@@ -44,4 +54,4 @@ dark:focus-visible:ring-offset-dark-bg
   );
 };
 
-export default FooterResources;
+export default FooterMore;

@@ -1,9 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { FaTimes } from 'react-icons/fa';
+import { FaRobot, FaTimes } from 'react-icons/fa';
 import Card from '../Card';
 import Typography from '../Typography';
-import QuickActions from './QuickActions';
 import MessageList from './MessageList';
 import InputArea from './InputArea';
 import TypingIndicator from './TypingIndicator';
@@ -14,8 +13,6 @@ export default function AIWindow({
   input,
   isTyping,
   quickPrompts,
-  featuredProjectHighlights,
-  recentWorkHighlights,
   hasConversation,
   announcement,
   onClose,
@@ -128,41 +125,39 @@ export default function AIWindow({
               }}
             >
               <div className="flex items-start justify-between border-b border-default px-5 py-4">
-                <div>
-                  <Typography id="ai-chat-title" variant="subtitle" className="text-primary">
-                    AI Portfolio Assistant
-                  </Typography>
-                  <Typography id="ai-chat-description" variant="caption" className="text-muted">
-                    Your guided recruiter view of projects, skills, and contact options.
-                  </Typography>
+                <div className="flex items-start gap-3">
+                  <span className="relative mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-accent-primary to-accent-secondary text-white shadow-md">
+                    <FaRobot className="h-4 w-4" aria-hidden="true" />
+                    <span
+                      className="absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full border-2 border-surface bg-emerald-400"
+                      aria-label="Online"
+                    />
+                  </span>
+                  <div>
+                    <Typography id="ai-chat-title" variant="subtitle" className="text-primary">
+                      Portfolio Guide
+                    </Typography>
+                    <p className="mt-0.5 text-[11px] font-medium text-emerald-500">Online guide</p>
+                    <Typography id="ai-chat-description" variant="caption" className="text-muted">
+                      Your guided recruiter view of projects, skills, and contact options.
+                    </Typography>
+                  </div>
                 </div>
                 <button
                   type="button"
                   onClick={onClose}
                   className="rounded-full p-2 text-muted transition-colors hover:bg-accent-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary/40"
-                  aria-label="Close AI assistant"
+                  aria-label="Close Portfolio Guide"
                 >
                   <FaTimes className="h-4 w-4" aria-hidden="true" />
                 </button>
               </div>
-
-              {hasConversation && (
-                <div className="px-4 pt-4 sm:px-5" aria-label="Quick assistant actions">
-                  <QuickActions
-                    actions={quickPrompts}
-                    onAction={onAction}
-                    label="Quick actions for recruiters"
-                  />
-                </div>
-              )}
 
               <MessageList
                 messages={messages}
                 isTyping={isTyping}
                 onAction={onAction}
                 quickPrompts={quickPrompts}
-                featuredProjectHighlights={featuredProjectHighlights}
-                recentWorkHighlights={recentWorkHighlights}
                 hasConversation={hasConversation}
                 messageListRef={messageListRef}
                 typingIndicator={<TypingIndicator />}
