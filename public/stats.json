@@ -1,13 +1,13 @@
 {
-  "publicRepos": 50,
+  "publicRepos": 54,
   "followers": 4,
-  "following": 6,
+  "following": 7,
   "totalStars": 6,
   "totalForks": 0,
   "topLanguages": [
     {
       "name": "JavaScript",
-      "count": 28
+      "count": 32
     },
     {
       "name": "HTML",
@@ -20,13 +20,49 @@
   ],
   "recentRepos": [
     {
+      "name": "lifeosclient",
+      "description": "Client Side of life OS.",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/lifeosclient",
+      "updated": "2026-09-14T05:54:17Z"
+    },
+    {
+      "name": "Life-OS",
+      "description": "No description available",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/Life-OS",
+      "updated": "2026-09-14T05:54:07Z"
+    },
+    {
       "name": "MSabbirHossen.github.io",
       "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
       "language": "JavaScript",
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
-      "updated": "2026-09-02T03:15:54Z"
+      "updated": "2026-09-14T03:44:51Z"
+    },
+    {
+      "name": "lifeosserver",
+      "description": "No description available",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/lifeosserver",
+      "updated": "2026-09-13T21:48:34Z"
+    },
+    {
+      "name": "Assignment-1",
+      "description": "Foundation-Program-Assignment about to find out JS",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/Assignment-1",
+      "updated": "2026-09-03T16:36:01Z"
     },
     {
       "name": "lifeos",
@@ -35,44 +71,8 @@
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/lifeos",
-      "updated": "2026-08-01T09:56:05Z"
-    },
-    {
-      "name": "Digital-Life-Lessons-Server",
-      "description": "No description available",
-      "language": "JavaScript",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/Digital-Life-Lessons-Server",
-      "updated": "2026-07-05T11:16:38Z"
-    },
-    {
-      "name": "Digital-Life-Lessons-Client-",
-      "description": "No description available",
-      "language": "JavaScript",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/Digital-Life-Lessons-Client-",
-      "updated": "2026-07-05T11:09:39Z"
-    },
-    {
-      "name": "Prompt-Engineering",
-      "description": "No description available",
-      "language": "Unknown",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/Prompt-Engineering",
-      "updated": "2026-07-02T20:18:25Z"
-    },
-    {
-      "name": "Personal_App-Store_Authentication",
-      "description": "A modern, responsive web application for discovering, browsing, and managing applications. Built with React and Vite, featuring real-time search, sorting, and local app installation tracking.",
-      "language": "JavaScript",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/Personal_App-Store_Authentication",
-      "updated": "2026-07-02T07:52:04Z"
+      "updated": "2026-09-02T15:09:30Z"
     }
   ],
-  "updatedAt": "2026-09-02T10:46:57.999Z"
+  "updatedAt": "2026-09-14T12:00:06.200Z"
 }
