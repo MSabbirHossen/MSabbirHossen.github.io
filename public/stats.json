@@ -20,31 +20,13 @@
   ],
   "recentRepos": [
     {
-      "name": "lifeosclient",
-      "description": "Client Side of life OS.",
-      "language": "JavaScript",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/lifeosclient",
-      "updated": "2026-09-14T05:54:17Z"
-    },
-    {
-      "name": "Life-OS",
-      "description": "No description available",
-      "language": "JavaScript",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/Life-OS",
-      "updated": "2026-09-14T05:54:07Z"
-    },
-    {
       "name": "MSabbirHossen.github.io",
       "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
       "language": "JavaScript",
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
-      "updated": "2026-09-14T03:44:51Z"
+      "updated": "2026-09-16T03:42:03Z"
     },
     {
       "name": "lifeosserver",
@@ -53,7 +35,25 @@
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/lifeosserver",
-      "updated": "2026-09-13T21:48:34Z"
+      "updated": "2026-09-15T17:23:30Z"
+    },
+    {
+      "name": "lifeosclient",
+      "description": "Client Side of life OS.",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/lifeosclient",
+      "updated": "2026-09-15T17:23:18Z"
+    },
+    {
+      "name": "Life-OS",
+      "description": "No description available",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/Life-OS",
+      "updated": "2026-09-15T17:23:15Z"
     },
     {
       "name": "Assignment-1",
@@ -74,5 +74,5 @@
       "updated": "2026-09-02T15:09:30Z"
     }
   ],
-  "updatedAt": "2026-09-14T12:00:06.200Z"
+  "updatedAt": "2026-09-16T10:57:50.634Z"
 }
