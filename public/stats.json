@@ -20,6 +20,15 @@
   ],
   "recentRepos": [
     {
+      "name": "MSabbirHossen.github.io",
+      "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
+      "updated": "2026-09-16T20:57:24Z"
+    },
+    {
       "name": "Spoon-Knife",
       "description": "This repo is for demonstration purposes only.",
       "language": "Unknown",
@@ -27,15 +36,6 @@
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/Spoon-Knife",
       "updated": "2026-09-16T20:03:00Z"
-    },
-    {
-      "name": "MSabbirHossen.github.io",
-      "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
-      "language": "JavaScript",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
-      "updated": "2026-09-16T16:17:20Z"
     },
     {
       "name": "lifeosserver",
@@ -74,5 +74,5 @@
       "updated": "2026-09-03T16:36:01Z"
     }
   ],
-  "updatedAt": "2026-09-16T20:57:18.375Z"
+  "updatedAt": "2026-09-17T03:46:53.590Z"
 }
