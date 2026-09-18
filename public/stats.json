@@ -1,5 +1,5 @@
 {
-  "publicRepos": 56,
+  "publicRepos": 57,
   "followers": 4,
   "following": 7,
   "totalStars": 6,
@@ -7,11 +7,11 @@
   "topLanguages": [
     {
       "name": "JavaScript",
-      "count": 32
+      "count": 34
     },
     {
       "name": "HTML",
-      "count": 13
+      "count": 12
     },
     {
       "name": "CSS",
@@ -20,13 +20,22 @@
   ],
   "recentRepos": [
     {
-      "name": "Shakil-Anwar-Resume",
+      "name": "ShakilAnwarPortfolioFrontend",
       "description": "No description available",
-      "language": "HTML",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/ShakilAnwarPortfolioFrontend",
+      "updated": "2026-09-18T13:10:00Z"
+    },
+    {
+      "name": "Shakil-Anwar-Resume",
+      "description": "Shakil-Anwar-Resume",
+      "language": "JavaScript",
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/Shakil-Anwar-Resume",
-      "updated": "2026-09-18T10:35:03Z"
+      "updated": "2026-09-18T12:53:49Z"
     },
     {
       "name": "MSabbirHossen.github.io",
@@ -35,7 +44,7 @@
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
-      "updated": "2026-09-18T03:33:26Z"
+      "updated": "2026-09-18T10:42:34Z"
     },
     {
       "name": "Spoon-Knife",
@@ -63,16 +72,7 @@
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/lifeosclient",
       "updated": "2026-09-15T17:23:18Z"
-    },
-    {
-      "name": "Life-OS",
-      "description": "No description available",
-      "language": "JavaScript",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/Life-OS",
-      "updated": "2026-09-15T17:23:15Z"
     }
   ],
-  "updatedAt": "2026-09-18T10:42:26.331Z"
+  "updatedAt": "2026-09-18T15:57:33.096Z"
 }
