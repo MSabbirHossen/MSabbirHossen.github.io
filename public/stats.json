@@ -20,6 +20,15 @@
   ],
   "recentRepos": [
     {
+      "name": "MSabbirHossen.github.io",
+      "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
+      "updated": "2026-09-18T15:57:37Z"
+    },
+    {
       "name": "ShakilAnwarPortfolioFrontend",
       "description": "No description available",
       "language": "JavaScript",
@@ -36,15 +45,6 @@
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/Shakil-Anwar-Resume",
       "updated": "2026-09-18T12:53:49Z"
-    },
-    {
-      "name": "MSabbirHossen.github.io",
-      "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
-      "language": "JavaScript",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
-      "updated": "2026-09-18T10:42:34Z"
     },
     {
       "name": "Spoon-Knife",
@@ -74,5 +74,5 @@
       "updated": "2026-09-15T17:23:18Z"
     }
   ],
-  "updatedAt": "2026-09-18T15:57:33.096Z"
+  "updatedAt": "2026-09-18T20:30:52.739Z"
 }
