@@ -1,5 +1,5 @@
 {
-  "publicRepos": 55,
+  "publicRepos": 56,
   "followers": 4,
   "following": 7,
   "totalStars": 6,
@@ -11,7 +11,7 @@
     },
     {
       "name": "HTML",
-      "count": 12
+      "count": 13
     },
     {
       "name": "CSS",
@@ -20,13 +20,22 @@
   ],
   "recentRepos": [
     {
+      "name": "Shakil-Anwar-Resume",
+      "description": "No description available",
+      "language": "HTML",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/Shakil-Anwar-Resume",
+      "updated": "2026-09-18T10:35:03Z"
+    },
+    {
       "name": "MSabbirHossen.github.io",
       "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
       "language": "JavaScript",
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
-      "updated": "2026-09-17T21:00:24Z"
+      "updated": "2026-09-18T03:33:26Z"
     },
     {
       "name": "Spoon-Knife",
@@ -63,16 +72,7 @@
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/Life-OS",
       "updated": "2026-09-15T17:23:15Z"
-    },
-    {
-      "name": "Assignment-1",
-      "description": "Foundation-Program-Assignment about to find out JS",
-      "language": "JavaScript",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/Assignment-1",
-      "updated": "2026-09-03T16:36:01Z"
     }
   ],
-  "updatedAt": "2026-09-18T03:33:22.124Z"
+  "updatedAt": "2026-09-18T10:42:26.331Z"
 }
