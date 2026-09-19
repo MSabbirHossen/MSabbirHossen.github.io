@@ -1,5 +1,5 @@
 {
-  "publicRepos": 57,
+  "publicRepos": 58,
   "followers": 4,
   "following": 7,
   "totalStars": 6,
@@ -20,13 +20,22 @@
   ],
   "recentRepos": [
     {
+      "name": "assignment-2-foundation-program",
+      "description": "No description available",
+      "language": "Unknown",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/assignment-2-foundation-program",
+      "updated": "2026-09-19T09:42:25Z"
+    },
+    {
       "name": "MSabbirHossen.github.io",
       "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
       "language": "JavaScript",
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
-      "updated": "2026-09-18T20:30:57Z"
+      "updated": "2026-09-19T03:30:42Z"
     },
     {
       "name": "ShakilAnwarPortfolioFrontend",
@@ -63,16 +72,7 @@
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/lifeosserver",
       "updated": "2026-09-15T17:23:30Z"
-    },
-    {
-      "name": "lifeosclient",
-      "description": "Client Side of life OS.",
-      "language": "JavaScript",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/lifeosclient",
-      "updated": "2026-09-15T17:23:18Z"
     }
   ],
-  "updatedAt": "2026-09-19T03:30:37.634Z"
+  "updatedAt": "2026-09-19T10:26:01.650Z"
 }
