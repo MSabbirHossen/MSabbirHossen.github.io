@@ -7,7 +7,7 @@
   "topLanguages": [
     {
       "name": "JavaScript",
-      "count": 34
+      "count": 35
     },
     {
       "name": "HTML",
@@ -21,12 +21,12 @@
   "recentRepos": [
     {
       "name": "assignment-2-foundation-program",
-      "description": "No description available",
-      "language": "Unknown",
+      "description": "A modern, responsive, and feature-rich Movie & TV Show Explorer Application built with React 19, Vite, Tailwind CSS, and the TVMaze API.",
+      "language": "JavaScript",
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/assignment-2-foundation-program",
-      "updated": "2026-09-19T09:42:25Z"
+      "updated": "2026-09-19T14:49:25Z"
     },
     {
       "name": "MSabbirHossen.github.io",
@@ -35,7 +35,7 @@
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
-      "updated": "2026-09-19T03:30:42Z"
+      "updated": "2026-09-19T10:26:06Z"
     },
     {
       "name": "ShakilAnwarPortfolioFrontend",
@@ -74,5 +74,5 @@
       "updated": "2026-09-15T17:23:30Z"
     }
   ],
-  "updatedAt": "2026-09-19T10:26:01.650Z"
+  "updatedAt": "2026-09-19T15:29:20.298Z"
 }
