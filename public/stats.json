@@ -20,6 +20,15 @@
   ],
   "recentRepos": [
     {
+      "name": "MSabbirHossen.github.io",
+      "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
+      "updated": "2026-09-19T20:08:52Z"
+    },
+    {
       "name": "lifeosclient",
       "description": "Client Side of life OS.",
       "language": "JavaScript",
@@ -36,15 +45,6 @@
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/Life-OS",
       "updated": "2026-09-19T17:26:15Z"
-    },
-    {
-      "name": "MSabbirHossen.github.io",
-      "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
-      "language": "JavaScript",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
-      "updated": "2026-09-19T15:29:25Z"
     },
     {
       "name": "assignment-2-foundation-program",
@@ -74,5 +74,5 @@
       "updated": "2026-09-18T12:53:49Z"
     }
   ],
-  "updatedAt": "2026-09-19T20:08:48.131Z"
+  "updatedAt": "2026-09-20T03:47:18.760Z"
 }
