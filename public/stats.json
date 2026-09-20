@@ -20,13 +20,13 @@
   ],
   "recentRepos": [
     {
-      "name": "MSabbirHossen.github.io",
-      "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
+      "name": "lifeosserver",
+      "description": "No description available",
       "language": "JavaScript",
       "stars": 0,
       "forks": 0,
-      "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
-      "updated": "2026-09-20T03:47:23Z"
+      "url": "https://github.com/MSabbirHossen/lifeosserver",
+      "updated": "2026-09-20T11:43:33Z"
     },
     {
       "name": "lifeosclient",
@@ -35,7 +35,7 @@
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/lifeosclient",
-      "updated": "2026-09-19T17:26:21Z"
+      "updated": "2026-09-20T11:42:07Z"
     },
     {
       "name": "Life-OS",
@@ -44,7 +44,16 @@
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/Life-OS",
-      "updated": "2026-09-19T17:26:15Z"
+      "updated": "2026-09-20T11:38:58Z"
+    },
+    {
+      "name": "MSabbirHossen.github.io",
+      "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
+      "updated": "2026-09-20T10:46:45Z"
     },
     {
       "name": "assignment-2-foundation-program",
@@ -63,16 +72,7 @@
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/ShakilAnwarPortfolioFrontend",
       "updated": "2026-09-18T13:10:00Z"
-    },
-    {
-      "name": "Shakil-Anwar-Resume",
-      "description": "Shakil-Anwar-Resume",
-      "language": "JavaScript",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/Shakil-Anwar-Resume",
-      "updated": "2026-09-18T12:53:49Z"
     }
   ],
-  "updatedAt": "2026-09-20T10:46:41.403Z"
+  "updatedAt": "2026-09-20T15:35:22.728Z"
 }
