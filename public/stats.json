@@ -20,6 +20,15 @@
   ],
   "recentRepos": [
     {
+      "name": "MSabbirHossen.github.io",
+      "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
+      "updated": "2026-09-20T20:25:55Z"
+    },
+    {
       "name": "Life-OS",
       "description": "No description available",
       "language": "JavaScript",
@@ -27,15 +36,6 @@
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/Life-OS",
       "updated": "2026-09-20T15:52:58Z"
-    },
-    {
-      "name": "MSabbirHossen.github.io",
-      "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
-      "language": "JavaScript",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
-      "updated": "2026-09-20T15:35:27Z"
     },
     {
       "name": "lifeosserver",
@@ -74,5 +74,5 @@
       "updated": "2026-09-18T13:10:00Z"
     }
   ],
-  "updatedAt": "2026-09-20T20:25:50.775Z"
+  "updatedAt": "2026-09-21T03:42:49.405Z"
 }
