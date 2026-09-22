@@ -1,5 +1,5 @@
 {
-  "publicRepos": 58,
+  "publicRepos": 59,
   "followers": 4,
   "following": 7,
   "totalStars": 6,
@@ -7,7 +7,7 @@
   "topLanguages": [
     {
       "name": "JavaScript",
-      "count": 35
+      "count": 36
     },
     {
       "name": "HTML",
@@ -26,7 +26,16 @@
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
-      "updated": "2026-09-22T14:31:04Z"
+      "updated": "2026-09-22T18:39:39Z"
+    },
+    {
+      "name": "movieExplorer",
+      "description": "A modern, responsive, and feature-rich Movie & TV Show Explorer application built with React 19, Vite, and Tailwind CSS, powered by the TVMaze API. Users can browse thousands of titles, search dynamically, filter by genre and status, sort results, and manage a persistent watchlist",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/movieExplorer",
+      "updated": "2026-09-22T18:11:12Z"
     },
     {
       "name": "Life-OS",
@@ -63,16 +72,7 @@
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/assignment-2-foundation-program",
       "updated": "2026-09-19T14:49:25Z"
-    },
-    {
-      "name": "ShakilAnwarPortfolioFrontend",
-      "description": "No description available",
-      "language": "JavaScript",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/ShakilAnwarPortfolioFrontend",
-      "updated": "2026-09-18T13:10:00Z"
     }
   ],
-  "updatedAt": "2026-09-22T16:25:36.388Z"
+  "updatedAt": "2026-09-22T20:57:44.731Z"
 }
