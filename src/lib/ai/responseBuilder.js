@@ -287,10 +287,19 @@ function buildThanksResponse() {
   };
 }
 
-function buildContextualFollowUp(message, memory, knowledge) {
+function buildContextualFollowUp(message, memory, knowledge, conversation = []) {
   const normalizedMessage = message.toLowerCase();
 
-  if (normalizedMessage.includes('backend') && memory.lastProjectId) {
+  const recentConversationText = conversation
+    .slice(-4)
+    .map((turn) => turn.content)
+    .join(' ')
+    .toLowerCase();
+
+  const hasProjectContext =
+    memory.lastProjectId || /project|built|technolog/.test(recentConversationText);
+
+  if (normalizedMessage.includes('backend') && hasProjectContext) {
     const backend = knowledge.getBackendDetails(memory.lastProjectId);
 
     if (backend) {
@@ -317,8 +326,8 @@ function buildContextualFollowUp(message, memory, knowledge) {
   return null;
 }
 
-export function generateLocalResponse({ message, knowledge, portfolio, memory }) {
-  const contextResponse = buildContextualFollowUp(message, memory, knowledge);
+export function generateLocalResponse({ message, knowledge, portfolio, memory, conversation }) {
+  const contextResponse = buildContextualFollowUp(message, memory, knowledge, conversation);
 
   if (contextResponse) {
     return {

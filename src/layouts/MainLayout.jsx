@@ -30,6 +30,7 @@ export default function MainLayout() {
           hasConversation={chat.hasConversation}
           announcement={chat.announcement}
           onClose={chat.closeChat}
+          onNewChat={chat.startNewChat}
           onChange={chat.setInput}
           onSend={chat.sendMessage}
           onAction={chat.triggerAction}

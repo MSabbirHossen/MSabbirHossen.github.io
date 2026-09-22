@@ -43,6 +43,10 @@ const QUICK_ACTIONS = [
   { id: 'quick-resume', kind: 'prompt', label: '📄 Resume', prompt: 'Show resume' },
 ];
 
+const CHAT_HISTORY_KEY = 'portfolio-guide-history';
+const MAX_HISTORY_MESSAGES = 24;
+const CONTEXT_MESSAGES = 8;
+
 function createMessage(role, content, extras = {}) {
   return {
     id: Date.now() + Math.random(),
@@ -56,7 +60,7 @@ export default function useAIChat() {
   const navigate = useNavigate();
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState([WELCOME_MESSAGE]);
+  const [messages, setMessages] = useState(() => loadChatHistory());
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [announcement, setAnnouncement] = useState('');
@@ -65,10 +69,22 @@ export default function useAIChat() {
     lastProjectId: null,
     lastTopic: null,
   });
-  const timeoutRef = useRef(null);
+  const generationRef = useRef(0);
+  const messagesRef = useRef(messages);
   const pendingScrollTargetRef = useRef(null);
 
   const knowledge = useMemo(() => createKnowledgeEngine(assistantPortfolioData), []);
+
+  useEffect(() => {
+    messagesRef.current = messages;
+
+    if (typeof window !== 'undefined') {
+      window.sessionStorage.setItem(
+        CHAT_HISTORY_KEY,
+        JSON.stringify(messages.slice(-MAX_HISTORY_MESSAGES))
+      );
+    }
+  }, [messages]);
 
   const openChat = useCallback(() => {
     setIsOpen(true);
@@ -82,6 +98,23 @@ export default function useAIChat() {
 
   const toggleChat = useCallback(() => {
     setIsOpen((value) => !value);
+  }, []);
+
+  const startNewChat = useCallback(() => {
+    generationRef.current += 1;
+    messagesRef.current = [WELCOME_MESSAGE];
+    if (typeof window !== 'undefined') {
+      window.sessionStorage.removeItem(CHAT_HISTORY_KEY);
+    }
+    setMessages([WELCOME_MESSAGE]);
+    setInput('');
+    setIsTyping(false);
+    setMemory({
+      lastIntent: null,
+      lastProjectId: null,
+      lastTopic: null,
+    });
+    setAnnouncement('New portfolio guide chat started.');
   }, []);
 
   const scrollToSection = useCallback((sectionId) => {
@@ -163,70 +196,105 @@ export default function useAIChat() {
       }
 
       const userMessage = createMessage('user', text);
+      const assistantMessageId = createMessage('assistant', '').id;
+      const conversation = messagesRef.current
+        .filter((message) => message.content)
+        .slice(-CONTEXT_MESSAGES)
+        .map(({ role, content }) => ({ role, content }));
 
-      setMessages((currentMessages) => [...currentMessages, userMessage]);
+      setMessages((currentMessages) => [
+        ...currentMessages,
+        userMessage,
+        createMessage('assistant', '', { id: assistantMessageId, isStreaming: true }),
+      ]);
       setInput('');
       setIsTyping(true);
       setAnnouncement(`You said: ${text}`);
 
-      if (timeoutRef.current) {
-        window.clearTimeout(timeoutRef.current);
-      }
+      const generationId = ++generationRef.current;
 
-      timeoutRef.current = window.setTimeout(
-        async () => {
-          try {
-            const response = await generateAIResponse({
-              message: text,
-              knowledge,
-              portfolio: assistantPortfolioData,
-              memory,
-            });
+      try {
+        const response = await generateAIResponse({
+          message: text,
+          knowledge,
+          portfolio: assistantPortfolioData,
+          memory,
+          conversation,
+        });
 
-            const assistantMessage = createMessage('assistant', response.text, {
-              cards: response.cards ?? [],
-              actions: response.actions ?? [],
-              followUps: response.followUps ?? [],
-              intent: response.intent,
-            });
-
-            setMessages((currentMessages) => [...currentMessages, assistantMessage]);
-            setMemory((currentMemory) => ({
-              ...currentMemory,
-              lastIntent: response.intent,
-              ...(response.memory ?? {}),
-            }));
-            setAnnouncement(`Assistant replied: ${response.text}`);
-          } catch {
-            const fallbackText =
-              'I ran into an issue preparing that response. Please try again, or use the quick actions to navigate projects, skills, or contact details.';
-
-            setMessages((currentMessages) => [
-              ...currentMessages,
-              createMessage('assistant', fallbackText, {
-                actions: [
-                  {
-                    id: 'prompt-best-projects-fallback',
-                    kind: 'prompt',
-                    label: 'Best Projects',
-                    prompt: 'Best projects',
-                  },
-                  {
-                    id: 'prompt-contact-fallback',
-                    kind: 'prompt',
-                    label: 'Contact',
-                    prompt: 'How can I contact Sabbir?',
-                  },
-                ],
-              }),
-            ]);
-            setAnnouncement('Assistant could not complete that response.');
-          } finally {
-            setIsTyping(false);
+        await streamResponse(response.text, (content) => {
+          if (generationId !== generationRef.current) {
+            return;
           }
-        },
-        Math.min(900, Math.max(400, 400 + responseTextLength(text) * 3))
-      );
+
+          setMessages((currentMessages) =>
+            currentMessages.map((message) =>
+              message.id === assistantMessageId ? { ...message, content } : message
+            )
+          );
+        });
+
+        if (generationId !== generationRef.current) {
+          return;
+        }
+
+        setMessages((currentMessages) =>
+          currentMessages.map((message) =>
+            message.id === assistantMessageId
+              ? {
+                  ...message,
+                  isStreaming: false,
+                  cards: response.cards ?? [],
+                  actions: response.actions ?? [],
+                  followUps: response.followUps ?? [],
+                  intent: response.intent,
+                }
+              : message
+          )
+        );
+        setMemory((currentMemory) => ({
+          ...currentMemory,
+          lastIntent: response.intent,
+          ...(response.memory ?? {}),
+        }));
+        setAnnouncement(`Assistant replied: ${response.text}`);
+      } catch {
+        if (generationId !== generationRef.current) {
+          return;
+        }
+
+        const fallbackText =
+          'I ran into an issue preparing that response. Please try again, or use the quick actions to navigate projects, skills, or contact details.';
+
+        setMessages((currentMessages) =>
+          currentMessages.map((message) =>
+            message.id === assistantMessageId
+              ? {
+                  ...message,
+                  content: fallbackText,
+                  isStreaming: false,
+                  actions: [
+                    {
+                      id: 'prompt-best-projects-fallback',
+                      kind: 'prompt',
+                      label: 'Best Projects',
+                      prompt: 'Best projects',
+                    },
+                    {
+                      id: 'prompt-contact-fallback',
+                      kind: 'prompt',
+                      label: 'Contact',
+                      prompt: 'How can I contact Sabbir?',
+                    },
+                  ],
+                }
+              : message
+          )
+        );
+        setAnnouncement('Assistant could not complete that response.');
+      } finally {
+        setIsTyping(false);
+      }
     },
     [input, isTyping, knowledge, memory]
   );
@@ -280,9 +348,7 @@ export default function useAIChat() {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
 
-      if (timeoutRef.current) {
-        window.clearTimeout(timeoutRef.current);
-      }
+      generationRef.current += 1;
     };
   }, [closeChat, isOpen, openChat]);
 
@@ -320,12 +386,36 @@ export default function useAIChat() {
     closeChat,
     openChat,
     toggleChat,
+    startNewChat,
     setInput,
     sendMessage,
     triggerAction,
   };
 }
 
-function responseTextLength(message) {
-  return Math.min(500, message.length + Math.round(message.length * 0.4));
+async function streamResponse(text, onChunk) {
+  const words = text.split(/(\s+)/).filter(Boolean);
+  let streamedText = '';
+
+  for (const word of words) {
+    streamedText += word;
+    onChunk(streamedText);
+    await new Promise((resolve) => window.setTimeout(resolve, 18));
+  }
+}
+
+function loadChatHistory() {
+  if (typeof window === 'undefined') {
+    return [WELCOME_MESSAGE];
+  }
+
+  try {
+    const savedMessages = JSON.parse(window.sessionStorage.getItem(CHAT_HISTORY_KEY));
+
+    return Array.isArray(savedMessages) && savedMessages.length > 0
+      ? savedMessages
+      : [WELCOME_MESSAGE];
+  } catch {
+    return [WELCOME_MESSAGE];
+  }
 }

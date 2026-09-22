@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { FaRobot, FaTimes } from 'react-icons/fa';
+import { FaPlus, FaRobot, FaTimes } from 'react-icons/fa';
 import Card from '../Card';
 import Typography from '../Typography';
 import MessageList from './MessageList';
@@ -16,6 +16,7 @@ export default function AIWindow({
   hasConversation,
   announcement,
   onClose,
+  onNewChat,
   onChange,
   onSend,
   onAction,
@@ -143,14 +144,25 @@ export default function AIWindow({
                     </Typography>
                   </div>
                 </div>
-                <button
-                  type="button"
-                  onClick={onClose}
-                  className="rounded-full p-2 text-muted transition-colors hover:bg-accent-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary/40"
-                  aria-label="Close Portfolio Guide"
-                >
-                  <FaTimes className="h-4 w-4" aria-hidden="true" />
-                </button>
+                <div className="flex items-center gap-1">
+                  <button
+                    type="button"
+                    onClick={onNewChat}
+                    className="rounded-full p-2 text-muted transition-colors hover:bg-accent-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary/40 disabled:cursor-not-allowed disabled:opacity-40"
+                    aria-label="Start a new chat"
+                    title="New chat"
+                  >
+                    <FaPlus className="h-3.5 w-3.5" aria-hidden="true" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={onClose}
+                    className="rounded-full p-2 text-muted transition-colors hover:bg-accent-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary/40"
+                    aria-label="Close Portfolio Guide"
+                  >
+                    <FaTimes className="h-4 w-4" aria-hidden="true" />
+                  </button>
+                </div>
               </div>
 
               <MessageList

@@ -62,7 +62,7 @@ Built a responsive app discovery platform with search, sorting, protected routes
 ## Contact
 
 - Email: mshossen724@gmail.com
-- LinkedIn: [Profile](https://www.linkedin.com/in/sabb1rhossen/)
+- LinkedIn: [Profile](https://www.linkedin.com/in/ms-hossen/)
 - GitHub: [Profile](https://github.com/MSabbirHossen)
 - Availability: Full-time, Internship, Freelance
 

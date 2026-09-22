@@ -11,6 +11,7 @@ export default function AIChatModal({
   hasConversation,
   announcement,
   onClose,
+  onNewChat,
   onChange,
   onSend,
   onAction,
@@ -27,6 +28,7 @@ export default function AIChatModal({
       hasConversation={hasConversation}
       announcement={announcement}
       onClose={onClose}
+      onNewChat={onNewChat}
       onChange={onChange}
       onSend={onSend}
       onAction={onAction}
