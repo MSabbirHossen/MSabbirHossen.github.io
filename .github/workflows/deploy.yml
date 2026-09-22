@@ -3,6 +3,9 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: ['main']
+  workflow_run:
+    workflows: ['Update GitHub Stats']
+    types: [completed]
 
 permissions:
   contents: read
@@ -16,9 +19,13 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # Skip if triggered by a failed/cancelled "Update GitHub Stats" run
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
 
       - uses: actions/setup-node@v4
         with:
