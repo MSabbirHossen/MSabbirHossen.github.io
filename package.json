@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "prebuild": "node --experimental-loader ./scripts/resolve-src-imports.mjs scripts/generate-llms-txt.mjs",
+    "prebuild": "node --import \"data:text/javascript,import{register}from'node:module';import{pathToFileURL}from'node:url';register('./scripts/resolve-src-imports.mjs',pathToFileURL('./'))\" scripts/generate-llms-txt.mjs",
     "lint": "eslint src/",
     "format": "prettier --write .",
     "preview": "vite preview",

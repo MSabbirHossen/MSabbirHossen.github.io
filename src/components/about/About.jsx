@@ -6,7 +6,6 @@ import JourneyCard from './JourneyCard';
 import LanguagesCard from './LanguagesCard';
 import QuickFactsCard from './QuickFactsCard';
 import AboutStats from './AboutStats';
-import LanguageProgress from './LanguagesCard';
 
 export default function About() {
   const { personalInfo, projects, certifications, skills } = portfolioData;
