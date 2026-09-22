@@ -16,6 +16,10 @@ Full-stack developer focused on building practical web applications with MERN, A
 
 ## Projects
 
+### MovieExplorer — Discover TV Shows & Movies
+A modern, responsive, and feature-rich Movie & TV Show Explorer application built with React 19, Vite, and Tailwind CSS, powered by the TVMaze API. Users can browse thousands of titles, search dynamically, filter by genre and status, sort results, view rich details in a glassmorphic modal, and manage a persistent watchlist.
+- Tech stack: React, Vite, Tailwind CSS, TVMaze API, Context API, localStorage
+- Links: [Live site](https://movieexplorer-pink.vercel.app) | [GitHub](https://github.com/MSabbirHossen/movieExplorer) | [Case study](/projects/movie-explorer)
 ### Life OS
 Life OS is a production-ready, single-user personal operating system that combines journaling, finance, habits, fitness, goals, Islamic tracking, study management, and reporting into one unified dashboard.
 - Tech stack: React, Vite, Tailwind CSS, Node.js, Express, MongoDB, Mongoose, JWT, bcrypt, Recharts, Lucide React, Firebase, Vercel

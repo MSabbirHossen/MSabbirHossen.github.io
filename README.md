@@ -136,6 +136,18 @@ I believe technology should be created with intention—to solve problems and cr
 
 ## 📌 Featured Projects
 
+### 🎬 MovieExplorer - Discover TV Shows & Movies
+
+<p align="center">
+  <img src="public/screenshots/movie-explorer-hero.png" alt="MovieExplorer application preview" width="100%"/>
+</p>
+
+A modern React application for discovering TV shows and movies through the TVMaze API. Browse a paginated catalog, search with debounced requests, filter and sort titles, inspect rich show details, and save favorites to a persistent watchlist.
+
+- **Tech stack:** React 19, Vite, Tailwind CSS v4, Context API, TVMaze REST API, localStorage
+- 🔗 **Live Demo:** [MovieExplorer](https://movieexplorer-pink.vercel.app)
+- 🔗 **Repository:** [MovieExplorer_REPO_LINK](https://github.com/MSabbirHossen/movieExplorer)
+
 ### 🧭 Life OS
 
 A production-ready, single-user personal operating system that brings journaling, finance, habits, fitness, goals, Islamic tracking, study management, and reporting into one unified dashboard. Built with React, Vite, Tailwind CSS, Node.js, Express, MongoDB, JWT authentication, Recharts, and secure deployment workflows.
