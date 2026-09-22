@@ -3,8 +3,10 @@ import { gameHub } from './gameHub';
 import { importExportHub } from './importExportHub';
 import { lifeOsProject } from './life-os.project';
 import { personalAppStore } from './personalAppStore';
+import { movieExplorer } from './movieExplorer';
 
 export const projects = [
+  movieExplorer,
   lifeOsProject,
   digitalLifeLessons,
   importExportHub,

@@ -67,7 +67,7 @@ export const lifeOsProject = {
   teamSize: '1',
   client: 'Personal',
   difficulty: 'Advanced',
-  featuredOrder: 1,
+  featuredOrder: 2,
   features: [
     'Unified daily dashboard aggregating mood, tasks, habits, health, finance, and study progress.',
     'Journal and reflection system with guided prompts and daily logging workflows.',
