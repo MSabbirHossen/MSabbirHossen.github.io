@@ -1,9 +1,11 @@
 import { digitalLifeLessons } from './digitalLifeLessons';
 import { gameHub } from './gameHub';
 import { importExportHub } from './importExportHub';
+import { lifeOsProject } from './life-os.project';
 import { personalAppStore } from './personalAppStore';
 
 export const projects = [
+  lifeOsProject,
   digitalLifeLessons,
   importExportHub,
   gameHub,

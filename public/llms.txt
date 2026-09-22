@@ -16,6 +16,10 @@ Full-stack developer focused on building practical web applications with MERN, A
 
 ## Projects
 
+### Life OS
+Life OS is a production-ready, single-user personal operating system that combines journaling, finance, habits, fitness, goals, Islamic tracking, study management, and reporting into one unified dashboard.
+- Tech stack: React, Vite, Tailwind CSS, Node.js, Express, MongoDB, Mongoose, JWT, bcrypt, Recharts, Lucide React, Firebase, Vercel
+- Links: [Live site](https://lifeosclient.vercel.app) | [GitHub](https://github.com/MSabbirHossen/Life-OS) | [Case study](/projects/life-os)
 ### Digital Life Lessons
 Built a full-stack learning and discussion platform for sharing practical life lessons with authenticated access, premium payment workflows, and admin moderation. Implemented with React, Node.js/Express, MongoDB, Firebase, and Stripe to demonstrate end-to-end MERN delivery, secure integration, and role-based access.
 - Tech stack: MongoDB, Express.js, React 18, Node.js, Mongoose, Vite, Tailwind CSS v3, Firebase Auth, Firebase Admin SDK, Stripe API, React Router v6, Axios, React Toastify, SweetAlert2, Lottie React
