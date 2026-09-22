@@ -26,16 +26,16 @@
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
-      "updated": "2026-09-22T03:40:39Z"
+      "updated": "2026-09-22T14:31:04Z"
     },
     {
       "name": "Life-OS",
-      "description": "No description available",
+      "description": "Life OS is a production-ready, single-user personal operating system that combines journaling, finance, habits, fitness, goals, Islamic tracking, study management, and reporting into one unified dashboard.",
       "language": "JavaScript",
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/Life-OS",
-      "updated": "2026-09-20T15:52:58Z"
+      "updated": "2026-09-22T13:53:53Z"
     },
     {
       "name": "lifeosserver",
@@ -44,7 +44,7 @@
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/lifeosserver",
-      "updated": "2026-09-20T11:43:33Z"
+      "updated": "2026-09-22T13:47:33Z"
     },
     {
       "name": "lifeosclient",
@@ -53,7 +53,7 @@
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/lifeosclient",
-      "updated": "2026-09-20T11:42:07Z"
+      "updated": "2026-09-22T13:42:44Z"
     },
     {
       "name": "assignment-2-foundation-program",
@@ -74,5 +74,5 @@
       "updated": "2026-09-18T13:10:00Z"
     }
   ],
-  "updatedAt": "2026-09-22T11:05:19.266Z"
+  "updatedAt": "2026-09-22T16:25:36.388Z"
 }
