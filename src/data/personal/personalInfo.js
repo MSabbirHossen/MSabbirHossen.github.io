@@ -17,7 +17,7 @@ export const personalInfo = {
   studyingAt: 'Islamic University of Madinah',
   email: 'mshossen724@gmail.com',
   github: 'https://github.com/MSabbirHossen',
-  linkedin: 'https://www.linkedin.com/in/ms-hossen/',
+  linkedin: 'https://www.linkedin.com/in/sabb1rhossen/',
   facebook: 'https://web.facebook.com/sabb1rhossen/',
   resumeUrl: '/resume/Md_Sabbir_Hossen_Resume.pdf',
   website: 'https://msabbirhossen.github.io/',

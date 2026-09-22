@@ -26,7 +26,7 @@ export default function Home() {
     name: 'Md. Sabbir Hossen',
     jobTitle: 'MERN Stack Developer',
     url: canonicalUrl,
-    sameAs: ['https://github.com/MSabbirHossen', 'https://www.linkedin.com/in/ms-hossen/'],
+    sameAs: ['https://github.com/MSabbirHossen', 'https://www.linkedin.com/in/sabb1rhossen/'],
     knowsAbout: ['React', 'Node.js', 'Express.js', 'MongoDB', 'Firebase', 'Cybersecurity'],
   };
 
