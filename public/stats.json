@@ -7,7 +7,7 @@
   "topLanguages": [
     {
       "name": "JavaScript",
-      "count": 34
+      "count": 35
     },
     {
       "name": "HTML",
@@ -20,22 +20,49 @@
   ],
   "recentRepos": [
     {
-      "name": "assignment-2-foundation-program",
-      "description": "No description available",
-      "language": "Unknown",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/assignment-2-foundation-program",
-      "updated": "2026-09-19T09:42:25Z"
-    },
-    {
       "name": "MSabbirHossen.github.io",
       "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
       "language": "JavaScript",
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
-      "updated": "2026-09-19T03:30:42Z"
+      "updated": "2026-09-22T03:40:39Z"
+    },
+    {
+      "name": "Life-OS",
+      "description": "No description available",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/Life-OS",
+      "updated": "2026-09-20T15:52:58Z"
+    },
+    {
+      "name": "lifeosserver",
+      "description": "No description available",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/lifeosserver",
+      "updated": "2026-09-20T11:43:33Z"
+    },
+    {
+      "name": "lifeosclient",
+      "description": "Client Side of life OS.",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/lifeosclient",
+      "updated": "2026-09-20T11:42:07Z"
+    },
+    {
+      "name": "assignment-2-foundation-program",
+      "description": "A modern, responsive, and feature-rich Movie & TV Show Explorer Application built with React 19, Vite, Tailwind CSS, and the TVMaze API.",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/assignment-2-foundation-program",
+      "updated": "2026-09-19T14:49:25Z"
     },
     {
       "name": "ShakilAnwarPortfolioFrontend",
@@ -45,34 +72,7 @@
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/ShakilAnwarPortfolioFrontend",
       "updated": "2026-09-18T13:10:00Z"
-    },
-    {
-      "name": "Shakil-Anwar-Resume",
-      "description": "Shakil-Anwar-Resume",
-      "language": "JavaScript",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/Shakil-Anwar-Resume",
-      "updated": "2026-09-18T12:53:49Z"
-    },
-    {
-      "name": "Spoon-Knife",
-      "description": "This repo is for demonstration purposes only.",
-      "language": "Unknown",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/Spoon-Knife",
-      "updated": "2026-09-16T20:03:00Z"
-    },
-    {
-      "name": "lifeosserver",
-      "description": "No description available",
-      "language": "JavaScript",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/lifeosserver",
-      "updated": "2026-09-15T17:23:30Z"
     }
   ],
-  "updatedAt": "2026-09-19T10:26:01.650Z"
+  "updatedAt": "2026-09-22T11:05:19.266Z"
 }
