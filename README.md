@@ -218,13 +218,13 @@ A vibrant, urban-themed web application for discovering, exploring, and download
 
 ## 📍 Contact Information
 
-| Field            | Details                                                    |
-| ---------------- | ---------------------------------------------------------- |
-| 📍 **Location**  | Madinah, Saudi Arabia                                      |
-| 📧 **Email**     | mshossen724@gmail.com                                      |
-| 🌐 **Portfolio** | [PORTFOLIO_URL](https://msabbirhossen.github.io/) |
+| Field            | Details                                                       |
+| ---------------- | ------------------------------------------------------------- |
+| 📍 **Location**  | Madinah, Saudi Arabia                                         |
+| 📧 **Email**     | mshossen724@gmail.com                                         |
+| 🌐 **Portfolio** | [PORTFOLIO_URL](https://msabbirhossen.github.io/)             |
 | 💼 **Linkedin**  | [LINKEDIN_PORFILE](https://www.linkedin.com/in/sabb1rhossen/) |
-| 💼 **Facebook**  | [Facebook_PORFILE](https://web.facebook.com/sabb1rhossen/) |
+| 💼 **Facebook**  | [Facebook_PORFILE](https://web.facebook.com/sabb1rhossen/)    |
 
 ---
 
