@@ -65,7 +65,7 @@ export const gameHub = {
   teamSize: '1',
   client: 'Personal',
   difficulty: 'Advanced',
-  featuredOrder: 1,
+  featuredOrder: 5,
   keyFeatures: [
     'Browse comprehensive game library with indie and AAA titles',
     'Advanced search and category filtering with real-time results',

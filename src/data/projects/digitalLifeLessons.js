@@ -123,7 +123,7 @@ export const digitalLifeLessons = {
   teamSize: '1',
   client: 'Personal',
   difficulty: 'Advanced',
-  featuredOrder: 1,
+  featuredOrder: 3,
   features: [
     'Implemented lesson CRUD workflows with public and private visibility so users can control who sees their content.',
     'Built a lesson reporting system to support moderation and content review.',
