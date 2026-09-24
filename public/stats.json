@@ -20,22 +20,31 @@
   ],
   "recentRepos": [
     {
-      "name": "Life-OS",
-      "description": "Life OS is a production-ready, single-user personal operating system that combines journaling, finance, habits, fitness, goals, Islamic tracking, study management, and reporting into one unified dashboard.",
-      "language": "JavaScript",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/Life-OS",
-      "updated": "2026-09-24T11:13:03Z"
-    },
-    {
       "name": "lifeosclient",
       "description": "Client Side of life OS.",
       "language": "JavaScript",
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/lifeosclient",
-      "updated": "2026-09-24T10:40:12Z"
+      "updated": "2026-09-24T12:50:05Z"
+    },
+    {
+      "name": "Life-OS",
+      "description": "Life OS is a production-ready, single-user personal operating system that combines journaling, finance, habits, fitness, goals, Islamic tracking, study management, and reporting into one unified dashboard.",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/Life-OS",
+      "updated": "2026-09-24T12:46:44Z"
+    },
+    {
+      "name": "MSabbirHossen.github.io",
+      "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
+      "updated": "2026-09-24T11:14:37Z"
     },
     {
       "name": "lifeosserver",
@@ -45,15 +54,6 @@
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/lifeosserver",
       "updated": "2026-09-24T10:24:47Z"
-    },
-    {
-      "name": "MSabbirHossen.github.io",
-      "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
-      "language": "JavaScript",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
-      "updated": "2026-09-24T03:31:02Z"
     },
     {
       "name": "movieExplorer",
@@ -74,5 +74,5 @@
       "updated": "2026-09-19T14:49:25Z"
     }
   ],
-  "updatedAt": "2026-09-24T11:14:32.371Z"
+  "updatedAt": "2026-09-24T16:37:55.885Z"
 }
