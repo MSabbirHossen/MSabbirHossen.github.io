@@ -20,6 +20,15 @@
   ],
   "recentRepos": [
     {
+      "name": "MSabbirHossen.github.io",
+      "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
+      "updated": "2026-09-26T15:56:05Z"
+    },
+    {
       "name": "310-Landing-Page-Freebies",
       "description": "310 Landing Page Freebies",
       "language": "Unknown",
@@ -27,15 +36,6 @@
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/310-Landing-Page-Freebies",
       "updated": "2026-09-26T12:18:23Z"
-    },
-    {
-      "name": "MSabbirHossen.github.io",
-      "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
-      "language": "JavaScript",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
-      "updated": "2026-09-26T10:56:14Z"
     },
     {
       "name": "lifeosclient",
@@ -74,5 +74,5 @@
       "updated": "2026-09-22T18:11:12Z"
     }
   ],
-  "updatedAt": "2026-09-26T15:56:01.224Z"
+  "updatedAt": "2026-09-26T20:43:38.050Z"
 }
