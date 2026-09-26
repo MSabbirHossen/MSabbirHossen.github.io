@@ -1,5 +1,5 @@
 {
-  "publicRepos": 59,
+  "publicRepos": 60,
   "followers": 4,
   "following": 7,
   "totalStars": 6,
@@ -20,13 +20,22 @@
   ],
   "recentRepos": [
     {
+      "name": "310-Landing-Page-Freebies",
+      "description": "310 Landing Page Freebies",
+      "language": "Unknown",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/310-Landing-Page-Freebies",
+      "updated": "2026-09-26T12:18:23Z"
+    },
+    {
       "name": "MSabbirHossen.github.io",
       "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
       "language": "JavaScript",
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
-      "updated": "2026-09-26T03:54:05Z"
+      "updated": "2026-09-26T10:56:14Z"
     },
     {
       "name": "lifeosclient",
@@ -63,16 +72,7 @@
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/movieExplorer",
       "updated": "2026-09-22T18:11:12Z"
-    },
-    {
-      "name": "assignment-2-foundation-program",
-      "description": "A modern, responsive, and feature-rich Movie & TV Show Explorer Application built with React 19, Vite, Tailwind CSS, and the TVMaze API.",
-      "language": "JavaScript",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/assignment-2-foundation-program",
-      "updated": "2026-09-19T14:49:25Z"
     }
   ],
-  "updatedAt": "2026-09-26T10:56:10.148Z"
+  "updatedAt": "2026-09-26T15:56:01.224Z"
 }
