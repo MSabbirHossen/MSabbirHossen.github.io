@@ -20,13 +20,40 @@
   ],
   "recentRepos": [
     {
+      "name": "lifeosclient",
+      "description": "Client Side of life OS.",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/lifeosclient",
+      "updated": "2026-09-28T14:44:51Z"
+    },
+    {
+      "name": "Life-OS",
+      "description": "Life OS is a production-ready, single-user personal operating system that combines journaling, finance, habits, fitness, goals, Islamic tracking, study management, and reporting into one unified dashboard.",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/Life-OS",
+      "updated": "2026-09-28T14:44:36Z"
+    },
+    {
+      "name": "lifeosserver",
+      "description": "No description available",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/lifeosserver",
+      "updated": "2026-09-28T14:27:03Z"
+    },
+    {
       "name": "MSabbirHossen.github.io",
       "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
       "language": "JavaScript",
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
-      "updated": "2026-09-28T04:05:06Z"
+      "updated": "2026-09-28T13:06:24Z"
     },
     {
       "name": "310-Landing-Page-Freebies",
@@ -38,33 +65,6 @@
       "updated": "2026-09-26T12:18:23Z"
     },
     {
-      "name": "lifeosclient",
-      "description": "Client Side of life OS.",
-      "language": "JavaScript",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/lifeosclient",
-      "updated": "2026-09-24T12:50:05Z"
-    },
-    {
-      "name": "Life-OS",
-      "description": "Life OS is a production-ready, single-user personal operating system that combines journaling, finance, habits, fitness, goals, Islamic tracking, study management, and reporting into one unified dashboard.",
-      "language": "JavaScript",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/Life-OS",
-      "updated": "2026-09-24T12:46:44Z"
-    },
-    {
-      "name": "lifeosserver",
-      "description": "No description available",
-      "language": "JavaScript",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/lifeosserver",
-      "updated": "2026-09-24T10:24:47Z"
-    },
-    {
       "name": "movieExplorer",
       "description": "A modern, responsive, and feature-rich Movie & TV Show Explorer application built with React 19, Vite, and Tailwind CSS, powered by the TVMaze API. Users can browse thousands of titles, search dynamically, filter by genre and status, sort results, and manage a persistent watchlist",
       "language": "JavaScript",
@@ -74,5 +74,5 @@
       "updated": "2026-09-22T18:11:12Z"
     }
   ],
-  "updatedAt": "2026-09-28T13:06:17.947Z"
+  "updatedAt": "2026-09-28T22:59:40.923Z"
 }
