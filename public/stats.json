@@ -24,6 +24,15 @@
   ],
   "recentRepos": [
     {
+      "name": "MSabbirHossen.github.io",
+      "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
+      "updated": "2026-09-29T21:58:08Z"
+    },
+    {
       "name": "lifeosclient",
       "description": "Client Side of life OS.",
       "language": "JavaScript",
@@ -67,16 +76,7 @@
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/myPhoneServer",
       "updated": "2026-09-29T17:58:48Z"
-    },
-    {
-      "name": "Personal_App-Store_Authentication",
-      "description": "A modern, responsive web application for discovering, browsing, and managing applications. Built with React and Vite, featuring real-time search, sorting, and local app installation tracking.",
-      "language": "JavaScript",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/Personal_App-Store_Authentication",
-      "updated": "2026-09-29T14:33:05Z"
     }
   ],
-  "updatedAt": "2026-09-29T21:58:02.727Z"
+  "updatedAt": "2026-09-30T04:21:53.376Z"
 }
