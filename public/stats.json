@@ -1,5 +1,5 @@
 {
-  "publicRepos": 60,
+  "publicRepos": 61,
   "followers": 4,
   "following": 7,
   "totalStars": 5,
@@ -24,13 +24,49 @@
   ],
   "recentRepos": [
     {
+      "name": "Personal_App-Store_Authentication",
+      "description": "A modern, responsive web application for discovering, browsing, and managing applications. Built with React and Vite, featuring real-time search, sorting, and local app installation tracking.",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/Personal_App-Store_Authentication",
+      "updated": "2026-10-06T21:30:54Z"
+    },
+    {
+      "name": "Personal_App-Store",
+      "description": "No description available",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/Personal_App-Store",
+      "updated": "2026-10-06T20:16:15Z"
+    },
+    {
+      "name": "Online-Game-Library",
+      "description": "A vibrant, urban-themed web application for discovering, exploring, and downloading indie games and AAA titles. GameHub provides an engaging platform for gamers to browse games, view detailed information, and connect with gaming communities.",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/Online-Game-Library",
+      "updated": "2026-10-06T20:12:59Z"
+    },
+    {
+      "name": "ETA",
+      "description": "Exploratory Training Academy (ETA) is a complete digital education management platform designed for an educational institution that may operate fully online, physically, or in a hybrid model.",
+      "language": "Unknown",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/ETA",
+      "updated": "2026-10-06T12:57:26Z"
+    },
+    {
       "name": "MSabbirHossen.github.io",
       "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
       "language": "JavaScript",
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
-      "updated": "2026-10-06T05:14:32Z"
+      "updated": "2026-10-06T12:53:23Z"
     },
     {
       "name": "lifeosclient",
@@ -40,43 +76,7 @@
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/lifeosclient",
       "updated": "2026-09-29T21:30:09Z"
-    },
-    {
-      "name": "Life-OS",
-      "description": "Life OS is a production-ready, single-user personal operating system that combines journaling, finance, habits, fitness, goals, Islamic tracking, study management, and reporting into one unified dashboard.",
-      "language": "JavaScript",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/Life-OS",
-      "updated": "2026-09-29T21:28:32Z"
-    },
-    {
-      "name": "React_Pracrice-World-on-the-go",
-      "description": "No description available",
-      "language": "CSS",
-      "stars": 1,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/React_Pracrice-World-on-the-go",
-      "updated": "2026-09-29T18:08:20Z"
-    },
-    {
-      "name": "react-conceptual-project",
-      "description": "No description available",
-      "language": "JavaScript",
-      "stars": 1,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/react-conceptual-project",
-      "updated": "2026-09-29T18:04:47Z"
-    },
-    {
-      "name": "myPhoneServer",
-      "description": "No description available",
-      "language": "JavaScript",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/myPhoneServer",
-      "updated": "2026-09-29T17:58:48Z"
     }
   ],
-  "updatedAt": "2026-10-06T12:53:18.546Z"
+  "updatedAt": "2026-10-06T22:24:45.767Z"
 }
