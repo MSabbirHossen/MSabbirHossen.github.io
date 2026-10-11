@@ -14,15 +14,24 @@
       "count": 12
     },
     {
-      "name": "CSS",
+      "name": "TypeScript",
       "count": 2
     },
     {
-      "name": "TypeScript",
-      "count": 1
+      "name": "CSS",
+      "count": 2
     }
   ],
   "recentRepos": [
+    {
+      "name": "ETA",
+      "description": "Exploratory Training Academy (ETA) is a complete digital education management platform designed for an educational institution that may operate fully online, physically, or in a hybrid model.",
+      "language": "TypeScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/ETA",
+      "updated": "2026-10-11T15:35:38Z"
+    },
     {
       "name": "MSabbirHossen.github.io",
       "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
@@ -30,7 +39,7 @@
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
-      "updated": "2026-10-11T04:26:42Z"
+      "updated": "2026-10-11T12:14:07Z"
     },
     {
       "name": "Personal_App-Store_Authentication",
@@ -60,15 +69,6 @@
       "updated": "2026-10-06T20:12:59Z"
     },
     {
-      "name": "ETA",
-      "description": "Exploratory Training Academy (ETA) is a complete digital education management platform designed for an educational institution that may operate fully online, physically, or in a hybrid model.",
-      "language": "Unknown",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/ETA",
-      "updated": "2026-10-06T12:57:26Z"
-    },
-    {
       "name": "lifeosclient",
       "description": "Client Side of life OS.",
       "language": "JavaScript",
@@ -78,5 +78,5 @@
       "updated": "2026-09-29T21:30:09Z"
     }
   ],
-  "updatedAt": "2026-10-11T12:14:02.485Z"
+  "updatedAt": "2026-10-11T21:35:08.204Z"
 }
