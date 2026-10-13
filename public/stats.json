@@ -1,8 +1,8 @@
 {
-  "publicRepos": 58,
+  "publicRepos": 61,
   "followers": 4,
   "following": 7,
-  "totalStars": 6,
+  "totalStars": 5,
   "totalForks": 0,
   "topLanguages": [
     {
@@ -14,8 +14,12 @@
       "count": 12
     },
     {
+      "name": "TypeScript",
+      "count": 2
+    },
+    {
       "name": "CSS",
-      "count": 1
+      "count": 2
     }
   ],
   "recentRepos": [
@@ -26,25 +30,43 @@
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
-      "updated": "2026-09-22T14:31:04Z"
+      "updated": "2026-10-13T00:13:54Z"
     },
     {
-      "name": "Life-OS",
-      "description": "Life OS is a production-ready, single-user personal operating system that combines journaling, finance, habits, fitness, goals, Islamic tracking, study management, and reporting into one unified dashboard.",
+      "name": "ETA",
+      "description": "Exploratory Training Academy (ETA) is a complete digital education management platform designed for an educational institution that may operate fully online, physically, or in a hybrid model.",
+      "language": "TypeScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/ETA",
+      "updated": "2026-10-11T15:35:38Z"
+    },
+    {
+      "name": "Personal_App-Store_Authentication",
+      "description": "A modern, responsive web application for discovering, browsing, and managing applications. Built with React and Vite, featuring real-time search, sorting, and local app installation tracking.",
       "language": "JavaScript",
       "stars": 0,
       "forks": 0,
-      "url": "https://github.com/MSabbirHossen/Life-OS",
-      "updated": "2026-09-22T13:53:53Z"
+      "url": "https://github.com/MSabbirHossen/Personal_App-Store_Authentication",
+      "updated": "2026-10-06T21:30:54Z"
     },
     {
-      "name": "lifeosserver",
+      "name": "Personal_App-Store",
       "description": "No description available",
       "language": "JavaScript",
       "stars": 0,
       "forks": 0,
-      "url": "https://github.com/MSabbirHossen/lifeosserver",
-      "updated": "2026-09-22T13:47:33Z"
+      "url": "https://github.com/MSabbirHossen/Personal_App-Store",
+      "updated": "2026-10-06T20:16:15Z"
+    },
+    {
+      "name": "Online-Game-Library",
+      "description": "A vibrant, urban-themed web application for discovering, exploring, and downloading indie games and AAA titles. GameHub provides an engaging platform for gamers to browse games, view detailed information, and connect with gaming communities.",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/Online-Game-Library",
+      "updated": "2026-10-06T20:12:59Z"
     },
     {
       "name": "lifeosclient",
@@ -53,26 +75,8 @@
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/lifeosclient",
-      "updated": "2026-09-22T13:42:44Z"
-    },
-    {
-      "name": "assignment-2-foundation-program",
-      "description": "A modern, responsive, and feature-rich Movie & TV Show Explorer Application built with React 19, Vite, Tailwind CSS, and the TVMaze API.",
-      "language": "JavaScript",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/assignment-2-foundation-program",
-      "updated": "2026-09-19T14:49:25Z"
-    },
-    {
-      "name": "ShakilAnwarPortfolioFrontend",
-      "description": "No description available",
-      "language": "JavaScript",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/ShakilAnwarPortfolioFrontend",
-      "updated": "2026-09-18T13:10:00Z"
+      "updated": "2026-09-29T21:30:09Z"
     }
   ],
-  "updatedAt": "2026-09-22T16:25:36.388Z"
+  "updatedAt": "2026-10-13T13:42:12.758Z"
 }
