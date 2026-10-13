@@ -1,0 +1,130 @@
+import {
+  FaLock,
+  FaServer,
+  SiDocker,
+  SiExpress,
+  SiNodedotjs,
+  SiPostgresql,
+  SiReact,
+  SiTailwindcss,
+  SiTypescript,
+  SiVite,
+} from '../icons';
+
+export const etaProject = {
+  id: 'eta-digital-education-platform',
+  title: 'Exploratory Training Academy (ETA)',
+  category: 'Full-Stack Education Platform',
+  overview:
+    'A complete digital education management platform designed for educational institutions operating online, physically, or in a hybrid model. Built with TypeScript, React, Node.js, Express, PostgreSQL, and Docker to provide seamless multi-modal learning workflows, automated attendance, dynamic course scheduling, and secure role-based portals.',
+  technologies: [
+    {
+      name: 'TypeScript',
+      icon: SiTypescript,
+    },
+    {
+      name: 'React 19',
+      icon: SiReact,
+    },
+    {
+      name: 'Node.js',
+      icon: SiNodedotjs,
+    },
+    {
+      name: 'Express.js',
+      icon: SiExpress,
+    },
+    {
+      name: 'PostgreSQL',
+      icon: SiPostgresql,
+    },
+    {
+      name: 'Docker',
+      icon: SiDocker,
+    },
+    {
+      name: 'Tailwind CSS',
+      icon: SiTailwindcss,
+    },
+    {
+      name: 'Vite',
+      icon: SiVite,
+    },
+    {
+      name: 'JWT Auth',
+      icon: FaLock,
+    },
+    {
+      name: 'RESTful API',
+      icon: FaServer,
+    },
+  ],
+  architecture: [
+    'TypeScript-based full-stack architecture ensuring strict end-to-end type safety across client interfaces and backend services.',
+    'Modular component hierarchy with responsive glassmorphism layouts tailored for students, instructors, and administrators.',
+    'Express and Node.js REST API layer with controllers, services, and secure middleware protecting endpoints via JWT tokens.',
+    'PostgreSQL relational schema modeling complex course hierarchies, class cohorts, attendance records, and enrollment states.',
+    'Containerized multi-stage Docker configuration ensuring environment parity across development, staging, and production.',
+    'Hybrid delivery infrastructure supporting physical classroom check-ins alongside virtual lecture streams and assignments.',
+  ],
+  challenges: [
+    'Accommodating divergent workflows for online, physical classroom, and hybrid educational delivery without duplicating data structures.',
+    'Managing concurrent student enrollments, conflicting course schedules, and multi-tier prerequisite validations.',
+    'Designing an intuitive role-based permissions matrix spanning Super Admin, Instructor, Student, and Registrar roles.',
+    'Optimizing relational queries in PostgreSQL for student attendance trends, grade aggregation, and institutional performance metrics.',
+  ],
+  lessonsLearned: [
+    'Adopting TypeScript across the full stack drastically reduces contract drift between frontend state and backend APIs.',
+    'Docker containerization streamlines PostgreSQL database migrations and team onboarding across differing developer OS environments.',
+    'Structuring education platforms around flexible delivery models (online/hybrid/physical) creates much higher real-world institutional resilience.',
+    'Designing accessible, uncluttered dashboards encourages consistent daily engagement from both educators and learners.',
+  ],
+  futureImprovements: [
+    'AI-powered personalized learning recommendations and adaptive quizzing based on student performance vectors.',
+    'Advanced analytics dashboard with predictive drop-out detection and institutional KPI tracking.',
+    'LTI (Learning Tools Interoperability) standard integration for plug-and-play third-party LMS tooling.',
+    'WebRTC-powered live audio/video breakout rooms for real-time hybrid collaboration sessions.',
+    'Mobile-first PWA offline synchronization for course content and assignment submissions.',
+  ],
+  features: [
+    'Multi-modal institution support catering to fully remote, physical campus, and hybrid classrooms.',
+    'Comprehensive course management with modular syllabi, multimedia lessons, and grading rubrics.',
+    'Dynamic class scheduling calendar with automated conflict prevention across instructors and rooms.',
+    'Student lifecycle management from admission and cohort enrollment to progress verification and graduation.',
+    'Secure role-based access control (RBAC) separating administrative controls, instructor tools, and student portals.',
+    'Automated attendance tracking and real-time student participation metrics.',
+    'Dockerized deployment pipeline with isolated application, database, and caching containers.',
+  ],
+  keyFeatures: [
+    'Full-Stack TypeScript & React Architecture',
+    'PostgreSQL Relational Data Modeling',
+    'Multi-Modal Learning (Online, Physical, Hybrid)',
+    'Containerized Docker Deployment',
+  ],
+  apiEndpoints: [
+    'GET /api/v1/courses - Fetch paginated courses with modality and instructor filters',
+    'POST /api/v1/enrollments - Enroll student in course cohort with prerequisite validation',
+    'GET /api/v1/schedules - Query room, instructor, and session conflict-free schedules',
+    'POST /api/v1/auth/login - Issue secure JWT tokens with institutional role scopes',
+    'GET /api/v1/analytics/institutional - Aggregate retention, attendance, and completion rates',
+  ],
+  githubUrl: 'https://github.com/MSabbirHossen/ETA',
+  liveUrl: 'https://eta.example.com/',
+  screenshots: ['/screenshots/eta-dashboard.png'],
+  featured: true,
+  status: 'In Development',
+  year: '2026',
+  role: 'Solo Developer',
+  duration: 'Ongoing',
+  teamSize: '1',
+  client: 'Personal',
+  difficulty: 'Advanced',
+  featuredOrder: 1,
+  deployment: 'Docker Containerized Stack on Cloud VPS',
+  performanceMetrics: {
+    lighthousePerformance: '~92+',
+    lighthouseAccessibility: '~96+',
+    lighthouseBestPractices: '~94+',
+    lighthouseSEO: '~92+',
+  },
+};

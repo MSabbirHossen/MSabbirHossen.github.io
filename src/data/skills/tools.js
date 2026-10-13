@@ -1,5 +1,6 @@
 import {
   FaSearch,
+  SiDocker,
   SiEslint,
   SiGit,
   SiGithub,
@@ -15,6 +16,7 @@ export const toolsSkillCategory = {
   items: [
     { name: 'Git', icon: SiGit },
     { name: 'GitHub', icon: SiGithub },
+    { name: 'Docker', icon: SiDocker },
     { name: 'VS Code', icon: VscVscodeInsiders },
     { name: 'npm', icon: SiNpm },
     { name: 'Vercel', icon: SiVercel },

@@ -7,6 +7,7 @@ import {
   SiReact,
   SiReactrouter,
   SiTailwindcss,
+  SiTypescript,
   SiVite,
 } from '../icons';
 
@@ -14,6 +15,7 @@ export const frontendSkillCategory = {
   category: 'Frontend',
   items: [
     { name: 'React 19', icon: SiReact },
+    { name: 'TypeScript', icon: SiTypescript },
     { name: 'JavaScript (ES6+)', icon: SiJavascript },
     { name: 'HTML5', icon: SiHtml5 },
     { name: 'CSS3', icon: FaCss3 },

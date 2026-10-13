@@ -8,30 +8,34 @@ Full-stack developer focused on building practical web applications with MERN, A
 
 ## Skills
 
-- **Frontend:** React 19, JavaScript (ES6+), HTML5, CSS3, Tailwind CSS v4, Framer Motion, Vite, React Router, DaisyUI
-- **Backend:** Node.js, Express.js, MongoDB, Firebase, REST APIs, JWT Authentication
-- **Tools:** Git, GitHub, VS Code, npm, Vercel, ESLint, Prettier, Postman, Chrome DevTools
+- **Frontend:** React 19, TypeScript, JavaScript (ES6+), HTML5, CSS3, Tailwind CSS v4, Framer Motion, Vite, React Router, DaisyUI
+- **Backend:** Node.js, Express.js, MongoDB, PostgreSQL, Firebase, REST APIs, JWT Authentication
+- **Tools:** Git, GitHub, Docker, VS Code, npm, Vercel, ESLint, Prettier, Postman, Chrome DevTools
 - **Soft Skills:** Self-learning, Time Management, Adaptability, Problem Solving, Communication, Teamwork
 - **Learning / Exploring:** Prompt Engineering, Secure Coding Principles, Basic Network Security, AI Coding Assistants, LLM API Integration, OSINT Research, OWASP Top 10 Awareness
 
 ## Projects
 
-### MovieExplorer — Discover TV Shows & Movies
-A modern, responsive, and feature-rich Movie & TV Show Explorer application built with React 19, Vite, and Tailwind CSS, powered by the TVMaze API. Users can browse thousands of titles, search dynamically, filter by genre and status, sort results, view rich details in a glassmorphic modal, and manage a persistent watchlist.
-- Tech stack: React, Vite, Tailwind CSS, TVMaze API, Context API, localStorage
-- Links: [Live site](https://movieexplorer-pink.vercel.app) | [GitHub](https://github.com/MSabbirHossen/movieExplorer) | [Case study](/projects/movie-explorer)
-### Life OS
-Life OS is a production-ready, single-user personal operating system that combines journaling, finance, habits, fitness, goals, Islamic tracking, study management, and reporting into one unified dashboard.
-- Tech stack: React, Vite, Tailwind CSS, Node.js, Express, MongoDB, Mongoose, JWT, bcrypt, Recharts, Lucide React, Firebase, Vercel
-- Links: [Live site](https://lifeosclient.vercel.app) | [GitHub](https://github.com/MSabbirHossen/Life-OS) | [Case study](/projects/life-os)
-### Digital Life Lessons
-Built a full-stack learning and discussion platform for sharing practical life lessons with authenticated access, premium payment workflows, and admin moderation. Implemented with React, Node.js/Express, MongoDB, Firebase, and Stripe to demonstrate end-to-end MERN delivery, secure integration, and role-based access.
-- Tech stack: MongoDB, Express.js, React 18, Node.js, Mongoose, Vite, Tailwind CSS v3, Firebase Auth, Firebase Admin SDK, Stripe API, React Router v6, Axios, React Toastify, SweetAlert2, Lottie React
-- Links: [Live site](https://digital-life-lessons-client.vercel.app/) | [GitHub](https://github.com/MSabbirHossen/Digital-Life-Lessons) | [Case study](/projects/digital-life-lessons)
+### Exploratory Training Academy (ETA)
+A complete digital education management platform designed for educational institutions operating online, physically, or in a hybrid model. Built with TypeScript, React, Node.js, Express, PostgreSQL, and Docker to provide seamless multi-modal learning workflows, automated attendance, dynamic course scheduling, and secure role-based portals.
+- Tech stack: TypeScript, React 19, Node.js, Express.js, PostgreSQL, Docker, Tailwind CSS, Vite, JWT Auth, RESTful API
+- Links: [Live site](https://eta.example.com/) | [GitHub](https://github.com/MSabbirHossen/ETA) | [Case study](/projects/eta-digital-education-platform)
 ### Import Export Hub
 Built a full-stack marketplace for connecting exporters and importers, covering product management, import workflows, and authenticated access. Implemented with React, Node.js/Express, MongoDB Atlas, Firebase, and security middleware to demonstrate MVC architecture, secure API design, and production-focused deployment.
 - Tech stack: MongoDB Atlas, Express.js, React 18, Node.js, Mongoose, Firebase Admin SDK, Vite, React Router, Tailwind CSS, Helmet, Express Rate Limit, Axios
 - Links: [Live site](https://import-export-hub-client.vercel.app/) | [GitHub](https://github.com/MSabbirHossen/export-import-project) | [Case study](/projects/export-import-project)
+### Digital Life Lessons
+Built a full-stack learning and discussion platform for sharing practical life lessons with authenticated access, premium payment workflows, and admin moderation. Implemented with React, Node.js/Express, MongoDB, Firebase, and Stripe to demonstrate end-to-end MERN delivery, secure integration, and role-based access.
+- Tech stack: MongoDB, Express.js, React 18, Node.js, Mongoose, Vite, Tailwind CSS v3, Firebase Auth, Firebase Admin SDK, Stripe API, React Router v6, Axios, React Toastify, SweetAlert2, Lottie React
+- Links: [Live site](https://digital-life-lessons-client.vercel.app/) | [GitHub](https://github.com/MSabbirHossen/Digital-Life-Lessons) | [Case study](/projects/digital-life-lessons)
+### Life OS
+Life OS is a production-ready, single-user personal operating system that combines journaling, finance, habits, fitness, goals, Islamic tracking, study management, and reporting into one unified dashboard.
+- Tech stack: React, Vite, Tailwind CSS, Node.js, Express, MongoDB, Mongoose, JWT, bcrypt, Recharts, Lucide React, Firebase, Vercel
+- Links: [Live site](https://lifeosclient.vercel.app) | [GitHub](https://github.com/MSabbirHossen/Life-OS) | [Case study](/projects/life-os)
+### MovieExplorer — Discover TV Shows & Movies
+A modern, responsive, and feature-rich Movie & TV Show Explorer application built with React 19, Vite, and Tailwind CSS, powered by the TVMaze API. Users can browse thousands of titles, search dynamically, filter by genre and status, sort results, view rich details in a glassmorphic modal, and manage a persistent watchlist.
+- Tech stack: React, Vite, Tailwind CSS, TVMaze API, Context API, localStorage
+- Links: [Live site](https://movieexplorer-pink.vercel.app) | [GitHub](https://github.com/MSabbirHossen/movieExplorer) | [Case study](/projects/movie-explorer)
 ### GameHub - Online Game Library
 Built a modern game library experience for browsing, filtering, and exploring titles with protected routes and authenticated user flows. Implemented with React 19, Firebase, Tailwind CSS v4, DaisyUI, and Framer Motion to demonstrate responsive SPA architecture, state management, and polished UI delivery.
 - Tech stack: Vite 7.2.4, React 19.2.0, Firebase 12.12.1, React Router 7.13.0, React Toastify 11.0.5, React Fast Marquee 1.6.5, React Icons 5.5.0, Tailwind CSS 4.2.4, DaisyUI 5.5.14, Framer Motion 12.0.0, Date-fns 4.1.0

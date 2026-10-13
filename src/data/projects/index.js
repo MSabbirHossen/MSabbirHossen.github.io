@@ -1,15 +1,27 @@
-import { digitalLifeLessons } from './digitalLifeLessons';
-import { gameHub } from './gameHub';
+import { etaProject } from './etaProject';
 import { importExportHub } from './importExportHub';
+import { digitalLifeLessons } from './digitalLifeLessons';
 import { lifeOsProject } from './life-os.project';
-import { personalAppStore } from './personalAppStore';
 import { movieExplorer } from './movieExplorer';
+import { gameHub } from './gameHub';
+import { personalAppStore } from './personalAppStore';
+
+export {
+  etaProject,
+  importExportHub,
+  digitalLifeLessons,
+  lifeOsProject,
+  movieExplorer,
+  gameHub,
+  personalAppStore,
+};
 
 export const projects = [
-  movieExplorer,
-  lifeOsProject,
-  digitalLifeLessons,
+  etaProject,
   importExportHub,
+  digitalLifeLessons,
+  lifeOsProject,
+  movieExplorer,
   gameHub,
   personalAppStore,
 

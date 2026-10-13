@@ -38,8 +38,11 @@ src/data/
 |-- collaboration/preferredCollaboration.js
 `-- projects/
     |-- index.js
-    |-- digitalLifeLessons.js
+    |-- etaProject.js
     |-- importExportHub.js
+    |-- digitalLifeLessons.js
+    |-- life-os.project.js
+    |-- movieExplorer.js
     |-- gameHub.js
     `-- personalAppStore.js
 ```

@@ -1,4 +1,12 @@
-import { FaServer, SiExpress, SiFirebase, SiJsonwebtokens, SiMongodb, SiNodedotjs } from '../icons';
+import {
+  FaServer,
+  SiExpress,
+  SiFirebase,
+  SiJsonwebtokens,
+  SiMongodb,
+  SiNodedotjs,
+  SiPostgresql,
+} from '../icons';
 
 export const backendSkillCategory = {
   category: 'Backend',
@@ -6,6 +14,7 @@ export const backendSkillCategory = {
     { name: 'Node.js', icon: SiNodedotjs },
     { name: 'Express.js', icon: SiExpress },
     { name: 'MongoDB', icon: SiMongodb },
+    { name: 'PostgreSQL', icon: SiPostgresql },
     { name: 'Firebase', icon: SiFirebase },
     { name: 'REST APIs', icon: FaServer },
     { name: 'JWT Authentication', icon: SiJsonwebtokens },

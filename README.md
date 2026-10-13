@@ -73,6 +73,7 @@ I believe technology should be created with intention—to solve problems and cr
   <img title="HTML5" alt="HTML5" src="https://skillicons.dev/icons?i=html"/>
   <img title="CSS3" alt="CSS3" src="https://skillicons.dev/icons?i=css"/>
   <img title="JavaScript" alt="JavaScript" src="https://skillicons.dev/icons?i=javascript"/>
+  <img title="TypeScript" alt="TypeScript" src="https://skillicons.dev/icons?i=ts"/>
   <img title="React" alt="React" src="https://skillicons.dev/icons?i=react"/>
   <img title="Next.js" alt="Next.js" src="https://skillicons.dev/icons?i=nextjs"/>
   <img title="Tailwind CSS" alt="Tailwind CSS" src="https://skillicons.dev/icons?i=tailwind"/>
@@ -84,20 +85,24 @@ I believe technology should be created with intention—to solve problems and cr
   <img title="Node.js" alt="Node.js" src="https://skillicons.dev/icons?i=nodejs"/>
   <img title="Express.js" alt="Express.js" src="https://skillicons.dev/icons?i=express"/>
   <img title="MongoDB" alt="MongoDB" src="https://skillicons.dev/icons?i=mongodb"/>
+  <img title="PostgreSQL" alt="PostgreSQL" src="https://skillicons.dev/icons?i=postgres"/>
   <img title="Firebase" alt="Firebase" src="https://skillicons.dev/icons?i=firebase"/>
 </p>
 
 ### Languages & Databases
 
 <p>
-  <img title="Python" alt="Python" src="https://skillicons.dev/icons?i=python"/>
   <img title="JavaScript" alt="JavaScript" src="https://skillicons.dev/icons?i=javascript"/>
+  <img title="TypeScript" alt="TypeScript" src="https://skillicons.dev/icons?i=ts"/>
+  <img title="Python" alt="Python" src="https://skillicons.dev/icons?i=python"/>
   <img title="MongoDB" alt="MongoDB" src="https://skillicons.dev/icons?i=mongodb"/>
+  <img title="PostgreSQL" alt="PostgreSQL" src="https://skillicons.dev/icons?i=postgres"/>
 </p>
 
 ### Tools & Platforms
 
 <p>
+  <img title="Docker" alt="Docker" src="https://skillicons.dev/icons?i=docker"/>
   <img title="Git" alt="Git" src="https://skillicons.dev/icons?i=git"/>
   <img title="GitHub" alt="GitHub" src="https://skillicons.dev/icons?i=github"/>
   <img title="VS Code" alt="VS Code" src="https://skillicons.dev/icons?i=vscode"/>
@@ -136,6 +141,42 @@ I believe technology should be created with intention—to solve problems and cr
 
 ## 📌 Featured Projects
 
+### 🎓 Exploratory Training Academy (ETA) - Digital Education Platform
+
+<p align="center">
+  <img src="public/screenshots/eta-dashboard.png" alt="Exploratory Training Academy application preview" width="100%"/>
+</p>
+
+A complete digital education management platform designed for educational institutions operating online, physically, or in a hybrid model. Built with TypeScript, React, Node.js, Express, PostgreSQL, and Docker to provide seamless multi-modal learning workflows, automated attendance, dynamic course scheduling, and secure role-based portals.
+
+- **Tech stack:** TypeScript, React 19, Node.js, Express.js, PostgreSQL, Docker, Tailwind CSS, Vite, JWT Auth, RESTful API
+- 🔗 **Live Demo:** [ETA Platform](https://eta.example.com/)
+- 🔗 **Repository:** [ETA Repository](https://github.com/MSabbirHossen/ETA)
+
+### 📦 Import Export Hub
+
+A full-stack MERN marketplace platform that connects exporters with importers. Browse products, manage listings, and streamline the import-export process with MongoDB Atlas, Express.js, React, Node.js, and Firebase Auth.
+
+- **Tech stack:** MongoDB Atlas, Express.js, React 18, Node.js, Firebase Admin SDK, Vite, Tailwind CSS
+- 🔗 **Live Demo:** [Import Export Hub](https://import-export-hub-client.vercel.app/)
+- 🔗 **Repository:** [Import_Export_Hub_REPO_LINK](https://github.com/MSabbirHossen/export-import-project.git)
+
+### 🌐 Digital Life Lessons
+
+A comprehensive platform where users can create, share, and discover meaningful life lessons and personal growth insights. Built with React, Node.js, Express, MongoDB, Firebase, and Stripe.
+
+- **Tech stack:** MongoDB, Express.js, React 18, Node.js, Firebase Auth, Stripe API, Vite, Tailwind CSS
+- 🔗 **Live Demo:** [Digital Life Lessons](https://digital-life-lessons-client.vercel.app/)
+- 🔗 **Repository:** [Digital_Life_Lessons_REPO_LINK](https://github.com/MSabbirHossen/Digital-Life-Lessons.git)
+
+### 🧭 Life OS
+
+A production-ready, single-user personal operating system that brings journaling, finance, habits, fitness, goals, Islamic tracking, study management, and reporting into one unified dashboard. Built with React, Vite, Tailwind CSS, Node.js, Express, MongoDB, JWT authentication, Recharts, and secure deployment workflows.
+
+- **Tech stack:** React, Vite, Tailwind CSS, Node.js, Express, MongoDB, JWT, Recharts
+- 🔗 **Live Demo:** [Life OS](https://lifeosclient.vercel.app)
+- 🔗 **Repository:** [Life_OS_REPO_LINK](https://github.com/MSabbirHossen/Life-OS)
+
 ### 🎬 MovieExplorer - Discover TV Shows & Movies
 
 <p align="center">
@@ -148,32 +189,12 @@ A modern React application for discovering TV shows and movies through the TVMaz
 - 🔗 **Live Demo:** [MovieExplorer](https://movieexplorer-pink.vercel.app)
 - 🔗 **Repository:** [MovieExplorer_REPO_LINK](https://github.com/MSabbirHossen/movieExplorer)
 
-### 🧭 Life OS
-
-A production-ready, single-user personal operating system that brings journaling, finance, habits, fitness, goals, Islamic tracking, study management, and reporting into one unified dashboard. Built with React, Vite, Tailwind CSS, Node.js, Express, MongoDB, JWT authentication, Recharts, and secure deployment workflows.
-
-- 🔗 **Live Demo:** [Life OS](https://lifeosclient.vercel.app)
-- 🔗 **Repository:** [Life_OS_REPO_LINK](https://github.com/MSabbirHossen/Life-OS)
-
-### 🌐 Digital Life Lessons
-
-A comprehensive platform where users can create, share, and discover meaningful life lessons and personal growth insights. Built with React, Node.js, Express, MongoDB, Firebase, and Stripe.
-
-- 🔗 **Live Demo:** [PROJECT_LINK](https://digital-life-lessons-client.vercel.app/)
-- 🔗 **Repository:** [Digital_Life_Lessons_REPO_LINK](https://github.com/MSabbirHossen/Digital-Life-Lessons.git)
-
-### Import Export Hub
-
-A full-stack MERN marketplace platform that connects exporters with importers. Browse products, manage listings, and streamline the import-export process.
-
-- 🔗 **Live Demo:** [PROJECT_LINK](https://import-export-hub-client.vercel.app/)
-- 🔗 **Repository:** [Import_Export_Hub_REPO_LINK](https://github.com/MSabbirHossen/export-import-project.git)
-
-### GameHub - Online Game Library
+### 🎮 GameHub - Online Game Library
 
 A vibrant, urban-themed web application for discovering, exploring, and downloading indie games and AAA titles. GameHub provides an engaging platform for gamers to browse games, view detailed information, and connect with gaming communities.
 
-- 🔗 **Live Demo:** [PROJECT_LINK](https://online-game-library.web.app/)
+- **Tech stack:** React 19, Vite, Firebase, Tailwind CSS v4, DaisyUI, Framer Motion
+- 🔗 **Live Demo:** [GameHub](https://online-game-library.web.app/)
 - 🔗 **Repository:** [GameHub_REPO_LINK](https://github.com/MSabbirHossen/Online-Game-Library.git)
 
 ---
