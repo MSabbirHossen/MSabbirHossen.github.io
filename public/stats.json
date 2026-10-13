@@ -1,5 +1,5 @@
 {
-  "publicRepos": 61,
+  "publicRepos": 62,
   "followers": 4,
   "following": 7,
   "totalStars": 5,
@@ -15,7 +15,7 @@
     },
     {
       "name": "TypeScript",
-      "count": 2
+      "count": 3
     },
     {
       "name": "CSS",
@@ -24,13 +24,22 @@
   ],
   "recentRepos": [
     {
+      "name": "3d-portfolio",
+      "description": "No description available",
+      "language": "TypeScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/3d-portfolio",
+      "updated": "2026-10-13T18:19:22Z"
+    },
+    {
       "name": "MSabbirHossen.github.io",
       "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
       "language": "JavaScript",
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
-      "updated": "2026-10-13T00:13:54Z"
+      "updated": "2026-10-13T16:28:15Z"
     },
     {
       "name": "ETA",
@@ -67,16 +76,7 @@
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/Online-Game-Library",
       "updated": "2026-10-06T20:12:59Z"
-    },
-    {
-      "name": "lifeosclient",
-      "description": "Client Side of life OS.",
-      "language": "JavaScript",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/lifeosclient",
-      "updated": "2026-09-29T21:30:09Z"
     }
   ],
-  "updatedAt": "2026-10-13T13:42:12.758Z"
+  "updatedAt": "2026-10-13T22:22:01.654Z"
 }
