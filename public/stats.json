@@ -24,6 +24,15 @@
   ],
   "recentRepos": [
     {
+      "name": "MSabbirHossen.github.io",
+      "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
+      "updated": "2026-10-13T22:22:06Z"
+    },
+    {
       "name": "3d-portfolio",
       "description": "No description available",
       "language": "TypeScript",
@@ -31,15 +40,6 @@
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/3d-portfolio",
       "updated": "2026-10-13T18:19:22Z"
-    },
-    {
-      "name": "MSabbirHossen.github.io",
-      "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
-      "language": "JavaScript",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
-      "updated": "2026-10-13T16:28:15Z"
     },
     {
       "name": "ETA",
@@ -78,5 +78,5 @@
       "updated": "2026-10-06T20:12:59Z"
     }
   ],
-  "updatedAt": "2026-10-13T22:22:01.654Z"
+  "updatedAt": "2026-10-14T03:50:17.193Z"
 }
