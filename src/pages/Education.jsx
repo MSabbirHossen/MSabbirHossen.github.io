@@ -187,20 +187,17 @@ export default function EducationPage() {
                       </Typography>
                     )}
 
-                    {/* Contextual Badges for Current Study */}
-                    {isCurrent && (
+                    {/* Contextual Badges */}
+                    {item.topics && item.topics.length > 0 && (
                       <div className="flex flex-wrap gap-2 pt-2 border-t border-default/50">
-                        {[
-                          'Computer Science Core',
-                          'Data Structures & Algorithms',
-                          'Software Engineering',
-                          'Information Security',
-                        ].map((topic) => (
+                        {item.topics.map((topic) => (
                           <span
                             key={topic}
                             className="inline-flex items-center gap-1 rounded-lg border border-default bg-surface/80 px-2.5 py-1 text-xs text-secondary font-medium"
                           >
-                            <FaCheckCircle className="h-3 w-3 text-emerald-400" />
+                            <FaCheckCircle
+                              className={`h-3 w-3 ${isCurrent ? 'text-emerald-400' : 'text-accent-secondary'}`}
+                            />
                             {topic}
                           </span>
                         ))}
