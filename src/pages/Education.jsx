@@ -54,7 +54,8 @@ export default function EducationPage() {
           <Reveal>
             <Button
               as={Link}
-              to="/"
+              to="/#education"
+              state={{ scrollToSection: 'education' }}
               variant="ghost"
               size="sm"
               icon={FaArrowLeft}
@@ -219,7 +220,8 @@ export default function EducationPage() {
 
             <Button
               as={Link}
-              to="/projects"
+              to="/#projects"
+              state={{ scrollToSection: 'projects' }}
               variant="primary"
               size="md"
               icon={FaArrowRight}

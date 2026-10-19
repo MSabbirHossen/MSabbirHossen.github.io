@@ -27,7 +27,6 @@ export default function Education({ limit = 2 }) {
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {displayedEducation.map((edu, index) => {
             const isCurrent = edu.period?.toLowerCase().includes('present');
-            const isCompleted = edu.period?.toLowerCase().includes('completed');
             const isArabic = edu.degree?.toLowerCase().includes('arabic');
             const Icon = isArabic ? FaBookOpen : FaGraduationCap;
 
@@ -52,31 +51,12 @@ export default function Education({ limit = 2 }) {
                         >
                           <Icon className="h-6 w-6" aria-hidden="true" />
                         </div>
-                        <div>
-                          <div className="flex flex-wrap items-center gap-2">
-                            {isCurrent && (
-                              <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/25 bg-emerald-500/10 px-2.5 py-0.5 text-xs font-semibold text-emerald-400">
-                                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
-                                Current Study
-                              </span>
-                            )}
-                            {isCompleted && (
-                              <span className="inline-flex items-center gap-1.5 rounded-full border border-accent-secondary/25 bg-accent-secondary/10 px-2.5 py-0.5 text-xs font-semibold text-accent-secondary">
-                                <FaCheckCircle className="h-3 w-3" />
-                                Completed
-                              </span>
-                            )}
-                            <Badge variant={isCurrent ? 'secondary' : 'primary'}>
-                              {edu.period}
-                            </Badge>
-                          </div>
-                          <Typography
-                            variant="h3"
-                            className="mt-1 text-lg font-bold text-primary sm:text-xl"
-                          >
-                            {edu.degree}
-                          </Typography>
-                        </div>
+                        <Typography
+                          variant="h3"
+                          className="text-lg font-bold text-primary sm:text-xl"
+                        >
+                          {edu.degree}
+                        </Typography>
                       </div>
                     </div>
 
@@ -97,19 +77,40 @@ export default function Education({ limit = 2 }) {
                     </div>
                   </div>
 
-                  {edu.topics && edu.topics.length > 0 && (
-                    <div className="mt-5 flex flex-wrap gap-2 border-t border-default/50 pt-4">
-                      {edu.topics.map((item) => (
-                        <span
-                          key={item}
-                          className="inline-flex items-center gap-1 rounded-lg border border-default bg-surface/80 px-2.5 py-1 text-xs font-medium text-secondary"
-                        >
-                          <FaCheckCircle className="h-3 w-3 text-accent-secondary" />
-                          {item}
-                        </span>
-                      ))}
+                  <div>
+                    {edu.topics && edu.topics.length > 0 && (
+                      <div className="mt-5 flex flex-wrap gap-2 border-t border-default/50 pt-4">
+                        {edu.topics.map((item) => (
+                          <span
+                            key={item}
+                            className="inline-flex items-center gap-1 rounded-lg border border-default bg-surface/80 px-2.5 py-1 text-xs font-medium text-secondary"
+                          >
+                            <FaCheckCircle className="h-3 w-3 text-accent-secondary" />
+                            {item}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+
+                    <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-default/50 pt-3.5">
+                      <div className="flex items-center gap-2">
+                        {isCurrent ? (
+                          <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/25 bg-emerald-500/10 px-2.5 py-0.5 text-xs font-semibold text-emerald-400">
+                            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
+                            Current Study
+                          </span>
+                        ) : (
+                          <span className="inline-flex items-center gap-1.5 rounded-full border border-accent-secondary/25 bg-accent-secondary/10 px-2.5 py-0.5 text-xs font-semibold text-accent-secondary">
+                            <FaCheckCircle className="h-3 w-3" />
+                            Completed
+                          </span>
+                        )}
+                      </div>
+                      {edu.period && edu.period.toLowerCase() !== 'completed' && (
+                        <Badge variant={isCurrent ? 'secondary' : 'primary'}>{edu.period}</Badge>
+                      )}
                     </div>
-                  )}
+                  </div>
                 </Card>
               </Reveal>
             );
