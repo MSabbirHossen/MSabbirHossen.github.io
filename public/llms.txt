@@ -11,8 +11,8 @@ Full-stack developer focused on building practical web applications with MERN, A
 - **Frontend:** React 19, TypeScript, JavaScript (ES6+), HTML5, CSS3, Tailwind CSS v4, Framer Motion, Vite, React Router, DaisyUI
 - **Backend:** Node.js, Express.js, MongoDB, PostgreSQL, Firebase, REST APIs, JWT Authentication
 - **Tools:** Git, GitHub, Docker, VS Code, npm, Vercel, ESLint, Prettier, Postman, Chrome DevTools
-- **Soft Skills:** Self-learning, Time Management, Adaptability, Problem Solving, Communication, Teamwork
 - **Learning / Exploring:** Prompt Engineering, Secure Coding Principles, Basic Network Security, AI Coding Assistants, LLM API Integration, OSINT Research, OWASP Top 10 Awareness
+- **Soft Skills:** Self-learning, Time Management, Adaptability, Problem Solving, Communication, Teamwork
 
 ## Projects
 
