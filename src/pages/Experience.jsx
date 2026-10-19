@@ -65,7 +65,8 @@ export default function ExperiencePage() {
           <Reveal>
             <Button
               as={Link}
-              to="/"
+              to="/#experience"
+              state={{ scrollToSection: 'experience' }}
               variant="ghost"
               size="sm"
               icon={FaArrowLeft}
