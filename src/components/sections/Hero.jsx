@@ -16,7 +16,7 @@ export default function Hero() {
       id="hero"
       className="relative overflow-hidden min-h-[calc(100vh-6rem)] flex items-center"
     >
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.18),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(6,182,212,0.12),transparent_28%)]" />
+      <div className="absolute inset-0 pointer-events-none dark:bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.18),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(6,182,212,0.12),transparent_28%)] bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.06),transparent_40%),radial-gradient(circle_at_bottom_right,rgba(14,116,144,0.04),transparent_30%)]" />
       <div className="relative mx-auto grid w-full max-w-7xl items-center gap-12 px-6 lg:grid-cols-[1.2fr_0.8fr]">
         <HeroContent personalInfo={personalInfo} onContact={scrollToContact} />
 

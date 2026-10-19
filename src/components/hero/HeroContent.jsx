@@ -9,7 +9,7 @@ import { heroContentVariants } from './heroVariants';
 
 const HeroContent = ({ personalInfo, onContact }) => {
   const shouldReduceMotion = useReducedMotion();
-  const { name, title, secondaryTitle, github, linkedin, resumeUrl, availability } = personalInfo;
+  const { name, title, github, linkedin, resumeUrl, availability } = personalInfo;
   const completedProjects = portfolioData.projects.filter(
     (project) => project.status === 'Completed'
   ).length;
@@ -22,12 +22,6 @@ const HeroContent = ({ personalInfo, onContact }) => {
       animate="visible"
     >
       <div className="space-y-4">
-        <Typography
-          variant="body"
-          className="font-semibold uppercase tracking-[0.3em] text-accent-secondary"
-        >
-          {secondaryTitle}
-        </Typography>
         <Typography variant="h1" gradient className="max-w-3xl text-balance">
           {name}
         </Typography>
