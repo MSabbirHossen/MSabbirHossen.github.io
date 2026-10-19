@@ -5,23 +5,24 @@ import { FaCheckCircle, FaHandshake } from 'react-icons/fa';
 const CollaborationCard = () => {
   const { preferredCollaboration } = portfolioData;
   return (
-    <div>
-      <div className="rounded-2xl border border-default bg-surface/70 p-4">
-        <Typography
-          variant="subtitle"
-          className="flex items-center gap-3 text-sm font-medium text-primary"
-        >
-          <FaHandshake className="h-5 w-5 text-accent-secondary" />
-          Preferred Collaboration
-        </Typography>
-        <ul className="mt-3 space-y-2 text-sm text-secondary">
-          {preferredCollaboration.map((item, index) => (
-            <li className="flex items-center gap-2 break-all text-secondary" key={index}>
-              <FaCheckCircle className="h-4 w-4 shrink-0 text-accent-secondary" />
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
+    <div className="rounded-xl border border-default bg-surface/60 p-3.5">
+      <Typography
+        variant="subtitle"
+        className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-secondary mb-2"
+      >
+        <FaHandshake className="h-4 w-4 text-accent-secondary" />
+        Preferred Collaboration
+      </Typography>
+      <div className="flex flex-wrap gap-1.5">
+        {preferredCollaboration.map((item, index) => (
+          <span
+            key={index}
+            className="inline-flex items-center gap-1.5 rounded-lg border border-default bg-surface/80 px-2.5 py-1 text-xs text-secondary font-medium"
+          >
+            <FaCheckCircle className="h-3 w-3 text-accent-secondary shrink-0" />
+            <span>{item}</span>
+          </span>
+        ))}
       </div>
     </div>
   );

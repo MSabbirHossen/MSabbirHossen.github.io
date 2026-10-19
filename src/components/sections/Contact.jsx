@@ -5,20 +5,14 @@ import SectionWrapper from '../common/SectionWrapper';
 
 export default function Contact() {
   return (
-    <SectionWrapper
-      id="contact"
-      eyebrow="Contact"
-      title="Open to Opportunities"
-      description="Available for full-time roles, freelance projects, and collaborations involving MERN, AI-assisted features, and security-minded development."
-      className="py-20 glass"
-    >
+    <SectionWrapper id="contact" title="Get In Touch">
       <div className="mx-auto max-w-6xl px-4">
-        <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-          <Reveal y={18}>
+        <div className="grid gap-6 lg:grid-cols-2 items-stretch">
+          <Reveal y={18} className="h-full">
             <ContactForm />
           </Reveal>
 
-          <Reveal y={18} duration={0.5} delay={0.08} amount={0.2}>
+          <Reveal y={18} duration={0.5} delay={0.08} amount={0.2} className="h-full">
             <ContactInfo />
           </Reveal>
         </div>
