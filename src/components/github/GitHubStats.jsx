@@ -12,8 +12,6 @@ import ProfileViews from './ProfileViews';
 import GitHubAnalytics from './GitHubAnalytics';
 
 const REFERENCE_NOW = Date.now();
-const SECTION_DESCRIPTION =
-  'Public repository activity, language mix, and recent work that show how I build, document, and iterate in public.';
 
 export default function GitHubStats() {
   const [stats, setStats] = useState(null);
@@ -44,13 +42,10 @@ export default function GitHubStats() {
 
   if (loading) {
     return (
-      <section id="github-stats" className="py-20">
+      <section id="github-stats" className="section-shell">
         <div className="mx-auto max-w-6xl px-4">
           <Typography variant="h2" className="text-center text-primary">
             GitHub Activity Snapshot
-          </Typography>
-          <Typography variant="body" className="mt-3 text-center text-secondary">
-            {SECTION_DESCRIPTION}
           </Typography>
 
           <Card className="mt-8 p-8 text-center text-secondary">Loading GitHub statistics...</Card>
@@ -61,13 +56,10 @@ export default function GitHubStats() {
 
   if (error) {
     return (
-      <section id="github-stats" className="py-20">
+      <section id="github-stats" className="section-shell">
         <div className="mx-auto max-w-6xl px-4">
           <Typography variant="h2" className="text-center text-primary">
             GitHub Activity Snapshot
-          </Typography>
-          <Typography variant="body" className="mt-3 text-center text-secondary">
-            {SECTION_DESCRIPTION}
           </Typography>
 
           <Card className="mt-8 p-8 text-center text-secondary">{error}</Card>
@@ -90,13 +82,10 @@ export default function GitHubStats() {
     return `Updated ${days} day${days > 1 ? 's' : ''} ago`;
   }
   return (
-    <section id="github-stats" className="py-20 glass">
+    <section id="github-stats" className="section-shell">
       <div className="mx-auto max-w-6xl px-4">
-        <Typography variant="h2" className="text-center text-primary">
+        <Typography variant="h2" className="text-center text-primary mb-8">
           GitHub Activity Snapshot
-        </Typography>
-        <Typography variant="body" className="my-3 text-center text-secondary">
-          {SECTION_DESCRIPTION}
         </Typography>
 
         <Reveal>

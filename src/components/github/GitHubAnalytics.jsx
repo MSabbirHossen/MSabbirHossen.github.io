@@ -1,9 +1,15 @@
-import React from 'react';
+import { useState } from 'react';
 import Reveal from '../animations/Reveal';
 import Card from '../common/Card';
 import Typography from '../common/Typography';
 
+const PRIMARY_GRAPH_URL =
+  'https://activity-graph.vercel.app/graph?username=MSabbirHossen&theme=github-compact&hide_border=true';
+const FALLBACK_GRAPH_URL = 'https://ghchart.rshah.org/6366f1/MSabbirHossen';
+
 const GitHubAnalytics = () => {
+  const [graphSrc, setGraphSrc] = useState(PRIMARY_GRAPH_URL);
+
   return (
     <Reveal delay={0.45}>
       <div className="mt-12">
@@ -16,7 +22,7 @@ const GitHubAnalytics = () => {
           <img
             src="https://streak-stats.demolab.com?user=MSabbirHossen&theme=github-dark&hide_border=true"
             className="mx-auto w-full max-w-5xl"
-            alt="Contribution Snake"
+            alt="GitHub Streak Stats"
             loading="lazy"
             decoding="async"
             referrerPolicy="no-referrer"
@@ -26,9 +32,14 @@ const GitHubAnalytics = () => {
         {/* Contribution Graph */}
         <Card className="mt-8 p-6">
           <img
-            src="https://github-readme-activity-graph.vercel.app/graph?username=MSabbirHossen&theme=github-compact&hide_border=true"
+            src={graphSrc}
+            onError={() => {
+              if (graphSrc !== FALLBACK_GRAPH_URL) {
+                setGraphSrc(FALLBACK_GRAPH_URL);
+              }
+            }}
             className="mx-auto w-full max-w-5xl"
-            alt="Contribution Snake"
+            alt="GitHub Activity Graph"
             loading="lazy"
             decoding="async"
             referrerPolicy="no-referrer"
