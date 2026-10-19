@@ -1,14 +1,10 @@
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { portfolioData } from '../../data';
 import { forwardRef } from 'react';
-import Typography from '../common/Typography';
 import NavLinks from './NavLinks';
 import Button from '../common/Button';
 import { FaFileAlt } from 'react-icons/fa';
 import { HiX } from 'react-icons/hi';
-
-const { personalInfo } = portfolioData;
-const { name } = personalInfo;
+import Logo from '../common/Logo';
 
 const MobileMenu = forwardRef(function MobileMenu(
   { isOpen, setIsOpen, activeSection, onNavigate },
@@ -39,9 +35,7 @@ const MobileMenu = forwardRef(function MobileMenu(
           >
             <div className="flex h-full flex-col gap-6 p-6">
               <header className="flex items-center justify-between border-b pb-4">
-                <Typography variant="subtitle" className="text-xl font-semibold text-primary">
-                  {name}
-                </Typography>
+                <Logo size="sm" />
                 <button
                   type="button"
                   onClick={() => setIsOpen(false)}
@@ -62,7 +56,7 @@ const MobileMenu = forwardRef(function MobileMenu(
                 target="_blank"
                 rel="noopener noreferrer"
                 size="sm"
-                variant="primary"
+                variant="outline"
               >
                 <FaFileAlt className="h-4 w-4" />
                 Resume

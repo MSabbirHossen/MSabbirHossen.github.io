@@ -7,6 +7,7 @@ import NavLinks from '../layout/NavLinks.jsx';
 import ThemeToggle from '../layout/ThemeToggle';
 import MobileMenu from '../layout/MobileMenu.jsx';
 import { scrollToSection } from '../../lib/navigation';
+import Logo from '../common/Logo';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -125,13 +126,15 @@ export default function Header() {
         <Link
           to="/"
           onClick={(e) => handleNavClick(e, 'hero')}
-          className="text-xl font-semibold text-primary transition-opacity hover:opacity-80"
+          className="transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary rounded-xl"
+          aria-label={`${name} - Home`}
         >
-          {name}
+          <Logo size="md" />
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Primary navigation">
+        <nav className="hidden items-center gap-5 lg:gap-6 md:flex" aria-label="Primary navigation">
           <NavLinks activeSection={activeSection} onNavigate={handleNavClick} />
+          <div className="h-4 w-px bg-default/60" />
           <ThemeToggle />
         </nav>
 

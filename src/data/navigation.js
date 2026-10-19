@@ -24,12 +24,39 @@ export const resources = [
   { label: 'Email', href: `mailto:${email}`, icon: FaEnvelope },
 ];
 
+export const PRIMARY_NAV_LINKS = [
+  { name: 'About', href: 'about' },
+  { name: 'Projects', href: 'projects' },
+  { name: 'Experience', href: 'experience' },
+  { name: 'Skills', href: 'skills' },
+];
+
+export const MORE_NAV_LINKS = [
+  {
+    name: 'Education',
+    href: 'education',
+    to: '/education',
+    icon: FaGraduationCap,
+  },
+  {
+    name: 'Certifications',
+    href: 'certifications',
+    to: '/certifications',
+    icon: FaCertificate,
+  },
+  {
+    name: 'GitHub Stats',
+    href: 'github-stats',
+    icon: FaGithub,
+  },
+];
+
 export const NAV_LINKS = [
   { name: 'Home', href: 'hero' },
   { name: 'About', href: 'about' },
-  { name: 'Skills', href: 'skills' },
-  { name: 'Experience', href: 'experience' },
   { name: 'Projects', href: 'projects' },
+  { name: 'Experience', href: 'experience' },
+  { name: 'Skills', href: 'skills' },
   { name: 'GitHub Stats', href: 'github-stats' },
   { name: 'Education', href: 'education' },
   { name: 'Certifications', href: 'certifications' },
@@ -49,5 +76,9 @@ export const FOOTER_LINKS = [
 
 // Secondary/utility links for footer column 4 ("More").
 export const FOOTER_MORE_LINKS = [
+  { label: 'All Projects', to: '/projects', icon: FaStar },
+  { label: 'Experience Timeline', to: '/experience', icon: FaBriefcase },
+  { label: 'Education Timeline', to: '/education', icon: FaGraduationCap },
+  { label: 'All Certifications', to: '/certifications', icon: FaCertificate },
   { label: 'Current Focus', href: 'current-focus', icon: FaLightbulb },
 ];
