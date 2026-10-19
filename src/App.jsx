@@ -39,11 +39,11 @@ export default function App() {
               <Route path="/" element={<MainLayout />}>
                 <Route index element={<Home />} />
                 <Route path="projects" element={<Projects />} />
+                <Route path="projects/:slug" element={<ProjectDetails />} />
+                <Route path="project/:id" element={<Navigate to="/projects" replace />} />
                 <Route path="experience" element={<Experience />} />
                 <Route path="education" element={<Education />} />
                 <Route path="certifications" element={<Certifications />} />
-                <Route path="projects/:slug" element={<ProjectDetails />} />
-                <Route path="project/:id" element={<Navigate to="/projects" replace />} />
                 <Route path="contact" element={<Navigate to="/#contact" replace />} />
                 <Route path="*" element={<NotFound />} />
               </Route>

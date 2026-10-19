@@ -53,24 +53,24 @@ export default function Home() {
       <Hero />
       <About />
       <Suspense fallback={null}>
-        <Skills />
+        <Projects />
       </Suspense>
       <Suspense fallback={null}>
         <Experience />
       </Suspense>
       <Suspense fallback={null}>
-        <Projects />
+        <Skills />
       </Suspense>
       <Suspense fallback={<div className="sr-only">Loading supporting portfolio sections...</div>}>
-        <GitHubStats />
         <Education />
         <Certifications />
-      </Suspense>
-      <Suspense fallback={null}>
-        <CurrentFocus compact />
+        <GitHubStats />
       </Suspense>
       <Suspense fallback={null}>
         <Contact />
+      </Suspense>
+      <Suspense fallback={null}>
+        <CurrentFocus />
       </Suspense>
     </div>
   );
