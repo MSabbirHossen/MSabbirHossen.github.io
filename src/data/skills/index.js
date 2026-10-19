@@ -8,6 +8,6 @@ export const skills = [
   frontendSkillCategory,
   backendSkillCategory,
   toolsSkillCategory,
-  softSkillsCategory,
   learningSkillCategory,
+  softSkillsCategory,
 ];
