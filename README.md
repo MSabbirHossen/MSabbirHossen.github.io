@@ -29,7 +29,7 @@ The generated [`public/llms.txt`](public/llms.txt) provides a concise, data-back
 />
   </p>
   <p align="center">
-    <img src="https://github-readme-activity-graph.vercel.app/graph?username=MSabbirHossen&theme=github-compact&hide_border=true" />
+    <img src="https://activity-graph.vercel.app/graph?username=MSabbirHossen&theme=github-compact&hide_border=true" />
   </p>
 
 ---
@@ -153,13 +153,13 @@ A complete digital education management platform designed for educational instit
 - 🔗 **Live Demo:** [ETA Platform](https://eta.example.com/)
 - 🔗 **Repository:** [ETA Repository](https://github.com/MSabbirHossen/ETA)
 
-### 📦 Import Export Hub
+### 🧭 Life OS
 
-A full-stack MERN marketplace platform that connects exporters with importers. Browse products, manage listings, and streamline the import-export process with MongoDB Atlas, Express.js, React, Node.js, and Firebase Auth.
+A production-ready, single-user personal operating system that brings journaling, finance, habits, fitness, goals, Islamic tracking, study management, and reporting into one unified dashboard. Built with React, Vite, Tailwind CSS, Node.js, Express, MongoDB, JWT authentication, Recharts, and secure deployment workflows.
 
-- **Tech stack:** MongoDB Atlas, Express.js, React 18, Node.js, Firebase Admin SDK, Vite, Tailwind CSS
-- 🔗 **Live Demo:** [Import Export Hub](https://import-export-hub-client.vercel.app/)
-- 🔗 **Repository:** [Import_Export_Hub_REPO_LINK](https://github.com/MSabbirHossen/export-import-project.git)
+- **Tech stack:** React, Vite, Tailwind CSS, Node.js, Express, MongoDB, JWT, Recharts
+- 🔗 **Live Demo:** [Life OS](https://lifeosclient.vercel.app)
+- 🔗 **Repository:** [Life_OS_REPO_LINK](https://github.com/MSabbirHossen/Life-OS)
 
 ### 🌐 Digital Life Lessons
 
@@ -169,13 +169,13 @@ A comprehensive platform where users can create, share, and discover meaningful 
 - 🔗 **Live Demo:** [Digital Life Lessons](https://digital-life-lessons-client.vercel.app/)
 - 🔗 **Repository:** [Digital_Life_Lessons_REPO_LINK](https://github.com/MSabbirHossen/Digital-Life-Lessons.git)
 
-### 🧭 Life OS
+### 📦 Import Export Hub
 
-A production-ready, single-user personal operating system that brings journaling, finance, habits, fitness, goals, Islamic tracking, study management, and reporting into one unified dashboard. Built with React, Vite, Tailwind CSS, Node.js, Express, MongoDB, JWT authentication, Recharts, and secure deployment workflows.
+A full-stack MERN marketplace platform that connects exporters with importers. Browse products, manage listings, and streamline the import-export process with MongoDB Atlas, Express.js, React, Node.js, and Firebase Auth.
 
-- **Tech stack:** React, Vite, Tailwind CSS, Node.js, Express, MongoDB, JWT, Recharts
-- 🔗 **Live Demo:** [Life OS](https://lifeosclient.vercel.app)
-- 🔗 **Repository:** [Life_OS_REPO_LINK](https://github.com/MSabbirHossen/Life-OS)
+- **Tech stack:** MongoDB Atlas, Express.js, React 18, Node.js, Firebase Admin SDK, Vite, Tailwind CSS
+- 🔗 **Live Demo:** [Import Export Hub](https://import-export-hub-client.vercel.app/)
+- 🔗 **Repository:** [Import_Export_Hub_REPO_LINK](https://github.com/MSabbirHossen/export-import-project.git)
 
 ### 🎬 MovieExplorer - Discover TV Shows & Movies
 

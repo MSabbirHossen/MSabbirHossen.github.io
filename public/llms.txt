@@ -20,18 +20,18 @@ Full-stack developer focused on building practical web applications with MERN, A
 A complete digital education management platform designed for educational institutions operating online, physically, or in a hybrid model. Built with TypeScript, React, Node.js, Express, PostgreSQL, and Docker to provide seamless multi-modal learning workflows, automated attendance, dynamic course scheduling, and secure role-based portals.
 - Tech stack: TypeScript, React 19, Node.js, Express.js, PostgreSQL, Docker, Tailwind CSS, Vite, JWT Auth, RESTful API
 - Links: [Live site](https://eta.example.com/) | [GitHub](https://github.com/MSabbirHossen/ETA) | [Case study](/projects/eta-digital-education-platform)
-### Import Export Hub
-Built a full-stack marketplace for connecting exporters and importers, covering product management, import workflows, and authenticated access. Implemented with React, Node.js/Express, MongoDB Atlas, Firebase, and security middleware to demonstrate MVC architecture, secure API design, and production-focused deployment.
-- Tech stack: MongoDB Atlas, Express.js, React 18, Node.js, Mongoose, Firebase Admin SDK, Vite, React Router, Tailwind CSS, Helmet, Express Rate Limit, Axios
-- Links: [Live site](https://import-export-hub-client.vercel.app/) | [GitHub](https://github.com/MSabbirHossen/export-import-project) | [Case study](/projects/export-import-project)
-### Digital Life Lessons
-Built a full-stack learning and discussion platform for sharing practical life lessons with authenticated access, premium payment workflows, and admin moderation. Implemented with React, Node.js/Express, MongoDB, Firebase, and Stripe to demonstrate end-to-end MERN delivery, secure integration, and role-based access.
-- Tech stack: MongoDB, Express.js, React 18, Node.js, Mongoose, Vite, Tailwind CSS v3, Firebase Auth, Firebase Admin SDK, Stripe API, React Router v6, Axios, React Toastify, SweetAlert2, Lottie React
-- Links: [Live site](https://digital-life-lessons-client.vercel.app/) | [GitHub](https://github.com/MSabbirHossen/Digital-Life-Lessons) | [Case study](/projects/digital-life-lessons)
 ### Life OS
 Life OS is a production-ready, single-user personal operating system that combines journaling, finance, habits, fitness, goals, Islamic tracking, study management, and reporting into one unified dashboard.
 - Tech stack: React, Vite, Tailwind CSS, Node.js, Express, MongoDB, Mongoose, JWT, bcrypt, Recharts, Lucide React, Firebase, Vercel
 - Links: [Live site](https://lifeosclient.vercel.app) | [GitHub](https://github.com/MSabbirHossen/Life-OS) | [Case study](/projects/life-os)
+### Digital Life Lessons
+Built a full-stack learning and discussion platform for sharing practical life lessons with authenticated access, premium payment workflows, and admin moderation. Implemented with React, Node.js/Express, MongoDB, Firebase, and Stripe to demonstrate end-to-end MERN delivery, secure integration, and role-based access.
+- Tech stack: MongoDB, Express.js, React 18, Node.js, Mongoose, Vite, Tailwind CSS v3, Firebase Auth, Firebase Admin SDK, Stripe API, React Router v6, Axios, React Toastify, SweetAlert2, Lottie React
+- Links: [Live site](https://digital-life-lessons-client.vercel.app/) | [GitHub](https://github.com/MSabbirHossen/Digital-Life-Lessons) | [Case study](/projects/digital-life-lessons)
+### Import Export Hub
+Built a full-stack marketplace for connecting exporters and importers, covering product management, import workflows, and authenticated access. Implemented with React, Node.js/Express, MongoDB Atlas, Firebase, and security middleware to demonstrate MVC architecture, secure API design, and production-focused deployment.
+- Tech stack: MongoDB Atlas, Express.js, React 18, Node.js, Mongoose, Firebase Admin SDK, Vite, React Router, Tailwind CSS, Helmet, Express Rate Limit, Axios
+- Links: [Live site](https://import-export-hub-client.vercel.app/) | [GitHub](https://github.com/MSabbirHossen/export-import-project) | [Case study](/projects/export-import-project)
 ### MovieExplorer — Discover TV Shows & Movies
 A modern, responsive, and feature-rich Movie & TV Show Explorer application built with React 19, Vite, and Tailwind CSS, powered by the TVMaze API. Users can browse thousands of titles, search dynamically, filter by genre and status, sort results, view rich details in a glassmorphic modal, and manage a persistent watchlist.
 - Tech stack: React, Vite, Tailwind CSS, TVMaze API, Context API, localStorage
@@ -47,9 +47,13 @@ Built a responsive app discovery platform with search, sorting, protected routes
 
 ## Experience
 
-- **Full Stack MERN Developer at Personal App Store · Self-initiated product work (2026 · 3-week build):** Built and deployed a React and Firebase app-store experience with authentication, protected user flows, and reusable UI patterns for portfolio demonstration.
-- **Full Stack MERN Developer at Digital Life Lessons · Self-initiated product work (2026 · 2-week build):** Built and deployed a content-focused MERN application with a responsive React frontend and API-backed workflows for sharing practical lessons.
-- **Full Stack Developer at Import Export Hub · Self-initiated product work (2026 · 2-week build):** Delivered a deployed import/export workflow application, translating a focused business process into a usable interface and maintainable project structure.
+- **Full Stack Engineer at Exploratory Training Academy (ETA) · Education Platform Architecture (2026 · Active Development):** Architected and built a full-stack digital education platform supporting online, physical, and hybrid learning models with TypeScript, React 19, Node.js, PostgreSQL, and Docker.
+- **Full Stack MERN Developer at Life OS · Personal Productivity System (2026 · Production System):** Designed and deployed a production-ready personal operating system integrating 10 tracking modules, automated health & finance analytics, and secure JWT authentication.
+- **Full Stack MERN Developer at Digital Life Lessons · Content & Monetization Platform (2026 · 2-week build):** Built and deployed an interactive community platform for sharing practical life lessons, featuring role-based admin moderation, Stripe payment checkout, and Firebase authentication.
+- **Full Stack Developer at Import Export Hub · Self-initiated product work (2026 · 2-week build):** Delivered a deployed import/export workflow marketplace, translating a multi-stakeholder business process into a secured full-stack product.
+- **Frontend & API Integration Engineer at MovieExplorer · Media Discovery Engine (2026 · 2-week build):** Developed a feature-rich entertainment discovery catalog with debounced REST API search, multi-criteria filtering, accessible modals, and persistent client-side storage.
+- **Full Stack Developer at GameHub · Online Game Library (2026 · 2-week build):** Built a vibrant game discovery SPA with authenticated user sessions, real-time Firestore database integration, and fluid Framer Motion micro-interactions.
+- **Frontend Engineer at Personal App Store · Discovery Platform (2026 · 3-week build):** Created an app ecosystem interface featuring multi-provider OAuth, persistent installation state, and dynamic route loading with React Router v7.
 
 ## Education
 

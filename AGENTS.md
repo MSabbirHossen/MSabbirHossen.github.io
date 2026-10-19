@@ -59,7 +59,7 @@ Instructions for AI coding agents working in this portfolio repository. Keep cha
 ## Repo-Specific Pitfalls
 
 - Tailwind uses v4 patterns and theme tokens defined in `src/index.css`; follow existing semantic utility conventions.
-- Contact form delivery is client-side via EmailJS in `src/components/contact/ContactForm.jsx`; required env vars must already exist.
+- Contact form delivery connects directly to WhatsApp in `src/components/contact/ContactForm.jsx` without external third-party mailer dependencies.
 - GitHub analytics are rendered from `public/stats.json`, not fetched from GitHub live at runtime.
 - Project details depend on route params matching entries in `portfolioData.js`; keep fallback behavior intact when editing project pages.
 - This repo currently favors small, focused commits by section rather than broad refactors.
