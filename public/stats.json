@@ -1,5 +1,5 @@
 {
-  "publicRepos": 61,
+  "publicRepos": 63,
   "followers": 4,
   "following": 7,
   "totalStars": 5,
@@ -15,7 +15,7 @@
     },
     {
       "name": "TypeScript",
-      "count": 2
+      "count": 3
     },
     {
       "name": "CSS",
@@ -30,53 +30,53 @@
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
-      "updated": "2026-10-13T00:13:54Z"
+      "updated": "2026-10-19T03:34:54Z"
     },
     {
-      "name": "ETA",
-      "description": "Exploratory Training Academy (ETA) is a complete digital education management platform designed for an educational institution that may operate fully online, physically, or in a hybrid model.",
-      "language": "TypeScript",
+      "name": "Tea_House_Project",
+      "description": "No description available",
+      "language": "HTML",
       "stars": 0,
       "forks": 0,
-      "url": "https://github.com/MSabbirHossen/ETA",
-      "updated": "2026-10-11T15:35:38Z"
+      "url": "https://github.com/MSabbirHossen/Tea_House_Project",
+      "updated": "2026-10-14T22:51:26Z"
     },
     {
-      "name": "Personal_App-Store_Authentication",
-      "description": "A modern, responsive web application for discovering, browsing, and managing applications. Built with React and Vite, featuring real-time search, sorting, and local app installation tracking.",
-      "language": "JavaScript",
+      "name": "Payoo-MFS",
+      "description": "No description available",
+      "language": "HTML",
       "stars": 0,
       "forks": 0,
-      "url": "https://github.com/MSabbirHossen/Personal_App-Store_Authentication",
-      "updated": "2026-10-06T21:30:54Z"
+      "url": "https://github.com/MSabbirHossen/Payoo-MFS",
+      "updated": "2026-10-14T22:44:06Z"
     },
     {
-      "name": "Personal_App-Store",
+      "name": "hero-io-app",
       "description": "No description available",
       "language": "JavaScript",
       "stars": 0,
       "forks": 0,
-      "url": "https://github.com/MSabbirHossen/Personal_App-Store",
-      "updated": "2026-10-06T20:16:15Z"
+      "url": "https://github.com/MSabbirHossen/hero-io-app",
+      "updated": "2026-10-14T22:42:38Z"
     },
     {
-      "name": "Online-Game-Library",
-      "description": "A vibrant, urban-themed web application for discovering, exploring, and downloading indie games and AAA titles. GameHub provides an engaging platform for gamers to browse games, view detailed information, and connect with gaming communities.",
-      "language": "JavaScript",
+      "name": "Demo_Calender",
+      "description": "No description available",
+      "language": "HTML",
       "stars": 0,
       "forks": 0,
-      "url": "https://github.com/MSabbirHossen/Online-Game-Library",
-      "updated": "2026-10-06T20:12:59Z"
+      "url": "https://github.com/MSabbirHossen/Demo_Calender",
+      "updated": "2026-10-14T22:29:39Z"
     },
     {
-      "name": "lifeosclient",
-      "description": "Client Side of life OS.",
-      "language": "JavaScript",
+      "name": "Demo_Architects",
+      "description": "No description available",
+      "language": "HTML",
       "stars": 0,
       "forks": 0,
-      "url": "https://github.com/MSabbirHossen/lifeosclient",
-      "updated": "2026-09-29T21:30:09Z"
+      "url": "https://github.com/MSabbirHossen/Demo_Architects",
+      "updated": "2026-10-14T22:28:40Z"
     }
   ],
-  "updatedAt": "2026-10-13T13:42:12.758Z"
+  "updatedAt": "2026-10-19T12:21:06.912Z"
 }
