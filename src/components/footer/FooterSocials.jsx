@@ -1,47 +1,33 @@
-import { FaEnvelope, FaGithub, FaLinkedin, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaEnvelope, FaFacebook, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { portfolioData } from '../../data';
 
-const FooterSocials = () => {
+export default function FooterSocials() {
   const { personalInfo } = portfolioData;
   const socialLinks = [
-    { icon: <FaGithub className="w-5 h-5" />, href: personalInfo.github, label: 'GitHub' },
-    { icon: <FaLinkedin className="w-5 h-5" />, href: personalInfo.linkedin, label: 'LinkedIn' },
+    { icon: FaGithub, href: personalInfo.github, label: 'GitHub' },
+    { icon: FaLinkedin, href: personalInfo.linkedin, label: 'LinkedIn' },
+    { icon: FaFacebook, href: personalInfo.facebook, label: 'Facebook' },
     {
-      icon: <FaEnvelope className="w-5 h-5" />,
+      icon: FaEnvelope,
       href: `mailto:${personalInfo.email}`,
       label: 'Email',
     },
-  ];
+  ].filter((s) => Boolean(s.href));
 
   return (
-    <div className="flex flex-col items-center gap-3 md:items-end">
-      <div className="flex items-center gap-4">
-        {socialLinks.map((link) => (
-          <a
-            key={link.label}
-            href={link.href}
-            target={link.href.startsWith('http') ? '_blank' : undefined}
-            rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-            className="rounded-full border border-default p-2 text-secondary transition-colors hover:text-accent-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg"
-            aria-label={link.label}
-          >
-            {link.icon}
-          </a>
-        ))}
-      </div>
-      <span className="flex items-center gap-1.5 rounded-md text-xs text-secondary transition-colors hover:text-accent-primary">
-        <FaMapMarkerAlt className="w-3.5 h-3.5" />{' '}
+    <div className="flex items-center gap-2 sm:gap-2.5">
+      {socialLinks.map(({ icon: Icon, href, label }) => (
         <a
-          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(personalInfo.location)}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg"
+          key={label}
+          href={href}
+          target={href.startsWith('http') ? '_blank' : undefined}
+          rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+          className="flex h-9 w-9 items-center justify-center rounded-xl border border-default bg-surface/70 text-secondary transition-all duration-200 hover:-translate-y-0.5 hover:border-accent-primary/50 hover:bg-accent-primary/10 hover:text-accent-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary"
+          aria-label={label}
         >
-          {personalInfo.location}
+          <Icon className="h-4 w-4" />
         </a>
-      </span>
+      ))}
     </div>
   );
-};
-
-export default FooterSocials;
+}

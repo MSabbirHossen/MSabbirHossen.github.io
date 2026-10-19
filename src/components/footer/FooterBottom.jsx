@@ -1,30 +1,26 @@
 import { portfolioData } from '../../data';
 import FooterSocials from './FooterSocials';
 
-const FooterBottom = () => {
+export default function FooterBottom() {
   const currentYear = new Date().getFullYear();
   const { personalInfo } = portfolioData;
+
   return (
-    <div className="mx-auto mt-8 flex max-w-7xl flex-col items-center justify-between gap-4 border-t px-6 pt-6 text-xs text-muted sm:flex-row">
-      <div>
-        <p className="text-center sm:text-left">
-          Designed & Developed by{' '}
-          <a
-            href={personalInfo.website}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-medium text-accent-primary transition-colors hover:text-accent-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg"
-          >
-            {personalInfo.name}
-          </a>
-          <br /> &copy; {currentYear} {personalInfo.brandName}. All rights reserved.
+    <div className="mx-auto mt-12 flex max-w-7xl flex-col items-center justify-between gap-4 border-t border-default/60 px-6 pt-8 text-xs text-muted sm:flex-row">
+      <div className="text-center sm:text-left">
+        <p className="leading-relaxed">
+          &copy; {currentYear}{' '}
+          <span className="font-semibold text-primary">{personalInfo.brandName}</span>. All rights
+          reserved.
+        </p>
+        <p className="mt-0.5 text-muted/80">
+          Designed & developed with modern React & Tailwind CSS.
         </p>
       </div>
-      <div>
+
+      <div className="sm:pr-24">
         <FooterSocials />
       </div>
     </div>
   );
-};
-
-export default FooterBottom;
+}

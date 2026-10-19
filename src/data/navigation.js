@@ -7,10 +7,6 @@ import {
   FaEnvelope,
   FaCertificate,
   FaGraduationCap,
-  FaStar,
-  FaUser,
-  FaBriefcase,
-  FaLightbulb,
 } from 'react-icons/fa';
 
 const { personalInfo } = portfolioData;
@@ -57,28 +53,29 @@ export const NAV_LINKS = [
   { name: 'Projects', href: 'projects' },
   { name: 'Experience', href: 'experience' },
   { name: 'Skills', href: 'skills' },
-  { name: 'GitHub Stats', href: 'github-stats' },
   { name: 'Education', href: 'education' },
   { name: 'Certifications', href: 'certifications' },
+  { name: 'GitHub Stats', href: 'github-stats' },
   { name: 'Contact', href: 'contact' },
 ];
 
 // Quick nav for footer column 2 — mirrors the homepage section order.
 export const FOOTER_LINKS = [
-  { name: 'About', href: 'about', icon: FaUser },
-  { name: 'Projects', href: 'projects', icon: FaStar },
-  { name: 'Experience', href: 'experience', icon: FaBriefcase },
-  { name: 'GitHub Stats', href: 'github-stats', icon: FaGithub },
-  { name: 'Education', href: 'education', icon: FaGraduationCap },
-  { name: 'Certifications', href: 'certifications', icon: FaCertificate },
-  { name: 'Contact', href: 'contact', icon: FaEnvelope },
+  { name: 'About', href: 'about' },
+  { name: 'Projects', href: 'projects' },
+  { name: 'Experience', href: 'experience' },
+  { name: 'Skills', href: 'skills' },
+  { name: 'Education', href: 'education' },
+  { name: 'Certifications', href: 'certifications' },
+  { name: 'GitHub Stats', href: 'github-stats' },
+  { name: 'Current Focus', href: 'current-focus' },
+  { name: 'Contact', href: 'contact' },
 ];
 
 // Secondary/utility links for footer column 4 ("More").
 export const FOOTER_MORE_LINKS = [
-  { label: 'All Projects', to: '/projects', icon: FaStar },
-  { label: 'Experience Timeline', to: '/experience', icon: FaBriefcase },
-  { label: 'Education Timeline', to: '/education', icon: FaGraduationCap },
-  { label: 'All Certifications', to: '/certifications', icon: FaCertificate },
-  { label: 'Current Focus', href: 'current-focus', icon: FaLightbulb },
+  { label: 'All Projects', to: '/projects' },
+  { label: 'Experience Timeline', to: '/experience' },
+  { label: 'Education Timeline', to: '/education' },
+  { label: 'All Certifications', to: '/certifications' },
 ];
