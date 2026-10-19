@@ -46,12 +46,6 @@ export default function About() {
 
       <AboutStats stats={stats} />
 
-      <p className="text-sm text-secondary">
-        Languages:{' '}
-        <span className="text-primary">
-          {languages.map((language) => language.name).join(' · ')}
-        </span>
-      </p>
       <LanguagesCard languages={languages} />
     </SectionWrapper>
   );
