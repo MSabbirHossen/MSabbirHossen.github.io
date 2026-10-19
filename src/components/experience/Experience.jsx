@@ -1,26 +1,23 @@
-import { FaBriefcase } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { FaArrowRight, FaBriefcase } from 'react-icons/fa';
 import { portfolioData } from '../../data';
 import SectionWrapper from '../common/SectionWrapper';
 import Card from '../common/Card';
 import Badge from '../common/Badge';
+import Button from '../common/Button';
 import Typography from '../common/Typography';
 import Reveal from '../animations/Reveal';
 
-export default function Experience() {
+export default function Experience({ limit = 3 }) {
   const { experience } = portfolioData;
+  const displayedExperience = limit ? experience.slice(0, limit) : experience;
 
   return (
-    <SectionWrapper
-      id="experience"
-      eyebrow="Experience"
-      title="Where I've Applied My Skills"
-      description="Real-world and open-source work that shows how I build, ship, and improve software."
-      className="mx-auto max-w-5xl px-6"
-    >
+    <SectionWrapper id="experience" title="Experience" className="mx-auto max-w-5xl px-6">
       <div className="relative">
         <div className="absolute left-4 top-0 h-full w-px bg-linear-to-b from-accent-primary/60 via-accent-secondary/40 to-transparent md:left-6" />
 
-        {experience.map((role, idx) => (
+        {displayedExperience.map((role, idx) => (
           <Reveal
             key={`${role.company}-${idx}`}
             className="relative mb-8 flex items-start gap-6 last:mb-0"
@@ -41,7 +38,7 @@ export default function Experience() {
                     {role.role}
                   </Typography>
                 </div>
-                <Typography variant="body" className="text-secondary">
+                <Typography variant="body" className="text-secondary font-medium">
                   {role.company}
                 </Typography>
                 <Typography variant="body" className="text-muted">
@@ -62,6 +59,22 @@ export default function Experience() {
           </Reveal>
         ))}
       </div>
+
+      {limit && experience.length > limit && (
+        <div className="mt-12 flex justify-center">
+          <Button
+            as={Link}
+            to="/experience"
+            variant="outline"
+            size="lg"
+            icon={FaArrowRight}
+            iconPosition="right"
+            className="group border-default shadow-sm hover:border-accent-primary hover:text-accent-primary light:hover:shadow-md"
+          >
+            Explore Full Timeline ({experience.length})
+          </Button>
+        </div>
+      )}
     </SectionWrapper>
   );
 }
