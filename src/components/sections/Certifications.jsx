@@ -7,11 +7,9 @@ import Badge from '../common/Badge';
 import Button from '../common/Button';
 import Reveal from '../animations/Reveal';
 
-export default function Certifications() {
+export default function Certifications({ limit = 2 }) {
   const { certifications } = portfolioData;
-  const featuredCert =
-    certifications.find((c) => c.title.toLowerCase().includes('complete web development')) ||
-    certifications[0];
+  const displayedCertifications = limit ? certifications.slice(0, limit) : certifications;
 
   return (
     <section id="certifications" className="section-shell">
@@ -20,70 +18,76 @@ export default function Certifications() {
           Certifications & Training
         </Typography>
 
-        <div className="mx-auto max-w-3xl">
-          <Reveal y={18} duration={0.45} amount={0.2}>
-            <Card className="relative overflow-hidden border-default p-6 sm:p-8 hover:border-accent-primary/40 transition-all duration-300">
-              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
-                <div className="flex items-center gap-3.5">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-accent-primary/10 text-accent-primary border border-accent-primary/20">
-                    <FaCertificate className="h-6 w-6" aria-hidden="true" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-accent-primary/10 text-accent-primary border border-accent-primary/25">
-                        <span className="w-1.5 h-1.5 rounded-full bg-accent-primary animate-pulse" />
-                        Featured Credential
-                      </span>
-                      <Badge variant="secondary">{featuredCert.date}</Badge>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          {displayedCertifications.map((cert, index) => (
+            <Reveal
+              key={cert.id || `${cert.title}-${index}`}
+              y={18}
+              duration={0.45}
+              delay={index * 0.1}
+              amount={0.2}
+            >
+              <Card className="flex h-full flex-col justify-between overflow-hidden border-default p-6 sm:p-8 transition-all duration-300 hover:border-accent-primary/40">
+                <div>
+                  <div className="mb-4 flex items-start justify-between gap-4">
+                    <div className="flex items-center gap-3.5">
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-accent-primary/20 bg-accent-primary/10 text-accent-primary">
+                        <FaCertificate className="h-6 w-6" aria-hidden="true" />
+                      </div>
+                      <div>
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span className="inline-flex items-center gap-1.5 rounded-full border border-accent-primary/25 bg-accent-primary/10 px-2.5 py-0.5 text-xs font-semibold text-accent-primary">
+                            <FaCheckCircle className="h-3 w-3" />
+                            Verified Credential
+                          </span>
+                          <Badge variant="secondary">{cert.date}</Badge>
+                        </div>
+                        <Typography
+                          variant="h3"
+                          className="mt-1 text-lg font-bold text-primary sm:text-xl"
+                        >
+                          {cert.title}
+                        </Typography>
+                      </div>
                     </div>
-                    <Typography
-                      variant="h3"
-                      className="mt-1 text-primary font-bold text-lg sm:text-xl"
-                    >
-                      {featuredCert.title}
-                    </Typography>
+                  </div>
+
+                  <div className="space-y-3.5">
+                    <div className="flex flex-wrap items-center justify-between gap-3">
+                      <Typography variant="subtitle" className="font-medium text-secondary">
+                        Issued by <span className="font-semibold text-primary">{cert.issuer}</span>
+                      </Typography>
+
+                      {cert.id && cert.id !== 'Not-available for this course' && (
+                        <span className="inline-flex items-center gap-1.5 rounded-md border border-default bg-surface/80 px-2.5 py-1 font-mono text-xs text-muted">
+                          <span className="text-[10px] font-bold uppercase text-secondary">
+                            ID:
+                          </span>
+                          <span className="max-w-[160px] truncate">{cert.id}</span>
+                        </span>
+                      )}
+                    </div>
+
+                    {cert.skills && cert.skills.length > 0 && (
+                      <div className="mt-4 flex flex-wrap gap-2 border-t border-default/50 pt-4">
+                        {cert.skills.map((skill) => (
+                          <span
+                            key={skill}
+                            className="inline-flex items-center gap-1 rounded-lg border border-default bg-surface/80 px-2.5 py-1 text-xs font-medium text-secondary"
+                          >
+                            <FaCheckCircle className="h-3 w-3 text-accent-secondary" />
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
-              </div>
 
-              <div className="space-y-3.5">
-                <div className="flex items-center justify-between gap-3 flex-wrap">
-                  <Typography variant="subtitle" className="text-secondary font-medium">
-                    Issued by{' '}
-                    <span className="text-primary font-semibold">{featuredCert.issuer}</span>
-                  </Typography>
-
-                  {featuredCert.id && (
-                    <span className="inline-flex items-center gap-1.5 text-xs text-muted font-mono bg-surface/80 border border-default px-2.5 py-1 rounded-md">
-                      <span className="text-[10px] uppercase font-bold text-secondary">ID:</span>
-                      {featuredCert.id}
-                    </span>
-                  )}
-                </div>
-
-                <div className="flex flex-wrap gap-2 pt-2 border-t border-default/50">
-                  {[
-                    'React',
-                    'Node.js',
-                    'Express.js',
-                    'MongoDB',
-                    'Full-Stack Architecture',
-                    'REST APIs',
-                  ].map((skill) => (
-                    <span
-                      key={skill}
-                      className="inline-flex items-center gap-1 rounded-lg border border-default bg-surface/80 px-2.5 py-1 text-xs text-secondary font-medium"
-                    >
-                      <FaCheckCircle className="h-3 w-3 text-accent-secondary" />
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex items-center justify-end pt-3">
-                  {featuredCert.link && (
+                <div className="mt-6 flex items-center justify-end border-t border-default/50 pt-4">
+                  {cert.link && (
                     <Button
-                      href={featuredCert.link}
+                      href={cert.link}
                       variant="primary"
                       size="sm"
                       icon={FaExternalLinkAlt}
@@ -93,27 +97,27 @@ export default function Certifications() {
                     </Button>
                   )}
                 </div>
-              </div>
-            </Card>
-          </Reveal>
-
-          {/* All Certifications CTA Button */}
-          {certifications.length > 1 && (
-            <div className="mt-8 flex justify-center">
-              <Button
-                as={Link}
-                to="/certifications"
-                variant="outline"
-                size="md"
-                icon={FaArrowRight}
-                iconPosition="right"
-                className="group border-default shadow-sm hover:border-accent-primary hover:text-accent-primary"
-              >
-                Explore All Certifications ({certifications.length})
-              </Button>
-            </div>
-          )}
+              </Card>
+            </Reveal>
+          ))}
         </div>
+
+        {/* All Certifications CTA Button */}
+        {certifications.length > displayedCertifications.length && (
+          <div className="mt-8 flex justify-center">
+            <Button
+              as={Link}
+              to="/certifications"
+              variant="outline"
+              size="md"
+              icon={FaArrowRight}
+              iconPosition="right"
+              className="group border-default shadow-sm hover:border-accent-primary hover:text-accent-primary"
+            >
+              Explore All Certifications ({certifications.length})
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );

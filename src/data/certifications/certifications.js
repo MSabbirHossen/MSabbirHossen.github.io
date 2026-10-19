@@ -5,6 +5,7 @@ export const certifications = [
     date: '2026',
     id: 'WEB12-3517',
     link: 'https://drive.google.com/file/d/1TXbu_27BV0e6ttHZ5iOIk0iH6GrYfZYi/view?usp=sharing',
+    skills: ['React', 'Node.js', 'Express.js', 'MongoDB', 'REST APIs', 'Full-Stack'],
   },
   {
     title: 'Master HTML and CSS by Building Real-World Projects',
@@ -12,6 +13,7 @@ export const certifications = [
     date: '2025',
     id: 'UC-a15ae6ed-80b0-4d97-a5e9-2151cab255d4',
     link: 'https://www.udemy.com/certificate/UC-a15ae6ed-80b0-4d97-a5e9-2151cab255d4/',
+    skills: ['HTML5', 'CSS3', 'Responsive Design', 'Flexbox & Grid', 'UI Layouts'],
   },
   {
     title: 'Master Git and GitHub - Beginner to Expert',
@@ -19,6 +21,7 @@ export const certifications = [
     date: '2024',
     id: 'b1ec25ee-3cce-4c6c-b922-efda23d0fc13',
     link: 'https://www.udemy.com/certificate/UC-b1ec25ee-3cce-4c6c-b922-efda23d0fc13/',
+    skills: ['Git', 'GitHub', 'Version Control', 'Branching & Merging'],
   },
   {
     title: 'VScode shortcuts & Extensions for Web Developer',
@@ -26,6 +29,7 @@ export const certifications = [
     date: '2024',
     id: 'UC-827bbc34-b709-4213-bbc0-3dc50b8c6b33',
     link: 'https://www.udemy.com/certificate/UC-827bbc34-b709-4213-bbc0-3dc50b8c6b33/',
+    skills: ['VS Code', 'Productivity', 'Code Extensions', 'Developer Tooling'],
   },
   {
     title: 'Spreadsheets for Beginners using Google Sheets',
@@ -33,21 +37,6 @@ export const certifications = [
     date: '2025',
     id: 'Not-available for this course',
     link: 'https://drive.google.com/file/d/1r8K7y5FjHu3nPL9AxtILtfgzrNnhuu6O/view?usp=sharing',
+    skills: ['Google Sheets', 'Data Organization', 'Spreadsheet Formulas', 'Productivity'],
   },
-  // {
-  //   // {
-  //   //   title: 'IELTS Preparation Course',
-  //   //   issuer: 'MA Rashid Foundation',
-  //   //   date: '2023',
-  //   //   id: 'ielts-preparation-2023',
-  //   //   link: '',
-  //   // },
-  //   // {
-  //   //   title: 'Basic IT Course',
-  //   //   issuer: 'Career Education Development Foundation (CED Foundation)',
-  //   //   date: '2025',
-  //   //   id: 'Not-available for this course',
-  //   //   link: '',
-  //   // },
-  // },
 ];

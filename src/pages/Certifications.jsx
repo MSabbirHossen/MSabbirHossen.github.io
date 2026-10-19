@@ -169,6 +169,20 @@ export default function CertificationsPage() {
                     </div>
                   )}
 
+                  {cert.skills && cert.skills.length > 0 && (
+                    <div className="flex flex-wrap gap-2 pt-2">
+                      {cert.skills.map((skill) => (
+                        <span
+                          key={skill}
+                          className="inline-flex items-center gap-1 rounded-lg border border-default bg-surface/80 px-2 py-0.5 text-xs font-medium text-secondary"
+                        >
+                          <FaCheckCircle className="h-2.5 w-2.5 text-accent-secondary" />
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
                   <div className="flex items-center justify-between gap-3 pt-3 border-t border-default/50">
                     <span className="text-xs text-muted">{cert.issuer}</span>
                     {cert.link && (
