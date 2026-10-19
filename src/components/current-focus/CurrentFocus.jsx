@@ -1,41 +1,22 @@
 import { portfolioData } from '../../data';
-
 import SectionWrapper from '../common/SectionWrapper';
-import FocusCard from '../current-focus/FocusCard';
+import FocusCard from './FocusCard';
 
-export default function CurrentFocus({ compact = false }) {
+export default function CurrentFocus({ limit = 4 }) {
   const { currentFocus } = portfolioData;
-
-  if (compact) {
-    return (
-      <section id="current-focus" className="mx-auto max-w-6xl px-6 py-6">
-        <div className="flex flex-wrap items-center gap-3">
-          <span className="text-sm font-semibold uppercase tracking-[0.18em] text-accent-secondary">
-            Currently focused on
-          </span>
-          {currentFocus.slice(0, 3).map((item) => (
-            <span
-              key={item.title}
-              className="rounded-full border border-default bg-surface px-4 py-2 text-sm text-secondary"
-            >
-              {item.title}
-            </span>
-          ))}
-        </div>
-      </section>
-    );
-  }
+  const displayedFocus = limit ? currentFocus.slice(0, limit) : currentFocus;
 
   return (
     <SectionWrapper
       id="current-focus"
       title="Current Focus"
-      innerClassName="grid gap-6 md:grid-cols-2"
-      className="mx-auto max-w-6xl px-6"
+      className="mx-auto max-w-5xl px-4 sm:px-6"
     >
-      {currentFocus.map((item, index) => (
-        <FocusCard key={item.title} item={item} index={index} />
-      ))}
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        {displayedFocus.map((item, index) => (
+          <FocusCard key={item.title} item={item} index={index} />
+        ))}
+      </div>
     </SectionWrapper>
   );
 }
