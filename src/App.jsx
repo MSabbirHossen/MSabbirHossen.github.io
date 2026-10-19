@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense, useEffect, useRef } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { ToastContainer } from 'react-toastify';
@@ -18,9 +18,13 @@ const NotFound = lazy(() => import('./pages/NotFound'));
 
 function ScrollToTop() {
   const location = useLocation();
+  const prevPathname = useRef(location.pathname);
 
   useEffect(() => {
-    if (!location.state?.scrollToSection && !location.hash) {
+    const isNewPathname = prevPathname.current !== location.pathname;
+    prevPathname.current = location.pathname;
+
+    if (isNewPathname && !location.state?.scrollToSection && !location.hash) {
       window.scrollTo(0, 0);
     }
   }, [location.pathname, location.state, location.hash]);

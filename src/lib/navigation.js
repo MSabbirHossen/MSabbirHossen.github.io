@@ -1,4 +1,4 @@
-export function scrollToSection(sectionId, behavior = 'smooth', retries = 10) {
+export function scrollToSection(sectionId, behavior = 'smooth', retries = 30) {
   const element = document.getElementById(sectionId);
   if (element) {
     element.scrollIntoView({ behavior, block: 'start' });

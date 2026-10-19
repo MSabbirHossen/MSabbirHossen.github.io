@@ -9,7 +9,7 @@ const Projects = lazy(() => import('../components/projects/Projects'));
 const GitHubStats = lazy(() => import('../components/github/GitHubStats'));
 const Education = lazy(() => import('../components/sections/Education'));
 const Certifications = lazy(() => import('../components/sections/Certifications'));
-const CurrentFocus = lazy(() => import('../components/current-focus/CurrentFocus'));
+// const CurrentFocus = lazy(() => import('../components/current-focus/CurrentFocus'));
 const Contact = lazy(() => import('../components/sections/Contact'));
 
 export default function Home() {
@@ -69,9 +69,9 @@ export default function Home() {
       <Suspense fallback={null}>
         <Contact />
       </Suspense>
-      <Suspense fallback={null}>
+      {/* <Suspense fallback={null}>
         <CurrentFocus />
-      </Suspense>
+      </Suspense> */}
     </div>
   );
 }

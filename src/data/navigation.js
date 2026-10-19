@@ -59,14 +59,10 @@ export const NAV_LINKS = [
   { name: 'Contact', href: 'contact' },
 ];
 
-// Quick nav for footer column 2 — mirrors the homepage section order.
+// Quick nav for footer column 2 — homepage sections that do not have dedicated Pages.
 export const FOOTER_LINKS = [
   { name: 'About', href: 'about' },
-  { name: 'Projects', href: 'projects' },
-  { name: 'Experience', href: 'experience' },
   { name: 'Skills', href: 'skills' },
-  { name: 'Education', href: 'education' },
-  { name: 'Certifications', href: 'certifications' },
   { name: 'GitHub Stats', href: 'github-stats' },
   { name: 'Current Focus', href: 'current-focus' },
   { name: 'Contact', href: 'contact' },
