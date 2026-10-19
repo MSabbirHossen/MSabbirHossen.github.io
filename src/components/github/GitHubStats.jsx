@@ -103,14 +103,13 @@ export default function GitHubStats() {
         <GitHubAnalytics />
         <Snake />
 
-        <ProfileViews />
-
-        <GitHubProfile />
-
-        {/* Last Updated */}
-        <Typography variant="caption" className="mt-8 text-center block">
-          {timeAgo(stats.updatedAt)}
-        </Typography>
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+          <ProfileViews />
+          <GitHubProfile />
+          <Typography variant="caption" className="text-muted text-xs font-medium">
+            {timeAgo(stats.updatedAt)}
+          </Typography>
+        </div>
       </div>
     </section>
   );

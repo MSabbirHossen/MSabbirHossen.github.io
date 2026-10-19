@@ -18,10 +18,10 @@ const GitHubAnalytics = () => {
         </Typography>
 
         {/* Streak Stats */}
-        <Card className="mt-8 p-6">
+        <Card className="mx-auto mt-8 max-w-2xl p-4 sm:p-5 transition-all duration-300 hover:border-accent-primary/40">
           <img
             src="https://streak-stats.demolab.com?user=MSabbirHossen&theme=github-dark&hide_border=true"
-            className="mx-auto w-full max-w-5xl"
+            className="mx-auto h-auto max-h-[220px] w-full object-contain"
             alt="GitHub Streak Stats"
             loading="lazy"
             decoding="async"
@@ -30,7 +30,7 @@ const GitHubAnalytics = () => {
         </Card>
 
         {/* Contribution Graph */}
-        <Card className="mt-8 p-6">
+        <Card className="mx-auto mt-6 max-w-4xl p-4 sm:p-5 transition-all duration-300 hover:border-accent-primary/40">
           <img
             src={graphSrc}
             onError={() => {
@@ -38,7 +38,7 @@ const GitHubAnalytics = () => {
                 setGraphSrc(FALLBACK_GRAPH_URL);
               }
             }}
-            className="mx-auto w-full max-w-5xl"
+            className="mx-auto h-auto max-h-[280px] w-full object-contain"
             alt="GitHub Activity Graph"
             loading="lazy"
             decoding="async"
