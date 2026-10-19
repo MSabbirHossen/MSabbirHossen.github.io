@@ -25,7 +25,7 @@ export default function AIButton({ onClick, isOpen }) {
       aria-expanded={isOpen}
       aria-controls="ai-assistant-dialog"
       aria-keyshortcuts="Control+K Meta+K"
-      className={`fixed bottom-5 left-4 z-40 inline-flex items-center gap-3 rounded-full border border-default surface px-4 py-3 text-sm font-semibold text-primary shadow-2xl shadow-black/20 backdrop-blur-xl transition-colors hover:bg-accent-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg sm:bottom-6 sm:left-6 ${showAttention && !shouldReduceMotion ? 'animate-[pulse_1.5s_ease-in-out_1]' : ''}`}
+      className={`fixed bottom-5 right-4 z-40 inline-flex items-center gap-3 rounded-full border border-default surface px-4 py-3 text-sm font-semibold text-primary shadow-2xl shadow-black/20 backdrop-blur-xl transition-colors hover:bg-accent-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg sm:bottom-6 sm:right-6 ${showAttention && !shouldReduceMotion ? 'animate-[pulse_1.5s_ease-in-out_1]' : ''}`}
       initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: shouldReduceMotion ? 0 : 0.4, ease: 'easeOut' }}

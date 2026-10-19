@@ -211,9 +211,12 @@ function buildEducationResponse(portfolio) {
 
   return {
     text: latest
-      ? `Latest education: ${latest.degree} at ${latest.institution}.`
-      : 'Education details are available in the Education page.',
-    actions: [action('Open Education', { kind: 'scroll', target: portfolio.sections.education })],
+      ? `Currently studying ${latest.degree} at ${latest.institution} (${latest.period}).`
+      : 'Education details are available in the Education section.',
+    actions: [
+      action('Open Education', { kind: 'scroll', target: portfolio.sections.education }),
+      action('Education Timeline', { kind: 'navigate', target: '/education' }),
+    ],
     followUps: ['Show certifications', 'Show current focus', 'Contact Sabbir'],
     memory: {
       lastTopic: 'education',
@@ -235,6 +238,7 @@ function buildCertificationResponse(knowledge, portfolio) {
     })),
     actions: [
       action('Open Certifications', { kind: 'scroll', target: portfolio.sections.certifications }),
+      action('All Certifications', { kind: 'navigate', target: '/certifications' }),
     ],
     followUps: ['Show skills', 'Show projects', 'How to contact Sabbir'],
     memory: {
