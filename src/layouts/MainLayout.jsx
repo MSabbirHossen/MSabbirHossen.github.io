@@ -18,24 +18,26 @@ export default function MainLayout() {
       </main>
       <Footer />
       <AIChatButton onClick={chat.toggleChat} isOpen={chat.isOpen} />
-      <Suspense fallback={null}>
-        <AIChatModal
-          isOpen={chat.isOpen}
-          messages={chat.messages}
-          input={chat.input}
-          isTyping={chat.isTyping}
-          quickPrompts={chat.quickPrompts}
-          featuredProjectHighlights={chat.featuredProjectHighlights}
-          recentWorkHighlights={chat.recentWorkHighlights}
-          hasConversation={chat.hasConversation}
-          announcement={chat.announcement}
-          onClose={chat.closeChat}
-          onNewChat={chat.startNewChat}
-          onChange={chat.setInput}
-          onSend={chat.sendMessage}
-          onAction={chat.triggerAction}
-        />
-      </Suspense>
+      {chat.isOpen && (
+        <Suspense fallback={null}>
+          <AIChatModal
+            isOpen={chat.isOpen}
+            messages={chat.messages}
+            input={chat.input}
+            isTyping={chat.isTyping}
+            quickPrompts={chat.quickPrompts}
+            featuredProjectHighlights={chat.featuredProjectHighlights}
+            recentWorkHighlights={chat.recentWorkHighlights}
+            hasConversation={chat.hasConversation}
+            announcement={chat.announcement}
+            onClose={chat.closeChat}
+            onNewChat={chat.startNewChat}
+            onChange={chat.setInput}
+            onSend={chat.sendMessage}
+            onAction={chat.triggerAction}
+          />
+        </Suspense>
+      )}
     </div>
   );
 }

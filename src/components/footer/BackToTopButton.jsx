@@ -36,7 +36,7 @@ export default function BackToTopButton() {
           exit={shouldReduceMotion ? undefined : { opacity: 0, scale: 0.8, y: 20 }}
           transition={{ duration: shouldReduceMotion ? 0 : 0.25 }}
           className="
-            fixed bottom-6 right-6 z-50
+            fixed bottom-5 left-4 z-40 sm:bottom-6 sm:left-6
             flex h-12 w-12 items-center justify-center
             rounded-full
             bg-accent-primary text-white

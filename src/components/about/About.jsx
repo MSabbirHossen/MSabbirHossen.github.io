@@ -9,7 +9,7 @@ import AboutStats from './AboutStats';
 
 export default function About() {
   const { personalInfo, projects, certifications, skills } = portfolioData;
-  const { tagline, title, journey, languages, studyingAt, location } = personalInfo;
+  const { title, journey, languages, studyingAt, location } = personalInfo;
 
   const technologyCount = skills.reduce((total, category) => total + category.items.length, 0);
 
@@ -35,10 +35,7 @@ export default function About() {
   return (
     <SectionWrapper
       id="about"
-      eyebrow="About"
-      title="Developer Profile"
-      tagline={tagline}
-      // description={mission}
+      title="About Me"
       innerClassName="space-y-10"
       className="mx-auto max-w-6xl px-6"
     >

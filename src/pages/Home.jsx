@@ -1,17 +1,16 @@
 import { lazy, Suspense } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Hero from '../components/sections/Hero';
-
 import About from '../components/about/About';
-import Projects from '../components/projects/Projects';
-import Skills from '../components/skills/Skills';
-import Experience from '../components/experience/Experience';
-import Contact from '../components/sections/Contact';
-import CurrentFocus from '../components/current-focus/CurrentFocus';
 
+const Skills = lazy(() => import('../components/skills/Skills'));
+const Experience = lazy(() => import('../components/experience/Experience'));
+const Projects = lazy(() => import('../components/projects/Projects'));
 const GitHubStats = lazy(() => import('../components/github/GitHubStats'));
 const Education = lazy(() => import('../components/sections/Education'));
 const Certifications = lazy(() => import('../components/sections/Certifications'));
+const CurrentFocus = lazy(() => import('../components/current-focus/CurrentFocus'));
+const Contact = lazy(() => import('../components/sections/Contact'));
 
 export default function Home() {
   const pageTitle = 'Md. Sabbir Hossen | MERN Stack Developer Portfolio';
@@ -31,7 +30,7 @@ export default function Home() {
   };
 
   return (
-    <div className="space-y-24 py-8">
+    <div className="flex flex-col">
       <Helmet>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
@@ -53,16 +52,26 @@ export default function Home() {
       </Helmet>
       <Hero />
       <About />
-      <Skills />
-      <Experience />
-      <Projects />
+      <Suspense fallback={null}>
+        <Skills />
+      </Suspense>
+      <Suspense fallback={null}>
+        <Experience />
+      </Suspense>
+      <Suspense fallback={null}>
+        <Projects />
+      </Suspense>
       <Suspense fallback={<div className="sr-only">Loading supporting portfolio sections...</div>}>
         <GitHubStats />
         <Education />
         <Certifications />
       </Suspense>
-      <CurrentFocus compact />
-      <Contact />
+      <Suspense fallback={null}>
+        <CurrentFocus compact />
+      </Suspense>
+      <Suspense fallback={null}>
+        <Contact />
+      </Suspense>
     </div>
   );
 }

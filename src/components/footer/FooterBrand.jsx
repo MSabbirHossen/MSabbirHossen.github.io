@@ -1,14 +1,13 @@
 import Typography from '../common/Typography';
 import { portfolioData } from '../../data';
+import Logo from '../common/Logo';
 
 export default function FooterBrand() {
   const { personalInfo } = portfolioData;
 
   return (
     <div className="space-y-4">
-      <Typography variant="h4" className="text-primary">
-        {personalInfo.name}
-      </Typography>
+      <Logo size="md" />
 
       <Typography variant="body" className="max-w-sm text-secondary">
         {personalInfo.brandTagline}

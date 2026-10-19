@@ -8,7 +8,7 @@ export default function CurrentFocus({ compact = false }) {
 
   if (compact) {
     return (
-      <section id="current-focus" className="mx-auto max-w-6xl px-6 py-10">
+      <section id="current-focus" className="mx-auto max-w-6xl px-6 py-6">
         <div className="flex flex-wrap items-center gap-3">
           <span className="text-sm font-semibold uppercase tracking-[0.18em] text-accent-secondary">
             Currently focused on
@@ -29,9 +29,7 @@ export default function CurrentFocus({ compact = false }) {
   return (
     <SectionWrapper
       id="current-focus"
-      eyebrow="Currently"
       title="Current Focus"
-      description="The areas I'm actively studying, building, and improving every day."
       innerClassName="grid gap-6 md:grid-cols-2"
       className="mx-auto max-w-6xl px-6"
     >
