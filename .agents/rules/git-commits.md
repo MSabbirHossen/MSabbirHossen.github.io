@@ -1,12 +1,15 @@
 # Git Commit Guidelines & Discipline
 
 ## Conventional Commits Structure
+
 Every commit message must follow the Conventional Commits specification:
+
 ```
 <type>(<scope>): <short summary in present tense>
 ```
 
 ### Allowed Types
+
 - `feat`: A new feature or functionality
 - `fix`: A bug fix
 - `refactor`: Code restructuring without changing external behavior or adding features
@@ -17,6 +20,7 @@ Every commit message must follow the Conventional Commits specification:
 - `perf`: Performance improvements
 
 ### Examples
+
 - `feat(credits): add daily login reward`
 - `feat(human-qa): add representative directory`
 - `fix(chat): preserve sources when loading history`
@@ -26,6 +30,7 @@ Every commit message must follow the Conventional Commits specification:
 - `docs(phase-5): update implementation checklist`
 
 ## Commit Discipline Rules
+
 1. **Atomic Commits**: Commit every logical change separately. Do not accumulate large batches of unrelated modifications into a single giant commit.
 2. **Workflow**:
    - Make a small logical change.
