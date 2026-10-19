@@ -17,7 +17,7 @@ export default function ProjectCard({ project }) {
       transition={{ duration: shouldReduceMotion ? 0 : 0.25, ease: 'easeOut' }}
       className="h-full"
     >
-      <Card className="group flex h-full flex-col justify-between space-y-4 border-default light:hover:border-accent-primary/35 light:hover:shadow-xl light:hover:shadow-slate-900/10">
+      <Card className="group flex h-full flex-col justify-between space-y-4 border-default overflow-visible light:hover:border-accent-primary/35 light:hover:shadow-xl light:hover:shadow-slate-900/10">
         <div className="space-y-4">
           <ProjectImage project={project} />
 
@@ -31,20 +31,6 @@ export default function ProjectCard({ project }) {
           {/* <ProjectMeta project={project} /> */}
 
           <TechnologyIcons project={project} />
-
-          <motion.div
-            variants={{
-              rest: { opacity: 0, height: 0, marginTop: 0 },
-              hover: { opacity: 1, height: 'auto', marginTop: 4 },
-            }}
-            transition={{ duration: 0.2 }}
-            className="overflow-hidden"
-            aria-label="Project technologies"
-          >
-            <p className="text-xs text-muted">
-              {project.technologies.map((tech) => tech.name).join(' · ')}
-            </p>
-          </motion.div>
 
           <ProjectLinks project={project} />
         </div>

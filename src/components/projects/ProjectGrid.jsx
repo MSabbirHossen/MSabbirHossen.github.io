@@ -3,14 +3,19 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import Reveal from '../animations/Reveal';
 import ProjectCard from './ProjectCard';
 
-export default function ProjectGrid({ projects, activeCategory }) {
+export default function ProjectGrid({ projects, activeCategory, columns = 3 }) {
   const shouldReduceMotion = useReducedMotion();
+
+  const gridClassName =
+    columns === 2
+      ? 'grid gap-6 grid-cols-1 md:grid-cols-2 mt-6'
+      : 'grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-6';
 
   return (
     <AnimatePresence mode="popLayout">
       <motion.div
         key={activeCategory}
-        className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-6"
+        className={gridClassName}
         initial={
           shouldReduceMotion
             ? false

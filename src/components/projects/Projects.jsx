@@ -7,7 +7,7 @@ import Button from '../common/Button';
 import ProjectFilters from '../projects/ProjectFilters';
 import ProjectGrid from '../projects/ProjectGrid';
 
-export default function Projects({ limit = 3 }) {
+export default function Projects({ limit = 6 }) {
   const { projects } = portfolioData;
   const [activeCategory, setActiveCategory] = useState('All');
 
@@ -40,18 +40,19 @@ export default function Projects({ limit = 3 }) {
         <ProjectGrid
           projects={displayedProjects}
           activeCategory={limit ? 'featured' : activeCategory}
+          columns={2}
         />
 
         {limit && projects.length > limit && (
-          <div className="mt-12 flex justify-center">
+          <div className="mt-8 flex justify-center">
             <Button
               as={Link}
               to="/projects"
               variant="outline"
-              size="lg"
+              size="md"
               icon={FaArrowRight}
               iconPosition="right"
-              className="group border-default shadow-sm hover:border-accent-primary hover:text-accent-primary light:hover:shadow-md"
+              className="group border-default shadow-sm hover:border-accent-primary hover:text-accent-primary"
             >
               View All Projects ({projects.length})
             </Button>

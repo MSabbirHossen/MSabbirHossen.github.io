@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-display: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
@@ -193,6 +195,42 @@ html.light .surface {
 
 html.light .border-default {
   border-color: var(--border-default-light);
+}
+
+/* ─── Dropdown Menu Theme Support ─── */
+.dropdown-menu {
+  background-color: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.6),
+    0 8px 10px -6px rgba(0, 0, 0, 0.6);
+}
+
+html.light .dropdown-menu {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow:
+    0 20px 25px -5px rgba(15, 23, 42, 0.1),
+    0 8px 10px -6px rgba(15, 23, 42, 0.05);
+}
+
+.dropdown-item {
+  color: #94a3b8;
+  transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+  color: #f8fafc;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+html.light .dropdown-item {
+  color: #334155;
+}
+
+html.light .dropdown-item:hover {
+  color: #0f172a;
+  background-color: #f1f5f9;
 }
 
 /* .card-base {
@@ -435,4 +473,68 @@ html.light .glow-secondary {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Technology Icon Tooltip & Logo Brand Color Hover */
+.tech-icon-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tech-icon-tooltip {
+  pointer-events: none;
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px) scale(0.95);
+  z-index: 50;
+  white-space: nowrap;
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #f8fafc;
+  background-color: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tech-icon-wrapper:hover .tech-icon-tooltip,
+.tech-icon-wrapper:focus-within .tech-icon-tooltip,
+.tech-icon-wrapper.is-hovered .tech-icon-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+
+.tech-icon-btn {
+  display: inline-flex;
+  height: 2.5rem;
+  width: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.tech-icon-wrapper:hover .tech-icon-btn,
+.tech-icon-wrapper:focus-within .tech-icon-btn,
+.tech-icon-wrapper.is-hovered .tech-icon-btn {
+  transform: translateY(-2px);
+  color: var(--brand-color) !important;
+  border-color: var(--brand-border) !important;
+  background-color: var(--brand-bg) !important;
+  box-shadow: 0 4px 14px 0 var(--brand-shadow) !important;
+}
+
+.tech-icon-wrapper:hover .tech-icon-btn svg,
+.tech-icon-wrapper:focus-within .tech-icon-btn svg,
+.tech-icon-wrapper.is-hovered .tech-icon-btn svg {
+  transform: scale(1.15);
 }
