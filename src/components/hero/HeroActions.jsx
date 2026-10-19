@@ -2,35 +2,15 @@ import Button from '../common/Button';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const HeroActions = ({ github, linkedin }) => {
-  const socialLinks = [
-    {
-      label: 'GitHub',
-      href: github,
-      icon: FaGithub,
-      variant: 'outline',
-    },
-    {
-      label: 'LinkedIn',
-      href: linkedin,
-      icon: FaLinkedin,
-      variant: 'ghost',
-    },
-  ];
   return (
-    <div className="flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
-      {socialLinks.map((link) => (
-        <Button
-          key={link.label}
-          variant={link.variant}
-          size="lg"
-          href={link.href}
-          icon={link.icon}
-          className="w-full sm:w-auto"
-        >
-          {link.label}
-        </Button>
-      ))}
-    </div>
+    <>
+      <Button variant="outline" size="md" href={github} icon={FaGithub}>
+        GitHub
+      </Button>
+      <Button variant="outline" size="md" href={linkedin} icon={FaLinkedin}>
+        LinkedIn
+      </Button>
+    </>
   );
 };
 
