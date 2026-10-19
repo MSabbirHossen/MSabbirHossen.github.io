@@ -12,25 +12,21 @@ export default function Logo({ size = 'md', showText = true, showTitle = false, 
       box: 'h-8 w-8 rounded-lg',
       svg: 'w-5 h-5',
       name: 'text-base font-semibold',
-      badge: 'text-[10px] px-1.5 py-0.2',
     },
     md: {
       box: 'h-10 w-10 rounded-xl',
       svg: 'w-6 h-6',
       name: 'text-lg sm:text-xl font-bold',
-      badge: 'text-xs px-2 py-0.5',
     },
     lg: {
       box: 'h-12 w-12 rounded-2xl',
       svg: 'w-7 h-7',
       name: 'text-xl sm:text-2xl font-bold',
-      badge: 'text-xs px-2.5 py-0.5',
     },
   }[size] || {
     box: 'h-10 w-10 rounded-xl',
     svg: 'w-6 h-6',
     name: 'text-lg sm:text-xl font-bold',
-    badge: 'text-xs px-2 py-0.5',
   };
 
   return (
@@ -99,18 +95,11 @@ export default function Logo({ size = 'md', showText = true, showTitle = false, 
       {/* Brand Text */}
       {showText && (
         <div className="flex flex-col text-left">
-          <div className="flex items-center gap-1.5">
-            <span
-              className={`${sizeClasses.name} text-primary tracking-tight transition-colors group-hover:text-accent-primary`}
-            >
-              {name}
-            </span>
-            <span
-              className={`${sizeClasses.badge} font-mono font-semibold rounded-md bg-accent-primary/10 text-accent-secondary border border-accent-primary/20 tracking-wider`}
-            >
-              DEV
-            </span>
-          </div>
+          <span
+            className={`${sizeClasses.name} text-primary tracking-tight transition-colors group-hover:text-accent-primary`}
+          >
+            {name}
+          </span>
 
           {showTitle && role && (
             <span className="text-xs text-muted font-medium tracking-normal -mt-0.5">{role}</span>

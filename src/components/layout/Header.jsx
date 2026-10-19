@@ -50,18 +50,44 @@ export default function Header() {
       return;
     }
 
-    const sections = sectionIds.map((id) => document.getElementById(id)).filter(Boolean);
-    if (sections.length === 0) {
-      return;
-    }
-
     const updateActiveSection = () => {
-      const viewportAnchor = window.scrollY + 160;
-      let nextActive = sections[0].id;
+      const elements = sectionIds.map((id) => document.getElementById(id)).filter(Boolean);
 
-      for (const section of sections) {
-        if (section.offsetTop <= viewportAnchor) {
-          nextActive = section.id;
+      if (elements.length === 0) {
+        return;
+      }
+
+      const scrollBottom = window.innerHeight + window.scrollY;
+      const isAtBottom = scrollBottom >= document.documentElement.scrollHeight - 60;
+      if (isAtBottom) {
+        if (sectionIds.includes('contact')) {
+          setActiveSection('contact');
+          return;
+        }
+      }
+
+      if (window.scrollY < 120) {
+        setActiveSection('hero');
+        return;
+      }
+
+      elements.sort(
+        (a, b) =>
+          a.getBoundingClientRect().top +
+          window.scrollY -
+          (b.getBoundingClientRect().top + window.scrollY)
+      );
+
+      const anchorY = Math.max(120, window.innerHeight * 0.35);
+      let nextActive = elements[0].id;
+
+      for (const element of elements) {
+        const rect = element.getBoundingClientRect();
+        if (rect.top <= anchorY && rect.bottom > anchorY) {
+          nextActive = element.id;
+          break;
+        } else if (rect.top <= anchorY) {
+          nextActive = element.id;
         }
       }
 
@@ -73,9 +99,16 @@ export default function Header() {
     window.addEventListener('scroll', updateActiveSection, { passive: true });
     window.addEventListener('resize', updateActiveSection);
 
+    const timer1 = setTimeout(updateActiveSection, 150);
+    const timer2 = setTimeout(updateActiveSection, 500);
+    const timer3 = setTimeout(updateActiveSection, 1200);
+
     return () => {
       window.removeEventListener('scroll', updateActiveSection);
       window.removeEventListener('resize', updateActiveSection);
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      clearTimeout(timer3);
     };
   }, [location.pathname, sectionIds]);
 

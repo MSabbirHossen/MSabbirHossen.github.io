@@ -172,7 +172,7 @@ export default function NavLinks({ activeSection, onNavigate, mobile = false }) 
 
         {/* Dropdown Menu */}
         {isMoreOpen && (
-          <div className="absolute top-full right-0 mt-2.5 w-48 rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-[#131b2e] p-1.5 shadow-xl shadow-slate-900/10 dark:shadow-2xl dark:shadow-black/60 z-50 animate-fade-in">
+          <div className="dropdown-menu absolute top-full right-0 mt-2.5 w-48 rounded-xl p-1.5 z-50 animate-fade-in">
             <div className="space-y-1">
               {MORE_NAV_LINKS.map((item) => {
                 const Icon = item.icon;
@@ -185,10 +185,8 @@ export default function NavLinks({ activeSection, onNavigate, mobile = false }) 
                       setIsMoreOpen(false);
                       onNavigate(e, item.href);
                     }}
-                    className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg transition-colors text-left cursor-pointer text-sm font-medium ${
-                      isActive
-                        ? 'bg-accent-primary/10 text-accent-primary font-semibold'
-                        : 'text-slate-700 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/60'
+                    className={`dropdown-item w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-left cursor-pointer text-sm font-medium ${
+                      isActive ? 'bg-accent-primary/10 text-accent-primary font-semibold' : ''
                     }`}
                   >
                     <Icon className="h-4 w-4 text-accent-secondary shrink-0" />
