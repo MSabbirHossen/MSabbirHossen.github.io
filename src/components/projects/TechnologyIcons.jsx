@@ -141,7 +141,7 @@ export default function TechnologyIcons({ project, maxIcons }) {
   const remaining = technologies.length - visibleTech.length;
 
   return (
-    <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
+    <div className="flex min-h-[5.5rem] flex-wrap items-center content-start gap-2.5 sm:gap-3">
       {visibleTech.map((tech, index) => (
         <TechIconItem key={`${tech.name}-${index}`} tech={tech} />
       ))}

@@ -17,7 +17,14 @@ const ProjectNotFound = () => {
         </Typography>
 
         <div className="flex justify-center">
-          <Button as={Link} to="/projects" variant="outline" size="md" icon={FaArrowLeft}>
+          <Button
+            as={Link}
+            to="/#projects"
+            state={{ scrollToSection: 'projects' }}
+            variant="outline"
+            size="md"
+            icon={FaArrowLeft}
+          >
             Back to Projects
           </Button>
         </div>

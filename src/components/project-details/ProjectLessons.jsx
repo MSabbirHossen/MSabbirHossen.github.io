@@ -16,7 +16,14 @@ const ProjectHero = ({ project }) => {
   return (
     <div className="mb-12">
       <Reveal>
-        <Button as={Link} to="/projects" variant="ghost" size="sm" className="mb-8 px-0">
+        <Button
+          as={Link}
+          to="/#projects"
+          state={{ scrollToSection: 'projects' }}
+          variant="ghost"
+          size="sm"
+          className="mb-8 px-0"
+        >
           <FaArrowLeft />
           Back to Projects
         </Button>

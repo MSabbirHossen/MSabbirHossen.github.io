@@ -75,7 +75,8 @@ export default function ProjectsPage() {
           <Reveal>
             <Button
               as={Link}
-              to="/"
+              to="/#projects"
+              state={{ scrollToSection: 'projects' }}
               variant="ghost"
               size="sm"
               icon={FaArrowLeft}

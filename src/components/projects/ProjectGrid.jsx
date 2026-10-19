@@ -48,6 +48,7 @@ export default function ProjectGrid({ projects, activeCategory, columns = 3 }) {
             delay={index * 0.06}
             amount={0.2}
             whileHover={{ y: -4 }}
+            className="h-full"
           >
             <ProjectCard project={project} />
           </Reveal>

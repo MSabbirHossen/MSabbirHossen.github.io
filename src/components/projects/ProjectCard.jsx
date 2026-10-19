@@ -17,21 +17,23 @@ export default function ProjectCard({ project }) {
       transition={{ duration: shouldReduceMotion ? 0 : 0.25, ease: 'easeOut' }}
       className="h-full"
     >
-      <Card className="group flex h-full flex-col justify-between space-y-4 border-default overflow-visible light:hover:border-accent-primary/35 light:hover:shadow-xl light:hover:shadow-slate-900/10">
-        <div className="space-y-4">
+      <Card className="group flex h-full flex-col justify-between overflow-hidden border-default p-6 transition-all duration-300 hover:border-accent-primary/40 light:hover:border-accent-primary/35 light:hover:shadow-xl light:hover:shadow-slate-900/10">
+        <div className="flex flex-col space-y-4">
           <ProjectImage project={project} />
 
           <ProjectHeader project={project} />
 
-          <Typography variant="body" className="text-justify text-sm text-muted">
-            {project.overview.length > 160
-              ? `${project.overview.substring(0, 160)}...`
-              : project.overview}
+          <Typography
+            variant="body"
+            className="line-clamp-3 min-h-[4.25rem] text-sm leading-relaxed text-muted"
+          >
+            {project.overview}
           </Typography>
-          {/* <ProjectMeta project={project} /> */}
 
-          <TechnologyIcons project={project} />
+          <TechnologyIcons project={project} maxIcons={8} />
+        </div>
 
+        <div className="mt-5 border-t border-default/50 pt-4">
           <ProjectLinks project={project} />
         </div>
       </Card>

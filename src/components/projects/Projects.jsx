@@ -7,7 +7,7 @@ import Button from '../common/Button';
 import ProjectFilters from '../projects/ProjectFilters';
 import ProjectGrid from '../projects/ProjectGrid';
 
-export default function Projects({ limit = 6 }) {
+export default function Projects({ limit = 4 }) {
   const { projects } = portfolioData;
   const [activeCategory, setActiveCategory] = useState('All');
 
