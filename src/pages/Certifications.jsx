@@ -13,7 +13,6 @@ import {
 
 import { portfolioData } from '../data';
 import Typography from '../components/common/Typography';
-import Badge from '../components/common/Badge';
 import Button from '../components/common/Button';
 import Card from '../components/common/Card';
 import Reveal from '../components/animations/Reveal';
@@ -54,7 +53,8 @@ export default function CertificationsPage() {
           <Reveal>
             <Button
               as={Link}
-              to="/"
+              to="/#certifications"
+              state={{ scrollToSection: 'certifications' }}
               variant="ghost"
               size="sm"
               icon={FaArrowLeft}
@@ -111,96 +111,86 @@ export default function CertificationsPage() {
         </Reveal>
 
         {/* Certifications Grid */}
-        <div className="grid gap-6 md:grid-cols-2">
-          {certifications.map((cert, index) => {
-            const isFeatured = cert.title.toLowerCase().includes('complete web development');
-
-            return (
-              <Reveal
-                key={cert.id || `${cert.title}-${index}`}
-                y={18}
-                delay={index * 0.07}
-                duration={0.45}
-                whileHover={{ y: -4 }}
-              >
-                <Card
-                  className={`h-full space-y-5 border-default transition-all duration-300 ${
-                    isFeatured
-                      ? 'border-accent-primary/50 shadow-md shadow-accent-primary/10'
-                      : 'hover:border-accent-primary/40'
-                  }`}
-                >
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex items-center gap-3">
-                      <span
-                        className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border ${
-                          isFeatured
-                            ? 'bg-accent-primary/20 text-accent-primary border-accent-primary/30'
-                            : 'bg-accent-primary/10 text-accent-secondary border-default'
-                        }`}
-                      >
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          {certifications.map((cert, index) => (
+            <Reveal
+              key={cert.id || `${cert.title}-${index}`}
+              y={18}
+              delay={index * 0.07}
+              duration={0.45}
+              whileHover={{ y: -4 }}
+              className="h-full"
+            >
+              <Card className="flex h-full flex-col justify-between overflow-hidden border-default p-6 transition-all duration-300 hover:border-accent-primary/40 sm:p-8">
+                <div>
+                  <div className="mb-4 flex items-start justify-between gap-4">
+                    <div className="flex items-center gap-3.5">
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-accent-primary/20 bg-accent-primary/10 text-accent-primary">
                         <FaCertificate className="h-6 w-6" aria-hidden="true" />
-                      </span>
+                      </div>
                       <div>
-                        {isFeatured && (
-                          <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-accent-primary mb-1">
-                            <span className="w-1.5 h-1.5 rounded-full bg-accent-primary animate-pulse" />
-                            Flagship Course
-                          </span>
-                        )}
-                        <Typography variant="subtitle" className="text-primary font-bold text-base">
+                        <Typography
+                          variant="h3"
+                          className="text-lg font-bold text-primary sm:text-xl"
+                        >
                           {cert.title}
                         </Typography>
-                        <Typography variant="caption" className="text-muted block mt-0.5">
-                          {cert.issuer}
-                        </Typography>
+                        <div className="mt-1 flex flex-wrap items-center gap-2 text-xs font-medium text-muted">
+                          <span>{cert.date}</span>
+                          {cert.id && cert.id !== 'Not-available for this course' && (
+                            <>
+                              <span>•</span>
+                              <span
+                                className="inline-block max-w-[220px] truncate align-bottom font-mono text-muted sm:max-w-[300px]"
+                                title={cert.id}
+                              >
+                                ID: {cert.id}
+                              </span>
+                            </>
+                          )}
+                        </div>
                       </div>
                     </div>
-
-                    <Badge variant={isFeatured ? 'primary' : 'secondary'}>{cert.date}</Badge>
                   </div>
 
-                  {cert.id && cert.id !== 'Not-available for this course' && (
-                    <div className="pt-1">
-                      <span className="inline-flex items-center gap-1.5 text-xs text-muted font-mono bg-surface/80 border border-default px-2.5 py-1 rounded-md">
-                        <span className="text-[10px] uppercase font-bold text-secondary">ID:</span>
-                        <span className="truncate max-w-[200px]">{cert.id}</span>
-                      </span>
-                    </div>
-                  )}
-
                   {cert.skills && cert.skills.length > 0 && (
-                    <div className="flex flex-wrap gap-2 pt-2">
+                    <div className="mt-4 flex flex-wrap gap-2 border-t border-default/50 pt-4">
                       {cert.skills.map((skill) => (
                         <span
                           key={skill}
-                          className="inline-flex items-center gap-1 rounded-lg border border-default bg-surface/80 px-2 py-0.5 text-xs font-medium text-secondary"
+                          className="inline-flex items-center gap-1 rounded-lg border border-default bg-surface/80 px-2.5 py-1 text-xs font-medium text-secondary"
                         >
-                          <FaCheckCircle className="h-2.5 w-2.5 text-accent-secondary" />
+                          <FaCheckCircle className="h-3 w-3 text-accent-secondary" />
                           {skill}
                         </span>
                       ))}
                     </div>
                   )}
+                </div>
 
-                  <div className="flex items-center justify-between gap-3 pt-3 border-t border-default/50">
-                    <span className="text-xs text-muted">{cert.issuer}</span>
-                    {cert.link && (
-                      <Button
-                        href={cert.link}
-                        variant={isFeatured ? 'primary' : 'outline'}
-                        size="sm"
-                        icon={FaExternalLinkAlt}
-                        iconPosition="right"
-                      >
-                        Verify Credential
-                      </Button>
-                    )}
-                  </div>
-                </Card>
-              </Reveal>
-            );
-          })}
+                <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-default/50 pt-4">
+                  <Typography
+                    variant="body"
+                    className="text-xs font-medium text-secondary sm:text-sm"
+                  >
+                    Issued by <span className="font-semibold text-primary">{cert.issuer}</span>
+                  </Typography>
+
+                  {cert.link && (
+                    <Button
+                      href={cert.link}
+                      variant="primary"
+                      size="sm"
+                      icon={FaExternalLinkAlt}
+                      iconPosition="right"
+                    >
+                      Verify Credential
+                    </Button>
+                  )}
+                </div>
+              </Card>
+            </Reveal>
+          ))}
         </div>
 
         {/* Cross-Link Navigation */}
@@ -212,7 +202,8 @@ export default function CertificationsPage() {
 
             <Button
               as={Link}
-              to="/projects"
+              to="/#projects"
+              state={{ scrollToSection: 'projects' }}
               variant="primary"
               size="md"
               icon={FaArrowRight}
