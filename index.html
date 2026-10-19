@@ -38,6 +38,17 @@
     <meta name="twitter:image" content="https://msabbirhossen.github.io/og-image.svg" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- Google Fonts Preconnect & Stylesheet for Fast Initial Render -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+    />
 
     <title>Md. Sabbir Hossen | MERN Stack Developer Portfolio</title>
 
@@ -52,10 +63,116 @@
         }
       })();
     </script>
+    <style>
+      @keyframes logoSpin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes logoPulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+    </style>
   </head>
 
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div
+        style="
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          background-color: #0b0f19;
+          color: #f8fafc;
+          font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+        "
+      >
+        <div
+          style="
+            position: relative;
+            width: 68px;
+            height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          <div
+            style="
+              position: absolute;
+              inset: -8px;
+              border-radius: 20px;
+              border: 1.5px dashed rgba(6, 182, 212, 0.45);
+              animation: logoSpin 4s linear infinite;
+            "
+          ></div>
+          <div
+            style="
+              width: 58px;
+              height: 58px;
+              border-radius: 16px;
+              border: 1.5px solid rgba(129, 140, 248, 0.4);
+              background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), #111827);
+              box-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              animation: logoPulse 2s ease-in-out infinite;
+            "
+          >
+            <svg
+              viewBox="0 0 36 36"
+              style="width: 36px; height: 36px"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M11 11L5 18L11 25"
+                stroke="#06b6d4"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M25 11L31 18L25 25"
+                stroke="#06b6d4"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M21.5 13.5C21.5 13.5 20.8 12 18 12C15.2 12 14 13.6 14 15.2C14 18.2 22 17.8 22 21C22 23 20.2 24 18 24C15 24 14.2 22.2 14.2 22.2"
+                stroke="#818cf8"
+                stroke-width="2.75"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <circle cx="18" cy="18" r="1.2" fill="#67e8f9" />
+            </svg>
+          </div>
+        </div>
+        <p
+          style="
+            margin-top: 22px;
+            font-size: 11px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: #94a3b8;
+            font-family: monospace;
+          "
+        >
+          Loading...
+        </p>
+      </div>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
