@@ -8,8 +8,6 @@ import Card from '../common/Card';
 import Reveal from '../animations/Reveal';
 
 const ProjectHero = ({ project }) => {
-  const shortDescription =
-    project.overview.length > 220 ? `${project.overview.slice(0, 120)}...` : project.overview;
   const heroTech = project.technologies?.slice(0, 5) ?? [];
   const heroImage = project.screenshots?.[0];
 
@@ -37,12 +35,6 @@ const ProjectHero = ({ project }) => {
           </Reveal>
 
           <Reveal delay={0.15}>
-            <Typography variant="lead" className="max-w-3xl text-muted">
-              {shortDescription}
-            </Typography>
-          </Reveal>
-
-          <Reveal delay={0.2}>
             <ProjectMeta project={project} />
           </Reveal>
 

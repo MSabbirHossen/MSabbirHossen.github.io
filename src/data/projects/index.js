@@ -8,9 +8,9 @@ import { personalAppStore } from './personalAppStore';
 
 export {
   etaProject,
-  importExportHub,
-  digitalLifeLessons,
   lifeOsProject,
+  digitalLifeLessons,
+  importExportHub,
   movieExplorer,
   gameHub,
   personalAppStore,
@@ -18,9 +18,9 @@ export {
 
 export const projects = [
   etaProject,
-  importExportHub,
-  digitalLifeLessons,
   lifeOsProject,
+  digitalLifeLessons,
+  importExportHub,
   movieExplorer,
   gameHub,
   personalAppStore,

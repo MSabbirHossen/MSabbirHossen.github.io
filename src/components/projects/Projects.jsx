@@ -1,10 +1,13 @@
 import { useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { FaArrowRight } from 'react-icons/fa';
 import { portfolioData } from '../../data';
 import SectionWrapper from '../common/SectionWrapper';
+import Button from '../common/Button';
 import ProjectFilters from '../projects/ProjectFilters';
 import ProjectGrid from '../projects/ProjectGrid';
 
-export default function Projects() {
+export default function Projects({ limit = 3 }) {
   const { projects } = portfolioData;
   const [activeCategory, setActiveCategory] = useState('All');
 
@@ -13,28 +16,47 @@ export default function Projects() {
     [projects]
   );
 
-  const filteredProjects =
-    activeCategory === 'All'
+  const displayedProjects = useMemo(() => {
+    if (limit) {
+      return projects.slice(0, limit);
+    }
+
+    return activeCategory === 'All'
       ? projects
       : projects.filter((project) => project.category === activeCategory);
+  }, [projects, limit, activeCategory]);
 
   return (
-    <SectionWrapper
-      id="projects"
-      eyebrow="Portfolio"
-      title="Featured Projects"
-      description="Selected work that shows how I solve problems, choose a stack, implement the solution, and deliver something usable."
-      className="glass"
-      innerClassName="space-y-10"
-    >
+    <SectionWrapper id="projects" title="Featured Projects" innerClassName="space-y-10">
       <div className="mx-auto max-w-5xl px-4">
-        <ProjectFilters
-          categories={categories}
-          activeCategory={activeCategory}
-          setActiveCategory={setActiveCategory}
+        {!limit && (
+          <ProjectFilters
+            categories={categories}
+            activeCategory={activeCategory}
+            setActiveCategory={setActiveCategory}
+          />
+        )}
+
+        <ProjectGrid
+          projects={displayedProjects}
+          activeCategory={limit ? 'featured' : activeCategory}
         />
 
-        <ProjectGrid projects={filteredProjects} activeCategory={activeCategory} />
+        {limit && projects.length > limit && (
+          <div className="mt-12 flex justify-center">
+            <Button
+              as={Link}
+              to="/projects"
+              variant="outline"
+              size="lg"
+              icon={FaArrowRight}
+              iconPosition="right"
+              className="group border-default shadow-sm hover:border-accent-primary hover:text-accent-primary light:hover:shadow-md"
+            >
+              View All Projects ({projects.length})
+            </Button>
+          </div>
+        )}
       </div>
     </SectionWrapper>
   );
