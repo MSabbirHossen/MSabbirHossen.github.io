@@ -12,6 +12,7 @@ import {
   SiJavascript,
   SiJsonwebtokens,
   SiMongodb,
+  SiNextdotjs,
   SiNodedotjs,
   SiNpm,
   SiPostgresql,
@@ -21,6 +22,7 @@ import {
   SiReactrouter,
   SiStripe,
   SiTailwindcss,
+  SiTurborepo,
   SiTypescript,
   SiVercel,
   SiVite,
@@ -45,6 +47,7 @@ import {
   FaTachometerAlt,
 } from 'react-icons/fa';
 
+import { TbBrandOpenai } from 'react-icons/tb';
 import { VscVscodeInsiders } from 'react-icons/vsc';
 
 export {
@@ -77,6 +80,7 @@ export {
   SiJavascript,
   SiJsonwebtokens,
   SiMongodb,
+  SiNextdotjs,
   SiNodedotjs,
   SiNpm,
   SiPostgresql,
@@ -86,8 +90,11 @@ export {
   SiReactrouter,
   SiStripe,
   SiTailwindcss,
+  SiTurborepo,
   SiTypescript,
   SiVercel,
   SiVite,
+  TbBrandOpenai,
+  TbBrandOpenai as SiOpenai,
   VscVscodeInsiders,
 };
