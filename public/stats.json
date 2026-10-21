@@ -1,5 +1,5 @@
 {
-  "publicRepos": 63,
+  "publicRepos": 64,
   "followers": 4,
   "following": 7,
   "totalStars": 5,
@@ -15,7 +15,7 @@
     },
     {
       "name": "TypeScript",
-      "count": 3
+      "count": 4
     },
     {
       "name": "CSS",
@@ -24,13 +24,22 @@
   ],
   "recentRepos": [
     {
+      "name": "communication-system",
+      "description": "Privacy-focused, end-to-end encrypted one-to-one messaging for web, Android and iOS.",
+      "language": "TypeScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/communication-system",
+      "updated": "2026-10-20T22:42:47Z"
+    },
+    {
       "name": "MSabbirHossen.github.io",
       "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
       "language": "JavaScript",
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
-      "updated": "2026-10-20T04:13:15Z"
+      "updated": "2026-10-20T16:36:44Z"
     },
     {
       "name": "Tea_House_Project",
@@ -67,16 +76,7 @@
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/Demo_Calender",
       "updated": "2026-10-14T22:29:39Z"
-    },
-    {
-      "name": "Demo_Architects",
-      "description": "No description available",
-      "language": "HTML",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/Demo_Architects",
-      "updated": "2026-10-14T22:28:40Z"
     }
   ],
-  "updatedAt": "2026-10-20T16:36:38.464Z"
+  "updatedAt": "2026-10-21T04:00:18.099Z"
 }
