@@ -24,6 +24,15 @@
   ],
   "recentRepos": [
     {
+      "name": "MSabbirHossen.github.io",
+      "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
+      "updated": "2026-10-21T04:00:23Z"
+    },
+    {
       "name": "communication-system",
       "description": "Privacy-focused, end-to-end encrypted one-to-one messaging for web, Android and iOS.",
       "language": "TypeScript",
@@ -31,15 +40,6 @@
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/communication-system",
       "updated": "2026-10-20T22:42:47Z"
-    },
-    {
-      "name": "MSabbirHossen.github.io",
-      "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
-      "language": "JavaScript",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
-      "updated": "2026-10-20T16:36:44Z"
     },
     {
       "name": "Tea_House_Project",
@@ -78,5 +78,5 @@
       "updated": "2026-10-14T22:29:39Z"
     }
   ],
-  "updatedAt": "2026-10-21T04:00:18.099Z"
+  "updatedAt": "2026-10-21T16:54:50.914Z"
 }
