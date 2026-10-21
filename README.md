@@ -141,16 +141,16 @@ I believe technology should be created with intention—to solve problems and cr
 
 ## 📌 Featured Projects
 
-### 🎓 Exploratory Training Academy (ETA) - Digital Education Platform
+### 🎓 Exploratory Training Academy (ETA) - Full-Stack EdTech Monorepo
 
 <p align="center">
   <img src="public/screenshots/eta-dashboard.png" alt="Exploratory Training Academy application preview" width="100%"/>
 </p>
 
-A complete digital education management platform designed for educational institutions operating online, physically, or in a hybrid model. Built with TypeScript, React, Node.js, Express, PostgreSQL, and Docker to provide seamless multi-modal learning workflows, automated attendance, dynamic course scheduling, and secure role-based portals.
+An enterprise-grade, multi-tenant academic and training operating system consolidating curriculum planning, interactive examinations with server-authoritative integrity, live attendance tracking, GPA gradebook publishing, guardian monitoring, tuition billing, bilingual (EN/AR RTL) localization, offline-first PWA, and an educational AI assistant ("Ask ETA") into a unified Turborepo monorepo.
 
-- **Tech stack:** TypeScript, React 19, Node.js, Express.js, PostgreSQL, Docker, Tailwind CSS, Vite, JWT Auth, RESTful API
-- 🔗 **Live Demo:** [ETA Platform](https://eta.example.com/)
+- **Tech stack:** TypeScript, Next.js 15, React 19, Node.js, Express, MongoDB Atlas, Firebase Auth, Tailwind CSS v4, Turborepo, Vercel, OpenAI (RAG)
+- 🔗 **Live Demo:** [ETA Platform](https://eta-web-omega.vercel.app/)
 - 🔗 **Repository:** [ETA Repository](https://github.com/MSabbirHossen/ETA)
 
 ### 🧭 Life OS

@@ -17,9 +17,9 @@ Full-stack developer focused on building practical web applications with MERN, A
 ## Projects
 
 ### Exploratory Training Academy (ETA)
-A complete digital education management platform designed for educational institutions operating online, physically, or in a hybrid model. Built with TypeScript, React, Node.js, Express, PostgreSQL, and Docker to provide seamless multi-modal learning workflows, automated attendance, dynamic course scheduling, and secure role-based portals.
-- Tech stack: TypeScript, React 19, Node.js, Express.js, PostgreSQL, Docker, Tailwind CSS, Vite, JWT Auth, RESTful API
-- Links: [Live site](https://eta.example.com/) | [GitHub](https://github.com/MSabbirHossen/ETA) | [Case study](/projects/eta-digital-education-platform)
+An enterprise-grade, multi-tenant academic and training operating system consolidating curriculum planning, interactive examinations with server-authoritative integrity, live attendance tracking, GPA gradebook publishing, guardian monitoring, tuition billing, bilingual (EN/AR RTL) localization, offline-first PWA, and an educational AI assistant ("Ask ETA") into a unified Turborepo monorepo.
+- Tech stack: TypeScript, Next.js 15, React 19, Node.js, Express, MongoDB Atlas, Firebase Auth, Tailwind CSS v4, Turborepo, Vercel, OpenAI (RAG)
+- Links: [Live site](https://eta-web-omega.vercel.app/) | [GitHub](https://github.com/MSabbirHossen/ETA) | [Case study](/projects/eta-digital-education-platform)
 ### Life OS
 Life OS is a production-ready, single-user personal operating system that combines journaling, finance, habits, fitness, goals, Islamic tracking, study management, and reporting into one unified dashboard.
 - Tech stack: React, Vite, Tailwind CSS, Node.js, Express, MongoDB, Mongoose, JWT, bcrypt, Recharts, Lucide React, Firebase, Vercel
@@ -47,7 +47,7 @@ Built a responsive app discovery platform with search, sorting, protected routes
 
 ## Experience
 
-- **Full Stack Engineer at Exploratory Training Academy (ETA) · Education Platform Architecture (2026 · Active Development):** Architected and built a full-stack digital education platform supporting online, physical, and hybrid learning models with TypeScript, React 19, Node.js, PostgreSQL, and Docker.
+- **Full-Stack Architect & Solo Developer at Exploratory Training Academy (ETA) · EdTech Monorepo Architecture (2026 · Completed):** Architected and deployed an enterprise-grade multi-tenant academic platform and training operating system consolidating curriculum planning, anti-cheat assessments, GPA publishing, guardian monitoring, and an educational AI assistant into a Turborepo monorepo.
 - **Full Stack MERN Developer at Life OS · Personal Productivity System (2026 · Production System):** Designed and deployed a production-ready personal operating system integrating 10 tracking modules, automated health & finance analytics, and secure JWT authentication.
 - **Full Stack MERN Developer at Digital Life Lessons · Content & Monetization Platform (2026 · 2-week build):** Built and deployed an interactive community platform for sharing practical life lessons, featuring role-based admin moderation, Stripe payment checkout, and Firebase authentication.
 - **Full Stack Developer at Import Export Hub · Self-initiated product work (2026 · 2-week build):** Delivered a deployed import/export workflow marketplace, translating a multi-stakeholder business process into a secured full-stack product.
