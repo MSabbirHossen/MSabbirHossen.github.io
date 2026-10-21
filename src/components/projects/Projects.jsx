@@ -17,13 +17,17 @@ export default function Projects({ limit = 4 }) {
   );
 
   const displayedProjects = useMemo(() => {
+    const ordered = [...projects].sort(
+      (a, b) => (a.featuredOrder ?? 999) - (b.featuredOrder ?? 999)
+    );
+
     if (limit) {
-      return projects.slice(0, limit);
+      return ordered.slice(0, limit);
     }
 
     return activeCategory === 'All'
-      ? projects
-      : projects.filter((project) => project.category === activeCategory);
+      ? ordered
+      : ordered.filter((project) => project.category === activeCategory);
   }, [projects, limit, activeCategory]);
 
   return (

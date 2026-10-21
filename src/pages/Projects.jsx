@@ -29,7 +29,11 @@ export default function ProjectsPage() {
   );
 
   const filteredProjects = useMemo(() => {
-    return projects.filter((project) => {
+    const sorted = [...projects].sort(
+      (a, b) => (a.featuredOrder ?? 999) - (b.featuredOrder ?? 999)
+    );
+
+    return sorted.filter((project) => {
       const matchesCategory = activeCategory === 'All' || project.category === activeCategory;
 
       if (!matchesCategory) return false;
