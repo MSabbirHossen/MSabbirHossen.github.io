@@ -30,7 +30,16 @@
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
-      "updated": "2026-10-21T04:00:23Z"
+      "updated": "2026-10-21T22:40:46Z"
+    },
+    {
+      "name": "ETA",
+      "description": "Exploratory Training Academy (ETA) is a complete digital education management platform designed for an educational institution that may operate fully online, physically, or in a hybrid model.",
+      "language": "TypeScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/ETA",
+      "updated": "2026-10-21T21:51:58Z"
     },
     {
       "name": "communication-system",
@@ -67,16 +76,7 @@
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/hero-io-app",
       "updated": "2026-10-14T22:42:38Z"
-    },
-    {
-      "name": "Demo_Calender",
-      "description": "No description available",
-      "language": "HTML",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/Demo_Calender",
-      "updated": "2026-10-14T22:29:39Z"
     }
   ],
-  "updatedAt": "2026-10-21T16:54:50.914Z"
+  "updatedAt": "2026-10-22T04:01:50.701Z"
 }
