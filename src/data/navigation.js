@@ -1,5 +1,6 @@
 import { portfolioData } from './index';
 import {
+  FaBrain,
   FaFile,
   FaGithub,
   FaLinkedin,
@@ -18,6 +19,7 @@ export const resources = [
   { label: 'LinkedIn', href: linkedin, external: true, icon: FaLinkedin },
   { label: 'Facebook', href: facebook, external: true, icon: FaFacebook },
   { label: 'Email', href: `mailto:${email}`, icon: FaEnvelope },
+  { label: 'AI Data (llms.txt)', href: '/llms.txt', external: true, icon: FaBrain },
 ];
 
 export const PRIMARY_NAV_LINKS = [
@@ -74,4 +76,5 @@ export const FOOTER_MORE_LINKS = [
   { label: 'Experience Timeline', to: '/experience' },
   { label: 'Education Timeline', to: '/education' },
   { label: 'All Certifications', to: '/certifications' },
+  { label: 'AI Profile (llms.txt)', href: '/llms.txt', external: true },
 ];
