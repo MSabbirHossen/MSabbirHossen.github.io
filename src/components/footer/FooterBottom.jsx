@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { portfolioData } from '../../data';
 import FooterSocials from './FooterSocials';
 
@@ -10,11 +11,24 @@ export default function FooterBottom() {
       <div className="text-center sm:text-left">
         <p className="leading-relaxed">
           &copy; {currentYear}{' '}
-          <span className="font-semibold text-primary">{personalInfo.brandName}</span>. All rights
-          reserved.
+          <Link
+            to="/developer"
+            className="font-semibold text-primary transition-colors hover:text-accent-primary"
+            title="View Developer & Community Hub"
+          >
+            {personalInfo.brandName}
+          </Link>
+          . All rights reserved.
         </p>
         <p className="mt-0.5 text-muted/80">
-          Designed & developed with modern React & Tailwind CSS.
+          Designed &amp; developed with modern React &amp; Tailwind CSS.{' '}
+          <Link
+            to="/developer"
+            className="inline-flex items-center gap-1 font-medium text-muted transition-colors hover:text-accent-primary"
+            title="Developer Info & Community Hub"
+          >
+            <span className="text-accent-primary">✦</span> Developer Info
+          </Link>
         </p>
       </div>
 
