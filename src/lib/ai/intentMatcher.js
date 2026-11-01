@@ -1,12 +1,72 @@
 const INTENT_RULES = [
-  { key: 'greeting', terms: ['hi', 'hello', 'hey', 'assalam', 'salam', 'greetings'] },
-  { key: 'thanks', terms: ['thanks', 'thank you', 'jazak', 'appreciate', 'grateful'] },
+  {
+    key: 'greeting',
+    terms: [
+      'hi',
+      'hello',
+      'hey',
+      'assalam',
+      'salam',
+      'greetings',
+      'good morning',
+      'good evening',
+      'good afternoon',
+      'whats up',
+      'sup',
+    ],
+  },
+  {
+    key: 'thanks',
+    terms: [
+      'thanks',
+      'thank you',
+      'jazak',
+      'appreciate',
+      'grateful',
+      'awesome',
+      'great',
+      'cool',
+      'well done',
+    ],
+  },
+  {
+    key: 'project_reportbd',
+    terms: [
+      'report bd',
+      'reportbd',
+      'bps report',
+      'bps',
+      'incident reporting',
+      'personal report',
+      'personalreport',
+      'latest project',
+      'top project',
+      'flagship project',
+      'newest project',
+    ],
+  },
+  {
+    key: 'project_eta',
+    terms: [
+      'eta',
+      'exploratory training academy',
+      'training academy',
+      'lms',
+      'digital education platform',
+      'course management',
+    ],
+  },
+  {
+    key: 'project_lifeos',
+    terms: ['life os', 'lifeos', 'productivity app', 'habit tracker', 'daily routines'],
+  },
   {
     key: 'projects',
     terms: [
       'project',
       'projects',
       'best projects',
+      'featured projects',
       'portfolio',
       'case study',
       'work',
@@ -19,29 +79,166 @@ const INTENT_RULES = [
   },
   {
     key: 'skills',
-    terms: ['skill', 'skills', 'show skills', 'stack', 'technology', 'tech stack', 'tools'],
+    terms: [
+      'skill',
+      'skills',
+      'show skills',
+      'stack',
+      'technology',
+      'technologies',
+      'tech stack',
+      'tools',
+      'languages',
+    ],
+  },
+  {
+    key: 'why_hire',
+    terms: [
+      'why hire',
+      'why should we hire',
+      'why choose',
+      'strengths',
+      'value proposition',
+      'what makes you special',
+      'what makes you unique',
+      'fit for role',
+      'hire you',
+      'reason to hire',
+    ],
+  },
+  {
+    key: 'architecture',
+    terms: [
+      'architecture',
+      'system design',
+      'monorepo',
+      'database schema',
+      'api design',
+      'restful api',
+      'concurrency',
+      'optimistic locking',
+      'design pattern',
+    ],
+  },
+  {
+    key: 'typescript',
+    terms: ['typescript', 'ts', 'zod', 'type safety', 'schema validation', 'validation'],
   },
   {
     key: 'experience',
-    terms: ['experience', 'work history', 'role', 'freelance', 'career', 'background'],
+    terms: [
+      'experience',
+      'work history',
+      'role',
+      'freelance',
+      'career',
+      'background',
+      'milestones',
+      'jobs',
+    ],
   },
   {
     key: 'current_focus',
-    terms: ['focus', 'current focus', 'currently working on', 'learning', 'building now'],
+    terms: [
+      'focus',
+      'current focus',
+      'currently working on',
+      'learning',
+      'building now',
+      'ongoing',
+    ],
   },
-  { key: 'education', terms: ['education', 'study', 'degree', 'university', 'academic'] },
+  {
+    key: 'education',
+    terms: [
+      'education',
+      'study',
+      'degree',
+      'university',
+      'academic',
+      'polytechnic',
+      'bteb',
+      'diploma',
+      'student',
+    ],
+  },
   {
     key: 'certifications',
-    terms: ['certification', 'certifications', 'certificate', 'training', 'course'],
+    terms: [
+      'certification',
+      'certifications',
+      'certificate',
+      'training',
+      'course',
+      'phitron',
+      'credential',
+      'certified',
+    ],
   },
-  { key: 'resume', terms: ['resume', 'cv'] },
-  { key: 'github', terms: ['github', 'repo', 'repository', 'commit', 'open source'] },
-  { key: 'contact', terms: ['contact', 'email', 'reach', 'hire', 'interview'] },
-  { key: 'availability', terms: ['availability', 'available', 'open to', 'opportunity'] },
-  { key: 'social_links', terms: ['linkedin', 'social', 'profile link'] },
-  { key: 'react', terms: ['react', 'reactjs', 'react.js'] },
-  { key: 'mern', terms: ['mern', 'mongodb', 'express', 'node', 'full stack'] },
-  { key: 'security', terms: ['security', 'secure', 'owasp', 'cybersecurity', 'osint'] },
+  {
+    key: 'resume',
+    terms: ['resume', 'cv', 'curriculum vitae', 'download resume', 'view resume', 'pdf'],
+  },
+  {
+    key: 'github',
+    terms: ['github', 'repo', 'repository', 'commit', 'open source', 'stats', 'contributions'],
+  },
+  {
+    key: 'contact',
+    terms: [
+      'contact',
+      'email',
+      'reach',
+      'hire',
+      'interview',
+      'talk',
+      'message',
+      'whatsapp',
+      'phone',
+      'call',
+      'schedule',
+    ],
+  },
+  {
+    key: 'availability',
+    terms: [
+      'availability',
+      'available',
+      'open to',
+      'opportunity',
+      'start date',
+      'remote',
+      'relocate',
+    ],
+  },
+  {
+    key: 'social_links',
+    terms: ['linkedin', 'social', 'profile link', 'facebook'],
+  },
+  {
+    key: 'react',
+    terms: ['react', 'reactjs', 'react.js', 'react 19', 'nextjs', 'next.js', 'frontend'],
+  },
+  {
+    key: 'mern',
+    terms: ['mern', 'mongodb', 'express', 'node', 'full stack', 'fullstack', 'backend'],
+  },
+  {
+    key: 'security',
+    terms: [
+      'security',
+      'secure',
+      'owasp',
+      'cybersecurity',
+      'osint',
+      'jwt',
+      'auth',
+      'authentication',
+      'rbac',
+      'sanitization',
+      'audit log',
+    ],
+  },
   {
     key: 'llms_txt',
     terms: [
@@ -52,9 +249,14 @@ const INTENT_RULES = [
       'raw text',
       'ai text',
       'context file',
+      'system prompt',
+      'llm context',
     ],
   },
-  { key: 'ai', terms: ['ai', 'llm', 'prompt', 'assistant', 'machine learning'] },
+  {
+    key: 'ai',
+    terms: ['ai', 'llm', 'prompt', 'assistant', 'machine learning', 'artificial intelligence'],
+  },
   {
     key: 'about',
     terms: [
@@ -64,6 +266,8 @@ const INTENT_RULES = [
       'tell me about you',
       'tell me about yourself',
       'journey',
+      'bio',
+      'introduction',
     ],
   },
 ];
@@ -88,7 +292,7 @@ function includesTerm(normalizedText, term) {
 function scoreIntent(normalizedText, rule) {
   const directScore = rule.terms.reduce((score, term) => {
     if (includesTerm(normalizedText, term)) {
-      return score + Math.max(1, term.length / 8);
+      return score + Math.max(1, term.length / 6);
     }
 
     return score;
