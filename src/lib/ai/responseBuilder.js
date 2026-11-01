@@ -260,6 +260,22 @@ function buildResumeResponse(portfolio) {
   };
 }
 
+function buildLlmsTxtResponse(portfolio) {
+  const path = portfolio.llmsTxt?.path || '/llms.txt';
+
+  return {
+    text: "You can read Sabbir's official machine-readable portfolio summary at /llms.txt. It provides a structured, LLM-optimized summary of projects, architecture, tech stack, and background for AI tools, coding assistants, and automated crawlers.",
+    actions: [
+      action('Open llms.txt', { kind: 'external', target: path }),
+      action('Open Projects Section', { kind: 'scroll', target: portfolio.sections.projects }),
+    ],
+    followUps: ['Best projects', 'Show skills', 'How can I contact Sabbir?'],
+    memory: {
+      lastTopic: 'llms_txt',
+    },
+  };
+}
+
 function buildGithubResponse(portfolio) {
   return {
     text: 'GitHub highlights include activity stats, language mix, and recent repositories.',
@@ -369,6 +385,8 @@ export function generateLocalResponse({ message, knowledge, portfolio, memory, c
       return { intent, ...buildCertificationResponse(knowledge, portfolio) };
     case 'resume':
       return { intent, ...buildResumeResponse(portfolio) };
+    case 'llms_txt':
+      return { intent, ...buildLlmsTxtResponse(portfolio) };
     case 'github':
       return { intent, ...buildGithubResponse(portfolio) };
     case 'availability':

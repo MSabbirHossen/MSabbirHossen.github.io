@@ -42,6 +42,18 @@ const INTENT_RULES = [
   { key: 'react', terms: ['react', 'reactjs', 'react.js'] },
   { key: 'mern', terms: ['mern', 'mongodb', 'express', 'node', 'full stack'] },
   { key: 'security', terms: ['security', 'secure', 'owasp', 'cybersecurity', 'osint'] },
+  {
+    key: 'llms_txt',
+    terms: [
+      'llms.txt',
+      'llms',
+      'ai profile',
+      'machine readable',
+      'raw text',
+      'ai text',
+      'context file',
+    ],
+  },
   { key: 'ai', terms: ['ai', 'llm', 'prompt', 'assistant', 'machine learning'] },
   {
     key: 'about',
