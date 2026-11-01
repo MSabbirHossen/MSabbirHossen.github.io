@@ -177,13 +177,13 @@ export const DEVELOPER_CHANNELS = [
   // Social & Community
   {
     name: 'YouTube',
-    handle: '@parttimecoder',
+    handle: '@sabb1rhossen',
     subHandle: 'Tech Videos & Tutorials',
     category: 'Social Media',
     role: 'Tutorials & Development Logs',
     description:
       'Practical software engineering walkthroughs, web development tutorials, and architectural breakdown videos.',
-    link: 'https://youtube.com/@parttimecoder',
+    link: 'https://youtube.com/@sabb1rhossen',
     color: '#FF0000',
     actionLabel: 'Subscribe on YouTube',
     icon: FaYoutube,
@@ -209,7 +209,7 @@ export const DEVELOPER_CHANNELS = [
     role: 'Developer Collaboration & Chat',
     description:
       'Connect on Discord for developer banter, code reviews, tech discussions, and collaborative hacking.',
-    link: 'https://discord.com',
+    link: 'https://discord.com/users/1330872545330860154',
     color: '#5865F2',
     actionLabel: 'Connect on Discord',
     icon: FaDiscord,
@@ -536,11 +536,10 @@ export default function DeveloperPage() {
                     key={cat}
                     type="button"
                     onClick={() => setFilterCategory(cat)}
-                    className={`cursor-pointer rounded-lg px-3 py-1.5 text-xs font-bold transition-all ${
-                      filterCategory === cat
-                        ? 'bg-surface text-primary card-shadow'
-                        : 'text-secondary hover:text-primary'
-                    }`}
+                    className={`cursor-pointer rounded-lg px-3 py-1.5 text-xs font-bold transition-all ${filterCategory === cat
+                      ? 'bg-surface text-primary card-shadow'
+                      : 'text-secondary hover:text-primary'
+                      }`}
                   >
                     {cat}
                   </button>
