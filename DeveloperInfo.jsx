@@ -82,6 +82,20 @@ export const SOCIAL_LINKS = [
 
   // Official Platforms
   {
+    name: 'LLMs.txt (AI Profile)',
+    handle: 'llms.txt',
+    subHandle: 'Machine-Readable Context',
+    category: 'Platforms',
+    role: 'AI & LLM Portfolio Data',
+    description:
+      'Curated plaintext summary of projects, architecture, and skills formatted according to the llms.txt standard for AI tools and crawlers.',
+    link: '/llms.txt',
+    color: '#10B981',
+    bgBadge: 'bg-emerald-500/10 text-emerald-500 border-emerald-500/25',
+    actionLabel: 'Read llms.txt',
+    icon: <Sparkles className="w-5 h-5" />,
+  },
+  {
     name: 'Protfolio',
     handle: 'msabbirhossen.github.io',
     subHandle: 'Personal Showcase',
@@ -409,6 +423,15 @@ export const DeveloperInfo = ({ isCompact = false }) => {
                 >
                   <Globe className="w-3.5 h-3.5 text-purple-400" />
                   <span>msabbirhossen.github.io</span>
+                </a>
+                <a
+                  href="/llms.txt"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-subtle hover:bg-surface border border-theme text-primary hover:text-emerald-400 transition-colors"
+                >
+                  <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>llms.txt (AI Profile)</span>
                 </a>
               </div>
             </div>
