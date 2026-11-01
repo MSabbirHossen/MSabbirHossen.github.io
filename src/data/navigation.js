@@ -1,14 +1,15 @@
-import { portfolioData } from './index';
 import {
   FaBrain,
+  FaCertificate,
+  FaEnvelope,
+  FaFacebook,
   FaFile,
   FaGithub,
-  FaLinkedin,
-  FaFacebook,
-  FaEnvelope,
-  FaCertificate,
   FaGraduationCap,
+  FaLinkedin,
 } from 'react-icons/fa';
+
+import { portfolioData } from './index';
 
 const { personalInfo } = portfolioData;
 const { github, linkedin, email, facebook, resumeUrl } = personalInfo;
@@ -76,5 +77,6 @@ export const FOOTER_MORE_LINKS = [
   { label: 'Experience Timeline', to: '/experience' },
   { label: 'Education Timeline', to: '/education' },
   { label: 'All Certifications', to: '/certifications' },
+  { label: 'Developer Hub', to: '/developer' },
   { label: 'AI Profile (llms.txt)', href: '/llms.txt', external: true },
 ];
