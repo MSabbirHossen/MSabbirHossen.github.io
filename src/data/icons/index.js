@@ -19,6 +19,7 @@ import {
   SiPostman,
   SiPrettier,
   SiReact,
+  SiReactquery,
   SiReactrouter,
   SiStripe,
   SiTailwindcss,
@@ -26,6 +27,7 @@ import {
   SiTypescript,
   SiVercel,
   SiVite,
+  SiZod,
 } from 'react-icons/si';
 
 import {
@@ -87,6 +89,7 @@ export {
   SiPostman,
   SiPrettier,
   SiReact,
+  SiReactquery,
   SiReactrouter,
   SiStripe,
   SiTailwindcss,
@@ -94,6 +97,7 @@ export {
   SiTypescript,
   SiVercel,
   SiVite,
+  SiZod,
   TbBrandOpenai,
   TbBrandOpenai as SiOpenai,
   VscVscodeInsiders,
