@@ -8,26 +8,48 @@ const WELCOME_MESSAGE = {
   id: 1,
   role: 'assistant',
   content:
-    "Hi! I'm Sabbir's Portfolio Guide. I can help you discover projects, evaluate technical depth, and quickly find contact options.",
-  followUps: ['Best projects', 'Show experience', 'How can I contact Sabbir?'],
+    "👋 Assalamu Alaikum! I'm Sabbir's Portfolio Guide.\nI can walk you through his latest MERN stack projects (like Report BD & ETA), technical architecture, skills, and direct contact options.\n\nChoose a topic below or ask me any question!",
+  followUps: [
+    'Tell me about Report BD',
+    'Why should we hire Sabbir?',
+    'Show MERN stack skills',
+    'How can I contact Sabbir on WhatsApp?',
+  ],
 };
 
 const QUICK_ACTIONS = [
-  { id: 'quick-projects', kind: 'prompt', label: '🚀 Best Projects', prompt: 'Best projects' },
+  {
+    id: 'quick-reportbd',
+    kind: 'prompt',
+    label: '🌟 Report BD (Latest)',
+    prompt: 'Tell me about Report BD',
+  },
+  { id: 'quick-projects', kind: 'prompt', label: '🚀 Top Projects', prompt: 'Best projects' },
+  {
+    id: 'quick-why-hire',
+    kind: 'prompt',
+    label: '💡 Why Hire Sabbir?',
+    prompt: 'Why should we hire Sabbir?',
+  },
+  { id: 'quick-skills', kind: 'prompt', label: '⚡ MERN Stack', prompt: 'Show skills' },
+  {
+    id: 'quick-architecture',
+    kind: 'prompt',
+    label: '🏛 Architecture',
+    prompt: 'What architecture do you use?',
+  },
   {
     id: 'quick-experience',
     kind: 'prompt',
     label: '💼 Experience',
     prompt: 'Show experience',
   },
-  { id: 'quick-skills', kind: 'prompt', label: '🛠 Skills', prompt: 'Show skills' },
   {
-    id: 'quick-github',
+    id: 'quick-llms',
     kind: 'prompt',
-    label: '📈 GitHub Highlights',
-    prompt: 'Show GitHub highlights',
+    label: '🤖 AI Profile (llms.txt)',
+    prompt: 'Tell me about llms.txt',
   },
-  { id: 'quick-education', kind: 'prompt', label: '🎓 Education', prompt: 'Show education' },
   {
     id: 'quick-certs',
     kind: 'prompt',
@@ -37,8 +59,8 @@ const QUICK_ACTIONS = [
   {
     id: 'quick-contact',
     kind: 'prompt',
-    label: '📞 Contact',
-    prompt: 'How can I contact Sabbir?',
+    label: '📞 WhatsApp & Contact',
+    prompt: 'How can I contact Sabbir on WhatsApp?',
   },
   { id: 'quick-resume', kind: 'prompt', label: '📄 Resume', prompt: 'Show resume' },
 ];
