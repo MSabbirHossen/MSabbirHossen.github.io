@@ -30,16 +30,34 @@
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
-      "updated": "2026-10-21T04:00:23Z"
+      "updated": "2026-11-01T05:16:42Z"
     },
     {
       "name": "communication-system",
-      "description": "Privacy-focused, end-to-end encrypted one-to-one messaging for web, Android and iOS.",
+      "description": "A privacy-focused, end-to-end encrypted 1:1 messaging application for Web, Android, and iOS.",
       "language": "TypeScript",
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/communication-system",
-      "updated": "2026-10-20T22:42:47Z"
+      "updated": "2026-10-31T09:14:33Z"
+    },
+    {
+      "name": "personalreport",
+      "description": "No description available",
+      "language": "TypeScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/personalreport",
+      "updated": "2026-10-30T21:33:03Z"
+    },
+    {
+      "name": "ETA",
+      "description": "Exploratory Training Academy (ETA) is a complete digital education management platform designed for an educational institution that may operate fully online, physically, or in a hybrid model.",
+      "language": "TypeScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/ETA",
+      "updated": "2026-10-21T21:51:58Z"
     },
     {
       "name": "Tea_House_Project",
@@ -58,25 +76,7 @@
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/Payoo-MFS",
       "updated": "2026-10-14T22:44:06Z"
-    },
-    {
-      "name": "hero-io-app",
-      "description": "No description available",
-      "language": "JavaScript",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/hero-io-app",
-      "updated": "2026-10-14T22:42:38Z"
-    },
-    {
-      "name": "Demo_Calender",
-      "description": "No description available",
-      "language": "HTML",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/Demo_Calender",
-      "updated": "2026-10-14T22:29:39Z"
     }
   ],
-  "updatedAt": "2026-10-21T16:54:50.914Z"
+  "updatedAt": "2026-11-01T17:47:09.369Z"
 }
