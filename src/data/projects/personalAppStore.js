@@ -87,5 +87,5 @@ export const personalAppStore = {
   teamSize: '1',
   client: 'Personal',
   difficulty: 'Advanced',
-  featuredOrder: 7,
+  featuredOrder: 8,
 };

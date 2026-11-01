@@ -149,5 +149,5 @@ export const etaProject = {
   teamSize: '1',
   client: 'Personal / Academic Enterprise',
   difficulty: 'Advanced',
-  featuredOrder: 1,
+  featuredOrder: 2,
 };

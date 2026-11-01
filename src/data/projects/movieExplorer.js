@@ -69,7 +69,7 @@ export const movieExplorer = {
   teamSize: '1',
   client: 'Personal',
   difficulty: 'Intermediate',
-  featuredOrder: 5,
+  featuredOrder: 6,
   features: [
     'Browse a paginated catalog of TV shows and movies with rich poster imagery and ratings.',
     'Search titles dynamically with debounced TVMaze API requests for a responsive experience.',

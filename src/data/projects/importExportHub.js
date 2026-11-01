@@ -109,5 +109,5 @@ export const importExportHub = {
   teamSize: '1',
   client: 'Personal',
   difficulty: 'Advanced',
-  featuredOrder: 4,
+  featuredOrder: 5,
 };
