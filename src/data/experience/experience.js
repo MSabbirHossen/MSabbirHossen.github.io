@@ -1,5 +1,32 @@
 export const experience = [
   {
+    id: 'report-bd',
+    period: '2026 · Active Development',
+    role: 'Solo Full-Stack Developer',
+    company: 'Report BD (BPS Report) · Mentorship & Personal Reporting Platform',
+    desc: 'Architected and engineered a multi-tenant personal reporting and institutional mentorship monorepo with TypeScript, React 19, Express 4 REST API, MongoDB Atlas, and Firebase Auth.',
+    outcomes: [
+      'Implemented optimistic revision locking with incremental revision counters and atomic review state transitions, eliminating concurrent write collisions.',
+      'Constructed deterministic calculation engine in @reportbd/shared with 148 automated tests, A4 printable reports, and full trilingual i18n (Bengali, English, Arabic RTL).',
+    ],
+    technologies: [
+      'TypeScript',
+      'React 19',
+      'Node.js',
+      'Express',
+      'MongoDB Driver',
+      'Firebase Auth',
+      'Tailwind CSS',
+      'TanStack Query',
+      'Zod Validation',
+      'Docker',
+    ],
+    category: 'Full-Stack Monorepo & Mentorship Platform',
+    projectSlug: 'report-bd',
+    liveUrl: null,
+    githubUrl: 'https://github.com/MSabbirHossen/personalreport',
+  },
+  {
     id: 'eta-digital-education-platform',
     period: '2026 · Completed',
     role: 'Full-Stack Architect & Solo Developer',
