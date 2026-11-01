@@ -9,13 +9,16 @@ const featuredProjects = projects
 
 const topSkillNames = skills
   .flatMap((category) => category.items.map((item) => item.name))
-  .slice(0, 12);
+  .slice(0, 16);
 
 export const assistantPortfolioData = {
   name: personalInfo.name,
   headline: `${personalInfo.title} | ${personalInfo.secondaryTitle}`,
+  title: personalInfo.title,
+  secondaryTitle: personalInfo.secondaryTitle,
   summary: personalInfo.mission,
   about: personalInfo.journey,
+  tagline: personalInfo.tagline,
   skills,
   topSkillNames,
   projects,
@@ -29,6 +32,8 @@ export const assistantPortfolioData = {
     github: personalInfo.github,
     linkedin: personalInfo.linkedin,
     location: personalInfo.location,
+    whatsapp: personalInfo.whatsapp,
+    whatsappUrl: personalInfo.whatsappUrl,
   },
   resume: {
     publicPath: '/resume/Md_Sabbir_Hossen_Resume.pdf',
