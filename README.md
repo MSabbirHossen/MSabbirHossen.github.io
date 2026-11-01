@@ -141,6 +141,17 @@ I believe technology should be created with intention—to solve problems and cr
 
 ## 📌 Featured Projects
 
+### 📋 Report BD (BPS Report) - Full-Stack Monorepo & Mentorship Platform
+
+<p align="center">
+  <img src="public/screenshots/reportbd-daily-flow.png" alt="Report BD application preview" width="100%"/>
+</p>
+
+A multi-tenant, mobile-first personal reporting and institutional mentorship platform built as an npm workspace monorepo with TypeScript, Node.js/Express, MongoDB Atlas, React 19, and Firebase Authentication. Features deterministic monthly calculation derivations, optimistic revision locking, date-restricted confirmation in Asia/Dhaka timezone, supervisor review queues with atomic transitions, two-way threaded mentorship advice, idempotent notification dispatching, immutable administrative audit logs with recursive metadata sanitization, dedicated A4 printable report layouts, and complete trilingual internationalization (Bengali, English, Arabic RTL).
+
+- **Tech stack:** TypeScript, React 19, Node.js, Express, MongoDB Atlas, Firebase Auth, Tailwind CSS, Vite, React Router 7, Docker, Vercel, Zod Validation, TanStack Query, Node Test Runner (148 tests)
+- 🔗 **Repository:** [Report BD Repository](https://github.com/MSabbirHossen/personalreport)
+
 ### 🎓 Exploratory Training Academy (ETA) - Full-Stack EdTech Monorepo
 
 <p align="center">
