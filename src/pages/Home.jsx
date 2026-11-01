@@ -27,6 +27,14 @@ export default function Home() {
     url: canonicalUrl,
     sameAs: ['https://github.com/MSabbirHossen', 'https://www.linkedin.com/in/sabb1rhossen/'],
     knowsAbout: ['React', 'Node.js', 'Express.js', 'MongoDB', 'Firebase', 'Cybersecurity'],
+    subjectOf: {
+      '@type': 'DigitalDocument',
+      name: 'llms.txt',
+      url: `${canonicalUrl}llms.txt`,
+      encodingFormat: 'text/plain',
+      description:
+        'Machine-readable developer summary and project index for AI agents, LLMs, and search engines.',
+    },
   };
 
   return (
@@ -36,6 +44,13 @@ export default function Home() {
         <meta name="description" content={pageDescription} />
         <meta name="robots" content="index,follow,max-image-preview:large" />
         <link rel="canonical" href={canonicalUrl} />
+        <link
+          rel="alternate"
+          type="text/plain"
+          href="/llms.txt"
+          title="LLM-readable portfolio summary"
+        />
+        <link rel="llms-txt" type="text/plain" href="/llms.txt" />
 
         <meta property="og:type" content="website" />
         <meta property="og:title" content={pageTitle} />
