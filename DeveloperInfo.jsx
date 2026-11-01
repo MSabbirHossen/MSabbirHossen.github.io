@@ -208,13 +208,13 @@ export const SOCIAL_LINKS = [
     category: 'Ventures',
     role: 'Tech Training & Mentorship',
     description:
-      'Empowering students and aspiring software engineers with hands-on training, real projects, and modern technical skills.',
-    link: null,
-    isUpcoming: true,
-    statusText: 'soon to be added.',
+      'Exploratory Training Academy (ETA) is a complete digital education management platform designed for modern online, physical, or hybrid learning.',
+    link: 'https://eta-web-omega.vercel.app/',
+    isUpcoming: false,
+    statusText: '',
     color: '#0284C7',
     bgBadge: 'bg-sky-500/10 text-sky-500 border-sky-500/25',
-    actionLabel: 'soon to be added.',
+    actionLabel: 'Visit ETA',
     icon: <GraduationCap className="w-5 h-5" />,
   },
   {
