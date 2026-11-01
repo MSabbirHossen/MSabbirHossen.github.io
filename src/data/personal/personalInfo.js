@@ -24,6 +24,8 @@ export const personalInfo = {
   linkedin: 'https://www.linkedin.com/in/sabb1rhossen/',
   facebook: 'https://web.facebook.com/sabb1rhossen/',
   resumeUrl: '/resume/Md_Sabbir_Hossen_Resume.pdf',
+  llmsTxtUrl: '/llms.txt',
+  llmsTxtFullUrl: 'https://msabbirhossen.github.io/llms.txt',
   website: 'https://msabbirhossen.github.io/',
   directContacts: [
     {

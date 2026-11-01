@@ -34,6 +34,12 @@ export const assistantPortfolioData = {
     publicPath: '/resume/Md_Sabbir_Hossen_Resume.pdf',
     driveUrl: personalInfo.resumeUrl,
   },
+  llmsTxt: {
+    path: personalInfo.llmsTxtUrl || '/llms.txt',
+    url: personalInfo.llmsTxtFullUrl || 'https://msabbirhossen.github.io/llms.txt',
+    description:
+      'Curated plaintext summary of projects, architecture, skills, and background formatted according to the llms.txt standard for AI tools and automated agents.',
+  },
   github: {
     profileUrl: personalInfo.github,
     statsRoute: '/github-stats',
