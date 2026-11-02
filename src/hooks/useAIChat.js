@@ -63,6 +63,7 @@ const QUICK_ACTIONS = [
     prompt: 'How can I contact Sabbir on WhatsApp?',
   },
   { id: 'quick-resume', kind: 'prompt', label: '📄 Resume', prompt: 'Show resume' },
+  { id: 'quick-guide', kind: 'route', target: '/guide', label: '📖 Interactive Guide' },
 ];
 
 const CHAT_HISTORY_KEY = 'portfolio-guide-history';

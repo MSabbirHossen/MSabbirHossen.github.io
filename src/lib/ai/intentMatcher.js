@@ -258,6 +258,19 @@ const INTENT_RULES = [
     terms: ['ai', 'llm', 'prompt', 'assistant', 'machine learning', 'artificial intelligence'],
   },
   {
+    key: 'guide',
+    terms: [
+      'guide',
+      'portfolio guide',
+      'how to navigate',
+      'walkthrough',
+      'user guide',
+      'tour',
+      'manual',
+      'instructions',
+    ],
+  },
+  {
     key: 'about',
     terms: [
       'about',

@@ -506,6 +506,37 @@ function buildGithubResponse(portfolio) {
   };
 }
 
+function buildGuideResponse() {
+  return {
+    text:
+      '📖 **Interactive Portfolio Guide:**\n\n' +
+      'Sabbir has built an interactive **Portfolio Guide** at /guide designed to help recruiters, engineering leads, and visitors get the most out of their exploration.\n\n' +
+      'It provides an in-depth walkthrough covering:\n' +
+      '• 01. Welcome & Engineering Ethos\n' +
+      '• 02. Quick Start Paths (Recruiter, Architect, Credentials)\n' +
+      '• 03. Complete Route & Keyboard Navigation\n' +
+      '• 04. Flagship Projects & Architecture (Report BD & ETA)\n' +
+      '• 05. Technology Breakdown (React 19, Zod, MongoDB, TypeScript)\n' +
+      '• 06. Verified Credentials & Experience\n' +
+      '• 07. Interactive Tools & Dark/Light Themes\n' +
+      '• 08. Direct WhatsApp & Contact Channels\n' +
+      '• 09. Frequently Asked Questions (FAQ)\n' +
+      '• 10. Accessibility & Troubleshooting',
+    actions: [
+      action('Open Full Guide', { kind: 'route', target: '/guide' }),
+      action('🌟 Explore Report BD', { kind: 'prompt', prompt: 'Tell me about Report BD' }),
+    ],
+    followUps: [
+      'Tell me about Report BD',
+      'Why should we hire Sabbir?',
+      'How can I contact Sabbir on WhatsApp?',
+    ],
+    memory: {
+      lastTopic: 'guide',
+    },
+  };
+}
+
 function buildGreetingResponse(portfolio) {
   return {
     text:
@@ -661,6 +692,8 @@ export function generateLocalResponse({ message, knowledge, portfolio, memory, c
       return { intent, ...buildResumeResponse(portfolio) };
     case 'llms_txt':
       return { intent, ...buildLlmsTxtResponse(portfolio) };
+    case 'guide':
+      return { intent, ...buildGuideResponse() };
     case 'github':
       return { intent, ...buildGithubResponse(portfolio) };
     case 'availability':
