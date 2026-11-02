@@ -13,6 +13,10 @@ dist-ssr
 *.local
 .env
 
+# Documentation / Internal task notes
+docs/
+MASTER PROMPT/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
