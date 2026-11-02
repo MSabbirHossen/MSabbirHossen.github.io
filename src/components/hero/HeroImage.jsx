@@ -18,13 +18,16 @@ const HeroImage = () => {
       initial={shouldReduceMotion ? false : 'hidden'}
       animate="visible"
     >
-      <div className="absolute -inset-4 rounded-3xl dark:bg-linear-to-br dark:from-accent-primary/25 dark:via-accent-secondary/15 bg-linear-to-br from-accent-primary/10 via-accent-secondary/10 to-transparent blur-2xl" />
+      <div className="absolute -inset-4 rounded-3xl dark:bg-linear-to-br dark:from-accent-primary/20 dark:via-accent-secondary/15 bg-linear-to-br from-accent-primary/10 via-accent-secondary/10 to-transparent blur-2xl" />
 
       <motion.div
         animate={shouldReduceMotion ? undefined : floatingAnimation.animate}
         transition={shouldReduceMotion ? undefined : floatingAnimation.transition}
       >
-        <Card className="relative overflow-hidden border-default p-5 transition-all duration-300 hover:border-accent-primary/40 sm:p-6 shadow-xl shadow-black/10">
+        <Card
+          spotlight
+          className="relative overflow-hidden border-default p-5 transition-all duration-300 hover:border-accent-primary/40 sm:p-6 shadow-xl shadow-black/10"
+        >
           <div className="overflow-hidden rounded-xl border border-default surface">
             <picture>
               <source srcSet={heroWebp} type="image/webp" />

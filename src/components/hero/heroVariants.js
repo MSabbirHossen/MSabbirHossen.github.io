@@ -1,4 +1,17 @@
-export const heroContentVariants = {
+import { EASINGS, SPRINGS } from '../../lib/motion';
+
+export const heroContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.05,
+    },
+  },
+};
+
+export const heroItemVariants = {
   hidden: {
     opacity: 0,
     y: 18,
@@ -7,8 +20,8 @@ export const heroContentVariants = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.7,
-      ease: 'easeOut',
+      duration: 0.55,
+      ease: EASINGS.smooth,
     },
   },
 };
@@ -22,9 +35,9 @@ export const heroImageVariants = {
     opacity: 1,
     scale: 1,
     transition: {
-      duration: 0.75,
-      delay: 0.12,
-      ease: 'easeOut',
+      duration: 0.7,
+      ease: EASINGS.smooth,
+      ...SPRINGS.gentle,
     },
   },
 };
@@ -34,7 +47,7 @@ export const floatingAnimation = {
     y: [0, -6, 0],
   },
   transition: {
-    duration: 6,
+    duration: 5.5,
     repeat: Infinity,
     ease: 'easeInOut',
   },

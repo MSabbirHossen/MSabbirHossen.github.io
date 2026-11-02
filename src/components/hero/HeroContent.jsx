@@ -1,70 +1,135 @@
 import { motion, useReducedMotion } from 'framer-motion';
-import { FaArrowDown, FaDownload } from 'react-icons/fa';
-import { portfolioData } from '../../data';
+import { FaArrowDown, FaDownload, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 
 import Typography from '../common/Typography';
 import Button from '../common/Button';
+import Badge from '../common/Badge';
 import HeroActions from './HeroActions';
-import { heroContentVariants } from './heroVariants';
+import { heroContainerVariants, heroItemVariants } from './heroVariants';
 
-const HeroContent = ({ personalInfo, onContact }) => {
+const HeroContent = ({ personalInfo, onContact, onProjects }) => {
   const shouldReduceMotion = useReducedMotion();
-  const { name, title, github, linkedin, resumeUrl, availability } = personalInfo;
-  const completedProjects = portfolioData.projects.filter(
-    (project) => project.status === 'Completed'
-  ).length;
+  const { name, title, secondaryTitle, mission, github, linkedin, resumeUrl, shortLocation } =
+    personalInfo;
+
+  const resumeHref = `${import.meta.env.BASE_URL}${resumeUrl.replace(/^\//, '')}`;
 
   return (
     <motion.div
-      className="space-y-7 text-center lg:text-left"
-      variants={heroContentVariants}
+      className="space-y-6 text-center lg:text-left"
+      variants={heroContainerVariants}
       initial={shouldReduceMotion ? false : 'hidden'}
       animate="visible"
     >
-      <div className="space-y-4">
-        {/* Availability status badge */}
-        <div className="flex items-center justify-center lg:justify-start">
-          <span className="inline-flex items-center gap-2 rounded-full border border-emerald-500/25 bg-emerald-500/10 px-3.5 py-1 text-xs font-semibold text-emerald-400 shadow-sm shadow-emerald-500/10">
-            <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-            Available for new opportunities
-          </span>
-        </div>
+      {/* Top Badges: Availability Status & Location */}
+      <motion.div
+        variants={heroItemVariants}
+        className="flex flex-wrap items-center justify-center gap-2.5 lg:justify-start"
+      >
+        <Badge variant="success" presentation="dot" className="px-3.5 py-1 text-xs">
+          Available for new opportunities
+        </Badge>
 
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-default bg-surface/70 px-3 py-1 text-xs font-medium text-secondary">
+          <FaMapMarkerAlt className="h-3 w-3 text-accent-secondary" aria-hidden="true" />
+          <span>{shortLocation}</span>
+        </span>
+      </motion.div>
+
+      {/* Name and Professional Title */}
+      <motion.div variants={heroItemVariants} className="space-y-2">
         <Typography variant="h1" gradient className="max-w-3xl text-balance">
           {name}
         </Typography>
-        <Typography variant="subtitle" className="max-w-2xl text-secondary">
-          {title}
-        </Typography>
-        <div className="flex flex-wrap items-center justify-center gap-2 text-sm text-secondary lg:justify-start">
-          <span>{completedProjects} shipped full-stack applications</span>
-          <span aria-hidden="true" className="text-accent-secondary">
-            ·
-          </span>
-          <span>React · Node.js · MongoDB</span>
-        </div>
-        <div className="flex flex-wrap items-center justify-center gap-2 text-xs font-medium text-muted lg:justify-start">
-          <span className="text-secondary font-medium">Open to:</span>
-          {availability.map((item) => (
-            <span
-              key={item}
-              className="inline-flex items-center rounded-lg border border-default bg-surface/80 px-2.5 py-0.5 text-xs text-secondary"
-            >
-              {item}
-            </span>
-          ))}
-        </div>
-      </div>
 
-      <div className="flex flex-wrap items-center justify-center gap-3 pt-2 lg:justify-start">
-        <Button variant="primary" size="md" onClick={onContact} icon={FaArrowDown}>
-          Let&apos;s Talk
+        <div className="space-y-1">
+          <Typography
+            variant="h2"
+            className="text-2xl font-bold tracking-tight text-primary sm:text-3xl"
+          >
+            {title}
+          </Typography>
+          <Typography
+            variant="subtitle"
+            className="text-sm font-medium uppercase tracking-wider text-accent-secondary sm:text-base"
+          >
+            {secondaryTitle}
+          </Typography>
+        </div>
+      </motion.div>
+
+      {/* Concise Recruiter-Focused Introduction */}
+      <motion.div variants={heroItemVariants}>
+        <Typography
+          variant="body"
+          className="max-w-2xl text-base leading-relaxed text-secondary sm:text-lg"
+        >
+          {mission}
+        </Typography>
+      </motion.div>
+
+      {/* Core Technology Pills */}
+      <motion.div
+        variants={heroItemVariants}
+        className="flex flex-wrap items-center justify-center gap-2 lg:justify-start"
+      >
+        <span className="text-xs font-semibold uppercase tracking-wider text-muted mr-1">
+          Stack:
+        </span>
+        {['React 19', 'TypeScript', 'Node.js', 'Express', 'MongoDB Atlas', 'Tailwind CSS'].map(
+          (tech) => (
+            <span
+              key={tech}
+              className="inline-flex items-center rounded-lg border border-default bg-surface/80 px-2.5 py-1 text-xs font-medium text-secondary transition-colors hover:border-accent-primary/40 hover:text-primary"
+            >
+              {tech}
+            </span>
+          )
+        )}
+      </motion.div>
+
+      {/* Recruiter CTA Hierarchy: View Projects (Primary) -> Download CV (Secondary) -> Contact Me (Tertiary) */}
+      <motion.div
+        variants={heroItemVariants}
+        className="flex flex-wrap items-center justify-center gap-3 pt-2 lg:justify-start"
+      >
+        {/* Primary CTA */}
+        <Button
+          variant="primary"
+          size="md"
+          onClick={onProjects}
+          icon={FaArrowDown}
+          className="shadow-lg shadow-accent-primary/25"
+        >
+          View Projects
         </Button>
-        <Button variant="outline" size="md" href={resumeUrl} icon={FaDownload}>
-          View Resume
+
+        {/* Secondary CTA */}
+        <Button
+          variant="outline"
+          size="md"
+          href={resumeHref}
+          download="Md_Sabbir_Hossen_Resume.pdf"
+          icon={FaDownload}
+          className="border-default hover:border-accent-primary/50"
+        >
+          Download CV
         </Button>
+
+        {/* Tertiary CTA */}
+        <Button
+          variant="outline"
+          size="md"
+          onClick={onContact}
+          icon={FaEnvelope}
+          className="border-default hover:border-accent-secondary/50 text-secondary hover:text-accent-secondary"
+        >
+          Contact Me
+        </Button>
+
+        {/* Social Quick Links */}
         <HeroActions github={github} linkedin={linkedin} />
-      </div>
+      </motion.div>
     </motion.div>
   );
 };
