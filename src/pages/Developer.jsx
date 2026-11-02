@@ -29,7 +29,7 @@ import Typography from '../components/common/Typography';
 import Badge from '../components/common/Badge';
 import Button from '../components/common/Button';
 import Card from '../components/common/Card';
-import Reveal from '../components/animations/Reveal';
+import Reveal from '../animations/Reveal';
 
 export const DEVELOPER_CHANNELS = [
   // Direct Contacts
@@ -301,18 +301,18 @@ export default function DeveloperPage() {
         <meta name="twitter:image" content={socialImage} />
       </Helmet>
 
-      <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+      <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
         {/* Navigation & Header */}
-        <div className="mb-10">
+        <div className="mb-10 sm:mb-12">
           <Reveal>
-            <div className="mb-8 flex items-center justify-between">
+            <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
               <Button
                 as={Link}
                 to="/"
                 variant="ghost"
                 size="sm"
                 icon={FaArrowLeft}
-                className="px-0"
+                className="px-0 text-secondary hover:text-accent-primary"
               >
                 Back to Home
               </Button>
@@ -333,14 +333,17 @@ export default function DeveloperPage() {
             <Reveal delay={0.1}>
               <Typography
                 variant="h1"
-                className="text-balance text-3xl sm:text-4xl md:text-5xl font-black"
+                className="text-balance text-3xl sm:text-4xl md:text-5xl font-extrabold text-primary"
               >
                 Connect with Md. Sabbir Hossen
               </Typography>
             </Reveal>
 
             <Reveal delay={0.15}>
-              <Typography variant="lead" className="max-w-3xl text-secondary">
+              <Typography
+                variant="body"
+                className="max-w-3xl text-sm sm:text-base leading-relaxed text-secondary"
+              >
                 Junior MERN Stack Developer, software builder, and creator of Report BD, Exploratory
                 Training Academy (ETA), and Life OS. Reach out directly via WhatsApp, explore
                 developer profiles, inspect machine-readable AI context, or share collaboration
@@ -357,6 +360,7 @@ export default function DeveloperPage() {
                   onClick={() =>
                     window.open('https://wa.me/+8801773511874', '_blank', 'noopener,noreferrer')
                   }
+                  className="shadow-sm shadow-accent-primary/20"
                 >
                   WhatsApp
                 </Button>
@@ -389,7 +393,10 @@ export default function DeveloperPage() {
 
         {/* Hero Showcase Card */}
         <Reveal delay={0.25}>
-          <div className="relative mb-12 overflow-hidden rounded-3xl border border-accent-primary/25 bg-gradient-to-br from-accent-primary/10 via-surface to-surface p-6 sm:p-8 card-shadow">
+          <Card
+            spotlight
+            className="relative mb-12 overflow-hidden rounded-3xl border border-accent-primary/25 bg-gradient-to-br from-accent-primary/10 via-surface to-surface p-6 sm:p-8 shadow-xl shadow-black/5"
+          >
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
                 <div className="relative shrink-0">
@@ -437,7 +444,7 @@ export default function DeveloperPage() {
                   <div className="flex flex-wrap items-center gap-2 pt-2 text-xs font-semibold">
                     <a
                       href="mailto:mshossen724@gmail.com"
-                      className="inline-flex items-center gap-1.5 rounded-xl border border-default bg-subtle px-2.5 py-1 text-primary transition-colors hover:border-accent-primary/40 hover:text-accent-primary"
+                      className="inline-flex items-center gap-1.5 rounded-xl border border-default bg-surface/80 px-2.5 py-1 text-primary transition-colors hover:border-accent-primary/40 hover:text-accent-primary"
                     >
                       <FaEnvelope className="h-3 w-3 text-[#EA4335]" />
                       <span>{personalInfo.email}</span>
@@ -446,7 +453,7 @@ export default function DeveloperPage() {
                       href="https://wa.me/+8801773511874"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-xl border border-default bg-subtle px-2.5 py-1 text-primary transition-colors hover:border-[#25D366]/40 hover:text-[#25D366]"
+                      className="inline-flex items-center gap-1.5 rounded-xl border border-default bg-surface/80 px-2.5 py-1 text-primary transition-colors hover:border-[#25D366]/40 hover:text-[#25D366]"
                     >
                       <FaWhatsapp className="h-3 w-3 text-[#25D366]" />
                       <span>WhatsApp: +8801773511874</span>
@@ -455,7 +462,7 @@ export default function DeveloperPage() {
                       href="https://t.me/sabb1rhossen"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-xl border border-default bg-subtle px-2.5 py-1 text-primary transition-colors hover:border-[#229ED9]/40 hover:text-[#229ED9]"
+                      className="inline-flex items-center gap-1.5 rounded-xl border border-default bg-surface/80 px-2.5 py-1 text-primary transition-colors hover:border-[#229ED9]/40 hover:text-[#229ED9]"
                     >
                       <FaTelegramPlane className="h-3 w-3 text-[#229ED9]" />
                       <span>Telegram: @sabb1rhossen</span>
@@ -464,7 +471,7 @@ export default function DeveloperPage() {
                       href="/llms.txt"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-xl border border-default bg-subtle px-2.5 py-1 text-primary transition-colors hover:border-emerald-500/40 hover:text-emerald-500"
+                      className="inline-flex items-center gap-1.5 rounded-xl border border-default bg-surface/80 px-2.5 py-1 text-primary transition-colors hover:border-emerald-500/40 hover:text-emerald-500"
                     >
                       <HiSparkles className="h-3 w-3 text-emerald-500" />
                       <span>llms.txt (AI Profile)</span>
@@ -513,7 +520,7 @@ export default function DeveloperPage() {
                 </span>
               ))}
             </div>
-          </div>
+          </Card>
         </Reveal>
 
         {/* Channels & Ventures Grid */}
@@ -530,21 +537,24 @@ export default function DeveloperPage() {
               </div>
 
               {/* Category Filter Tabs */}
-              <div className="flex self-start rounded-xl border border-default bg-subtle p-1 sm:self-auto">
-                {['All', 'Direct Chat', 'Platforms', 'Ventures', 'Social Media'].map((cat) => (
-                  <button
-                    key={cat}
-                    type="button"
-                    onClick={() => setFilterCategory(cat)}
-                    className={`cursor-pointer rounded-lg px-3 py-1.5 text-xs font-bold transition-all ${
-                      filterCategory === cat
-                        ? 'bg-surface text-primary card-shadow'
-                        : 'text-secondary hover:text-primary'
-                    }`}
-                  >
-                    {cat}
-                  </button>
-                ))}
+              <div className="flex flex-wrap self-start rounded-xl border border-default bg-surface/80 p-1 sm:self-auto gap-1">
+                {['All', 'Direct Chat', 'Platforms', 'Ventures', 'Social Media'].map((cat) => {
+                  const isActive = filterCategory === cat;
+                  return (
+                    <button
+                      key={cat}
+                      type="button"
+                      onClick={() => setFilterCategory(cat)}
+                      className={`cursor-pointer rounded-lg px-3 py-1.5 text-xs font-bold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary ${
+                        isActive
+                          ? 'bg-accent-primary text-white shadow-md shadow-accent-primary/20'
+                          : 'text-secondary hover:text-primary hover:bg-surface'
+                      }`}
+                    >
+                      {cat}
+                    </button>
+                  );
+                })}
               </div>
             </div>
           </Reveal>
@@ -556,6 +566,7 @@ export default function DeveloperPage() {
               return (
                 <Reveal key={item.name} delay={0.05 * (index % 6)}>
                   <Card
+                    spotlight
                     hover
                     className="flex h-full flex-col justify-between border-default transition-all duration-200 hover:border-accent-primary/40 p-5"
                   >
@@ -656,7 +667,7 @@ export default function DeveloperPage() {
         <Reveal delay={0.35}>
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
             {/* Vision & Info Card */}
-            <Card className="border-default p-6 lg:col-span-1" hover={false}>
+            <Card spotlight className="border-default p-6 lg:col-span-1" hover={false}>
               <div className="space-y-4 text-xs font-medium leading-relaxed text-secondary">
                 <div className="flex items-center gap-2">
                   <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-accent-primary/10 text-accent-primary">
@@ -671,7 +682,7 @@ export default function DeveloperPage() {
                   welcomes conversations.
                 </p>
 
-                <div className="rounded-2xl border border-default bg-subtle p-3.5 space-y-1">
+                <div className="rounded-2xl border border-default bg-surface/80 p-3.5 space-y-1">
                   <span className="block text-[11px] font-bold text-primary">
                     Fastest Response: WhatsApp
                   </span>
@@ -684,7 +695,7 @@ export default function DeveloperPage() {
             </Card>
 
             {/* Direct Message Form */}
-            <Card className="border-default p-6 lg:col-span-2" hover={false}>
+            <Card spotlight className="border-default p-6 lg:col-span-2" hover={false}>
               <h3 className="text-sm font-bold text-primary">Send a Note to Sabbir Hossen</h3>
               <p className="mt-0.5 text-xs text-muted">
                 Pre-fill your message and deliver it directly via WhatsApp.
@@ -726,7 +737,7 @@ export default function DeveloperPage() {
                             prev ? `${prev}\n[Topic: ${tag}] ` : `[Topic: ${tag}] `
                           )
                         }
-                        className="cursor-pointer rounded-xl border border-default bg-subtle px-2.5 py-1 text-xs font-semibold text-secondary transition-all hover:border-accent-primary/40 hover:bg-surface hover:text-primary"
+                        className="cursor-pointer rounded-xl border border-default bg-surface/80 px-2.5 py-1 text-xs font-semibold text-secondary transition-all hover:border-accent-primary/40 hover:bg-surface hover:text-primary"
                       >
                         {tag}
                       </button>
