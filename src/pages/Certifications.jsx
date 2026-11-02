@@ -27,6 +27,14 @@ export default function CertificationsPage() {
     'Verified certifications in full-stack web development, MERN architecture, Git workflows, and front-end engineering earned by Md. Sabbir Hossen.';
   const socialImage = `${siteUrl}/og-image.svg`;
 
+  const certificationsSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    name: pageTitle,
+    description: pageDescription,
+    url: canonicalUrl,
+  };
+
   return (
     <>
       <Helmet>
@@ -45,6 +53,7 @@ export default function CertificationsPage() {
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={pageDescription} />
         <meta name="twitter:image" content={socialImage} />
+        <script type="application/ld+json">{JSON.stringify(certificationsSchema)}</script>
       </Helmet>
 
       <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">

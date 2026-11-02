@@ -54,6 +54,23 @@ export default function ProjectsPage() {
     });
   }, [projects, activeCategory, searchQuery]);
 
+  const collectionSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: pageTitle,
+    description: pageDescription,
+    url: canonicalUrl,
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: projects.map((p, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: p.title,
+        url: `${canonicalUrl}/${p.id}`,
+      })),
+    },
+  };
+
   return (
     <>
       <Helmet>
@@ -72,6 +89,7 @@ export default function ProjectsPage() {
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={pageDescription} />
         <meta name="twitter:image" content={socialImage} />
+        <script type="application/ld+json">{JSON.stringify(collectionSchema)}</script>
       </Helmet>
 
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">

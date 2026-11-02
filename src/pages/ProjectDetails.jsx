@@ -32,6 +32,24 @@ export default function ProjectDetails() {
     ? `${siteUrl}${project.screenshots[0]}`
     : `${siteUrl}/screenshots/portfolio-preview.png`;
 
+  const projectSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: project.title,
+    applicationCategory: 'WebApplication',
+    operatingSystem: 'All',
+    description: metaDescription,
+    url: canonicalUrl,
+    author: {
+      '@type': 'Person',
+      name: 'Md. Sabbir Hossen',
+      jobTitle: 'Junior MERN Stack Developer',
+      url: siteUrl,
+    },
+    ...(project.githubUrl ? { codeRepository: project.githubUrl } : {}),
+    ...(project.liveUrl ? { installUrl: project.liveUrl } : {}),
+  };
+
   return (
     <>
       <Helmet>
@@ -50,6 +68,7 @@ export default function ProjectDetails() {
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={metaDescription} />
         <meta name="twitter:image" content={socialImage} />
+        <script type="application/ld+json">{JSON.stringify(projectSchema)}</script>
       </Helmet>
 
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">

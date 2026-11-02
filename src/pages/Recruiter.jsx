@@ -77,6 +77,30 @@ export default function Recruiter() {
     (c) => c.issuer === 'Programming Hero' || c.type?.includes('Professional')
   );
 
+  const recruiterProfileSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    name: pageTitle,
+    url: canonicalUrl,
+    description: pageDescription,
+    mainEntity: {
+      '@type': 'Person',
+      name: personalInfo.name,
+      jobTitle: 'Junior MERN Stack Developer',
+      url: siteUrl,
+      sameAs: [personalInfo.github, personalInfo.linkedin],
+      knowsAbout: [
+        'React 19',
+        'TypeScript',
+        'Node.js',
+        'Express',
+        'MongoDB',
+        'Firebase',
+        'Tailwind CSS',
+      ],
+    },
+  };
+
   return (
     <>
       <Helmet>
@@ -95,6 +119,7 @@ export default function Recruiter() {
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={pageDescription} />
         <meta name="twitter:image" content={socialImage} />
+        <script type="application/ld+json">{JSON.stringify(recruiterProfileSchema)}</script>
       </Helmet>
 
       <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">

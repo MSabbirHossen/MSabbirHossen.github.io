@@ -42,6 +42,14 @@ export default function ExperiencePage() {
     return experience.filter((item) => item.category === activeFilter);
   }, [experience, activeFilter]);
 
+  const experienceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    name: pageTitle,
+    description: pageDescription,
+    url: canonicalUrl,
+  };
+
   return (
     <>
       <Helmet>
@@ -60,6 +68,7 @@ export default function ExperiencePage() {
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={pageDescription} />
         <meta name="twitter:image" content={socialImage} />
+        <script type="application/ld+json">{JSON.stringify(experienceSchema)}</script>
       </Helmet>
 
       <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">

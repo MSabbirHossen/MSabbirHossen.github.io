@@ -28,6 +28,14 @@ export default function EducationPage() {
     'Explore the complete academic timeline, computer science degree, language studies, and foundational science qualifications of Md. Sabbir Hossen.';
   const socialImage = `${siteUrl}/og-image.svg`;
 
+  const educationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    name: pageTitle,
+    description: pageDescription,
+    url: canonicalUrl,
+  };
+
   return (
     <>
       <Helmet>
@@ -46,6 +54,7 @@ export default function EducationPage() {
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={pageDescription} />
         <meta name="twitter:image" content={socialImage} />
+        <script type="application/ld+json">{JSON.stringify(educationSchema)}</script>
       </Helmet>
 
       <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">

@@ -19,6 +19,19 @@ export default function Home() {
   const canonicalUrl = 'https://msabbirhossen.github.io/';
   const socialImage = 'https://msabbirhossen.github.io/og-image.svg';
 
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Md. Sabbir Hossen Portfolio',
+    url: canonicalUrl,
+    description: pageDescription,
+    author: {
+      '@type': 'Person',
+      name: 'Md. Sabbir Hossen',
+      jobTitle: 'Junior MERN Stack Developer',
+    },
+  };
+
   const personSchema = {
     '@context': 'https://schema.org',
     '@type': 'Person',
@@ -73,6 +86,7 @@ export default function Home() {
         <meta name="twitter:image" content={socialImage} />
 
         <script type="application/ld+json">{JSON.stringify(personSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(websiteSchema)}</script>
       </Helmet>
 
       {/* 1. Hero & Professional Introduction */}
