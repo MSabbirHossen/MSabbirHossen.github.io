@@ -2,6 +2,7 @@ export const certifications = [
   {
     title: 'Complete Web Development Course',
     issuer: 'Programming Hero',
+    type: 'Professional Full-Stack Certification',
     date: '2026',
     id: 'WEB12-3517',
     link: 'https://drive.google.com/file/d/1TXbu_27BV0e6ttHZ5iOIk0iH6GrYfZYi/view?usp=sharing',
@@ -10,6 +11,7 @@ export const certifications = [
   {
     title: 'Master HTML and CSS by Building Real-World Projects',
     issuer: 'Udemy',
+    type: 'Course Completion',
     date: '2025',
     id: 'UC-a15ae6ed-80b0-4d97-a5e9-2151cab255d4',
     link: 'https://www.udemy.com/certificate/UC-a15ae6ed-80b0-4d97-a5e9-2151cab255d4/',
@@ -18,14 +20,16 @@ export const certifications = [
   {
     title: 'Master Git and GitHub - Beginner to Expert',
     issuer: 'Udemy',
+    type: 'Course Completion',
     date: '2024',
-    id: 'b1ec25ee-3cce-4c6c-b922-efda23d0fc13',
+    id: 'UC-b1ec25ee-3cce-4c6c-b922-efda23d0fc13',
     link: 'https://www.udemy.com/certificate/UC-b1ec25ee-3cce-4c6c-b922-efda23d0fc13/',
     skills: ['Git', 'GitHub', 'Version Control', 'Branching & Merging'],
   },
   {
     title: 'VScode shortcuts & Extensions for Web Developer',
     issuer: 'Udemy',
+    type: 'Course Completion',
     date: '2024',
     id: 'UC-827bbc34-b709-4213-bbc0-3dc50b8c6b33',
     link: 'https://www.udemy.com/certificate/UC-827bbc34-b709-4213-bbc0-3dc50b8c6b33/',
@@ -34,8 +38,9 @@ export const certifications = [
   {
     title: 'Spreadsheets for Beginners using Google Sheets',
     issuer: 'Bangladeshi Students Community, Islamic University of Madinah',
+    type: 'Course Completion',
     date: '2025',
-    id: 'Not-available for this course',
+    id: null,
     link: 'https://drive.google.com/file/d/1r8K7y5FjHu3nPL9AxtILtfgzrNnhuu6O/view?usp=sharing',
     skills: ['Google Sheets', 'Data Organization', 'Spreadsheet Formulas', 'Productivity'],
   },
