@@ -1,267 +1,387 @@
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0F172A,100:3B82F6&height=120&section=header"/>
+# Md. Sabbir Hossen — Developer Portfolio
 
-<p align="center">
-  <img src="https://github.com/MSabbirHossen/Md_Sabbir_Hossen/blob/main/GITHUB_BANNER.png" width="100%" alt="GitHub Banner"/>
-</p>
+[![React](https://img.shields.io/badge/React-19.2-61DAFB?logo=react&logoColor=black)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-8.1-646CFF?logo=vite&logoColor=white)](https://vite.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4.3-38B2AC?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Framer Motion](https://img.shields.io/badge/Framer_Motion-12.4-0055FF?logo=framer&logoColor=white)](https://www.framer.com/motion/)
+[![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub_Pages-222222?logo=githubpages&logoColor=white)](https://msabbirhossen.github.io/)
+[![LLM Context](https://img.shields.io/badge/LLM_Profile-llms.txt-10B981?logo=openai&logoColor=white)](https://msabbirhossen.github.io/llms.txt)
 
-<p align="center">
-  <h1 align="center">Hi 👋, I'm Md. Sabbir Hossen</h1>
-
-<p align="center">
-  <img
-    src="https://readme-typing-svg.demolab.com?font=Poppins&weight=600&size=24&duration=3500&pause=1200&color=3B82F6&center=true&vCenter=true&width=700&lines=Full-Stack+Web+Developer;Cybersecurity+Learner;Building+Technology+for+the+Ummah;Lifelong+Student"
-    alt="Typing SVG"
-  />
-</p>
-  </p>
+> **Recruiter-focused, interactive developer portfolio showcasing full-stack MERN engineering, frontend craftsmanship, and production-tested web applications.**
 
 ---
 
-## For AI agents
+## 📌 Table of Contents
 
-The generated [`public/llms.txt`](public/llms.txt) provides a concise, data-backed summary for AI tools.
-
-## 📈 GitHub Analytics
-
- <p align="center">
-    <img
-  src="https://streak-stats.demolab.com?user=MSabbirHossen&theme=github-dark&hide_border=true"
-/>
-  </p>
-  <p align="center">
-    <img src="https://activity-graph.vercel.app/graph?username=MSabbirHossen&theme=github-compact&hide_border=true" />
-  </p>
-
----
-
-## 🐍 Contribution Snake
-
-  <p align="center">
-     <img src="https://raw.githubusercontent.com/MSabbirHossen/MSabbirHossen/output/github-contribution-grid-snake-dark.svg" alt="Contribution Snake"/>
-  </p>
+- [Overview](#-overview)
+- [Live Preview & Key Links](#-live-preview--key-links)
+- [Core Architecture & Highlights](#-core-architecture--highlights)
+- [Key Features](#-key-features)
+- [Technology Stack](#-technology-stack)
+- [Repository Structure](#-repository-structure)
+- [Featured Projects](#-featured-projects)
+- [Getting Started & Local Setup](#-getting-started--local-setup)
+- [Environment Configuration](#-environment-configuration)
+- [Development Workflow & Scripts](#-development-workflow--scripts)
+- [CI/CD & Deployment](#-cicd--deployment)
+- [AI Agents & LLM Integration](#-ai-agents--llm-integration)
+- [Author & Professional Identity](#-author--professional-identity)
+- [License](#-license)
 
 ---
 
-## 🚀 About Me
+## 🧭 Overview
 
-I'm a Bangladeshi student currently studying at the **Islamic University of Madinah (Saudi Arabia)** pursuing a career in **Computer Science**.
+This repository hosts the personal developer portfolio and technical showcase of **Md. Sabbir Hossen**, a **Junior MERN Stack Developer** and undergraduate Computer Science student at the **Islamic University of Madinah**, Saudi Arabia.
 
-I enjoy designing modern web applications, solving real-world problems through code, and continuously learning new technologies. My goal is to become a professional **Full-Stack Developer** while building solutions with purpose.
+Rather than relying on generic landing-page templates or synthetic wireframes, this portfolio is engineered as a high-performance **Single Page Application (SPA)** that presents verifiable, production-ready full-stack software. It communicates engineering depth, defensive security practices, architectural discipline, and community leadership through an accessible, interactive interface.
 
-I believe technology should be created with intention—to solve problems and create meaningful impact. I'm Building the future where <strong>Faith, Knowledge & Technology</strong> empower the Ummah.
+### Target Audiences
 
----
-
-## 🌱 Currently Learning & Building
-
-- 🔭 Building modern full-stack web applications.
-- 🌱 Learning the MERN Stack and software engineering best practices.
-- 👯 Open to collaborating on open-source and real-world web projects.
-- 🤔 Seeking mentorship in backend development, system design, and clean architecture.
-- 💬 Ask me about React, JavaScript, Git, GitHub, or frontend development.
-- 📫 Reach me at: **mshossen724@gmail.com**
-- 😄 Pronouns: He/Him
-- ⚡ Passionate about lifelong learning, Islamic education, and technology.
+1. **Technical Recruiters & Hiring Managers:** Rapid evaluation of core capabilities via the dedicated [Recruiter Candidate Dossier](https://msabbirhossen.github.io/recruiter), verified credentials, resume download, and fast-track WhatsApp communication.
+2. **Software Engineers & Technical Leads:** Direct access to monorepo architectures, Zod schema validation boundaries, optimistic concurrency mechanisms, and public GitHub codebases.
+3. **AI Coding Agents & Web Crawlers:** Direct machine-readable context ingestion via standard [`/llms.txt`](https://msabbirhossen.github.io/llms.txt).
 
 ---
 
-## 💻 Tech Stack
+## 🚀 Live Preview & Key Links
 
-### Frontend
+- 🌐 **Live Website:** [https://msabbirhossen.github.io](https://msabbirhossen.github.io)
+- 📋 **Recruiter Dossier:** [https://msabbirhossen.github.io/recruiter](https://msabbirhossen.github.io/recruiter)
+- 🧭 **Interactive Portfolio Guide:** [https://msabbirhossen.github.io/guide](https://msabbirhossen.github.io/guide)
+- 🤖 **Machine Context:** [https://msabbirhossen.github.io/llms.txt](https://msabbirhossen.github.io/llms.txt)
+- 📄 **Verified Resume:** [Download PDF](https://msabbirhossen.github.io/resume/Md_Sabbir_Hossen_Resume.pdf)
 
-<p>
-  <img title="HTML5" alt="HTML5" src="https://skillicons.dev/icons?i=html"/>
-  <img title="CSS3" alt="CSS3" src="https://skillicons.dev/icons?i=css"/>
-  <img title="JavaScript" alt="JavaScript" src="https://skillicons.dev/icons?i=javascript"/>
-  <img title="TypeScript" alt="TypeScript" src="https://skillicons.dev/icons?i=ts"/>
-  <img title="React" alt="React" src="https://skillicons.dev/icons?i=react"/>
-  <img title="Next.js" alt="Next.js" src="https://skillicons.dev/icons?i=nextjs"/>
-  <img title="Tailwind CSS" alt="Tailwind CSS" src="https://skillicons.dev/icons?i=tailwind"/>
-</p>
+### Production Previews
 
-### Backend
-
-<p>
-  <img title="Node.js" alt="Node.js" src="https://skillicons.dev/icons?i=nodejs"/>
-  <img title="Express.js" alt="Express.js" src="https://skillicons.dev/icons?i=express"/>
-  <img title="MongoDB" alt="MongoDB" src="https://skillicons.dev/icons?i=mongodb"/>
-  <img title="PostgreSQL" alt="PostgreSQL" src="https://skillicons.dev/icons?i=postgres"/>
-  <img title="Firebase" alt="Firebase" src="https://skillicons.dev/icons?i=firebase"/>
-</p>
-
-### Languages & Databases
-
-<p>
-  <img title="JavaScript" alt="JavaScript" src="https://skillicons.dev/icons?i=javascript"/>
-  <img title="TypeScript" alt="TypeScript" src="https://skillicons.dev/icons?i=ts"/>
-  <img title="Python" alt="Python" src="https://skillicons.dev/icons?i=python"/>
-  <img title="MongoDB" alt="MongoDB" src="https://skillicons.dev/icons?i=mongodb"/>
-  <img title="PostgreSQL" alt="PostgreSQL" src="https://skillicons.dev/icons?i=postgres"/>
-</p>
-
-### Tools & Platforms
-
-<p>
-  <img title="Docker" alt="Docker" src="https://skillicons.dev/icons?i=docker"/>
-  <img title="Git" alt="Git" src="https://skillicons.dev/icons?i=git"/>
-  <img title="GitHub" alt="GitHub" src="https://skillicons.dev/icons?i=github"/>
-  <img title="VS Code" alt="VS Code" src="https://skillicons.dev/icons?i=vscode"/>
-  <img title="Postman" alt="Postman" src="https://skillicons.dev/icons?i=postman"/>
-</p>
-
-### 📚 Currently Learning
-
-<p>
-  <a href="https://nextjs.org/" title="Next.js">
-    <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white"/>
-  </a>
-
-  <a href="https://nodejs.org/" title="Node.js">
-    <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white"/>
-  </a>
-
-  <a href="https://expressjs.com/" title="Express.js">
-    <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white"/>
-  </a>
-
-  <a href="https://www.docker.com/" title="Docker">
-    <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white"/>
-  </a>
-
-  <a href="https://aws.amazon.com/" title="AWS">
-    <img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white"/>
-  </a>
-
-  <a href="https://www.kali.org/" title="Kali Linux">
-    <img src="https://img.shields.io/badge/Kali_Linux-557C94?style=for-the-badge&logo=kalilinux&logoColor=white"/>
-  </a>
-</p>
+|                                  Flagship 01: Report BD                                  |                               Flagship 02: ETA LMS                                |                                   Flagship 03: Life OS                                    |
+| :--------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------: |
+| <img src="public/screenshots/reportbd-daily-flow.png" alt="Report BD Flow" width="300"/> | <img src="public/screenshots/eta-dashboard.png" alt="ETA Dashboard" width="300"/> | <img src="public/screenshots/life-os-dashboard.png" alt="Life OS Dashboard" width="300"/> |
+|                                 **Monorepo & Reporting**                                 |                                **EdTech Platform**                                |                                      **Personal OS**                                      |
 
 ---
 
-## 📌 Featured Projects
+## ⚡ Core Architecture & Highlights
 
-### 📋 Report BD (BPS Report) - Full-Stack Monorepo & Mentorship Platform
-
-<p align="center">
-  <img src="public/screenshots/reportbd-daily-flow.png" alt="Report BD application preview" width="100%"/>
-</p>
-
-A multi-tenant, mobile-first personal reporting and institutional mentorship platform built as an npm workspace monorepo with TypeScript, Node.js/Express, MongoDB Atlas, React 19, and Firebase Authentication. Features deterministic monthly calculation derivations, optimistic revision locking, date-restricted confirmation in Asia/Dhaka timezone, supervisor review queues with atomic transitions, two-way threaded mentorship advice, idempotent notification dispatching, immutable administrative audit logs with recursive metadata sanitization, dedicated A4 printable report layouts, and complete trilingual internationalization (Bengali, English, Arabic RTL).
-
-- **Tech stack:** TypeScript, React 19, Node.js, Express, MongoDB Atlas, Firebase Auth, Tailwind CSS, Vite, React Router 7, Docker, Vercel, Zod Validation, TanStack Query, Node Test Runner (148 tests)
-- 🔗 **Repository:** [Report BD Repository](https://github.com/MSabbirHossen/personalreport)
-
-### 🎓 Exploratory Training Academy (ETA) - Full-Stack EdTech Monorepo
-
-<p align="center">
-  <img src="public/screenshots/eta-dashboard.png" alt="Exploratory Training Academy application preview" width="100%"/>
-</p>
-
-An enterprise-grade, multi-tenant academic and training operating system consolidating curriculum planning, interactive examinations with server-authoritative integrity, live attendance tracking, GPA gradebook publishing, guardian monitoring, tuition billing, bilingual (EN/AR RTL) localization, offline-first PWA, and an educational AI assistant ("Ask ETA") into a unified Turborepo monorepo.
-
-- **Tech stack:** TypeScript, Next.js 15, React 19, Node.js, Express, MongoDB Atlas, Firebase Auth, Tailwind CSS v4, Turborepo, Vercel, OpenAI (RAG)
-- 🔗 **Live Demo:** [ETA Platform](https://eta-web-omega.vercel.app/)
-- 🔗 **Repository:** [ETA Repository](https://github.com/MSabbirHossen/ETA)
-
-### 🧭 Life OS
-
-A production-ready, single-user personal operating system that brings journaling, finance, habits, fitness, goals, Islamic tracking, study management, and reporting into one unified dashboard. Built with React, Vite, Tailwind CSS, Node.js, Express, MongoDB, JWT authentication, Recharts, and secure deployment workflows.
-
-- **Tech stack:** React, Vite, Tailwind CSS, Node.js, Express, MongoDB, JWT, Recharts
-- 🔗 **Live Demo:** [Life OS](https://lifeosclient.vercel.app)
-- 🔗 **Repository:** [Life_OS_REPO_LINK](https://github.com/MSabbirHossen/Life-OS)
-
-### 🌐 Digital Life Lessons
-
-A comprehensive platform where users can create, share, and discover meaningful life lessons and personal growth insights. Built with React, Node.js, Express, MongoDB, Firebase, and Stripe.
-
-- **Tech stack:** MongoDB, Express.js, React 18, Node.js, Firebase Auth, Stripe API, Vite, Tailwind CSS
-- 🔗 **Live Demo:** [Digital Life Lessons](https://digital-life-lessons-client.vercel.app/)
-- 🔗 **Repository:** [Digital_Life_Lessons_REPO_LINK](https://github.com/MSabbirHossen/Digital-Life-Lessons.git)
-
-### 📦 Import Export Hub
-
-A full-stack MERN marketplace platform that connects exporters with importers. Browse products, manage listings, and streamline the import-export process with MongoDB Atlas, Express.js, React, Node.js, and Firebase Auth.
-
-- **Tech stack:** MongoDB Atlas, Express.js, React 18, Node.js, Firebase Admin SDK, Vite, Tailwind CSS
-- 🔗 **Live Demo:** [Import Export Hub](https://import-export-hub-client.vercel.app/)
-- 🔗 **Repository:** [Import_Export_Hub_REPO_LINK](https://github.com/MSabbirHossen/export-import-project.git)
-
-### 🎬 MovieExplorer - Discover TV Shows & Movies
-
-<p align="center">
-  <img src="public/screenshots/movie-explorer-hero.png" alt="MovieExplorer application preview" width="100%"/>
-</p>
-
-A modern React application for discovering TV shows and movies through the TVMaze API. Browse a paginated catalog, search with debounced requests, filter and sort titles, inspect rich show details, and save favorites to a persistent watchlist.
-
-- **Tech stack:** React 19, Vite, Tailwind CSS v4, Context API, TVMaze REST API, localStorage
-- 🔗 **Live Demo:** [MovieExplorer](https://movieexplorer-pink.vercel.app)
-- 🔗 **Repository:** [MovieExplorer_REPO_LINK](https://github.com/MSabbirHossen/movieExplorer)
-
-### 🎮 GameHub - Online Game Library
-
-A vibrant, urban-themed web application for discovering, exploring, and downloading indie games and AAA titles. GameHub provides an engaging platform for gamers to browse games, view detailed information, and connect with gaming communities.
-
-- **Tech stack:** React 19, Vite, Firebase, Tailwind CSS v4, DaisyUI, Framer Motion
-- 🔗 **Live Demo:** [GameHub](https://online-game-library.web.app/)
-- 🔗 **Repository:** [GameHub_REPO_LINK](https://github.com/MSabbirHossen/Online-Game-Library.git)
+- **React 19 & Vite 8:** Sub-second cold starts, Rollup-optimized manual chunk splitting (`react`, `router`, `motion`, `ui`), and minimal bundle weight.
+- **Tailwind CSS v4 Design System:** Modern semantic tokens defined via CSS custom variables (`text-primary`, `surface`, `border-default`, `accent-primary`), ensuring cohesive dark and light surfaces.
+- **Accessible Motion Design:** Framer Motion animations with native `prefers-reduced-motion` handling, custom entrance reveals, and responsive transitions.
+- **Zero-Flash Theme Switching:** System-aware theme state (`dark` / `light` / `system`) persisting in `localStorage` with inline script injection to prevent FOUC (flash of unstyled content).
+- **Interactive Onboarding Modal:** Centralized 8-stage guided tour modal with step spine, keyboard accessibility (`Escape`, arrow keys), and URL deep-linking support (`?tour=true`).
+- **Direct WhatsApp Communication:** Structured form serialization launching directly into WhatsApp with zero middleman mailer failure points or quota restrictions.
 
 ---
 
-## 🏆 Certifications & Achievements
+## 🌟 Key Features
 
-- ✅ [Complete Web Development Course by Programming Hero](https://drive.google.com/file/d/1TXbu_27BV0e6ttHZ5iOIk0iH6GrYfZYi/view?usp=sharing)
-- ✅ [Master Git and GitHub – Beginner to Expert](https://www.udemy.com/certificate/UC-a15ae6ed-80b0-4d97-a5e9-2151cab255d4/)
-- ✅ [Master HTML and CSS by Building Real-World Project](https://www.udemy.com/certificate/UC-b1ec25ee-3cce-4c6c-b922-efda23d0fc13/)
-- ✅ [Spreadsheets for Beginners using Google Sheets](https://drive.google.com/file/d/1r8K7y5FjHu3nPL9AxtILtfgzrNnhuu6O/view?usp=sharing)
-- ✅ [The Python Tutorial by W3Schools](https://github.com/MSabbirHossen/certifications/blob/main/The%20Python%20Tutorial%20by%20W3Schools.jpg)
-- ✅ [VSCode Shortcuts & Extensions for Web Developer](https://www.udemy.com/certificate/UC-827bbc34-b709-4213-bbc0-3dc50b8c6b33/)
-- ✅ [ঘরে বসে Spoken English](https://drive.google.com/file/d/17ccT9CtrD_39vqfjE4bxIm_Xbxsb-5Xy/view?usp=sharing)
-- ✅ Basic IT Course
-- ✅ IELTS Academic — Band 7.0
-- 🚧 More certifications coming soon...
+### 1. Recruiter Fast-Track Dossier (`/recruiter`)
 
----
+- Executive candidate summary highlighting availability for Junior Full-Stack, Frontend, and Backend roles.
+- Core MERN competencies matrix linked directly to active codebases.
+- One-click CV download and pre-filled WhatsApp hiring notes.
 
-## 🤝 Let's Connect
+### 2. Interactive Portfolio Guide (`/guide` & `?tour=true`)
 
-<p align="center">
-  <a href="https://msabbirhossen.github.io/" title="Portfolio Website">
-    <img src="https://img.shields.io/badge/Portfolio-000?style=for-the-badge&logo=vercel&logoColor=white"/>
-  </a>
-  &nbsp;&nbsp;
-  <a href="https://www.linkedin.com/in/sabb1rhossen/" title="LinkedIn Profile">
-    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/>
-  </a>
-  &nbsp;&nbsp;
-  <a href="https://web.facebook.com/sabb1rhossen/" title="Facebook Profile">
-    <img src="https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white"/>
-  </a>
-  &nbsp;&nbsp;
-  &nbsp;&nbsp;
-  <a href="mailto:mshossen724@gmail.com" title="Send me an Email">
-    <img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white"/>
-  </a>
-</p>
+- **8-Step Tour Modal:** Guided overlay walking visitors through flagship projects, skill evidence, credentials, and recruiter tools.
+- **11-Section In-Page Walkthrough:** Comprehensive documentation featuring active scroll-spy navigation, reading progress bar, project screenshots, and troubleshooting accordions.
+
+### 3. Flagship Project Case Studies (`/projects/:slug`)
+
+- Detailed architectural write-ups breaking down monorepo structures, technical challenges, lessons learned, and system highlights.
+- Direct links to verified public GitHub repositories and live production deployments.
+
+### 4. Interactive Skills & Project Evidence
+
+- Skills grouped into logical domains (Frontend, Backend & Database, Languages & Fundamentals, Tools & Workflow).
+- Grounded in production code: selecting or inspecting any skill highlights which active projects implement it.
+
+### 5. Verified Academic & Mentorship Milestones
+
+- B.Sc. in Computer Science & Information record at the Islamic University of Madinah.
+- 5 verified technical credentials issued by Programming Hero and Udemy with credential IDs.
+- Documented community leadership across an 8,000+ member scholarship applicant network (~350 candidates guided, 51 selected, 15 visas finalized in 2026).
+
+### 6. Developer Hub & WhatsApp Note Generator (`/developer`)
+
+- Interactive note builder allowing visitors to pre-compose inquiries by topic (Recruiter, Collaboration, Mentorship, Feedback) and launch directly into WhatsApp.
 
 ---
 
-## 📍 Contact Information
+## 🛠️ Technology Stack
 
-| Field            | Details                                                       |
-| ---------------- | ------------------------------------------------------------- |
-| 📍 **Location**  | Madinah, Saudi Arabia                                         |
-| 📧 **Email**     | mshossen724@gmail.com                                         |
-| 🌐 **Portfolio** | [PORTFOLIO_URL](https://msabbirhossen.github.io/)             |
-| 💼 **Linkedin**  | [LINKEDIN_PORFILE](https://www.linkedin.com/in/sabb1rhossen/) |
-| 💼 **Facebook**  | [Facebook_PORFILE](https://web.facebook.com/sabb1rhossen/)    |
+### Frontend Core & UI
+
+- **Library:** [React 19](https://react.dev/) (`^19.2.7`)
+- **Routing:** [React Router 7](https://reactrouter.com/) (`^7.18.0`)
+- **Build Tool:** [Vite 8](https://vite.dev/) (`^8.1.0`)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/) (`^4.3.2`) with `@tailwindcss/vite`
+- **Motion & Animations:** [Framer Motion](https://www.framer.com/motion/) (`^12.42.0`)
+- **SEO & Head Management:** [React Helmet Async](https://github.com/staylor/react-helmet-async) (`^3.0.0`)
+- **Form Handling:** [React Hook Form](https://react-hook-form.com/) (`^7.80.0`)
+- **Icons:** [React Icons](https://react-icons.github.io/react-icons/) (`^5.7.0`)
+
+### Automation & Prebuild
+
+- **Runtime:** Node.js 22 (ESM modules)
+- **Prebuild Engine:** `scripts/prebuild.mjs` generating `public/sitemap.xml`, `public/llms.txt`, and `public/robots.txt`
+- **Stats Synchronizer:** `scripts/update-stats.js` fetching real-world GitHub metrics via GitHub API into `public/stats.json`
+
+### Code Quality & Standards
+
+- **Linter:** ESLint 9 (Flat Config) with `eslint-plugin-react`, `eslint-plugin-react-hooks`, and `eslint-plugin-prettier`
+- **Formatter:** Prettier (`^3.9.3`)
+- **Static Analysis:** Oxlint
+
+### Hosting & Infrastructure
+
+- **Platform:** GitHub Pages
+- **Continuous Deployment:** GitHub Actions (`.github/workflows/deploy.yml`)
+- **Periodic Automation:** GitHub Actions Cron (`.github/workflows/update-github-stats.yml`)
 
 ---
 
-<p align="center">
-  <i>"Learner by heart, dreamer by soul — building a future where Faith, Knowledge & Technology empower the Ummah."</i>
-</p>
+## 📁 Repository Structure
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0F172A,100:3B82F6&height=120&section=footer"/>
+```text
+Portfolio/
+├── .github/
+│   └── workflows/
+│       ├── deploy.yml                   # Automated GitHub Pages deployment pipeline
+│       └── update-github-stats.yml      # Cron workflow updating public/stats.json
+├── public/
+│   ├── resume/
+│   │   └── Md_Sabbir_Hossen_Resume.pdf  # Verified developer resume
+│   ├── screenshots/                     # Verified production application screenshots
+│   │   ├── reportbd-daily-flow.png
+│   │   ├── eta-dashboard.png
+│   │   ├── life-os-dashboard.png
+│   │   └── ...
+│   ├── llms.txt                         # Generated plaintext context file for LLMs
+│   ├── robots.txt                       # Search engine crawler rules
+│   ├── sitemap.xml                      # Generated 16-route XML sitemap
+│   └── stats.json                       # Cached GitHub repository & contribution statistics
+├── scripts/
+│   ├── prebuild.mjs                     # Pre-build orchestrator (sitemap + llms.txt)
+│   ├── generate-sitemap.mjs             # Dynamic sitemap builder
+│   ├── generate-llms-txt.mjs            # Standardized llms.txt context builder
+│   ├── resolve-src-imports.mjs          # Node loader for extensionless ESM imports
+│   └── update-stats.js                  # GitHub API stats updater
+├── src/
+│   ├── assets/                          # Static branding, banners, and profile images
+│   ├── components/                      # Modular UI components
+│   │   ├── about/                       # About section components
+│   │   ├── animations/                  # Motion primitives (Reveal, etc.)
+│   │   ├── common/                      # Shared design tokens (Badge, Button, Card, Typography)
+│   │   ├── contact/                     # WhatsApp-first contact form and direct links
+│   │   ├── experience/                  # Career timeline and community leadership
+│   │   ├── footer/                      # Modernized global footer with site directory
+│   │   ├── github/                      # Verified GitHub stats visualizer
+│   │   ├── guide/                       # Interactive 8-step onboarding modal
+│   │   ├── hero/                        # Hero section with status badges & fast jump
+│   │   ├── layout/                      # Navbar, mobile drawer, SectionWrapper
+│   │   ├── project-details/             # Case study layout and architecture displays
+│   │   ├── projects/                    # Featured projects grid and filtering
+│   │   └── skills/                      # Interactive skills grid with project evidence
+│   ├── config/                          # Motion and transition configuration
+│   ├── contexts/                        # ThemeContext & PortfolioGuideContext
+│   ├── data/                            # Single source of truth for portfolio content
+│   │   ├── certifications/              # 5 verified technical credentials
+│   │   ├── education/                   # Islamic University of Madinah record
+│   │   ├── experience/                  # Timeline entries and community leadership
+│   │   ├── personal/                    # Personal info, vision, and contact channels
+│   │   ├── projects/                    # Project registry (Report BD, ETA, Life OS, etc.)
+│   │   ├── skills/                      # Technology categorization & evidence mapping
+│   │   ├── guideData.js                 # 8-step interactive tour data
+│   │   ├── index.js                     # Unified portfolioData export
+│   │   └── navigation.js                # Canonical route registry
+│   ├── hooks/                           # Custom React hooks (useAIChat, useCountAnimation)
+│   ├── layouts/                         # MainLayout shell
+│   ├── lib/                             # Utility helpers, motion libraries, and AI helpers
+│   ├── pages/                           # Application route views
+│   │   ├── Home.jsx                     # Interactive homepage (/)
+│   │   ├── Projects.jsx                 # Filterable projects catalog (/projects)
+│   │   ├── ProjectDetails.jsx           # Deep case studies (/projects/:slug)
+│   │   ├── Experience.jsx               # Career timeline & leadership (/experience)
+│   │   ├── Education.jsx                # Academic credentials (/education)
+│   │   ├── Certifications.jsx           # 5 verified certificates (/certifications)
+│   │   ├── Developer.jsx                # Developer & Community Hub (/developer)
+│   │   ├── Recruiter.jsx                # Recruiter candidate dossier (/recruiter)
+│   │   ├── Guide.jsx                    # 11-section Portfolio Guide (/guide)
+│   │   └── NotFound.jsx                 # Accessible 404 page (*)
+│   ├── App.jsx                          # Route provider and global modal mounting
+│   ├── index.css                        # Tailwind v4 theme tokens and semantic utilities
+│   └── main.jsx                         # React 19 root bootstrap
+├── .env.example                         # Example environment variables
+├── eslint.config.js                     # ESLint flat config
+├── package.json                         # Project dependencies and npm scripts
+├── vite.config.js                       # Vite 8 build and chunk splitting configuration
+└── README.md                            # Comprehensive project documentation
+```
+
+---
+
+## 🏆 Featured Projects
+
+### 1. Report BD (BPS Report) — Full-Stack Monorepo Mentorship Platform
+
+- **Role:** Full-Stack Lead Developer · **Order:** `featuredOrder: 1`
+- **Overview:** A multi-tenant, mobile-first personal reporting and institutional mentorship platform built as an npm workspace monorepo. Features deterministic monthly calculation derivations, optimistic revision locking (HTTP 409 Conflict), supervisor review queues with atomic transitions, two-way threaded mentorship advice, idempotent notification dispatching, immutable administrative audit logs with recursive metadata sanitization, and complete trilingual internationalization (Bengali, English, Arabic RTL).
+- **Tech Stack:** TypeScript, React 19, Express 4 API, Node.js, MongoDB Atlas, Firebase Auth, Tailwind CSS, Zod Validation, Vite.
+- 🔗 **Case Study:** [/projects/report-bd](https://msabbirhossen.github.io/projects/report-bd) | 🌐 **Live Demo:** [personalreport-iota.vercel.app](https://personalreport-iota.vercel.app/) | 💻 **Repository:** [github.com/MSabbirHossen/personalreport](https://github.com/MSabbirHossen/personalreport)
+
+---
+
+### 2. Exploratory Training Academy (ETA) — Full-Stack EdTech LMS
+
+- **Role:** Full-Stack Lead Developer · **Order:** `featuredOrder: 2`
+- **Overview:** An enterprise-grade, multi-tenant academic and training operating system consolidating curriculum authoring, interactive examinations with server-authoritative timer expiry, live attendance recording, GPA gradebook publishing with cryptographic publishing locks, guardian monitoring, and bilingual (English / Arabic RTL) layout systems.
+- **Tech Stack:** React 19, Redux Toolkit, Node.js, Express, MongoDB Atlas, Firebase Auth, Tailwind CSS v4, Framer Motion.
+- 🔗 **Case Study:** [/projects/eta-digital-education-platform](https://msabbirhossen.github.io/projects/eta-digital-education-platform) | 🌐 **Live Demo:** [eta-web-omega.vercel.app](https://eta-web-omega.vercel.app/) | 💻 **Repository:** [github.com/MSabbirHossen/ETA](https://github.com/MSabbirHossen/ETA)
+
+---
+
+### 3. Life OS — Personal Productivity & Habit Operating System
+
+- **Role:** Solo Developer · **Order:** `featuredOrder: 3`
+- **Overview:** A production-ready, single-user personal operating system bringing journaling, finance, habit heatmaps, fitness, goals, Islamic tracking (Salah, Quran), study management, and visual analytics into one unified dashboard. Includes date-indexed MongoDB collections for ultra-fast queries and one-click encrypted JSON export for 100% personal data ownership.
+- **Tech Stack:** React, Vite, Node.js, Express, MongoDB, Mongoose, JWT Auth, Recharts, Tailwind CSS.
+- 🔗 **Case Study:** [/projects/life-os](https://msabbirhossen.github.io/projects/life-os) | 🌐 **Live Demo:** [lifeosclient.vercel.app](https://lifeosclient.vercel.app) | 💻 **Repository:** [github.com/MSabbirHossen/Life-OS](https://github.com/MSabbirHossen/Life-OS)
+
+---
+
+### Additional Notable Projects
+
+| Project                  | Domain                       | Stack                                                             | Links                                                                                                                     |
+| :----------------------- | :--------------------------- | :---------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------ |
+| **Digital Life Lessons** | Growth & Insights Platform   | React 18, Node.js, Express, MongoDB, Firebase, Stripe API         | [Demo](https://digital-life-lessons-client.vercel.app/) · [GitHub](https://github.com/MSabbirHossen/Digital-Life-Lessons) |
+| **Import Export Hub**    | B2B Marketplace              | React 18, Node.js, Express, MongoDB Atlas, Firebase Admin SDK     | [Demo](https://import-export-hub-client.vercel.app/) · [GitHub](https://github.com/MSabbirHossen/export-import-project)   |
+| **MovieExplorer**        | Entertainment Discovery      | React 19, Vite, Tailwind v4, Context API, TVMaze REST API         | [Demo](https://movieexplorer-pink.vercel.app) · [GitHub](https://github.com/MSabbirHossen/movieExplorer)                  |
+| **GameHub**              | Indie & AAA Gaming Directory | React 19, Vite, Firebase, Tailwind CSS v4, DaisyUI, Framer Motion | [Demo](https://online-game-library.web.app/) · [GitHub](https://github.com/MSabbirHossen/Online-Game-Library)             |
+| **Personal App Store**   | Software Showcase Portal     | React 19, Vite, Tailwind CSS v4                                   | [Demo](https://app-store-ten-virid.vercel.app/) · [GitHub](https://github.com/MSabbirHossen/app-store)                    |
+
+---
+
+## 💻 Getting Started & Local Setup
+
+### Prerequisites
+
+- **Node.js:** `v20.x` or `v22.x` (Node 22 LTS recommended)
+- **Package Manager:** `npm` (`v10.x` or later)
+- **Version Control:** `git`
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/MSabbirHossen/Portfolio.git
+cd Portfolio
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Environment Setup (Optional)
+
+```bash
+cp .env.example .env
+```
+
+_(Optional: EmailJS credentials can be added to `.env` if testing direct email fallback. Primary contact defaults seamlessly to WhatsApp without environment keys.)_
+
+### 4. Start Local Development Server
+
+```bash
+npm run dev
+```
+
+The application will launch at `http://localhost:5173`.
+
+### 5. Create Production Build
+
+```bash
+npm run build
+```
+
+Runs the automated prebuild pipeline (generating `public/sitemap.xml`, `public/llms.txt`, and `public/robots.txt`), then bundles optimized static assets into `./dist`.
+
+### 6. Preview Production Build Locally
+
+```bash
+npm run preview
+```
+
+---
+
+## ⚙️ Environment Configuration
+
+| Variable                   | Scope           | Required | Purpose                                                                                     |
+| :------------------------- | :-------------- | :------: | :------------------------------------------------------------------------------------------ |
+| `VITE_EMAILJS_SERVICE_ID`  | Client (`.env`) | Optional | EmailJS service identifier for secondary email form fallback.                               |
+| `VITE_EMAILJS_TEMPLATE_ID` | Client (`.env`) | Optional | EmailJS template identifier for email formatting.                                           |
+| `VITE_EMAILJS_PUBLIC_KEY`  | Client (`.env`) | Optional | EmailJS public API key.                                                                     |
+| `GH_TOKEN`                 | CI / CLI        | Optional | GitHub personal access token used by `npm run update-stats` to refresh `public/stats.json`. |
+| `VITE_BASE_PATH`           | Build           | Optional | Custom base URL path for Vite (defaults to `/`).                                            |
+
+---
+
+## 🔄 Development Workflow & Scripts
+
+| Command                | Description                                                                             |
+| :--------------------- | :-------------------------------------------------------------------------------------- |
+| `npm run dev`          | Starts the Vite local development server with Hot Module Replacement (HMR).             |
+| `npm run prebuild`     | Generates updated `sitemap.xml`, `llms.txt`, and `robots.txt` before bundling.          |
+| `npm run build`        | Runs `prebuild` and compiles the production client into `dist/`.                        |
+| `npm run preview`      | Serves the local `dist/` build for production verification.                             |
+| `npm run lint`         | Runs ESLint 9 across all `src/` files to ensure clean code quality.                     |
+| `npm run format`       | Formats all codebase files according to Prettier guidelines.                            |
+| `npm run update-stats` | Fetches verified GitHub contributions, stars, and PRs via GitHub API into `stats.json`. |
+
+---
+
+## 🚀 CI/CD & Deployment
+
+The portfolio is deployed to **GitHub Pages** using an automated GitHub Actions pipeline:
+
+- **Deployment Workflow (`.github/workflows/deploy.yml`):**
+  - Triggers automatically on push to the `main` branch or upon successful completion of the GitHub Stats update workflow.
+  - Checks out repository and sets up Node.js 22 with npm cache.
+  - Executes `npm run build` (running prebuild metadata generators and Vite Rollup bundler).
+  - Uploads the `dist/` directory artifact and deploys directly to GitHub Pages via `actions/deploy-pages@v4`.
+
+- **GitHub Stats Automation (`.github/workflows/update-github-stats.yml`):**
+  - Runs automatically on a 12-hour schedule (`0 */12 * * *`) or via manual workflow dispatch.
+  - Executes `npm run update-stats` with `GH_TOKEN`, commits updated metrics to `public/stats.json`, and triggers an automated redeployment.
+
+---
+
+## 🤖 AI Agents & LLM Integration
+
+This portfolio adopts modern web standards for AI coding assistants, agents, and scrapers:
+
+- **`public/llms.txt`:** Standardized plaintext markdown profile generated automatically during `prebuild` via `scripts/generate-llms-txt.mjs`.
+- **Structured Content:** LLM agents (ChatGPT, Claude, Gemini, Antigravity) can read `https://msabbirhossen.github.io/llms.txt` directly to ingest Sabbir's verified technical competencies, flagship projects, and architectural highlights without parsing client-rendered JavaScript.
+
+---
+
+## 👨‍💻 Author & Professional Identity
+
+**Md. Sabbir Hossen**  
+_Junior MERN Stack Developer · Frontend Craftsmanship · Full-Stack JavaScript_  
+_Computer Science Student at the Islamic University of Madinah, Saudi Arabia_
+
+- 🌐 **Portfolio:** [https://msabbirhossen.github.io](https://msabbirhossen.github.io)
+- 💼 **LinkedIn:** [linkedin.com/in/sabb1rhossen](https://www.linkedin.com/in/sabb1rhossen/)
+- 💻 **GitHub:** [github.com/MSabbirHossen](https://github.com/MSabbirHossen)
+- 💬 **WhatsApp:** [+8801773511874](https://wa.me/+8801773511874)
+- 📧 **Email:** [mshossen724@gmail.com](mailto:mshossen724@gmail.com)
+
+---
+
+## 📄 License
+
+This repository and its original portfolio source code are proprietary:  
+© 2026 **Md. Sabbir Hossen**. All rights reserved.
+
+_Open-source projects and external libraries referenced throughout this portfolio are governed by their respective licenses._
