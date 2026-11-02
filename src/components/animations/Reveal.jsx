@@ -1,10 +1,11 @@
 import { motion, useReducedMotion } from 'framer-motion';
+import { EASINGS } from '../../lib/motion';
 
 export default function Reveal({
   children,
   delay = 0,
-  y = 30,
-  duration = 0.6,
+  y = 24,
+  duration = 0.5,
   once = true,
   amount,
   className = '',
@@ -21,7 +22,7 @@ export default function Reveal({
       transition={{
         duration: shouldReduceMotion ? 0 : duration,
         delay: shouldReduceMotion ? 0 : delay,
-        ease: 'easeOut',
+        ease: EASINGS.smooth,
       }}
       {...motionProps}
     >
