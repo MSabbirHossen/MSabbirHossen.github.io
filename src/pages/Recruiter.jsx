@@ -2,16 +2,12 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import {
   FaArrowLeft,
-  FaBriefcase,
-  FaCheckCircle,
   FaDownload,
   FaEnvelope,
   FaExternalLinkAlt,
   FaGithub,
-  FaGraduationCap,
   FaLinkedin,
   FaMapMarkerAlt,
-  FaRocket,
   FaWhatsapp,
 } from 'react-icons/fa';
 

@@ -1,5 +1,6 @@
 import {
   FaBrain,
+  FaBriefcase,
   FaCertificate,
   FaCompass,
   FaEnvelope,
@@ -32,6 +33,12 @@ export const PRIMARY_NAV_LINKS = [
 ];
 
 export const MORE_NAV_LINKS = [
+  {
+    name: 'Recruiter Quick Scan',
+    href: 'recruiter',
+    to: '/recruiter',
+    icon: FaBriefcase,
+  },
   {
     name: 'Portfolio Guide',
     href: 'guide',
@@ -81,6 +88,7 @@ export const FOOTER_LINKS = [
 
 // Secondary/utility links for footer column 4 ("More").
 export const FOOTER_MORE_LINKS = [
+  { label: 'Recruiter Quick Scan', to: '/recruiter' },
   { label: 'All Projects', to: '/projects' },
   { label: 'Experience Timeline', to: '/experience' },
   { label: 'Education Timeline', to: '/education' },

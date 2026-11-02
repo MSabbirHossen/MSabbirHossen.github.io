@@ -16,6 +16,7 @@ const Certifications = lazy(() => import('./pages/Certifications'));
 const Developer = lazy(() => import('./pages/Developer'));
 const Guide = lazy(() => import('./pages/Guide'));
 const ProjectDetails = lazy(() => import('./pages/ProjectDetails'));
+const Recruiter = lazy(() => import('./pages/Recruiter'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 function ScrollToTop() {
@@ -50,6 +51,9 @@ export default function App() {
                 <Route path="experience" element={<Experience />} />
                 <Route path="education" element={<Education />} />
                 <Route path="certifications" element={<Certifications />} />
+                <Route path="recruiter" element={<Recruiter />} />
+                <Route path="recruiter-view" element={<Navigate to="/recruiter" replace />} />
+                <Route path="quick-scan" element={<Navigate to="/recruiter" replace />} />
                 <Route path="developer" element={<Developer />} />
                 <Route path="developer-info" element={<Navigate to="/developer" replace />} />
                 <Route path="guide" element={<Guide />} />

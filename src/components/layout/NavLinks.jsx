@@ -1,10 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
 import { FaChevronDown } from 'react-icons/fa';
 import { PRIMARY_NAV_LINKS, MORE_NAV_LINKS } from '../../data/navigation';
 import Button from '../common/Button';
 
-export default function NavLinks({ activeSection, onNavigate, mobile = false }) {
+export default function NavLinks({ activeSection, onNavigate, onClose, mobile = false }) {
   const shouldReduceMotion = useReducedMotion();
   const [isMoreOpen, setIsMoreOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -67,6 +68,22 @@ export default function NavLinks({ activeSection, onNavigate, mobile = false }) 
           <div className="flex flex-col gap-1">
             {MORE_NAV_LINKS.map((item) => {
               const Icon = item.icon;
+              const isRoute = !!item.to;
+
+              if (isRoute) {
+                return (
+                  <Link
+                    key={item.name}
+                    to={item.to}
+                    onClick={() => onClose && onClose()}
+                    className="flex items-center gap-3 w-full py-2 px-2 rounded-xl text-left text-sm transition-colors text-secondary hover:bg-surface hover:text-primary"
+                  >
+                    <Icon className="h-4 w-4 text-accent-secondary shrink-0" />
+                    <span>{item.name}</span>
+                  </Link>
+                );
+              }
+
               const isActive = activeSection === item.href;
               return (
                 <button
@@ -88,8 +105,19 @@ export default function NavLinks({ activeSection, onNavigate, mobile = false }) 
           </div>
         </div>
 
-        {/* Contact CTA */}
-        <div className="pt-2">
+        {/* Fast Action CTAs */}
+        <div className="pt-2 flex flex-col gap-2.5">
+          <Button
+            as={Link}
+            to="/recruiter"
+            variant="primary"
+            size="md"
+            onClick={() => onClose && onClose()}
+            className="w-full justify-center text-sm font-semibold"
+          >
+            Recruiter Quick Scan
+          </Button>
+
           <Button
             variant={activeSection === 'contact' ? 'primary' : 'outline'}
             size="md"
@@ -104,7 +132,7 @@ export default function NavLinks({ activeSection, onNavigate, mobile = false }) 
   }
 
   return (
-    <div className="flex items-center gap-5 lg:gap-6">
+    <div className="flex items-center gap-4 lg:gap-5">
       {/* Primary Links */}
       {PRIMARY_NAV_LINKS.map((link) => {
         const isActive = activeSection === link.href;
@@ -172,10 +200,26 @@ export default function NavLinks({ activeSection, onNavigate, mobile = false }) 
 
         {/* Dropdown Menu */}
         {isMoreOpen && (
-          <div className="dropdown-menu absolute top-full right-0 mt-2.5 w-48 rounded-xl p-1.5 z-50 animate-fade-in">
+          <div className="dropdown-menu absolute top-full right-0 mt-2.5 w-52 rounded-xl p-1.5 z-50 animate-fade-in shadow-xl">
             <div className="space-y-1">
               {MORE_NAV_LINKS.map((item) => {
                 const Icon = item.icon;
+                const isRoute = !!item.to;
+
+                if (isRoute) {
+                  return (
+                    <Link
+                      key={item.name}
+                      to={item.to}
+                      onClick={() => setIsMoreOpen(false)}
+                      className="dropdown-item w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-left cursor-pointer text-sm font-medium"
+                    >
+                      <Icon className="h-4 w-4 text-accent-secondary shrink-0" />
+                      <span>{item.name}</span>
+                    </Link>
+                  );
+                }
+
                 const isActive = activeSection === item.href;
                 return (
                   <button
@@ -199,12 +243,23 @@ export default function NavLinks({ activeSection, onNavigate, mobile = false }) 
         )}
       </div>
 
+      {/* Recruiter View Shortcut Pill */}
+      <Button
+        as={Link}
+        to="/recruiter"
+        variant="ghost"
+        size="sm"
+        className="text-xs font-semibold text-accent-primary hover:bg-accent-primary/10 border border-accent-primary/30 py-1 px-2.5"
+      >
+        Recruiter View
+      </Button>
+
       {/* Symmetrical Contact CTA Button */}
       <Button
         variant={activeSection === 'contact' ? 'primary' : 'outline'}
         size="sm"
         onClick={(e) => onNavigate(e, 'contact')}
-        className="ml-1 text-xs font-semibold shadow-sm"
+        className="text-xs font-semibold shadow-sm"
       >
         Contact
       </Button>

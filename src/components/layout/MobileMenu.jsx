@@ -47,7 +47,12 @@ const MobileMenu = forwardRef(function MobileMenu(
               </header>
 
               <nav className="flex flex-col gap-2" aria-label="Mobile navigation links">
-                <NavLinks mobile activeSection={activeSection} onNavigate={onNavigate} />
+                <NavLinks
+                  mobile
+                  activeSection={activeSection}
+                  onNavigate={onNavigate}
+                  onClose={() => setIsOpen(false)}
+                />
               </nav>
 
               <Button
