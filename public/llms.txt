@@ -1,10 +1,10 @@
-# Md. Sabbir Hossen - MERN Stack Developer
+# Md. Sabbir Hossen - Junior MERN Stack Developer
 
-MERN Stack Developer building AI-assisted, security-conscious web applications.
+Junior MERN Stack Developer building responsive, secure, and production-ready web applications.
 
 ## About
 
-Full-stack developer focused on building practical web applications with MERN, AI-assisted workflows, and security-aware implementation. I combine continuous learning, disciplined problem solving, and real project work to create software that is useful, reliable, and easy to extend.
+Computer Science student at the Islamic University of Madinah engineering practical web applications with React 19, TypeScript, Node.js, Express, and MongoDB. Combining solid frontend craftsmanship with end-to-end JavaScript problem-solving. Focused on clean component architecture, deterministic business logic, and reliable user experiences.
 
 ## Skills
 
@@ -81,6 +81,6 @@ Built a responsive app discovery platform with search, sorting, protected routes
 - Email: mshossen724@gmail.com
 - LinkedIn: [Profile](https://www.linkedin.com/in/sabb1rhossen/)
 - GitHub: [Profile](https://github.com/MSabbirHossen)
-- Availability: Full-time, Internship, Freelance
+- Availability: Remote Roles, Internships, Junior Full-Stack Opportunities
 
 Full interactive portfolio: [https://msabbirhossen.github.io/](https://msabbirhossen.github.io/)

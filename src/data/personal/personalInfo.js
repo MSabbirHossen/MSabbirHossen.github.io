@@ -2,20 +2,23 @@ import { languages } from './languages';
 import { values } from './values';
 import { vision } from './vision';
 
-const secondaryTitle = 'AI Integration - Security-Aware Development';
+const secondaryTitle = 'Frontend Craftsmanship · Full-Stack JavaScript';
 
 export const personalInfo = {
   name: 'Md. Sabbir Hossen',
-  title: 'MERN Stack Developer',
+  title: 'Junior MERN Stack Developer',
   secondaryTitle,
-  availability: ['Full-time', 'Internship', 'Freelance'],
+  availability: ['Remote Roles', 'Internships', 'Junior Full-Stack Opportunities'],
+  statusBadge: 'Available for new opportunities',
   brandName: 'Md. Sabbir Hossen',
-  brandTagline: 'MERN Stack Developer building AI-assisted, security-conscious web applications.',
+  brandTagline:
+    'Junior MERN Stack Developer building responsive, secure, and production-ready web applications.',
   mission:
-    'Full-stack developer focused on building practical web applications with MERN, AI-assisted workflows, and security-aware implementation.',
+    'Computer Science student at the Islamic University of Madinah engineering practical web applications with React 19, TypeScript, Node.js, Express, and MongoDB. Combining solid frontend craftsmanship with end-to-end JavaScript problem-solving.',
   tagline:
-    'I combine continuous learning, disciplined problem solving, and real project work to create software that is useful, reliable, and easy to extend.',
-  location: 'Medina, Saudi Arabia (Originally from Bangladesh)',
+    'Focused on clean component architecture, deterministic business logic, and reliable user experiences.',
+  location: 'Madinah, Saudi Arabia (Open to Remote & Relocation)',
+  shortLocation: 'Madinah, Saudi Arabia',
   studyingAt: 'Islamic University of Madinah',
   email: 'mshossen724@gmail.com',
   whatsapp: '+8801773511874',
@@ -43,9 +46,44 @@ export const personalInfo = {
     },
   ],
   hero: {
-    focusTitle: 'Currently focused on',
-    focusItems: ['React', 'MERN Stack', 'AI Integration', 'Security-Aware Development'],
+    focusTitle: 'Core Stack & Engineering Focus',
+    focusItems: ['React 19', 'Node.js & Express', 'MongoDB Atlas', 'TypeScript', 'Tailwind CSS'],
   },
+  highlights: [
+    {
+      metric: '8+',
+      numericValue: 8,
+      suffix: '+',
+      title: 'Full-Stack Applications',
+      desc: 'Built with React 19, TypeScript, Node.js, Express, and MongoDB.',
+      badge: 'Production-Ready',
+      category: 'projects',
+    },
+    {
+      metric: 'BS CS',
+      title: 'Computer Science Degree',
+      desc: 'Undergraduate student at Islamic University of Madinah focusing on software engineering.',
+      badge: 'Academic Rigor',
+      category: 'education',
+    },
+    {
+      metric: '8,000+',
+      numericValue: 8000,
+      suffix: '+',
+      title: 'Community Members',
+      desc: 'Mentored 350+ applicants in the 2026 cycle for scholarship admissions.',
+      badge: 'Mentorship Impact',
+      category: 'community',
+    },
+    {
+      metric: '5',
+      numericValue: 5,
+      title: 'Verified Certifications',
+      desc: 'Credentials in Full-Stack Web Development, UI Architecture, and Git workflows.',
+      badge: 'Continuous Learning',
+      category: 'certifications',
+    },
+  ],
   languages,
   values,
   vision,
