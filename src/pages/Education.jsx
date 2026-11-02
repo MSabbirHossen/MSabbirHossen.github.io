@@ -77,17 +77,17 @@ export default function EducationPage() {
         {/* Academic Highlights Ribbon */}
         <Reveal delay={0.2}>
           <div className="mb-12 grid grid-cols-1 gap-4 sm:grid-cols-3">
-            <Card className="flex items-center gap-4 py-4">
+            <Card spotlight hover className="flex items-center gap-4 py-4">
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent-primary/10 text-accent-primary">
                 <FaGraduationCap className="h-6 w-6" />
               </div>
               <div>
-                <p className="text-sm font-bold text-primary">Bachelor in CS</p>
+                <p className="text-sm font-bold text-primary">Bachelor of Science</p>
                 <p className="text-xs text-muted">Islamic University of Madinah</p>
               </div>
             </Card>
 
-            <Card className="flex items-center gap-4 py-4">
+            <Card spotlight hover className="flex items-center gap-4 py-4">
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400">
                 <FaAward className="h-6 w-6" />
               </div>
@@ -97,13 +97,13 @@ export default function EducationPage() {
               </div>
             </Card>
 
-            <Card className="flex items-center gap-4 py-4">
+            <Card spotlight hover className="flex items-center gap-4 py-4">
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent-secondary/10 text-accent-secondary">
                 <FaBookOpen className="h-6 w-6" />
               </div>
               <div>
                 <p className="text-sm font-bold text-primary">Arabic & Languages</p>
-                <p className="text-xs text-muted">Advanced Grammar & Literature</p>
+                <p className="text-xs text-muted">Academic Fluency & Linguistics</p>
               </div>
             </Card>
           </div>
@@ -142,13 +142,17 @@ export default function EducationPage() {
 
                 {/* Milestone Card */}
                 <div className="w-full">
-                  <Card className="group space-y-4 border-default transition-all duration-300 hover:border-accent-primary/40 hover:shadow-lg hover:shadow-accent-primary/5">
+                  <Card
+                    spotlight
+                    hover
+                    className="group space-y-4 border-default transition-all duration-300 hover:border-accent-primary/40 hover:shadow-lg hover:shadow-accent-primary/5"
+                  >
                     <div className="flex flex-wrap items-center justify-between gap-3">
                       <div className="flex flex-wrap items-center gap-2">
                         {isCurrent ? (
                           <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/25">
                             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                            Current Study
+                            In Progress · Undergraduate
                           </span>
                         ) : (
                           <Badge variant="primary">{item.period}</Badge>
