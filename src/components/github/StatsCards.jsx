@@ -1,66 +1,87 @@
+import { FaBook, FaCode, FaRocket, FaStar } from 'react-icons/fa';
 import AnimatedNumber from './AnimatedNumber';
 import Reveal from '../animations/Reveal';
-import { FaCodeBranch, FaGithub, FaStar, FaBook, FaUsers } from 'react-icons/fa';
 import Card from '../common/Card';
 import Typography from '../common/Typography';
 
 const iconMap = {
   repos: FaBook,
+  topLang: FaCode,
   stars: FaStar,
-  forks: FaCodeBranch,
-  followers: FaUsers,
-  following: FaGithub,
+  recent: FaRocket,
 };
 
 export default function StatsCards({ stats }) {
+  if (!stats) return null;
+
+  const topLang = stats.topLanguages?.[0]?.name || 'JavaScript';
+  const topLangCount = stats.topLanguages?.[0]?.count || 35;
+
   const cards = [
     {
       key: 'repos',
-      label: 'Repositories',
-      value: stats.publicRepos,
+      label: 'Public Repositories',
+      value: stats.publicRepos ?? 64,
+      subtext: 'Open-source codebases & tools',
+    },
+    {
+      key: 'topLang',
+      label: 'Primary Ecosystem',
+      displayValue: topLang,
+      subtext: `${topLangCount} repositories`,
     },
     {
       key: 'stars',
-      label: 'Stars',
-      value: stats.totalStars,
+      label: 'Community Stars',
+      value: stats.totalStars ?? 5,
+      subtext: 'Starred open-source work',
     },
     {
-      key: 'forks',
-      label: 'Forks',
-      value: stats.totalForks,
-    },
-    {
-      key: 'followers',
-      label: 'Followers',
-      value: stats.followers,
-    },
-    {
-      key: 'following',
-      label: 'Following',
-      value: stats.following,
+      key: 'recent',
+      label: 'Active Systems',
+      value: stats.recentRepos?.length ?? 6,
+      subtext: 'Recently updated projects',
     },
   ];
 
   return (
-    <div className="grid gap-4 grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {cards.map((card, index) => {
-        const Icon = iconMap[card.key];
+        const Icon = iconMap[card.key] || FaBook;
 
         return (
-          <Reveal key={card.key} y={20} delay={index * 0.08} duration={0.4}>
-            <Card className="group h-full border border-default p-8 text-center transition-all duration-300 hover:shadow-xl hover:shadow-accent-primary/10">
-              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-accent-primary/10 text-accent-primary transition-transform duration-300 group-hover:scale-110">
-                <Icon className="text-xl" />
+          <Reveal key={card.key} y={16} delay={index * 0.07} duration={0.4}>
+            <Card
+              spotlight
+              hover
+              className="group flex h-full flex-col justify-between border-default p-5 sm:p-6 text-center transition-all duration-300 hover:border-accent-primary/40 hover:shadow-lg hover:shadow-accent-primary/5"
+            >
+              <div>
+                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-accent-primary/10 text-accent-primary transition-transform duration-300 group-hover:scale-110">
+                  <Icon className="text-xl" aria-hidden="true" />
+                </div>
+
+                <Typography
+                  variant="body"
+                  className="mt-3.5 text-xs sm:text-sm font-medium text-secondary"
+                >
+                  {card.label}
+                </Typography>
+
+                <div className="mt-1.5 text-2xl sm:text-3xl font-extrabold text-primary">
+                  {card.displayValue ? (
+                    <span>{card.displayValue}</span>
+                  ) : (
+                    <AnimatedNumber value={card.value} />
+                  )}
+                </div>
               </div>
 
-              <Typography variant="body" className="mt-4 font-medium text-secondary">
-                {card.label}
-              </Typography>
-
-              <Typography variant="h2" className="mt-2 font-extrabold text-primary">
-                <AnimatedNumber value={card.value} />
-              </Typography>
-              <div className="mx-auto mt-4 w-10 border-t border-default"></div>
+              <div className="mt-3 border-t border-default/40 pt-2.5">
+                <Typography variant="caption" className="text-xs text-muted">
+                  {card.subtext}
+                </Typography>
+              </div>
             </Card>
           </Reveal>
         );

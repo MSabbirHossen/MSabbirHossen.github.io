@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
+import { FaGithub } from 'react-icons/fa';
+
+import SectionWrapper from '../common/SectionWrapper';
 import Typography from '../common/Typography';
 import Card from '../common/Card';
+import Button from '../common/Button';
 import GitHubProfile from './GitHubProfile';
-
 import StatsCards from './StatsCards';
 import LanguagesChart from './LanguagesChart';
 import RecentRepos from './RecentRepos';
@@ -28,7 +31,6 @@ export default function GitHubStats() {
         }
 
         const data = await res.json();
-
         setStats(data);
       } catch (err) {
         setError(err.message);
@@ -40,77 +42,99 @@ export default function GitHubStats() {
     loadStats();
   }, []);
 
-  if (loading) {
-    return (
-      <section id="github-stats" className="section-shell">
-        <div className="mx-auto max-w-6xl px-4">
-          <Typography variant="h2" className="text-center text-primary">
-            GitHub Activity Snapshot
-          </Typography>
-
-          <Card className="mt-8 p-8 text-center text-secondary">Loading GitHub statistics...</Card>
-        </div>
-      </section>
-    );
-  }
-
-  if (error) {
-    return (
-      <section id="github-stats" className="section-shell">
-        <div className="mx-auto max-w-6xl px-4">
-          <Typography variant="h2" className="text-center text-primary">
-            GitHub Activity Snapshot
-          </Typography>
-
-          <Card className="mt-8 p-8 text-center text-secondary">{error}</Card>
-        </div>
-      </section>
-    );
-  }
-
   function timeAgo(date) {
+    if (!date) return '';
     const diff = REFERENCE_NOW - new Date(date).getTime();
-
     const hours = Math.floor(diff / 3600000);
 
-    if (hours < 1) return 'Updated just now';
-
+    if (hours < 1) return 'Updated recently';
     if (hours < 24) return `Updated ${hours} hour${hours > 1 ? 's' : ''} ago`;
 
     const days = Math.floor(hours / 24);
-
     return `Updated ${days} day${days > 1 ? 's' : ''} ago`;
   }
+
+  if (loading) {
+    return (
+      <SectionWrapper
+        id="github-stats"
+        eyebrow="Open-Source Engineering"
+        title="GitHub Activity & Code Metrics"
+        description="Transparent repository metrics, language distribution, and version-controlled software delivery."
+        className="mx-auto max-w-6xl px-4 sm:px-6"
+      >
+        <Card className="p-8 text-center text-secondary border-default bg-surface/50">
+          <Typography variant="body" className="text-sm">
+            Loading verified GitHub metrics snapshot...
+          </Typography>
+        </Card>
+      </SectionWrapper>
+    );
+  }
+
+  if (error || !stats) {
+    return (
+      <SectionWrapper
+        id="github-stats"
+        eyebrow="Open-Source Engineering"
+        title="GitHub Activity & Code Metrics"
+        description="Transparent repository metrics, language distribution, and version-controlled software delivery."
+        className="mx-auto max-w-6xl px-4 sm:px-6"
+      >
+        <Card className="p-8 text-center border-default bg-surface/50 space-y-4">
+          <Typography variant="body" className="text-sm text-secondary">
+            Cached activity snapshot is currently unavailable.
+          </Typography>
+          <Button
+            href="https://github.com/MSabbirHossen"
+            variant="primary"
+            size="sm"
+            icon={FaGithub}
+          >
+            Visit GitHub Profile
+          </Button>
+        </Card>
+      </SectionWrapper>
+    );
+  }
+
   return (
-    <section id="github-stats" className="section-shell">
-      <div className="mx-auto max-w-6xl px-4">
-        <Typography variant="h2" className="text-center text-primary mb-8">
-          GitHub Activity Snapshot
-        </Typography>
+    <SectionWrapper
+      id="github-stats"
+      eyebrow="Open-Source Engineering"
+      title="GitHub Activity & Code Metrics"
+      description="Transparent repository metrics, language distribution, and version-controlled software delivery."
+      className="mx-auto max-w-6xl px-4 sm:px-6"
+    >
+      <Reveal>
+        <StatsCards stats={stats} />
+      </Reveal>
 
-        <Reveal>
-          <StatsCards stats={stats} />
-        </Reveal>
-
+      {stats.topLanguages && stats.topLanguages.length > 0 && (
         <Reveal delay={0.15}>
           <LanguagesChart languages={stats.topLanguages} />
         </Reveal>
+      )}
 
-        <Reveal delay={0.3}>
+      {stats.recentRepos && stats.recentRepos.length > 0 && (
+        <Reveal delay={0.25}>
           <RecentRepos repos={stats.recentRepos} />
         </Reveal>
+      )}
 
-        <GitHubAnalytics />
-        <Snake />
+      <GitHubAnalytics />
+      <Snake />
 
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-4 sm:gap-6">
-          <ProfileViews />
-          <GitHubProfile />
+      {/* GitHub Footer Ribbon */}
+      <div className="mt-10 flex flex-wrap items-center justify-center gap-4 sm:gap-6 border-t border-default/30 pt-6">
+        <ProfileViews />
+        <GitHubProfile />
+        {stats.updatedAt && (
           <Typography variant="caption" className="text-muted text-xs font-medium">
             {timeAgo(stats.updatedAt)}
           </Typography>
-        </div>
+        )}
       </div>
-    </section>
+    </SectionWrapper>
   );
 }
