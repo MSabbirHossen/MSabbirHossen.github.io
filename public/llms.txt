@@ -54,6 +54,7 @@ Built a responsive app discovery platform with search, sorting, protected routes
 - **Solo Full-Stack Developer at Report BD (BPS Report) · Mentorship & Personal Reporting Platform (2026 · Active Development):** Architected and engineered a multi-tenant personal reporting and institutional mentorship monorepo with TypeScript, React 19, Express 4 REST API, MongoDB Atlas, and Firebase Auth.
 - **Full-Stack Architect & Solo Developer at Exploratory Training Academy (ETA) · EdTech Monorepo Architecture (2026 · Completed):** Architected and deployed an enterprise-grade multi-tenant academic platform and training operating system consolidating curriculum planning, anti-cheat assessments, GPA publishing, guardian monitoring, and an educational AI assistant into a Turborepo monorepo.
 - **Full Stack MERN Developer at Life OS · Personal Productivity System (2026 · Production System):** Designed and deployed a production-ready personal operating system integrating 10 tracking modules, automated health & finance analytics, and secure JWT authentication.
+- **Community Administrator & Peer Mentor at Bangladeshi Saudi Scholarship Community · Non-Profit Peer Network (2025 – Present · Voluntary Leadership):** Co-administer an 8,000+ member student community providing voluntary, structured orientation for prospective Bangladeshi applicants navigating Saudi university admissions and academic scholarship procedures.
 - **Full Stack MERN Developer at Digital Life Lessons · Content & Monetization Platform (2026 · 2-week build):** Built and deployed an interactive community platform for sharing practical life lessons, featuring role-based admin moderation, Stripe payment checkout, and Firebase authentication.
 - **Full Stack Developer at Import Export Hub · Self-initiated product work (2026 · 2-week build):** Delivered a deployed import/export workflow marketplace, translating a multi-stakeholder business process into a secured full-stack product.
 - **Frontend & API Integration Engineer at MovieExplorer · Media Discovery Engine (2026 · 2-week build):** Developed a feature-rich entertainment discovery catalog with debounced REST API search, multi-criteria filtering, accessible modals, and persistent client-side storage.
@@ -62,11 +63,10 @@ Built a responsive app discovery platform with search, sorting, protected routes
 
 ## Education
 
-- **Bachelor’s in Computer Science**, Islamic University of Madinah (Present)
-- **Arabic Language for Non-Native Speakers**, Islamic University of Madinah (Completed)
-- **Higher Secondary Certificate (Alim) – Science**, Ta’mirul Millat Kamil Madrasah, Tongi, Gazipur (2021)
-- **Secondary School Certificate (Dakhil) – Science**, Setabgonj Kamil Madrasah, Dinajpur (2019)
-- **Junior Dakhil Certificate (JDC)**, Chandipur M. Dakhil Madrasah (2016)
+- **Bachelor of Science in Computer Science (BS CS)**, Faculty of Science, Islamic University of Madinah (2023 – Present)
+- **Diploma in Arabic Language for Non-Native Speakers**, Arabic Language Institute, Islamic University of Madinah (Completed (2021 – 2023))
+- **Higher Secondary Certificate (Alim) – Science Track**, Ta’mirul Millat Kamil Madrasah, Tongi, Gazipur (2019 – 2021)
+- **Secondary School Certificate (Dakhil) – Science Track**, Setabgonj Kamil Madrasah, Dinajpur (2017 – 2019)
 
 ## Certifications
 
