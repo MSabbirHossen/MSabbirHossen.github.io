@@ -11,7 +11,11 @@ export default function ProjectLinkCard({ icon: Icon, title, href }) {
       aria-label={`${title} (opens in a new tab)`}
       className="block rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg"
     >
-      <Card className="group mt-3 flex items-center justify-between rounded-xl border-default p-4 light:hover:border-accent-primary/40">
+      <Card
+        spotlight
+        hover
+        className="group mt-3 flex items-center justify-between rounded-xl border-default p-4 hover:border-accent-primary/40"
+      >
         <div className="flex items-center gap-3">
           <Icon className="text-xl text-accent-primary transition-colors duration-300 group-hover:text-accent-secondary" />
 
