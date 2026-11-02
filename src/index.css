@@ -181,12 +181,33 @@ html.light .surface {
 }
 
 .surface-hover {
-  transition: all 0.25s ease;
+  transition:
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .surface-hover:hover {
   transform: translateY(-4px);
   border-color: var(--color-accent-primary);
+}
+
+.card-spotlight {
+  position: relative;
+}
+
+html.light .card-spotlight div[aria-hidden='true'] {
+  background: radial-gradient(
+    450px circle at var(--mouse-x, -999px) var(--mouse-y, -999px),
+    rgba(99, 102, 241, 0.05),
+    transparent 75%
+  ) !important;
+}
+
+@media (pointer: coarse) {
+  .card-spotlight div[aria-hidden='true'] {
+    display: none !important;
+  }
 }
 
 .border-default {
