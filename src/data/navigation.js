@@ -25,8 +25,8 @@ export const resources = [
 ];
 
 export const PRIMARY_NAV_LINKS = [
-  { name: 'About', href: 'about' },
   { name: 'Projects', href: 'projects' },
+  { name: 'About', href: 'about' },
   { name: 'Experience', href: 'experience' },
   { name: 'Skills', href: 'skills' },
 ];
@@ -59,8 +59,9 @@ export const MORE_NAV_LINKS = [
 
 export const NAV_LINKS = [
   { name: 'Home', href: 'hero' },
-  { name: 'About', href: 'about' },
+  { name: 'Highlights', href: 'highlights' },
   { name: 'Projects', href: 'projects' },
+  { name: 'About', href: 'about' },
   { name: 'Experience', href: 'experience' },
   { name: 'Skills', href: 'skills' },
   { name: 'Education', href: 'education' },

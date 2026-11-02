@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Hero from '../components/sections/Hero';
+import Highlights from '../components/sections/Highlights';
 import About from '../components/about/About';
 
 const Skills = lazy(() => import('../components/skills/Skills'));
@@ -9,13 +10,12 @@ const Projects = lazy(() => import('../components/projects/Projects'));
 const GitHubStats = lazy(() => import('../components/github/GitHubStats'));
 const Education = lazy(() => import('../components/sections/Education'));
 const Certifications = lazy(() => import('../components/sections/Certifications'));
-// const CurrentFocus = lazy(() => import('../components/current-focus/CurrentFocus'));
 const Contact = lazy(() => import('../components/sections/Contact'));
 
 export default function Home() {
-  const pageTitle = 'Md. Sabbir Hossen | MERN Stack Developer Portfolio';
+  const pageTitle = 'Md. Sabbir Hossen | Junior MERN Stack Developer Portfolio';
   const pageDescription =
-    'AI-powered full-stack developer portfolio showcasing MERN projects, React engineering skills, and secure development practices.';
+    'Junior MERN Stack Developer portfolio of Md. Sabbir Hossen showcasing practical full-stack JavaScript applications, React engineering, and secure development practices.';
   const canonicalUrl = 'https://msabbirhossen.github.io/';
   const socialImage = 'https://msabbirhossen.github.io/og-image.svg';
 
@@ -23,10 +23,19 @@ export default function Home() {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: 'Md. Sabbir Hossen',
-    jobTitle: 'MERN Stack Developer',
+    jobTitle: 'Junior MERN Stack Developer',
     url: canonicalUrl,
     sameAs: ['https://github.com/MSabbirHossen', 'https://www.linkedin.com/in/sabb1rhossen/'],
-    knowsAbout: ['React', 'Node.js', 'Express.js', 'MongoDB', 'Firebase', 'Cybersecurity'],
+    knowsAbout: [
+      'React',
+      'TypeScript',
+      'JavaScript',
+      'Node.js',
+      'Express.js',
+      'MongoDB',
+      'Firebase',
+      'Tailwind CSS',
+    ],
     subjectOf: {
       '@type': 'DigitalDocument',
       name: 'llms.txt',
@@ -65,28 +74,42 @@ export default function Home() {
 
         <script type="application/ld+json">{JSON.stringify(personSchema)}</script>
       </Helmet>
+
+      {/* 1. Hero & Professional Introduction */}
       <Hero />
-      <About />
-      <Suspense fallback={null}>
+
+      {/* 2. Professional Highlights Proof Points */}
+      <Highlights />
+
+      {/* 3. Featured Projects (Primary Evidence) */}
+      <Suspense fallback={<div className="sr-only">Loading Featured Projects...</div>}>
         <Projects />
       </Suspense>
+
+      {/* 4. About Me (Personal Narrative, Background, Languages) */}
+      <About />
+
+      {/* 5. Experience & Leadership */}
       <Suspense fallback={null}>
         <Experience />
       </Suspense>
+
+      {/* 6. Technical Skills & Stack */}
       <Suspense fallback={null}>
         <Skills />
       </Suspense>
+
+      {/* 7. Education, Certifications & Supporting Activity */}
       <Suspense fallback={<div className="sr-only">Loading supporting portfolio sections...</div>}>
         <Education />
         <Certifications />
         <GitHubStats />
       </Suspense>
+
+      {/* 8. Contact / Recruiter Conversion */}
       <Suspense fallback={null}>
         <Contact />
       </Suspense>
-      {/* <Suspense fallback={null}>
-        <CurrentFocus />
-      </Suspense> */}
     </div>
   );
 }
