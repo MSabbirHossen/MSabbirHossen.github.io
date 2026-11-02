@@ -76,7 +76,7 @@ export default function CertificationsPage() {
         {/* Highlights Ribbon */}
         <Reveal delay={0.2}>
           <div className="mb-12 grid grid-cols-1 gap-4 sm:grid-cols-3">
-            <Card className="flex items-center gap-4 py-4">
+            <Card spotlight hover className="flex items-center gap-4 py-4">
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent-primary/10 text-accent-primary">
                 <FaLaptopCode className="h-6 w-6" />
               </div>
@@ -86,7 +86,7 @@ export default function CertificationsPage() {
               </div>
             </Card>
 
-            <Card className="flex items-center gap-4 py-4">
+            <Card spotlight hover className="flex items-center gap-4 py-4">
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent-secondary/10 text-accent-secondary">
                 <FaAward className="h-6 w-6" />
               </div>
@@ -98,7 +98,7 @@ export default function CertificationsPage() {
               </div>
             </Card>
 
-            <Card className="flex items-center gap-4 py-4">
+            <Card spotlight hover className="flex items-center gap-4 py-4">
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400">
                 <FaCheckCircle className="h-6 w-6" />
               </div>
@@ -121,14 +121,18 @@ export default function CertificationsPage() {
               whileHover={{ y: -4 }}
               className="h-full"
             >
-              <Card className="flex h-full flex-col justify-between overflow-hidden border-default p-6 transition-all duration-300 hover:border-accent-primary/40 sm:p-8">
+              <Card
+                spotlight
+                hover
+                className="flex h-full flex-col justify-between overflow-hidden border-default p-6 transition-all duration-300 hover:border-accent-primary/40 sm:p-8"
+              >
                 <div>
                   <div className="mb-4 flex items-start justify-between gap-4">
-                    <div className="flex items-center gap-3.5">
+                    <div className="flex items-center gap-3.5 min-w-0">
                       <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-accent-primary/20 bg-accent-primary/10 text-accent-primary">
                         <FaCertificate className="h-6 w-6" aria-hidden="true" />
                       </div>
-                      <div>
+                      <div className="min-w-0">
                         <Typography
                           variant="h3"
                           className="text-lg font-bold text-primary sm:text-xl"
@@ -137,7 +141,7 @@ export default function CertificationsPage() {
                         </Typography>
                         <div className="mt-1 flex flex-wrap items-center gap-2 text-xs font-medium text-muted">
                           <span>{cert.date}</span>
-                          {cert.id && cert.id !== 'Not-available for this course' && (
+                          {cert.id && (
                             <>
                               <span>•</span>
                               <span
