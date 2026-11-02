@@ -17,7 +17,7 @@ const ProjectHero = ({ project }) => {
     : null;
 
   return (
-    <div className="mb-12">
+    <div className="mb-10 sm:mb-14">
       {/* Breadcrumb Navigation */}
       <Reveal>
         <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
@@ -26,7 +26,7 @@ const ProjectHero = ({ project }) => {
               Home
             </Link>
             <FaChevronRight className="h-2.5 w-2.5 opacity-60" />
-            <Link to="/projects" className="hover:text-accent-primary transition-colors">
+            <Link to="/#projects" className="hover:text-accent-primary transition-colors">
               Projects
             </Link>
             <FaChevronRight className="h-2.5 w-2.5 opacity-60" />
@@ -39,15 +39,15 @@ const ProjectHero = ({ project }) => {
             state={{ scrollToSection: 'projects' }}
             variant="ghost"
             size="sm"
-            className="text-xs text-secondary hover:text-accent-primary px-2"
+            className="text-xs text-secondary hover:text-accent-primary px-2.5 py-1"
           >
             <FaArrowLeft className="mr-1.5 h-3 w-3" />
-            Back to Featured Projects
+            Back to Projects
           </Button>
         </div>
       </Reveal>
 
-      <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-start">
+      <div className="grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-center">
         <div className="min-w-0 space-y-5">
           <Reveal delay={0.05}>
             <div className="flex flex-wrap items-center gap-2">
@@ -65,7 +65,7 @@ const ProjectHero = ({ project }) => {
           <Reveal delay={0.1}>
             <Typography
               variant="h1"
-              className="text-balance text-3xl sm:text-4xl md:text-5xl font-extrabold text-primary"
+              className="text-balance text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-primary"
             >
               {project.title}
             </Typography>
@@ -77,12 +77,20 @@ const ProjectHero = ({ project }) => {
 
           {heroTech.length > 0 && (
             <Reveal delay={0.25}>
-              <div className="flex flex-wrap items-center gap-2">
-                {heroTech.map((tech) => (
-                  <Badge key={tech.name} variant="neutral" className="px-2.5 py-1 text-xs">
-                    {tech.name}
-                  </Badge>
-                ))}
+              <div className="flex flex-wrap items-center gap-2 pt-1">
+                {heroTech.map((tech) => {
+                  const TechIcon = tech.icon;
+                  return (
+                    <Badge
+                      key={tech.name}
+                      variant="neutral"
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium"
+                    >
+                      {TechIcon && <TechIcon className="h-3 w-3 text-accent-primary" />}
+                      <span>{tech.name}</span>
+                    </Badge>
+                  );
+                })}
               </div>
             </Reveal>
           )}
@@ -122,6 +130,7 @@ const ProjectHero = ({ project }) => {
           <Reveal delay={0.2}>
             <Card
               spotlight
+              hover
               className="group overflow-hidden p-0 border-default shadow-xl shadow-black/10"
             >
               <img

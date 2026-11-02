@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FaCheck, FaCopy } from 'react-icons/fa';
+import { FaCheck, FaCopy, FaServer } from 'react-icons/fa';
 import Card from '../common/Card';
 import Typography from '../common/Typography';
 import Badge from '../common/Badge';
@@ -87,10 +87,17 @@ const ProjectApiEndpoints = ({ endpoints }) => {
   if (!endpoints?.length) return null;
 
   return (
-    <Card className="space-y-4">
-      <div className="flex items-center justify-between gap-2">
-        <Typography variant="subtitle">API Surface</Typography>
-        <Badge variant="outline" size="sm">
+    <Card spotlight hover className="space-y-4 border-default p-5 sm:p-6">
+      <div className="flex items-center justify-between border-b border-default/50 pb-3">
+        <div className="flex items-center gap-2.5">
+          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-accent-primary/10 text-accent-primary">
+            <FaServer className="h-4 w-4" aria-hidden="true" />
+          </span>
+          <Typography variant="subtitle" className="text-base font-bold text-primary sm:text-lg">
+            API Surface
+          </Typography>
+        </div>
+        <Badge variant="neutral" className="text-xs">
           {endpoints.length} {endpoints.length === 1 ? 'Endpoint' : 'Endpoints'}
         </Badge>
       </div>

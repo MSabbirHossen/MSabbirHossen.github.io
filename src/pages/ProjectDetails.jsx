@@ -1,9 +1,12 @@
 import { Helmet } from 'react-helmet-async';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { FaArrowLeft, FaArrowRight, FaBriefcase, FaComments, FaInfoCircle } from 'react-icons/fa';
 
 import { portfolioData } from '../data';
 import Card from '../components/common/Card';
 import Typography from '../components/common/Typography';
+import Badge from '../components/common/Badge';
+import Button from '../components/common/Button';
 import Reveal from '../components/animations/Reveal';
 
 import ProjectHero from '../components/project-details/ProjectHero';
@@ -17,11 +20,18 @@ import ProjectApiEndpoints from '../components/project-details/ProjectApiEndpoin
 export default function ProjectDetails() {
   const { slug } = useParams();
 
-  const project = portfolioData.projects.find((item) => item.id === slug);
+  const allProjects = portfolioData.projects;
+  const project = allProjects.find((item) => item.id === slug);
 
   if (!project) {
     return <ProjectNotFound />;
   }
+
+  const currentIndex = allProjects.findIndex((item) => item.id === project.id);
+  const prevProject =
+    currentIndex > 0 ? allProjects[currentIndex - 1] : allProjects[allProjects.length - 1];
+  const nextProject =
+    currentIndex < allProjects.length - 1 ? allProjects[currentIndex + 1] : allProjects[0];
 
   const siteUrl = portfolioData.personalInfo.website.replace(/\/$/, '');
   const canonicalUrl = `${siteUrl}/projects/${project.id}`;
@@ -71,15 +81,33 @@ export default function ProjectDetails() {
         <script type="application/ld+json">{JSON.stringify(projectSchema)}</script>
       </Helmet>
 
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
         <ProjectHero project={project} />
 
         <div className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] lg:gap-8">
           <article className="min-w-0 space-y-6" aria-label={`${project.title} project details`}>
             <Reveal>
-              <Card className="space-y-4">
-                <Typography variant="subtitle">Overview</Typography>
-                <Typography variant="body" className="text-muted">
+              <Card spotlight hover className="space-y-4 border-default p-5 sm:p-6">
+                <div className="flex items-center justify-between border-b border-default/50 pb-3">
+                  <div className="flex items-center gap-2.5">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-accent-primary/10 text-accent-primary">
+                      <FaInfoCircle className="h-4 w-4" aria-hidden="true" />
+                    </span>
+                    <Typography
+                      variant="subtitle"
+                      className="text-base font-bold text-primary sm:text-lg"
+                    >
+                      Project Overview
+                    </Typography>
+                  </div>
+                  <Badge variant="neutral" className="text-xs">
+                    Case Study
+                  </Badge>
+                </div>
+                <Typography
+                  variant="body"
+                  className="text-sm sm:text-base leading-relaxed text-secondary"
+                >
                   {project.overview}
                 </Typography>
               </Card>
@@ -132,6 +160,109 @@ export default function ProjectDetails() {
             </Reveal>
           </aside>
         </div>
+
+        {/* Case Study Navigation */}
+        <div className="mt-12 sm:mt-16 pt-8 border-t border-default/60">
+          <Reveal>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {prevProject && (
+                <Link
+                  to={`/projects/${prevProject.id}`}
+                  className="group block rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary"
+                  aria-label={`View previous project: ${prevProject.title}`}
+                >
+                  <Card
+                    spotlight
+                    hover
+                    className="flex h-full flex-col justify-between border-default p-5 transition-all duration-300 group-hover:border-accent-primary/40"
+                  >
+                    <div className="flex items-center gap-2 text-xs font-semibold text-muted group-hover:text-accent-primary transition-colors">
+                      <FaArrowLeft className="h-3 w-3 transition-transform duration-200 group-hover:-translate-x-1" />
+                      <span>Previous Project</span>
+                    </div>
+                    <div className="mt-3">
+                      <Typography
+                        variant="h3"
+                        className="text-base sm:text-lg font-bold text-primary group-hover:text-accent-primary transition-colors"
+                      >
+                        {prevProject.title}
+                      </Typography>
+                      <p className="mt-1 text-xs text-muted">{prevProject.category}</p>
+                    </div>
+                  </Card>
+                </Link>
+              )}
+
+              {nextProject && (
+                <Link
+                  to={`/projects/${nextProject.id}`}
+                  className="group block rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary"
+                  aria-label={`View next project: ${nextProject.title}`}
+                >
+                  <Card
+                    spotlight
+                    hover
+                    className="flex h-full flex-col justify-between border-default p-5 transition-all duration-300 group-hover:border-accent-primary/40 text-right sm:items-end"
+                  >
+                    <div className="flex items-center justify-end gap-2 text-xs font-semibold text-muted group-hover:text-accent-primary transition-colors">
+                      <span>Next Project</span>
+                      <FaArrowRight className="h-3 w-3 transition-transform duration-200 group-hover:translate-x-1" />
+                    </div>
+                    <div className="mt-3">
+                      <Typography
+                        variant="h3"
+                        className="text-base sm:text-lg font-bold text-primary group-hover:text-accent-primary transition-colors"
+                      >
+                        {nextProject.title}
+                      </Typography>
+                      <p className="mt-1 text-xs text-muted">{nextProject.category}</p>
+                    </div>
+                  </Card>
+                </Link>
+              )}
+            </div>
+          </Reveal>
+        </div>
+
+        {/* Recruiter Conversion CTA */}
+        <Reveal delay={0.1}>
+          <Card
+            spotlight
+            className="mt-8 border-accent-primary/30 bg-gradient-to-br from-surface via-surface to-accent-primary/5 p-6 sm:p-8"
+          >
+            <div className="flex flex-col items-center justify-between gap-6 md:flex-row text-center md:text-left">
+              <div className="space-y-2">
+                <Badge variant="primary" className="text-xs">
+                  Ready to Collaborate
+                </Badge>
+                <Typography variant="h2" className="text-xl sm:text-2xl font-bold text-primary">
+                  Interested in discussing this project or hiring me?
+                </Typography>
+                <Typography variant="body" className="max-w-2xl text-xs sm:text-sm text-secondary">
+                  I am actively seeking Junior MERN Stack Developer opportunities. Let&apos;s talk
+                  about how my full-stack capabilities, clean code habits, and problem-solving
+                  mindset can contribute to your engineering team.
+                </Typography>
+              </div>
+
+              <div className="flex flex-wrap items-center justify-center gap-3 shrink-0">
+                <Button
+                  as={Link}
+                  to="/contact"
+                  variant="primary"
+                  size="md"
+                  icon={FaComments}
+                  className="shadow-md shadow-accent-primary/20"
+                >
+                  Discuss This Project
+                </Button>
+                <Button as={Link} to="/recruiter" variant="outline" size="md" icon={FaBriefcase}>
+                  Recruiter Dossier
+                </Button>
+              </div>
+            </div>
+          </Card>
+        </Reveal>
       </div>
     </>
   );
