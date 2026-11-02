@@ -18,7 +18,7 @@ export default function ProjectsPage() {
 
   const siteUrl = personalInfo.website.replace(/\/$/, '');
   const canonicalUrl = `${siteUrl}/projects`;
-  const pageTitle = `All Projects | ${personalInfo.name} - MERN Stack Developer`;
+  const pageTitle = `All Projects | ${personalInfo.name} - Junior MERN Stack Developer`;
   const pageDescription =
     'Browse all full-stack web applications, MERN platforms, and software engineering projects by Md. Sabbir Hossen.';
   const socialImage = `${siteUrl}/og-image.svg`;
