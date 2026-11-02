@@ -1,4 +1,4 @@
-import { FaArrowLeft, FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
+import { FaArrowLeft, FaChevronRight, FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import ProjectMeta from '../projects/ProjectMeta';
 import Typography from '../common/Typography';
@@ -8,35 +8,65 @@ import Card from '../common/Card';
 import Reveal from '../animations/Reveal';
 
 const ProjectHero = ({ project }) => {
-  const heroTech = project.technologies?.slice(0, 5) ?? [];
+  const heroTech = project.technologies?.slice(0, 6) ?? [];
   const heroImage = project.screenshots?.[0];
+  const imageSrc = heroImage
+    ? heroImage.startsWith('http')
+      ? heroImage
+      : `${import.meta.env.BASE_URL}${heroImage.replace(/^\//, '')}`
+    : null;
 
   return (
     <div className="mb-12">
+      {/* Breadcrumb Navigation */}
       <Reveal>
-        <Button
-          as={Link}
-          to="/#projects"
-          state={{ scrollToSection: 'projects' }}
-          variant="ghost"
-          size="sm"
-          className="mb-8 px-0"
-        >
-          <FaArrowLeft />
-          Back to Projects
-        </Button>
+        <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-muted">
+            <Link to="/" className="hover:text-accent-primary transition-colors">
+              Home
+            </Link>
+            <FaChevronRight className="h-2.5 w-2.5 opacity-60" />
+            <Link to="/projects" className="hover:text-accent-primary transition-colors">
+              Projects
+            </Link>
+            <FaChevronRight className="h-2.5 w-2.5 opacity-60" />
+            <span className="text-secondary font-medium">{project.title}</span>
+          </nav>
+
+          <Button
+            as={Link}
+            to="/#projects"
+            state={{ scrollToSection: 'projects' }}
+            variant="ghost"
+            size="sm"
+            className="text-xs text-secondary hover:text-accent-primary px-2"
+          >
+            <FaArrowLeft className="mr-1.5 h-3 w-3" />
+            Back to Featured Projects
+          </Button>
+        </div>
       </Reveal>
 
       <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-start">
         <div className="min-w-0 space-y-5">
           <Reveal delay={0.05}>
-            <Badge variant="primary" className="px-3 py-1 text-sm">
-              {project.category}
-            </Badge>
+            <div className="flex flex-wrap items-center gap-2">
+              <Badge variant="primary" className="px-3 py-1 text-xs font-semibold">
+                {project.category}
+              </Badge>
+              {project.status && (
+                <span className="inline-flex items-center rounded-full border border-default bg-surface/80 px-2.5 py-0.5 text-xs text-muted">
+                  {project.status}
+                </span>
+              )}
+            </div>
           </Reveal>
 
           <Reveal delay={0.1}>
-            <Typography variant="h1" className="text-balance text-3xl sm:text-4xl md:text-5xl">
+            <Typography
+              variant="h1"
+              className="text-balance text-3xl sm:text-4xl md:text-5xl font-extrabold text-primary"
+            >
               {project.title}
             </Typography>
           </Reveal>
@@ -49,7 +79,7 @@ const ProjectHero = ({ project }) => {
             <Reveal delay={0.25}>
               <div className="flex flex-wrap items-center gap-2">
                 {heroTech.map((tech) => (
-                  <Badge key={tech.name} variant="neutral" className="px-3 py-1">
+                  <Badge key={tech.name} variant="neutral" className="px-2.5 py-1 text-xs">
                     {tech.name}
                   </Badge>
                 ))}
@@ -59,7 +89,7 @@ const ProjectHero = ({ project }) => {
 
           {(project.liveUrl || project.githubUrl) && (
             <Reveal delay={0.3}>
-              <div className="flex flex-wrap gap-3 pt-1">
+              <div className="flex flex-wrap gap-3 pt-2">
                 {project.liveUrl && (
                   <Button
                     href={project.liveUrl}
@@ -67,9 +97,9 @@ const ProjectHero = ({ project }) => {
                     size="md"
                     icon={FaExternalLinkAlt}
                     iconPosition="right"
-                    className="w-full sm:w-auto"
+                    className="w-full sm:w-auto shadow-md shadow-accent-primary/25"
                   >
-                    Live Demo
+                    Live Application
                   </Button>
                 )}
                 {project.githubUrl && (
@@ -80,7 +110,7 @@ const ProjectHero = ({ project }) => {
                     icon={FaGithub}
                     className="w-full sm:w-auto"
                   >
-                    View Source
+                    Source Code
                   </Button>
                 )}
               </div>
@@ -88,17 +118,20 @@ const ProjectHero = ({ project }) => {
           )}
         </div>
 
-        {heroImage && (
+        {imageSrc && (
           <Reveal delay={0.2}>
-            <Card className="group overflow-hidden p-0">
+            <Card
+              spotlight
+              className="group overflow-hidden p-0 border-default shadow-xl shadow-black/10"
+            >
               <img
-                src={heroImage}
+                src={imageSrc}
                 alt={`${project.title} banner preview`}
                 loading="eager"
                 fetchPriority="high"
                 decoding="async"
                 sizes="(min-width: 1024px) 40vw, 100vw"
-                className="aspect-[16/10] w-full object-cover transition-all duration-500 group-hover:scale-[1.02] group-hover:contrast-105"
+                className="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
               />
             </Card>
           </Reveal>
