@@ -1,15 +1,5 @@
-export const containerVariants = {
-  hidden: { opacity: 0, y: 18 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      staggerChildren: 0.12,
-    },
-  },
-};
-
-export const itemVariants = {
-  hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0 },
-};
+/**
+ * Re-export all unified motion architecture from src/lib/motion.js
+ * Retained for backwards compatibility across imports
+ */
+export * from '../lib/motion';
