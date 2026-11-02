@@ -82,7 +82,7 @@ function Accordion({ title, children, defaultOpen = false, badge = null, icon: I
             </span>
           )}
         </div>
-        <span className="shrink-0 rounded-lg p-1 text-muted transition-colors hover:bg-subtle hover:text-primary">
+        <span className="shrink-0 rounded-lg p-1 text-muted transition-colors hover:bg-surface-hover hover:text-primary">
           {isOpen ? (
             <FaChevronUp className="h-3.5 w-3.5" />
           ) : (
@@ -176,7 +176,7 @@ export default function GuidePage() {
       </Helmet>
 
       {/* Reading Progress Indicator */}
-      <div className="fixed top-0 left-0 right-0 z-50 h-1 bg-subtle">
+      <div className="fixed top-0 left-0 right-0 z-50 h-1 bg-surface-hover">
         <div
           className="h-full bg-gradient-to-r from-accent-primary to-indigo-500 transition-all duration-150"
           style={{ width: `${scrollProgress}%` }}
@@ -209,7 +209,7 @@ export default function GuidePage() {
 
         {/* Hero Banner */}
         <Reveal delay={0.05}>
-          <div className="relative mb-12 overflow-hidden rounded-3xl border border-accent-primary/25 bg-gradient-to-br from-accent-primary/10 via-surface to-surface p-6 sm:p-10 card-shadow">
+          <div className="relative mb-12 overflow-hidden rounded-3xl border border-accent-primary/25 bg-gradient-to-br from-accent-primary/10 via-surface to-surface p-6 sm:p-10 shadow-xl shadow-black/5">
             <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
               <div className="space-y-3 max-w-3xl">
                 <div className="inline-flex items-center gap-2 rounded-full border border-accent-primary/30 bg-accent-primary/10 px-3 py-1 text-xs font-bold text-accent-primary">
@@ -232,15 +232,15 @@ export default function GuidePage() {
                 </Typography>
 
                 <div className="flex flex-wrap items-center gap-3 pt-2 text-xs font-semibold text-secondary">
-                  <span className="flex items-center gap-1.5 rounded-lg border border-default bg-subtle px-2.5 py-1 text-primary">
+                  <span className="flex items-center gap-1.5 rounded-lg border border-default bg-surface-hover px-2.5 py-1 text-primary">
                     <HiMiniShieldCheck className="h-4 w-4 text-emerald-500" />
                     Verified Active Build
                   </span>
-                  <span className="flex items-center gap-1.5 rounded-lg border border-default bg-subtle px-2.5 py-1 text-primary">
+                  <span className="flex items-center gap-1.5 rounded-lg border border-default bg-surface-hover px-2.5 py-1 text-primary">
                     <FaCode className="h-3.5 w-3.5 text-accent-primary" />
                     React 19 &amp; Tailwind v4
                   </span>
-                  <span className="flex items-center gap-1.5 rounded-lg border border-default bg-subtle px-2.5 py-1 text-primary">
+                  <span className="flex items-center gap-1.5 rounded-lg border border-default bg-surface-hover px-2.5 py-1 text-primary">
                     <HiSparkles className="h-3.5 w-3.5 text-amber-500" />
                     AI Assistant Enabled
                   </span>
@@ -248,7 +248,7 @@ export default function GuidePage() {
               </div>
 
               {/* Fast Jump Card */}
-              <div className="shrink-0 rounded-2xl border border-default bg-surface/90 p-5 backdrop-blur-sm lg:w-80">
+              <Card spotlight className="shrink-0 border-default p-5 lg:w-80">
                 <p className="text-xs font-bold uppercase tracking-wider text-muted mb-3">
                   Quick Navigation
                 </p>
@@ -296,7 +296,7 @@ export default function GuidePage() {
                     Read llms.txt (AI Profile)
                   </Button>
                 </div>
-              </div>
+              </Card>
             </div>
           </div>
         </Reveal>
@@ -305,7 +305,7 @@ export default function GuidePage() {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
           {/* Table of Contents Sticky Sidebar */}
           <aside className="lg:col-span-4 xl:col-span-3">
-            <div className="sticky top-24 space-y-4 rounded-3xl border border-default bg-surface/90 p-5 backdrop-blur-sm card-shadow">
+            <Card spotlight className="sticky top-24 space-y-4 border-default p-5 shadow-lg">
               <div className="flex items-center justify-between border-b border-default pb-3">
                 <span className="text-xs font-bold uppercase tracking-wider text-muted">
                   Guide Sections
@@ -328,7 +328,7 @@ export default function GuidePage() {
                       className={`flex w-full cursor-pointer items-center justify-between rounded-xl px-3 py-2 text-left text-xs font-semibold transition-all ${
                         isActive
                           ? 'bg-accent-primary text-white shadow-sm'
-                          : 'text-secondary hover:bg-subtle hover:text-primary'
+                          : 'text-secondary hover:bg-surface-hover hover:text-primary'
                       }`}
                     >
                       <div className="flex items-center gap-2 truncate">
@@ -337,7 +337,7 @@ export default function GuidePage() {
                       </div>
                       <span
                         className={`text-[10px] rounded px-1.5 py-0.5 font-mono ${
-                          isActive ? 'bg-white/20 text-white' : 'bg-subtle text-muted'
+                          isActive ? 'bg-white/20 text-white' : 'bg-surface-hover text-muted'
                         }`}
                       >
                         {sec.badge}
@@ -358,7 +358,7 @@ export default function GuidePage() {
                   Ask AI Portfolio Guide
                 </Button>
               </div>
-            </div>
+            </Card>
           </aside>
 
           {/* Guide Sections Content */}
@@ -512,8 +512,8 @@ export default function GuidePage() {
                       </span>
                       <h4 className="text-sm font-bold text-primary">Credentials &amp; Timeline</h4>
                       <p className="text-xs text-secondary leading-relaxed">
-                        Verify Diploma in Computer Science &amp; Engineering and 7 certified
-                        credentials from Phitron.
+                        Verify Bachelor of Science at Islamic University of Madinah and verified
+                        professional credentials from Programming Hero and Udemy.
                       </p>
                     </div>
                     <div className="mt-4 space-y-1.5 pt-2 border-t border-default/60">
@@ -561,7 +561,7 @@ export default function GuidePage() {
 
                 <div className="overflow-x-auto rounded-2xl border border-default bg-surface mt-4">
                   <table className="w-full text-left text-xs sm:text-sm">
-                    <thead className="border-b border-default bg-subtle text-muted">
+                    <thead className="border-b border-default bg-surface-hover text-muted">
                       <tr>
                         <th className="p-3 sm:p-4">Route URL</th>
                         <th className="p-3 sm:p-4">Purpose &amp; Content</th>
@@ -631,7 +631,7 @@ export default function GuidePage() {
                       <tr>
                         <td className="p-3 sm:p-4 font-mono font-bold text-primary">/education</td>
                         <td className="p-3 sm:p-4">
-                          Diploma in Computer Science &amp; Engineering details
+                          Bachelor of Science in Computer Science &amp; Information details
                         </td>
                         <td className="p-3 sm:p-4">
                           <Link
@@ -735,22 +735,22 @@ export default function GuidePage() {
                           Node.js/Express, MongoDB Atlas, React 19, and Firebase Authentication.
                         </p>
                         <div className="flex flex-wrap gap-1.5 pt-1 text-[11px] font-semibold text-muted">
-                          <span className="rounded bg-subtle px-2 py-0.5 text-primary">
+                          <span className="rounded bg-surface-hover px-2 py-0.5 text-primary">
                             TypeScript
                           </span>
-                          <span className="rounded bg-subtle px-2 py-0.5 text-primary">
+                          <span className="rounded bg-surface-hover px-2 py-0.5 text-primary">
                             React 19
                           </span>
-                          <span className="rounded bg-subtle px-2 py-0.5 text-primary">
+                          <span className="rounded bg-surface-hover px-2 py-0.5 text-primary">
                             Express 4 API
                           </span>
-                          <span className="rounded bg-subtle px-2 py-0.5 text-primary">
+                          <span className="rounded bg-surface-hover px-2 py-0.5 text-primary">
                             MongoDB Atlas
                           </span>
-                          <span className="rounded bg-subtle px-2 py-0.5 text-primary">
+                          <span className="rounded bg-surface-hover px-2 py-0.5 text-primary">
                             Zod Validation
                           </span>
-                          <span className="rounded bg-subtle px-2 py-0.5 text-primary">
+                          <span className="rounded bg-surface-hover px-2 py-0.5 text-primary">
                             Firebase Auth
                           </span>
                         </div>
@@ -800,7 +800,7 @@ export default function GuidePage() {
                           <li>Administrative audit log with recursive payload sanitization</li>
                         </ul>
                       </div>
-                      <div className="rounded-xl overflow-hidden border border-default bg-subtle">
+                      <div className="rounded-xl overflow-hidden border border-default bg-surface-hover">
                         <img
                           src="/screenshots/reportbd-daily-flow.png"
                           alt="Report BD Daily Reporting Flow"
@@ -833,22 +833,22 @@ export default function GuidePage() {
                           recording, and multi-role dashboards into a modern web system.
                         </p>
                         <div className="flex flex-wrap gap-1.5 pt-1 text-[11px] font-semibold text-muted">
-                          <span className="rounded bg-subtle px-2 py-0.5 text-primary">
+                          <span className="rounded bg-surface-hover px-2 py-0.5 text-primary">
                             React 19
                           </span>
-                          <span className="rounded bg-subtle px-2 py-0.5 text-primary">
+                          <span className="rounded bg-surface-hover px-2 py-0.5 text-primary">
                             Redux Toolkit
                           </span>
-                          <span className="rounded bg-subtle px-2 py-0.5 text-primary">
+                          <span className="rounded bg-surface-hover px-2 py-0.5 text-primary">
                             Node.js
                           </span>
-                          <span className="rounded bg-subtle px-2 py-0.5 text-primary">
+                          <span className="rounded bg-surface-hover px-2 py-0.5 text-primary">
                             Express
                           </span>
-                          <span className="rounded bg-subtle px-2 py-0.5 text-primary">
+                          <span className="rounded bg-surface-hover px-2 py-0.5 text-primary">
                             MongoDB
                           </span>
-                          <span className="rounded bg-subtle px-2 py-0.5 text-primary">
+                          <span className="rounded bg-surface-hover px-2 py-0.5 text-primary">
                             Framer Motion
                           </span>
                         </div>
@@ -892,7 +892,7 @@ export default function GuidePage() {
                           <li>Bilingual (English / Arabic RTL) layout system</li>
                         </ul>
                       </div>
-                      <div className="rounded-xl overflow-hidden border border-default bg-subtle">
+                      <div className="rounded-xl overflow-hidden border border-default bg-surface-hover">
                         <img
                           src="/screenshots/eta-dashboard.png"
                           alt="ETA LMS Dashboard"
@@ -936,7 +936,7 @@ export default function GuidePage() {
                     >
                       <div className="flex items-center justify-between">
                         <h3 className="text-sm font-bold text-primary">{category.category}</h3>
-                        <span className="text-[10px] font-semibold text-muted bg-subtle px-2 py-0.5 rounded">
+                        <span className="text-[10px] font-semibold text-muted bg-surface-hover px-2 py-0.5 rounded">
                           {category.items.length} Technologies
                         </span>
                       </div>
@@ -944,7 +944,7 @@ export default function GuidePage() {
                         {category.items.map((item) => (
                           <span
                             key={item.name}
-                            className="inline-flex items-center gap-1.5 rounded-xl border border-default bg-subtle px-2.5 py-1 text-xs font-semibold text-secondary"
+                            className="inline-flex items-center gap-1.5 rounded-xl border border-default bg-surface-hover px-2.5 py-1 text-xs font-semibold text-secondary"
                           >
                             <span>{item.name}</span>
                           </span>
@@ -980,17 +980,17 @@ export default function GuidePage() {
                       <div>
                         <h3 className="text-sm font-bold text-primary">Academic Foundation</h3>
                         <p className="text-xs text-muted">
-                          Diploma in Computer Science &amp; Engineering
+                          Bachelor of Science in Computer Science &amp; Information
                         </p>
                       </div>
                       <span className="text-xs font-mono font-semibold text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded">
-                        Expected 2026
+                        In Progress · Undergrad
                       </span>
                     </div>
                     <p className="text-xs sm:text-sm text-secondary leading-relaxed">
-                      Studying at <strong>Sirajganj Polytechnic Institute (BTEB)</strong>, mastering
-                      core data structures, algorithms, database management systems, operating
-                      systems, and computer network architecture.
+                      Studying at <strong>Islamic University of Madinah</strong>, building rigorous
+                      foundations in computing theory, software engineering, systems design, and
+                      analytical problem solving.
                     </p>
                     <div className="pt-2">
                       <Button
@@ -1014,7 +1014,7 @@ export default function GuidePage() {
                         </p>
                       </div>
                       <span className="text-xs font-mono font-semibold text-accent-primary bg-accent-primary/10 px-2 py-0.5 rounded">
-                        Phitron Verified
+                        Programming Hero &amp; Udemy Verified
                       </span>
                     </div>
                     <p className="text-xs sm:text-sm text-secondary leading-relaxed">
@@ -1030,7 +1030,7 @@ export default function GuidePage() {
                         size="sm"
                         className="text-xs"
                       >
-                        Explore All 7 Certifications
+                        Explore All Certifications
                       </Button>
                     </div>
                   </Card>
@@ -1256,8 +1256,8 @@ export default function GuidePage() {
 
                   <Accordion title="Are the certifications formally verified?">
                     Yes. All 7 certificates include verification links and credential IDs issued by
-                    recognized educational platforms, including Phitron’s intensive Complete Web
-                    Development curriculum.
+                    recognized educational platforms, including Programming Hero’s intensive
+                    Complete Web Development Track and Udemy.
                   </Accordion>
                 </div>
               </Reveal>
@@ -1290,19 +1290,19 @@ export default function GuidePage() {
                     <ul className="text-xs text-secondary space-y-2">
                       <li className="flex items-center justify-between">
                         <span>Open AI Guide anywhere:</span>
-                        <kbd className="rounded border border-default bg-subtle px-1.5 py-0.5 font-mono text-[10px]">
+                        <kbd className="rounded border border-default bg-surface-hover px-1.5 py-0.5 font-mono text-[10px]">
                           Ctrl + K / ⌘ + K
                         </kbd>
                       </li>
                       <li className="flex items-center justify-between">
                         <span>Close open modal / dialog:</span>
-                        <kbd className="rounded border border-default bg-subtle px-1.5 py-0.5 font-mono text-[10px]">
+                        <kbd className="rounded border border-default bg-surface-hover px-1.5 py-0.5 font-mono text-[10px]">
                           Escape
                         </kbd>
                       </li>
                       <li className="flex items-center justify-between">
                         <span>Navigate focusable links:</span>
-                        <kbd className="rounded border border-default bg-subtle px-1.5 py-0.5 font-mono text-[10px]">
+                        <kbd className="rounded border border-default bg-surface-hover px-1.5 py-0.5 font-mono text-[10px]">
                           Tab / Shift+Tab
                         </kbd>
                       </li>
