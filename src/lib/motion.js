@@ -92,6 +92,25 @@ export const actionIconMotion = {
   hover: { x: 3, transition: { duration: 0.2, ease: 'easeOut' } },
 };
 
+// ─── Route & Timeline Motion Variants ─────────────────────────────────────────
+export const pageVariants = {
+  hidden: { opacity: 0, y: 6 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.22, ease: EASINGS.smooth },
+  },
+};
+
+export const timelineNodeMotion = {
+  hidden: { scale: 0.7, opacity: 0 },
+  visible: {
+    scale: 1,
+    opacity: 1,
+    transition: { duration: 0.35, ease: EASINGS.smooth },
+  },
+};
+
 // ─── Reduced-Motion Sanitizer ─────────────────────────────────────────────────
 /**
  * Returns clean fallback variants if the user prefers reduced motion

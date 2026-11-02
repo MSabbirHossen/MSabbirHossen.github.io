@@ -9,6 +9,7 @@ export default function Reveal({
   once = true,
   amount,
   className = '',
+  style,
   ...motionProps
 }) {
   const shouldReduceMotion = useReducedMotion();
@@ -23,6 +24,10 @@ export default function Reveal({
         duration: shouldReduceMotion ? 0 : duration,
         delay: shouldReduceMotion ? 0 : delay,
         ease: EASINGS.smooth,
+      }}
+      style={{
+        ...style,
+        willChange: shouldReduceMotion ? 'auto' : 'transform, opacity',
       }}
       {...motionProps}
     >
