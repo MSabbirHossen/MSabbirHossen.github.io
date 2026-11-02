@@ -128,12 +128,7 @@ export const etaProject = {
   ],
   githubUrl: 'https://github.com/MSabbirHossen/ETA',
   liveUrl: 'https://eta-web-omega.vercel.app/',
-  screenshots: [
-    '/screenshots/eta-dashboard.png',
-    '/screenshots/eta-course-view.png',
-    '/screenshots/eta-exam-portal.png',
-    '/screenshots/eta-gradebook.png',
-  ],
+  screenshots: ['/screenshots/eta-dashboard.png'],
   deployment: 'Vercel (Frontend) + Node.js / Docker (Backend API)',
   performanceMetrics: {
     lighthousePerformance: '~94+',
