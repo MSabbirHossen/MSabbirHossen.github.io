@@ -1,6 +1,7 @@
 import {
   FaBrain,
   FaCertificate,
+  FaCompass,
   FaEnvelope,
   FaFacebook,
   FaFile,
@@ -31,6 +32,12 @@ export const PRIMARY_NAV_LINKS = [
 ];
 
 export const MORE_NAV_LINKS = [
+  {
+    name: 'Portfolio Guide',
+    href: 'guide',
+    to: '/guide',
+    icon: FaCompass,
+  },
   {
     name: 'Education',
     href: 'education',
@@ -78,5 +85,6 @@ export const FOOTER_MORE_LINKS = [
   { label: 'Education Timeline', to: '/education' },
   { label: 'All Certifications', to: '/certifications' },
   { label: 'Developer Hub', to: '/developer' },
+  { label: 'Portfolio Guide', to: '/guide' },
   { label: 'AI Profile (llms.txt)', href: '/llms.txt', external: true },
 ];
