@@ -8,11 +8,11 @@ Computer Science student at the Islamic University of Madinah engineering practi
 
 ## Skills
 
-- **Frontend:** React 19, TypeScript, JavaScript (ES6+), HTML5, CSS3, Tailwind CSS v4, Framer Motion, Vite, React Router, DaisyUI
-- **Backend:** Node.js, Express.js, MongoDB, PostgreSQL, Firebase, REST APIs, JWT Authentication
-- **Tools:** Git, GitHub, Docker, VS Code, npm, Vercel, ESLint, Prettier, Postman, Chrome DevTools
-- **Learning / Exploring:** Prompt Engineering, Secure Coding Principles, Basic Network Security, AI Coding Assistants, LLM API Integration, OSINT Research, OWASP Top 10 Awareness
-- **Soft Skills:** Self-learning, Time Management, Adaptability, Problem Solving, Communication, Teamwork
+- **Frontend Development:** React 19, TypeScript, JavaScript (ES6+), Next.js 15, Tailwind CSS v4, Vite, React Router, Framer Motion, HTML5 & Semantic Web, DaisyUI
+- **Backend Development:** Node.js, Express.js, REST APIs, JWT Authentication, Zod Validation, Node Test Runner
+- **Database & Services:** MongoDB Atlas, Firebase Auth, Mongoose ODM, Stripe API, Vercel Platform, PostgreSQL
+- **Tools & Platforms:** Git, GitHub, Turborepo, Docker, VS Code, npm & pnpm, Postman, ESLint & Prettier, Chrome DevTools
+- **Currently Learning:** Next.js App Router & RAG AI, Docker & Containerization, Prompt Engineering & AI Integrations, OWASP Top 10 Security Awareness, Linux & Shell Scripting, OSINT & Defensive Security
 
 ## Projects
 
