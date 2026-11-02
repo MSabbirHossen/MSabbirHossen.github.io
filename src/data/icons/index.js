@@ -47,6 +47,7 @@ import {
   FaServer,
   FaShieldAlt,
   FaTachometerAlt,
+  FaTerminal,
 } from 'react-icons/fa';
 
 import { TbBrandOpenai } from 'react-icons/tb';
@@ -69,6 +70,7 @@ export {
   FaServer,
   FaShieldAlt,
   FaTachometerAlt,
+  FaTerminal,
   SiAxios,
   SiDaisyui,
   SiDocker,
