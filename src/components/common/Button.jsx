@@ -24,7 +24,7 @@ const Button = forwardRef(function Button(
   ref
 ) {
   const baseStyle =
-    'inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all duration-300 cursor-pointer select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg disabled:opacity-50 disabled:cursor-not-allowed';
+    'inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all duration-300 cursor-pointer select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg disabled:opacity-50 disabled:cursor-not-allowed';
 
   const variants = {
     primary:
@@ -40,10 +40,10 @@ const Button = forwardRef(function Button(
   };
 
   const sizes = {
-    sm: 'text-xs px-3.5 py-1.5',
-    md: 'text-sm px-5 py-2.5',
-    lg: 'text-base px-7 py-3',
-    icon: 'p-2.5',
+    sm: 'text-xs px-3.5 py-1.5 min-h-[36px]',
+    md: 'text-sm px-5 py-2.5 min-h-[42px]',
+    lg: 'text-base px-7 py-3 min-h-[48px]',
+    icon: 'p-2.5 min-h-[40px] min-w-[40px]',
   };
 
   const Tag = href ? 'a' : Component;

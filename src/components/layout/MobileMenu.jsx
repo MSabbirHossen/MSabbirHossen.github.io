@@ -1,5 +1,5 @@
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { forwardRef } from 'react';
+import { forwardRef, useEffect } from 'react';
 import NavLinks from './NavLinks';
 import Button from '../common/Button';
 import { FaFileAlt } from 'react-icons/fa';
@@ -11,6 +11,22 @@ const MobileMenu = forwardRef(function MobileMenu(
   ref
 ) {
   const shouldReduceMotion = useReducedMotion();
+
+  // Close mobile navigation on Escape key
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen, setIsOpen]);
 
   return (
     <AnimatePresence>
