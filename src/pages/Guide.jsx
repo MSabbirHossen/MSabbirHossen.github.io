@@ -13,8 +13,10 @@ import {
   FaEye,
   FaGithub,
   FaGraduationCap,
+  FaHandshake,
   FaKeyboard,
   FaLaptopCode,
+  FaLayerGroup,
   FaQuestionCircle,
   FaRocket,
   FaRoute,
@@ -253,6 +255,10 @@ export default function GuidePage() {
                     React 19 &amp; Tailwind v4
                   </span>
                   <span className="flex items-center gap-1.5 rounded-lg border border-default bg-surface-hover px-2.5 py-1 text-primary">
+                    <FaCompass className="h-3.5 w-3.5 text-indigo-400" />
+                    Interactive Tour (8 Steps)
+                  </span>
+                  <span className="flex items-center gap-1.5 rounded-lg border border-default bg-surface-hover px-2.5 py-1 text-primary">
                     <HiSparkles className="h-3.5 w-3.5 text-amber-500" />
                     AI Assistant Enabled
                   </span>
@@ -265,6 +271,16 @@ export default function GuidePage() {
                   Quick Navigation
                 </p>
                 <div className="space-y-2">
+                  <Button
+                    as={Link}
+                    to="/recruiter"
+                    variant="primary"
+                    size="sm"
+                    icon={FaUserTie}
+                    className="w-full justify-start text-xs shadow-sm shadow-accent-primary/20"
+                  >
+                    Recruiter Candidate Dossier
+                  </Button>
                   <Button
                     as={Link}
                     to="/projects"
@@ -280,7 +296,7 @@ export default function GuidePage() {
                     to="/experience"
                     variant="outline"
                     size="sm"
-                    icon={FaUserTie}
+                    icon={FaRoute}
                     className="w-full justify-start text-xs"
                   >
                     View Experience Timeline
@@ -399,19 +415,22 @@ export default function GuidePage() {
                 </Typography>
                 <div className="mt-3 space-y-3 text-sm leading-relaxed text-secondary">
                   <p>
-                    This web application is the central showcase for{' '}
-                    <strong>Md. Sabbir Hossen</strong>, a{' '}
-                    <strong>Junior MERN Stack Developer</strong> based in Medina, Saudi Arabia
-                    (originally from Bangladesh).
+                    This web application is the central portfolio and engineering showcase for{' '}
+                    <strong className="text-primary">Md. Sabbir Hossen</strong>, a{' '}
+                    <strong className="text-primary">Junior MERN Stack Developer</strong> based in
+                    Medina, Saudi Arabia (originally from Bangladesh).
                   </p>
                   <p>
-                    Rather than presenting conceptual templates, this portfolio is built around
-                    <strong> verified, full-stack production software</strong> with strict
-                    architectural separation, shared validation packages, robust database schemas,
-                    and end-to-end type safety.
+                    Rather than presenting conceptual templates or artificial mockups, this
+                    portfolio is built around{' '}
+                    <strong className="text-primary">
+                      verified, full-stack production software
+                    </strong>{' '}
+                    with strict architectural boundaries, shared validation schemas, robust database
+                    models, and end-to-end type safety.
                   </p>
                   <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 pt-2">
-                    <Card className="border-default p-4" hover={false}>
+                    <Card spotlight hover className="border-default p-4">
                       <span className="text-xl">🚀</span>
                       <h4 className="mt-2 text-xs font-bold text-primary">Practical Engineering</h4>
                       <p className="mt-1 text-xs text-muted">
@@ -419,7 +438,7 @@ export default function GuidePage() {
                         discipline.
                       </p>
                     </Card>
-                    <Card className="border-default p-4" hover={false}>
+                    <Card spotlight hover className="border-default p-4">
                       <span className="text-xl">🛡️</span>
                       <h4 className="mt-2 text-xs font-bold text-primary">Defensive Security</h4>
                       <p className="mt-1 text-xs text-muted">
@@ -427,7 +446,7 @@ export default function GuidePage() {
                         log sanitization.
                       </p>
                     </Card>
-                    <Card className="border-default p-4" hover={false}>
+                    <Card spotlight hover className="border-default p-4">
                       <span className="text-xl">⚡</span>
                       <h4 className="mt-2 text-xs font-bold text-primary">Modern Web Stack</h4>
                       <p className="mt-1 text-xs text-muted">
@@ -457,49 +476,88 @@ export default function GuidePage() {
                   review:
                 </p>
 
-                <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
-                  <Card className="flex flex-col justify-between border-default p-5 hover:border-accent-primary/40">
+                <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                  {/* Interactive Guided Tour Card */}
+                  <Card
+                    spotlight
+                    hover
+                    className="flex flex-col justify-between border-default p-5"
+                  >
                     <div className="space-y-2">
-                      <span className="inline-block rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-[10px] font-bold text-emerald-500">
+                      <span className="inline-block rounded-full bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-0.5 text-[10px] font-bold text-indigo-400">
+                        Interactive Onboarding
+                      </span>
+                      <h4 className="text-sm font-bold text-primary">8-Step Visual Tour</h4>
+                      <p className="text-xs text-secondary leading-relaxed">
+                        Step-by-step guided modal highlighting flagship architectures, skill
+                        evidence, and recruiter tools.
+                      </p>
+                    </div>
+                    <div className="mt-4 space-y-1.5 pt-2 border-t border-default/60">
+                      <Button
+                        variant="primary"
+                        size="sm"
+                        icon={FaCompass}
+                        onClick={() => openGuide(0)}
+                        className="w-full text-xs shadow-sm shadow-accent-primary/20"
+                      >
+                        Start Guided Tour
+                      </Button>
+                    </div>
+                  </Card>
+
+                  {/* Recruiter Fast Track */}
+                  <Card
+                    spotlight
+                    hover
+                    className="flex flex-col justify-between border-default p-5"
+                  >
+                    <div className="space-y-2">
+                      <span className="inline-block rounded-full bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 text-[10px] font-bold text-emerald-500">
                         2-Minute Skim
                       </span>
                       <h4 className="text-sm font-bold text-primary">Recruiter Fast Track</h4>
                       <p className="text-xs text-secondary leading-relaxed">
-                        Review top featured MERN projects, inspect skills, download resume, and
-                        connect on WhatsApp.
+                        Dedicated candidate assessment dossier, role availability, CV download, and
+                        verified competencies.
                       </p>
                     </div>
                     <div className="mt-4 space-y-1.5 pt-2 border-t border-default/60">
                       <Button
                         as={Link}
-                        to="/projects/report-bd"
-                        variant="outline"
+                        to="/recruiter"
+                        variant="primary"
                         size="sm"
                         className="w-full text-xs"
                       >
-                        View Report BD
+                        Recruiter Dossier
                       </Button>
                       <Button
                         as={Link}
-                        to="/developer"
+                        to="/projects/report-bd"
                         variant="ghost"
                         size="sm"
                         className="w-full text-xs"
                       >
-                        Direct Contact
+                        Report BD Case Study
                       </Button>
                     </div>
                   </Card>
 
-                  <Card className="flex flex-col justify-between border-default p-5 hover:border-accent-primary/40">
+                  {/* Technical Architect Path */}
+                  <Card
+                    spotlight
+                    hover
+                    className="flex flex-col justify-between border-default p-5"
+                  >
                     <div className="space-y-2">
-                      <span className="inline-block rounded-full bg-indigo-500/10 px-2.5 py-0.5 text-[10px] font-bold text-indigo-500">
+                      <span className="inline-block rounded-full bg-sky-500/10 border border-sky-500/20 px-2.5 py-0.5 text-[10px] font-bold text-sky-400">
                         5-Minute Deep Dive
                       </span>
                       <h4 className="text-sm font-bold text-primary">Technical Architect Path</h4>
                       <p className="text-xs text-secondary leading-relaxed">
                         Examine monorepo boundaries, Zod schema validation, optimistic concurrency
-                        control, and API design.
+                        control, and API contracts.
                       </p>
                     </div>
                     <div className="mt-4 space-y-1.5 pt-2 border-t border-default/60">
@@ -519,22 +577,28 @@ export default function GuidePage() {
                         rel="noopener noreferrer"
                         variant="ghost"
                         size="sm"
+                        icon={FaGithub}
                         className="w-full text-xs"
                       >
-                        Inspect Source Code
+                        Source Code
                       </Button>
                     </div>
                   </Card>
 
-                  <Card className="flex flex-col justify-between border-default p-5 hover:border-accent-primary/40">
+                  {/* Credentials & Timeline */}
+                  <Card
+                    spotlight
+                    hover
+                    className="flex flex-col justify-between border-default p-5"
+                  >
                     <div className="space-y-2">
-                      <span className="inline-block rounded-full bg-amber-500/10 px-2.5 py-0.5 text-[10px] font-bold text-amber-500">
+                      <span className="inline-block rounded-full bg-amber-500/10 border border-amber-500/20 px-2.5 py-0.5 text-[10px] font-bold text-amber-500">
                         3-Minute Review
                       </span>
                       <h4 className="text-sm font-bold text-primary">Credentials &amp; Timeline</h4>
                       <p className="text-xs text-secondary leading-relaxed">
                         Verify Bachelor of Science at Islamic University of Madinah and verified
-                        professional credentials from Programming Hero and Udemy.
+                        credentials from Programming Hero and Udemy.
                       </p>
                     </div>
                     <div className="mt-4 space-y-1.5 pt-2 border-t border-default/60">
@@ -545,7 +609,7 @@ export default function GuidePage() {
                         size="sm"
                         className="w-full text-xs"
                       >
-                        All Certifications
+                        All Certifications ({certifications.length})
                       </Button>
                       <Button
                         as={Link}
@@ -580,6 +644,31 @@ export default function GuidePage() {
                   combining a cohesive homepage with specialized deep-dive routes:
                 </p>
 
+                {/* Navigation Architecture Overview */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                  <div className="rounded-2xl border border-default bg-surface/60 p-4 space-y-1.5">
+                    <div className="flex items-center gap-2 text-primary font-bold text-xs">
+                      <FaRoute className="h-3.5 w-3.5 text-accent-primary" />
+                      <span>Global Header Bar</span>
+                    </div>
+                    <p className="text-xs text-secondary">
+                      Sticky glassmorphic bar offering instant route jumps, theme toggling, and the
+                      AI Guide launcher.
+                    </p>
+                  </div>
+                  <div className="rounded-2xl border border-default bg-surface/60 p-4 space-y-1.5">
+                    <div className="flex items-center gap-2 text-primary font-bold text-xs">
+                      <FaLayerGroup className="h-3.5 w-3.5 text-emerald-500" />
+                      <span>In-Page Smooth Anchors</span>
+                    </div>
+                    <p className="text-xs text-secondary">
+                      Homepage sections link to hash anchors (<code>#projects</code>,{' '}
+                      <code>#skills</code>, <code>#experience</code>, <code>#contact</code>) with
+                      native smooth scrolling.
+                    </p>
+                  </div>
+                </div>
+
                 <div className="overflow-x-auto rounded-2xl border border-default bg-surface mt-4">
                   <table className="w-full text-left text-xs sm:text-sm">
                     <thead className="border-b border-default bg-surface-hover text-muted">
@@ -593,7 +682,7 @@ export default function GuidePage() {
                       <tr>
                         <td className="p-3 sm:p-4 font-mono font-bold text-primary">/</td>
                         <td className="p-3 sm:p-4">
-                          Full interactive homepage (Hero, Projects, Skills, Timeline, Contact)
+                          Full interactive homepage (Hero, Flagships, Skills, Experience, Contact)
                         </td>
                         <td className="p-3 sm:p-4">
                           <Link
@@ -601,6 +690,21 @@ export default function GuidePage() {
                             className="text-accent-primary hover:underline font-semibold"
                           >
                             Visit Home
+                          </Link>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="p-3 sm:p-4 font-mono font-bold text-primary">/recruiter</td>
+                        <td className="p-3 sm:p-4">
+                          Dedicated recruiter assessment dossier, competencies, CV download &amp;
+                          fast contact
+                        </td>
+                        <td className="p-3 sm:p-4">
+                          <Link
+                            to="/recruiter"
+                            className="text-accent-primary hover:underline font-semibold"
+                          >
+                            Recruiter Dossier
                           </Link>
                         </td>
                       </tr>
@@ -623,8 +727,8 @@ export default function GuidePage() {
                           /projects/:slug
                         </td>
                         <td className="p-3 sm:p-4">
-                          Deep case studies (e.g. /projects/report-bd) with architecture &amp;
-                          metrics
+                          Deep case studies (e.g. /projects/report-bd, /projects/life-os) with
+                          architecture &amp; metrics
                         </td>
                         <td className="p-3 sm:p-4">
                           <Link
@@ -638,7 +742,8 @@ export default function GuidePage() {
                       <tr>
                         <td className="p-3 sm:p-4 font-mono font-bold text-primary">/experience</td>
                         <td className="p-3 sm:p-4">
-                          Chronological developer experience and project milestones
+                          Chronological developer experience, project milestones, and community
+                          leadership
                         </td>
                         <td className="p-3 sm:p-4">
                           <Link
@@ -668,7 +773,8 @@ export default function GuidePage() {
                           /certifications
                         </td>
                         <td className="p-3 sm:p-4">
-                          7 verified technical credentials with credential links
+                          {certifications.length} verified technical credentials with verification
+                          links
                         </td>
                         <td className="p-3 sm:p-4">
                           <Link
@@ -738,9 +844,9 @@ export default function GuidePage() {
                   scalable MERN stack development, and production software patterns:
                 </p>
 
-                <div className="space-y-4 mt-4">
+                <div className="space-y-6 mt-4">
                   {/* Report BD Showcase Card */}
-                  <Card className="border-default p-6 hover:border-accent-primary/40">
+                  <Card spotlight hover className="border-default p-6">
                     <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
                       <div className="space-y-2">
                         <div className="flex items-center gap-2 flex-wrap">
@@ -798,6 +904,18 @@ export default function GuidePage() {
                         >
                           Live Demo
                         </Button>
+                        <Button
+                          as="a"
+                          href="https://github.com/MSabbirHossen/personalreport"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          variant="ghost"
+                          size="sm"
+                          icon={FaGithub}
+                          className="text-xs"
+                        >
+                          Source Code
+                        </Button>
                       </div>
                     </div>
 
@@ -836,7 +954,7 @@ export default function GuidePage() {
                   </Card>
 
                   {/* ETA Showcase Card */}
-                  <Card className="border-default p-6 hover:border-accent-primary/40">
+                  <Card spotlight hover className="border-default p-6">
                     <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
                       <div className="space-y-2">
                         <div className="flex items-center gap-2 flex-wrap">
@@ -896,6 +1014,18 @@ export default function GuidePage() {
                         >
                           Live Demo
                         </Button>
+                        <Button
+                          as="a"
+                          href="https://github.com/MSabbirHossen/ETA"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          variant="ghost"
+                          size="sm"
+                          icon={FaGithub}
+                          className="text-xs"
+                        >
+                          Source Code
+                        </Button>
                       </div>
                     </div>
 
@@ -926,6 +1056,115 @@ export default function GuidePage() {
                       </div>
                     </div>
                   </Card>
+
+                  {/* Life OS Showcase Card (Featured 03) */}
+                  <Card spotlight hover className="border-default p-6">
+                    <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+                      <div className="space-y-2">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <span className="rounded-full bg-emerald-500/10 border border-emerald-500/25 px-2.5 py-0.5 text-xs font-bold text-emerald-500">
+                            ⚡ Featured Project 03
+                          </span>
+                          <span className="text-xs text-muted font-mono">featuredOrder: 3</span>
+                        </div>
+                        <h3 className="text-lg font-bold text-primary">
+                          Life OS (Productivity System)
+                        </h3>
+                        <p className="text-xs sm:text-sm text-secondary leading-relaxed max-w-2xl">
+                          A production-ready, single-user personal operating system combining
+                          journaling, finance, habits, fitness, goals, Islamic tracking, study
+                          management, and visual reporting into one unified dashboard.
+                        </p>
+                        <div className="flex flex-wrap gap-1.5 pt-1 text-[11px] font-semibold text-muted">
+                          <span className="rounded bg-surface-hover px-2 py-0.5 text-primary">
+                            React
+                          </span>
+                          <span className="rounded bg-surface-hover px-2 py-0.5 text-primary">
+                            Vite
+                          </span>
+                          <span className="rounded bg-surface-hover px-2 py-0.5 text-primary">
+                            Node.js
+                          </span>
+                          <span className="rounded bg-surface-hover px-2 py-0.5 text-primary">
+                            Express
+                          </span>
+                          <span className="rounded bg-surface-hover px-2 py-0.5 text-primary">
+                            MongoDB
+                          </span>
+                          <span className="rounded bg-surface-hover px-2 py-0.5 text-primary">
+                            JWT Auth
+                          </span>
+                          <span className="rounded bg-surface-hover px-2 py-0.5 text-primary">
+                            Recharts
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex shrink-0 flex-row md:flex-col gap-2">
+                        <Button
+                          as={Link}
+                          to="/projects/life-os"
+                          variant="outline"
+                          size="sm"
+                          className="text-xs"
+                        >
+                          Case Study
+                        </Button>
+                        <Button
+                          as="a"
+                          href="https://lifeosclient.vercel.app"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          variant="outline"
+                          size="sm"
+                          icon={FaExternalLinkAlt}
+                          className="text-xs"
+                        >
+                          Live Demo
+                        </Button>
+                        <Button
+                          as="a"
+                          href="https://github.com/MSabbirHossen/Life-OS"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          variant="ghost"
+                          size="sm"
+                          icon={FaGithub}
+                          className="text-xs"
+                        >
+                          Source Code
+                        </Button>
+                      </div>
+                    </div>
+
+                    <div className="mt-4 pt-4 border-t border-default/60 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <h4 className="text-xs font-bold text-primary mb-1">
+                          Key System Highlights
+                        </h4>
+                        <ul className="text-xs text-secondary space-y-1 list-disc pl-4">
+                          <li>
+                            Unified daily dashboard aggregating mood, tasks, habits, and health
+                          </li>
+                          <li>Date-indexed MongoDB collections for ultra-fast timeline queries</li>
+                          <li>One-click encrypted JSON export for 100% personal data ownership</li>
+                          <li>
+                            Interactive visual analytics rendered with Recharts data visualizations
+                          </li>
+                        </ul>
+                      </div>
+                      <div className="rounded-xl overflow-hidden border border-default bg-surface-hover">
+                        <img
+                          src="/screenshots/life-os-dashboard.png"
+                          alt="Life OS Productivity Dashboard"
+                          className="w-full h-auto object-cover max-h-40"
+                          loading="lazy"
+                        />
+                        <p className="p-2 text-[10px] text-muted text-center font-medium">
+                          Figure 3: Life OS Personal Productivity Dashboard
+                        </p>
+                      </div>
+                    </div>
+                  </Card>
                 </div>
               </Reveal>
             </section>
@@ -952,8 +1191,9 @@ export default function GuidePage() {
                   {skills.map((category) => (
                     <Card
                       key={category.category}
+                      spotlight
+                      hover
                       className="border-default p-5 space-y-3"
-                      hover={false}
                     >
                       <div className="flex items-center justify-between">
                         <h3 className="text-sm font-bold text-primary">{category.category}</h3>
@@ -988,15 +1228,16 @@ export default function GuidePage() {
                   variant="h2"
                   className="mt-1 text-2xl font-black text-primary sm:text-3xl"
                 >
-                  About, Experience &amp; Education
+                  Background &amp; Credentials
                 </Typography>
                 <p className="text-sm text-secondary">
-                  Sabbir pairs structured academic foundations with self-driven problem solving and
-                  ongoing mentorship:
+                  Sabbir pairs structured academic foundations with self-driven problem solving,
+                  continuous verified learning, and community mentorship:
                 </p>
 
                 <div className="space-y-4 mt-4">
-                  <Card className="border-default p-5 space-y-3" hover={false}>
+                  {/* Academic Record */}
+                  <Card spotlight hover className="border-default p-5 space-y-3">
                     <div className="flex items-start justify-between">
                       <div>
                         <h3 className="text-sm font-bold text-primary">Academic Foundation</h3>
@@ -1026,12 +1267,47 @@ export default function GuidePage() {
                     </div>
                   </Card>
 
-                  <Card className="border-default p-5 space-y-3" hover={false}>
+                  {/* Community Leadership */}
+                  <Card spotlight hover className="border-default p-5 space-y-3">
                     <div className="flex items-start justify-between">
                       <div>
-                        <h3 className="text-sm font-bold text-primary">Verified Certifications</h3>
+                        <h3 className="text-sm font-bold text-primary">
+                          Community Leadership &amp; Mentoring
+                        </h3>
+                        <p className="text-xs text-muted">Saudi Scholarship Applicant Community</p>
+                      </div>
+                      <span className="text-xs font-mono font-semibold text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded">
+                        Administrator &amp; Mentor
+                      </span>
+                    </div>
+                    <p className="text-xs sm:text-sm text-secondary leading-relaxed">
+                      Voluntary leadership across an 8,000+ member scholarship applicant network. In
+                      the 2026 cycle, provided structured mentorship for ~350 candidates, resulting
+                      in 51 primary selections and 15 finalized visas.
+                    </p>
+                    <div className="pt-2">
+                      <Button
+                        as={Link}
+                        to="/experience"
+                        variant="outline"
+                        size="sm"
+                        icon={FaHandshake}
+                        className="text-xs"
+                      >
+                        View Leadership in Timeline
+                      </Button>
+                    </div>
+                  </Card>
+
+                  {/* Verified Certifications */}
+                  <Card spotlight hover className="border-default p-5 space-y-3">
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <h3 className="text-sm font-bold text-primary">
+                          Verified Technical Certifications
+                        </h3>
                         <p className="text-xs text-muted">
-                          {certifications.length} Credentials Issued
+                          {certifications.length} Technical Credentials Issued
                         </p>
                       </div>
                       <span className="text-xs font-mono font-semibold text-accent-primary bg-accent-primary/10 px-2 py-0.5 rounded">
@@ -1039,9 +1315,9 @@ export default function GuidePage() {
                       </span>
                     </div>
                     <p className="text-xs sm:text-sm text-secondary leading-relaxed">
-                      Rigorous credential achievements including the{' '}
-                      <em>Complete Web Development Course</em>,<em>Master Git &amp; GitHub</em>,{' '}
-                      <em>Full-Stack JavaScript</em>, and competitive programming fundamentals.
+                      Rigorous credential achievements including the Complete Web Development Track,
+                      Master Git &amp; GitHub, Full-Stack JavaScript, and foundational computing
+                      credentials with public verification links.
                     </p>
                     <div className="pt-2">
                       <Button
@@ -1051,7 +1327,7 @@ export default function GuidePage() {
                         size="sm"
                         className="text-xs"
                       >
-                        Explore All Certifications
+                        Explore All Certifications ({certifications.length})
                       </Button>
                     </div>
                   </Card>
@@ -1077,7 +1353,21 @@ export default function GuidePage() {
                 </p>
 
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 mt-4">
-                  <Card className="border-default p-5 space-y-2.5" hover={false}>
+                  {/* Guided Tour Feature */}
+                  <Card spotlight hover className="border-default p-5 space-y-2.5">
+                    <div className="flex items-center gap-2 text-primary font-bold text-sm">
+                      <FaCompass className="h-4 w-4 text-accent-primary" />
+                      <span>Interactive Guided Tour (8 Steps)</span>
+                    </div>
+                    <p className="text-xs text-secondary leading-relaxed">
+                      Walk through the portfolio step-by-step with an interactive modal tour.
+                      Supports keyboard navigation (arrows, Escape), fast intent jumps, and direct
+                      deep-linking via <code>?tour=true</code>.
+                    </p>
+                  </Card>
+
+                  {/* Theme System */}
+                  <Card spotlight hover className="border-default p-5 space-y-2.5">
                     <div className="flex items-center gap-2 text-primary font-bold text-sm">
                       <FaSun className="h-4 w-4 text-amber-500" />
                       <span>Theme System (Dark / Light / System)</span>
@@ -1088,7 +1378,8 @@ export default function GuidePage() {
                     </p>
                   </Card>
 
-                  <Card className="border-default p-5 space-y-2.5" hover={false}>
+                  {/* AI Assistant */}
+                  <Card spotlight hover className="border-default p-5 space-y-2.5">
                     <div className="flex items-center gap-2 text-primary font-bold text-sm">
                       <HiSparkles className="h-4 w-4 text-accent-primary" />
                       <span>AI Portfolio Guide (Ctrl+K)</span>
@@ -1100,7 +1391,8 @@ export default function GuidePage() {
                     </p>
                   </Card>
 
-                  <Card className="border-default p-5 space-y-2.5" hover={false}>
+                  {/* GitHub Analytics Engine */}
+                  <Card spotlight hover className="border-default p-5 space-y-2.5">
                     <div className="flex items-center gap-2 text-primary font-bold text-sm">
                       <FaGithub className="h-4 w-4 text-purple-400" />
                       <span>GitHub Analytics Engine</span>
@@ -1112,14 +1404,16 @@ export default function GuidePage() {
                     </p>
                   </Card>
 
-                  <Card className="border-default p-5 space-y-2.5" hover={false}>
+                  {/* llms.txt */}
+                  <Card spotlight hover className="border-default p-5 space-y-2.5 sm:col-span-2">
                     <div className="flex items-center gap-2 text-primary font-bold text-sm">
                       <HiMiniBolt className="h-4 w-4 text-emerald-400" />
                       <span>Machine-Readable /llms.txt</span>
                     </div>
                     <p className="text-xs text-secondary leading-relaxed">
                       Standardized plaintext context file enabling LLM coding agents, ChatGPT, and
-                      Claude to ingest the entire portfolio structure in milliseconds.
+                      Claude to ingest the entire portfolio structure, projects, and tech stack in
+                      milliseconds.
                     </p>
                   </Card>
                 </div>
@@ -1233,8 +1527,8 @@ export default function GuidePage() {
                       className="text-accent-primary hover:underline font-bold"
                     >
                       github.com/MSabbirHossen/personalreport
-                    </a>{' '}
-                    and ETA at{' '}
+                    </a>
+                    , ETA at{' '}
                     <a
                       href="https://github.com/MSabbirHossen/ETA"
                       target="_blank"
@@ -1243,13 +1537,26 @@ export default function GuidePage() {
                     >
                       github.com/MSabbirHossen/ETA
                     </a>
+                    , and Life OS at{' '}
+                    <a
+                      href="https://github.com/MSabbirHossen/Life-OS"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-accent-primary hover:underline font-bold"
+                    >
+                      github.com/MSabbirHossen/Life-OS
+                    </a>
                     .
                   </Accordion>
 
                   <Accordion title="Is Sabbir currently available for full-time employment or internships?">
                     Yes. Sabbir is actively open to Junior Full-Stack Developer, Junior MERN
                     Developer, Frontend, and Backend roles, as well as software engineering
-                    internships and freelance opportunities.
+                    internships and freelance opportunities. Visit the{' '}
+                    <Link to="/recruiter" className="text-accent-primary font-bold hover:underline">
+                      Recruiter Dossier
+                    </Link>{' '}
+                    for fast-track assessment.
                   </Accordion>
 
                   <Accordion title="What is the architecture behind the flagship project (Report BD)?">
@@ -1259,6 +1566,13 @@ export default function GuidePage() {
                     Express 4 REST API, and a Vite React 19 SPA. It features optimistic revision
                     locking (HTTP 409 Conflict), zero-trust Firebase token verification,
                     multi-tenant RBAC (4 roles, 7 tiers), and trilingual RTL/LTR support.
+                  </Accordion>
+
+                  <Accordion title="What is Life OS and how does it protect user data?">
+                    Life OS is a single-user personal operating system designed with privacy-first
+                    principles. It scopes data to authenticated sessions using JWT and bcrypt,
+                    stores records in date-indexed MongoDB collections, and includes a one-click
+                    JSON export for full personal data portability and local backups.
                   </Accordion>
 
                   <Accordion title="Why does the portfolio feature an /llms.txt file?">
@@ -1276,9 +1590,9 @@ export default function GuidePage() {
                   </Accordion>
 
                   <Accordion title="Are the certifications formally verified?">
-                    Yes. All 7 certificates include verification links and credential IDs issued by
-                    recognized educational platforms, including Programming Hero’s intensive
-                    Complete Web Development Track and Udemy.
+                    Yes. All {certifications.length} certificates include verification links and
+                    credential IDs issued by recognized educational platforms, including Programming
+                    Hero’s intensive Complete Web Development Track and Udemy.
                   </Accordion>
                 </div>
               </Reveal>
@@ -1303,7 +1617,7 @@ export default function GuidePage() {
                 </p>
 
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 mt-4">
-                  <Card className="border-default p-5 space-y-3" hover={false}>
+                  <Card spotlight hover className="border-default p-5 space-y-3">
                     <div className="flex items-center gap-2 font-bold text-sm text-primary">
                       <FaKeyboard className="h-4 w-4 text-accent-primary" />
                       <span>Keyboard Navigation Shortcuts</span>
@@ -1327,10 +1641,16 @@ export default function GuidePage() {
                           Tab / Shift+Tab
                         </kbd>
                       </li>
+                      <li className="flex items-center justify-between">
+                        <span>Navigate Tour steps:</span>
+                        <kbd className="rounded border border-default bg-surface-hover px-1.5 py-0.5 font-mono text-[10px]">
+                          ← / → Arrow Keys
+                        </kbd>
+                      </li>
                     </ul>
                   </Card>
 
-                  <Card className="border-default p-5 space-y-3" hover={false}>
+                  <Card spotlight hover className="border-default p-5 space-y-3">
                     <div className="flex items-center gap-2 font-bold text-sm text-primary">
                       <FaEye className="h-4 w-4 text-emerald-500" />
                       <span>Inclusive UX Design</span>
@@ -1388,6 +1708,18 @@ export default function GuidePage() {
                     WhatsApp Web. Simply log in via QR code or use the direct phone number{' '}
                     <code className="text-primary font-mono text-xs">+8801773511874</code> on your
                     phone.
+                  </Accordion>
+
+                  <Accordion title="AI Assistant shortcut (Ctrl+K) conflicts with browser bar">
+                    Some browsers reserve <kbd className="font-mono text-xs">Ctrl+K</kbd> for
+                    searching. You can always launch the AI Assistant by clicking the &quot;Ask AI
+                    Guide&quot; button in the header navigation or the floating pill.
+                  </Accordion>
+
+                  <Accordion title="Interactive Tour modal did not appear on load">
+                    The interactive tour can be launched at any time by clicking the &quot;Start
+                    Interactive Tour&quot; button at the top of this guide or adding{' '}
+                    <code>?tour=true</code> to any URL in the portfolio.
                   </Accordion>
                 </div>
               </Reveal>
