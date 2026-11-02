@@ -7,7 +7,7 @@ import Button from '../common/Button';
 import ProjectFilters from '../projects/ProjectFilters';
 import ProjectGrid from '../projects/ProjectGrid';
 
-export default function Projects({ limit = 4 }) {
+export default function Projects({ limit = 3 }) {
   const { projects } = portfolioData;
   const [activeCategory, setActiveCategory] = useState('All');
 
@@ -31,8 +31,15 @@ export default function Projects({ limit = 4 }) {
   }, [projects, limit, activeCategory]);
 
   return (
-    <SectionWrapper id="projects" title="Featured Projects" innerClassName="space-y-10">
-      <div className="mx-auto max-w-5xl px-4">
+    <SectionWrapper
+      id="projects"
+      eyebrow="PROVEN ENGINEERING CAPABILITIES"
+      title="Featured Projects"
+      description="Production-grade full-stack systems demonstrating robust component design, scalable architectures, and verified business logic."
+      innerClassName="space-y-8"
+      className="mx-auto max-w-6xl px-4 sm:px-6"
+    >
+      <div>
         {!limit && (
           <ProjectFilters
             categories={categories}
@@ -45,10 +52,11 @@ export default function Projects({ limit = 4 }) {
           projects={displayedProjects}
           activeCategory={limit ? 'featured' : activeCategory}
           columns={2}
+          isFeatured={Boolean(limit)}
         />
 
         {limit && projects.length > limit && (
-          <div className="mt-8 flex justify-center">
+          <div className="mt-10 flex justify-center">
             <Button
               as={Link}
               to="/projects"
@@ -58,7 +66,7 @@ export default function Projects({ limit = 4 }) {
               iconPosition="right"
               className="group border-default shadow-sm hover:border-accent-primary hover:text-accent-primary"
             >
-              View All Projects ({projects.length})
+              Explore All Projects ({projects.length})
             </Button>
           </div>
         )}
