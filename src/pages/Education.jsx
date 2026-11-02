@@ -17,7 +17,7 @@ import Typography from '../components/common/Typography';
 import Badge from '../components/common/Badge';
 import Button from '../components/common/Button';
 import Card from '../components/common/Card';
-import Reveal from '../animations/Reveal';
+import Reveal from '../components/animations/Reveal';
 
 export default function EducationPage() {
   const { education, personalInfo } = portfolioData;
