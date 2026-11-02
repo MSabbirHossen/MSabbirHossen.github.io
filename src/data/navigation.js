@@ -42,7 +42,7 @@ export const MORE_NAV_LINKS = [
   {
     name: 'Portfolio Guide',
     href: 'guide',
-    to: '/guide',
+    to: '/guide?tour=true',
     icon: FaCompass,
   },
   {
@@ -94,6 +94,6 @@ export const FOOTER_MORE_LINKS = [
   { label: 'Education Timeline', to: '/education' },
   { label: 'All Certifications', to: '/certifications' },
   { label: 'Developer Hub', to: '/developer' },
-  { label: 'Portfolio Guide', to: '/guide' },
+  { label: 'Portfolio Guide', to: '/guide?tour=true' },
   { label: 'AI Profile (llms.txt)', href: '/llms.txt', external: true },
 ];

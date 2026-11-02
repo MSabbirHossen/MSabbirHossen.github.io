@@ -6,6 +6,7 @@ import Header from '../components/layout/Header';
 import Footer from '../components/footer/Footer';
 import useAIChat from '../hooks/useAIChat';
 import AIChatButton from '../components/common/AIChatButton';
+import PortfolioGuideModal from '../components/guide/PortfolioGuideModal';
 import { EASINGS } from '../lib/motion';
 
 const AIChatModal = lazy(() => import('../components/common/AIChatModal'));
@@ -38,6 +39,7 @@ export default function MainLayout() {
         </motion.div>
       </main>
       <Footer />
+      <PortfolioGuideModal />
       <AIChatButton onClick={chat.toggleChat} isOpen={chat.isOpen} />
       {chat.isOpen && (
         <Suspense fallback={null}>

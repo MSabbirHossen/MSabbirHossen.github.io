@@ -33,6 +33,7 @@ import Badge from '../components/common/Badge';
 import Button from '../components/common/Button';
 import Card from '../components/common/Card';
 import Reveal from '../components/animations/Reveal';
+import { usePortfolioGuide } from '../contexts/PortfolioGuideContext';
 
 const GUIDE_SECTIONS = [
   { id: 'welcome', title: '01. Welcome & Introduction', icon: FaCompass, badge: 'Overview' },
@@ -102,6 +103,7 @@ function Accordion({ title, children, defaultOpen = false, badge = null, icon: I
 
 export default function GuidePage() {
   const { personalInfo, projects, skills, certifications } = portfolioData;
+  const { openGuide } = usePortfolioGuide();
   const [activeSection, setActiveSection] = useState('welcome');
   const [scrollProgress, setScrollProgress] = useState(0);
 
@@ -191,7 +193,17 @@ export default function GuidePage() {
             Back to Home
           </Button>
 
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
+            <Button
+              variant="primary"
+              size="sm"
+              icon={FaCompass}
+              onClick={() => openGuide(0)}
+              title="Launch Guided Onboarding Tour (8 Steps)"
+              className="shadow-sm shadow-accent-primary/20"
+            >
+              Start Interactive Tour
+            </Button>
             <Button
               variant="outline"
               size="sm"
@@ -347,9 +359,18 @@ export default function GuidePage() {
                 })}
               </nav>
 
-              <div className="border-t border-default pt-3">
+              <div className="border-t border-default pt-3 space-y-2">
                 <Button
                   variant="primary"
+                  size="sm"
+                  icon={FaCompass}
+                  onClick={() => openGuide(0)}
+                  className="w-full text-xs shadow-sm shadow-accent-primary/20"
+                >
+                  Start Interactive Tour
+                </Button>
+                <Button
+                  variant="outline"
                   size="sm"
                   icon={HiSparkles}
                   onClick={triggerAIAssistant}

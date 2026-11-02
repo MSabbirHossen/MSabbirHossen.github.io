@@ -5,6 +5,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { ThemeProvider } from './contexts/ThemeContext';
+import { PortfolioGuideProvider } from './contexts/PortfolioGuideContext';
 import MainLayout from './layouts/MainLayout';
 import Home from './pages/Home';
 import LogoLoader from './components/common/LogoLoader';
@@ -40,29 +41,31 @@ export default function App() {
     <HelmetProvider>
       <ThemeProvider>
         <BrowserRouter basename={import.meta.env.BASE_URL}>
-          <ScrollToTop />
-          <Suspense fallback={<LogoLoader fullScreen message="Loading..." />}>
-            <Routes>
-              <Route path="/" element={<MainLayout />}>
-                <Route index element={<Home />} />
-                <Route path="projects" element={<Projects />} />
-                <Route path="projects/:slug" element={<ProjectDetails />} />
-                <Route path="project/:id" element={<Navigate to="/projects" replace />} />
-                <Route path="experience" element={<Experience />} />
-                <Route path="education" element={<Education />} />
-                <Route path="certifications" element={<Certifications />} />
-                <Route path="recruiter" element={<Recruiter />} />
-                <Route path="recruiter-view" element={<Navigate to="/recruiter" replace />} />
-                <Route path="quick-scan" element={<Navigate to="/recruiter" replace />} />
-                <Route path="developer" element={<Developer />} />
-                <Route path="developer-info" element={<Navigate to="/developer" replace />} />
-                <Route path="guide" element={<Guide />} />
-                <Route path="portfolio-guide" element={<Navigate to="/guide" replace />} />
-                <Route path="contact" element={<Navigate to="/#contact" replace />} />
-                <Route path="*" element={<NotFound />} />
-              </Route>
-            </Routes>
-          </Suspense>
+          <PortfolioGuideProvider>
+            <ScrollToTop />
+            <Suspense fallback={<LogoLoader fullScreen message="Loading..." />}>
+              <Routes>
+                <Route path="/" element={<MainLayout />}>
+                  <Route index element={<Home />} />
+                  <Route path="projects" element={<Projects />} />
+                  <Route path="projects/:slug" element={<ProjectDetails />} />
+                  <Route path="project/:id" element={<Navigate to="/projects" replace />} />
+                  <Route path="experience" element={<Experience />} />
+                  <Route path="education" element={<Education />} />
+                  <Route path="certifications" element={<Certifications />} />
+                  <Route path="recruiter" element={<Recruiter />} />
+                  <Route path="recruiter-view" element={<Navigate to="/recruiter" replace />} />
+                  <Route path="quick-scan" element={<Navigate to="/recruiter" replace />} />
+                  <Route path="developer" element={<Developer />} />
+                  <Route path="developer-info" element={<Navigate to="/developer" replace />} />
+                  <Route path="guide" element={<Guide />} />
+                  <Route path="portfolio-guide" element={<Navigate to="/guide" replace />} />
+                  <Route path="contact" element={<Navigate to="/#contact" replace />} />
+                  <Route path="*" element={<NotFound />} />
+                </Route>
+              </Routes>
+            </Suspense>
+          </PortfolioGuideProvider>
         </BrowserRouter>
         <ToastContainer
           position="bottom-right"
