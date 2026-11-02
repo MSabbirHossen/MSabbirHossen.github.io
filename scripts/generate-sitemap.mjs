@@ -55,3 +55,4 @@ console.log(`Generated public/sitemap.xml with ${allPages.length} URLs`);
 
 await writeFile(resolve('public/robots.txt'), robotsTxt, 'utf-8');
 console.log('Generated public/robots.txt');
+
