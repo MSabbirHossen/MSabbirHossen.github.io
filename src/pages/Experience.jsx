@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+import { motion, useReducedMotion } from 'framer-motion';
 import {
   FaArrowLeft,
   FaBriefcase,
@@ -17,10 +18,12 @@ import Badge from '../components/common/Badge';
 import Button from '../components/common/Button';
 import Card from '../components/common/Card';
 import Reveal from '../components/animations/Reveal';
+import { EASINGS } from '../lib/motion';
 
 export default function ExperiencePage() {
   const { experience, education, personalInfo } = portfolioData;
   const [activeFilter, setActiveFilter] = useState('All');
+  const shouldReduceMotion = useReducedMotion();
 
   const siteUrl = personalInfo.website.replace(/\/$/, '');
   const canonicalUrl = `${siteUrl}/experience`;
@@ -88,7 +91,7 @@ export default function ExperiencePage() {
         {/* Timeline Metrics Ribbon */}
         <Reveal delay={0.2}>
           <div className="mb-12 grid grid-cols-1 gap-4 sm:grid-cols-3">
-            <Card className="flex items-center gap-4 py-4">
+            <Card spotlight hover className="flex items-center gap-4 py-4">
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent-primary/10 text-accent-primary">
                 <FaRocket className="h-5 w-5" />
               </div>
@@ -98,7 +101,7 @@ export default function ExperiencePage() {
               </div>
             </Card>
 
-            <Card className="flex items-center gap-4 py-4">
+            <Card spotlight hover className="flex items-center gap-4 py-4">
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent-secondary/10 text-accent-secondary">
                 <FaLayerGroup className="h-5 w-5" />
               </div>
@@ -108,7 +111,7 @@ export default function ExperiencePage() {
               </div>
             </Card>
 
-            <Card className="flex items-center gap-4 py-4">
+            <Card spotlight hover className="flex items-center gap-4 py-4">
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400">
                 <FaBriefcase className="h-5 w-5" />
               </div>
@@ -153,17 +156,28 @@ export default function ExperiencePage() {
               amount={0.15}
             >
               {/* Timeline Chain Node */}
-              <div className="relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 border-accent-primary bg-surface shadow-md shadow-accent-primary/20 md:left-2 md:-translate-x-1/2">
+              <motion.div
+                className="relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 border-accent-primary bg-surface shadow-md shadow-accent-primary/20 md:left-2 md:-translate-x-1/2"
+                initial={shouldReduceMotion ? false : { scale: 0.7, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: shouldReduceMotion ? 0 : 0.35, ease: EASINGS.smooth }}
+                aria-hidden="true"
+              >
                 {index === 0 ? (
                   <FaRocket className="h-4 w-4 text-accent-primary animate-pulse" />
                 ) : (
                   <FaBriefcase className="h-3.5 w-3.5 text-accent-secondary" />
                 )}
-              </div>
+              </motion.div>
 
               {/* Milestone Card */}
               <div className="w-full">
-                <Card className="group space-y-5 border-default transition-all duration-300 hover:border-accent-primary/40 hover:shadow-lg hover:shadow-accent-primary/5">
+                <Card
+                  spotlight
+                  hover
+                  className="group space-y-5 border-default transition-all duration-300 hover:border-accent-primary/40 hover:shadow-lg hover:shadow-accent-primary/5"
+                >
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <div className="flex flex-wrap items-center gap-2">
                       <Badge variant="primary">{item.period}</Badge>
@@ -271,12 +285,23 @@ export default function ExperiencePage() {
             delay={0.2}
             amount={0.15}
           >
-            <div className="relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 border-emerald-400 bg-surface shadow-md shadow-emerald-400/20 md:left-2 md:-translate-x-1/2">
+            <motion.div
+              className="relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 border-emerald-400 bg-surface shadow-md shadow-emerald-400/20 md:left-2 md:-translate-x-1/2"
+              initial={shouldReduceMotion ? false : { scale: 0.7, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: shouldReduceMotion ? 0 : 0.35, ease: EASINGS.smooth }}
+              aria-hidden="true"
+            >
               <FaGraduationCap className="h-4 w-4 text-emerald-400" />
-            </div>
+            </motion.div>
 
             <div className="w-full">
-              <Card className="space-y-4 border-dashed border-accent-secondary/30 bg-surface/50">
+              <Card
+                spotlight
+                hover
+                className="space-y-4 border-dashed border-accent-secondary/30 bg-surface/50"
+              >
                 <div className="flex flex-wrap items-center gap-2">
                   <Badge variant="neutral">Foundations</Badge>
                   <span className="text-xs text-muted">Continuous Learning & CS Academics</span>
