@@ -55,7 +55,7 @@ const MobileMenu = forwardRef(function MobileMenu(
               isRTL ? 'left-0 border-r border-default' : 'right-0 border-l border-default'
             }`}
           >
-            <div className="flex h-full flex-col gap-6 p-6">
+            <div className="flex h-full flex-col gap-6 p-6 overflow-y-auto overscroll-contain">
               <header className="flex items-center justify-between border-b pb-4">
                 <Logo size="sm" />
                 <button
