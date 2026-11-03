@@ -5,11 +5,14 @@ import { portfolioData } from '../../data';
 import { NAV_LINKS } from '../../data/navigation';
 import NavLinks from '../layout/NavLinks.jsx';
 import ThemeToggle from '../layout/ThemeToggle';
+import LanguageToggle from '../layout/LanguageToggle';
+import { useTranslation } from '../../i18n';
 import MobileMenu from '../layout/MobileMenu.jsx';
 import { scrollToSection } from '../../lib/navigation';
 import Logo from '../common/Logo';
 
 export default function Header() {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
@@ -160,25 +163,34 @@ export default function Header() {
           to="/"
           onClick={(e) => handleNavClick(e, 'hero')}
           className="transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary rounded-xl"
-          aria-label={`${name} - Home`}
+          aria-label={`${name} - ${t('navigation.home', {}, 'Home')}`}
         >
           <Logo size="md" />
         </Link>
 
-        <nav className="hidden items-center gap-5 lg:gap-6 md:flex" aria-label="Primary navigation">
+        <nav
+          className="hidden items-center gap-5 lg:gap-6 md:flex"
+          aria-label={t('navigation.primaryNav', {}, 'Primary navigation')}
+        >
           <NavLinks activeSection={activeSection} onNavigate={handleNavClick} />
           <div className="h-4 w-px bg-default/60" />
+          <LanguageToggle />
           <ThemeToggle />
         </nav>
 
-        <div className="flex items-center gap-3 md:hidden">
+        <div className="flex items-center gap-2 md:hidden">
+          <LanguageToggle />
           <ThemeToggle />
 
           <button
             type="button"
             onClick={() => setIsOpen((value) => !value)}
             className="rounded-lg p-2 text-primary transition-colors hover:bg-accent-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg"
-            aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-label={
+              isOpen
+                ? t('navigation.navMenuClose', {}, 'Close navigation menu')
+                : t('navigation.navMenuOpen', {}, 'Open navigation menu')
+            }
             aria-expanded={isOpen}
             aria-controls="mobile-navigation"
           >

@@ -8,10 +8,12 @@ import useAIChat from '../hooks/useAIChat';
 import AIChatButton from '../components/common/AIChatButton';
 import PortfolioGuideModal from '../components/guide/PortfolioGuideModal';
 import { EASINGS } from '../lib/motion';
+import { useTranslation } from '../i18n';
 
 const AIChatModal = lazy(() => import('../components/common/AIChatModal'));
 
 export default function MainLayout() {
+  const { t } = useTranslation();
   const chat = useAIChat();
   const location = useLocation();
   const shouldReduceMotion = useReducedMotion();
@@ -20,9 +22,9 @@ export default function MainLayout() {
     <div className="flex flex-col min-h-screen transition-colors duration-300">
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-xl focus:bg-accent-primary focus:px-4 focus:py-2.5 focus:text-sm focus:font-semibold focus:text-white focus:shadow-xl focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 focus:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 rtl:focus:right-4 rtl:focus:left-auto focus:z-[100] focus:rounded-xl focus:bg-accent-primary focus:px-4 focus:py-2.5 focus:text-sm focus:font-semibold focus:text-white focus:shadow-xl focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 focus:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg"
       >
-        Skip to main content
+        {t('common.skipToContent', {}, 'Skip to main content')}
       </a>
       <Header />
       <main id="main-content" tabIndex={-1} className="grow pt-24 outline-none">

@@ -5,11 +5,13 @@ import Button from '../common/Button';
 import { FaFileAlt } from 'react-icons/fa';
 import { HiX } from 'react-icons/hi';
 import Logo from '../common/Logo';
+import { useTranslation } from '../../i18n';
 
 const MobileMenu = forwardRef(function MobileMenu(
   { isOpen, setIsOpen, activeSection, onNavigate },
   ref
 ) {
+  const { t, isRTL } = useTranslation();
   const shouldReduceMotion = useReducedMotion();
 
   // Close mobile navigation on Escape key
@@ -28,6 +30,8 @@ const MobileMenu = forwardRef(function MobileMenu(
     };
   }, [isOpen, setIsOpen]);
 
+  const slideInitial = isRTL ? '-100%' : '100%';
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -37,17 +41,19 @@ const MobileMenu = forwardRef(function MobileMenu(
             ref={ref}
             role="dialog"
             aria-modal="true"
-            aria-label="Mobile navigation"
-            initial={shouldReduceMotion ? false : { x: '100%' }}
+            aria-label={t('navigation.mobileNav', {}, 'Mobile navigation')}
+            initial={shouldReduceMotion ? false : { x: slideInitial }}
             animate={{ x: 0 }}
-            exit={shouldReduceMotion ? undefined : { x: '100%' }}
+            exit={shouldReduceMotion ? undefined : { x: slideInitial }}
             transition={{
               type: 'spring',
               stiffness: shouldReduceMotion ? 0 : 350,
               damping: shouldReduceMotion ? 0 : 32,
               duration: shouldReduceMotion ? 0 : undefined,
             }}
-            className="fixed right-0 top-0 z-50 h-screen w-[82%] max-w-sm border-l border-default surface text-primary shadow-2xl backdrop-blur-xl md:hidden"
+            className={`fixed top-0 z-50 h-screen w-[82%] max-w-sm surface text-primary shadow-2xl backdrop-blur-xl md:hidden ${
+              isRTL ? 'left-0 border-r border-default' : 'right-0 border-l border-default'
+            }`}
           >
             <div className="flex h-full flex-col gap-6 p-6">
               <header className="flex items-center justify-between border-b pb-4">
@@ -55,14 +61,17 @@ const MobileMenu = forwardRef(function MobileMenu(
                 <button
                   type="button"
                   onClick={() => setIsOpen(false)}
-                  className="rounded-lg p-2 text-secondary transition-colors hover:bg-accent-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg"
-                  aria-label="Close navigation menu"
+                  className="rounded-lg p-2 text-secondary transition-colors hover:bg-accent-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg cursor-pointer"
+                  aria-label={t('navigation.navMenuClose', {}, 'Close navigation menu')}
                 >
                   <HiX className="h-6 w-6" />
                 </button>
               </header>
 
-              <nav className="flex flex-col gap-2" aria-label="Mobile navigation links">
+              <nav
+                className="flex flex-col gap-2"
+                aria-label={t('navigation.mobileNav', {}, 'Mobile navigation links')}
+              >
                 <NavLinks
                   mobile
                   activeSection={activeSection}
@@ -80,7 +89,7 @@ const MobileMenu = forwardRef(function MobileMenu(
                 variant="outline"
               >
                 <FaFileAlt className="h-4 w-4" />
-                Resume
+                <span>{t('navigation.resume', {}, 'Resume')}</span>
               </Button>
             </div>
           </motion.div>
@@ -93,7 +102,7 @@ const MobileMenu = forwardRef(function MobileMenu(
             transition={{ duration: shouldReduceMotion ? 0 : 0.25 }}
             className="fixed inset-0 z-40 bg-black/25 backdrop-blur-sm md:hidden"
             onClick={() => setIsOpen(false)}
-            aria-label="Close navigation menu"
+            aria-label={t('navigation.navMenuClose', {}, 'Close navigation menu')}
           />
         </>
       )}
