@@ -7,8 +7,10 @@ import Typography from '../common/Typography';
 import ProjectImage from './ProjectImage';
 import ProjectStatusBadge from './ProjectStatusBadge';
 import ProjectLinks from './ProjectLinks';
+import { useTranslation } from '../../i18n';
 
 export default function ProjectCard({ project }) {
+  const { t } = useTranslation();
   const shouldReduceMotion = useReducedMotion();
   const { id, title, category, overview, role, status, keyFeatures, technologies } = project;
 
@@ -81,7 +83,7 @@ export default function ProjectCard({ project }) {
           {highlights.length > 0 && (
             <div className="space-y-1.5 border-t border-default/40 pt-3">
               <p className="text-[11px] font-bold uppercase tracking-wider text-muted">
-                Key Engineering Highlights:
+                {t('projects.keyHighlights', {}, 'Key Engineering Highlights:')}
               </p>
               <ul className="space-y-1 text-xs text-secondary">
                 {highlights.map((highlight) => (
@@ -102,21 +104,18 @@ export default function ProjectCard({ project }) {
             <div className="flex flex-wrap items-center gap-1.5 pt-1">
               {topTech.map((tech) => (
                 <span
-                  key={tech.name}
-                  className="inline-flex items-center gap-1 rounded-md border border-default bg-surface/70 px-2 py-0.5 text-[11px] font-medium text-secondary"
+                  key={tech.name || tech}
+                  className="rounded-md border border-default/70 bg-surface/70 px-2 py-0.5 text-[11px] font-medium text-secondary"
                 >
-                  {tech.icon && (
-                    <tech.icon className="h-3 w-3 text-accent-secondary" aria-hidden="true" />
-                  )}
-                  <span>{tech.name}</span>
+                  {tech.name || tech}
                 </span>
               ))}
             </div>
           )}
         </div>
 
-        {/* Action Links */}
-        <ProjectLinks project={project} className="mt-5" />
+        {/* Project Links & Details Action */}
+        <ProjectLinks project={project} />
       </Card>
     </motion.div>
   );

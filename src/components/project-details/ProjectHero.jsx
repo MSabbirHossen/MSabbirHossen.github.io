@@ -1,5 +1,6 @@
 import { FaArrowLeft, FaChevronRight, FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { useTranslation } from '../../i18n';
 import ProjectMeta from '../projects/ProjectMeta';
 import Typography from '../common/Typography';
 import Badge from '../common/Badge';
@@ -8,6 +9,7 @@ import Card from '../common/Card';
 import Reveal from '../animations/Reveal';
 
 const ProjectHero = ({ project }) => {
+  const { t, isRTL } = useTranslation();
   const heroTech = project.technologies?.slice(0, 6) ?? [];
   const heroImage = project.screenshots?.[0];
   const imageSrc = heroImage
@@ -21,15 +23,18 @@ const ProjectHero = ({ project }) => {
       {/* Breadcrumb Navigation */}
       <Reveal>
         <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-muted">
+          <nav
+            aria-label={t('navigation.home', {}, 'Breadcrumb')}
+            className="flex items-center gap-2 text-xs text-muted"
+          >
             <Link to="/" className="hover:text-accent-primary transition-colors">
-              Home
+              {t('projectDetails.breadcrumbHome')}
             </Link>
-            <FaChevronRight className="h-2.5 w-2.5 opacity-60" />
+            <FaChevronRight className={`h-2.5 w-2.5 opacity-60 ${isRTL ? 'rotate-180' : ''}`} />
             <Link to="/#projects" className="hover:text-accent-primary transition-colors">
-              Projects
+              {t('projectDetails.breadcrumbProjects')}
             </Link>
-            <FaChevronRight className="h-2.5 w-2.5 opacity-60" />
+            <FaChevronRight className={`h-2.5 w-2.5 opacity-60 ${isRTL ? 'rotate-180' : ''}`} />
             <span className="text-secondary font-medium">{project.title}</span>
           </nav>
 
@@ -41,8 +46,8 @@ const ProjectHero = ({ project }) => {
             size="sm"
             className="text-xs text-secondary hover:text-accent-primary px-2.5 py-1"
           >
-            <FaArrowLeft className="mr-1.5 h-3 w-3" />
-            Back to Projects
+            <FaArrowLeft className={`h-3 w-3 ${isRTL ? 'rotate-180 ml-1.5' : 'mr-1.5'}`} />
+            {t('projectDetails.backToProjects')}
           </Button>
         </div>
       </Reveal>
@@ -107,7 +112,7 @@ const ProjectHero = ({ project }) => {
                     iconPosition="right"
                     className="w-full sm:w-auto shadow-md shadow-accent-primary/25"
                   >
-                    Live Application
+                    {t('projectDetails.liveApplication')}
                   </Button>
                 )}
                 {project.githubUrl && (
@@ -118,7 +123,7 @@ const ProjectHero = ({ project }) => {
                     icon={FaGithub}
                     className="w-full sm:w-auto"
                   >
-                    Source Code
+                    {t('projectDetails.sourceCode')}
                   </Button>
                 )}
               </div>

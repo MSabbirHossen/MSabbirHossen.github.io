@@ -6,8 +6,10 @@ import SectionWrapper from '../common/SectionWrapper';
 import Button from '../common/Button';
 import ProjectFilters from '../projects/ProjectFilters';
 import ProjectGrid from '../projects/ProjectGrid';
+import { useTranslation } from '../../i18n';
 
 export default function Projects({ limit = 3 }) {
+  const { t, isRTL } = useTranslation();
   const { projects } = portfolioData;
   const [activeCategory, setActiveCategory] = useState('All');
 
@@ -33,9 +35,13 @@ export default function Projects({ limit = 3 }) {
   return (
     <SectionWrapper
       id="projects"
-      eyebrow="PROVEN ENGINEERING CAPABILITIES"
-      title="Featured Projects"
-      description="Production-grade full-stack systems demonstrating robust component design, scalable architectures, and verified business logic."
+      eyebrow={t('projects.eyebrow', {}, 'PROVEN ENGINEERING CAPABILITIES')}
+      title={t('projects.title', {}, 'Featured Projects')}
+      description={t(
+        'projects.description',
+        {},
+        'Production-grade full-stack systems demonstrating robust component design, scalable architectures, and verified business logic.'
+      )}
       innerClassName="space-y-8"
       className="mx-auto max-w-6xl px-4 sm:px-6"
     >
@@ -63,10 +69,14 @@ export default function Projects({ limit = 3 }) {
               variant="outline"
               size="md"
               icon={FaArrowRight}
-              iconPosition="right"
+              iconPosition={isRTL ? 'left' : 'right'}
               className="group border-default shadow-sm hover:border-accent-primary hover:text-accent-primary"
             >
-              Explore All Projects ({projects.length})
+              {t(
+                'projects.exploreAll',
+                { count: projects.length },
+                `Explore All Projects (${projects.length})`
+              )}
             </Button>
           </div>
         )}

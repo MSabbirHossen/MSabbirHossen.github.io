@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 import { FaArrowLeft, FaExclamationTriangle } from 'react-icons/fa';
 import Card from '../common/Card';
 import Button from '../common/Button';
+import { useTranslation } from '../../i18n';
 
 const ProjectNotFound = () => {
+  const { t, isRTL } = useTranslation();
+
   return (
     <div className="mx-auto max-w-2xl px-4 py-20 sm:px-6 sm:py-28">
       <Card spotlight className="space-y-6 text-center border-default p-8 sm:p-10">
@@ -13,11 +16,11 @@ const ProjectNotFound = () => {
         </div>
 
         <Typography variant="h2" className="text-2xl sm:text-3xl font-bold text-primary">
-          Project Not Found
+          {t('projectDetails.notFoundTitle')}
         </Typography>
 
         <Typography variant="body" className="text-sm sm:text-base text-secondary max-w-md mx-auto">
-          The project case study you requested could not be located, or the URL may have changed.
+          {t('projectDetails.notFoundDesc')}
         </Typography>
 
         <div className="flex justify-center pt-2">
@@ -28,8 +31,9 @@ const ProjectNotFound = () => {
             variant="primary"
             size="md"
             icon={FaArrowLeft}
+            className={isRTL ? '[&>svg]:rotate-180' : ''}
           >
-            Back to Featured Projects
+            {t('projectDetails.backToFeatured')}
           </Button>
         </div>
       </Card>

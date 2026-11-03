@@ -2,8 +2,10 @@ import ProjectLinkCard from './ProjectLinkCard';
 import Typography from '../common/Typography';
 import Card from '../common/Card';
 import { FaExternalLinkAlt, FaGithub, FaLink } from 'react-icons/fa';
+import { useTranslation } from '../../i18n';
 
 const ProjectLinks = ({ githubUrl, liveUrl }) => {
+  const { t } = useTranslation();
   if (!githubUrl && !liveUrl) return null;
 
   return (
@@ -13,16 +15,24 @@ const ProjectLinks = ({ githubUrl, liveUrl }) => {
           <FaLink className="h-4 w-4" aria-hidden="true" />
         </span>
         <Typography variant="subtitle" className="text-base font-bold text-primary sm:text-lg">
-          Project Links
+          {t('projectDetails.projectLinks')}
         </Typography>
       </div>
 
       <div className="space-y-3">
         {githubUrl && (
-          <ProjectLinkCard icon={FaGithub} title="GitHub Repository" href={githubUrl} />
+          <ProjectLinkCard
+            icon={FaGithub}
+            title={t('projectDetails.githubRepo')}
+            href={githubUrl}
+          />
         )}
         {liveUrl && (
-          <ProjectLinkCard icon={FaExternalLinkAlt} title="Live Website" href={liveUrl} />
+          <ProjectLinkCard
+            icon={FaExternalLinkAlt}
+            title={t('projectDetails.liveWebsite')}
+            href={liveUrl}
+          />
         )}
       </div>
     </Card>

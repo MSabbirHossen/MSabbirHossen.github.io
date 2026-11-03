@@ -10,6 +10,7 @@ import {
 import Card from '../common/Card';
 import Typography from '../common/Typography';
 import Badge from '../common/Badge';
+import { useTranslation } from '../../i18n';
 
 const renderSectionIcon = (title) => {
   const lower = title.toLowerCase();
@@ -26,7 +27,13 @@ const renderSectionIcon = (title) => {
 };
 
 const ProjectBulletList = ({ title, items, columns = false }) => {
+  const { t } = useTranslation();
   if (!items?.length) return null;
+
+  const pointsLabel =
+    items.length === 1
+      ? t('projectDetails.pointCount', { count: items.length })
+      : t('projectDetails.pointsCount', { count: items.length });
 
   return (
     <Card spotlight hover className="space-y-4 border-default p-5 sm:p-6">
@@ -40,7 +47,7 @@ const ProjectBulletList = ({ title, items, columns = false }) => {
           </Typography>
         </div>
         <Badge variant="neutral" className="text-xs">
-          {items.length} {items.length === 1 ? 'Point' : 'Points'}
+          {pointsLabel}
         </Badge>
       </div>
 

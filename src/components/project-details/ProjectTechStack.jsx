@@ -1,24 +1,26 @@
 import Card from '../common/Card';
 import Typography from '../common/Typography';
 import Badge from '../common/Badge';
+import { useTranslation } from '../../i18n';
 
 const ProjectTechStack = ({ technologies }) => {
+  const { t } = useTranslation();
   if (!technologies?.length) return null;
 
   return (
     <Card spotlight hover className="space-y-5 border-default p-5 sm:p-6">
       <div className="flex items-center justify-between border-b border-default/50 pb-3">
         <Typography variant="subtitle" className="text-base font-bold text-primary sm:text-lg">
-          Technologies Used
+          {t('projectDetails.technologiesUsed')}
         </Typography>
         <Badge variant="neutral" className="text-xs">
-          {technologies.length} Technologies
+          {t('projectDetails.technologiesCount', { count: technologies.length })}
         </Badge>
       </div>
 
       <ul
         className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4"
-        aria-label="Technology stack"
+        aria-label={t('projects.coreStack', {}, 'Technology stack')}
       >
         {technologies.map((tech) => {
           const Icon = tech.icon;

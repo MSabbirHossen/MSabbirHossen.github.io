@@ -7,8 +7,10 @@ import Typography from '../common/Typography';
 import Badge from '../common/Badge';
 import Button from '../common/Button';
 import ProjectStatusBadge from './ProjectStatusBadge';
+import { useTranslation } from '../../i18n';
 
 export default function FlagshipProjectCard({ project }) {
+  const { t, isRTL } = useTranslation();
   const shouldReduceMotion = useReducedMotion();
   const {
     id,
@@ -53,7 +55,7 @@ export default function FlagshipProjectCard({ project }) {
             <Link
               to={`/projects/${id}`}
               className="group/img relative block overflow-hidden rounded-xl border border-default surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary"
-              aria-label={`View ${title} case study`}
+              aria-label={t('projects.viewCaseStudyAria', { title }, `View ${title} case study`)}
             >
               {imageSrc ? (
                 <img
@@ -77,8 +79,8 @@ export default function FlagshipProjectCard({ project }) {
                 aria-hidden="true"
               >
                 <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-white drop-shadow-md">
-                  <span>Inspect Case Study</span>
-                  <FaArrowRight className="h-3 w-3" />
+                  <span>{t('projects.inspectCaseStudy', {}, 'Inspect Case Study')}</span>
+                  <FaArrowRight className={`h-3 w-3 ${isRTL ? 'rotate-180' : ''}`} />
                 </span>
               </div>
             </Link>
@@ -90,7 +92,7 @@ export default function FlagshipProjectCard({ project }) {
               {/* Badges Row: Flagship + Status + Role */}
               <div className="flex flex-wrap items-center gap-2 pb-1">
                 <Badge variant="primary" className="text-xs font-bold px-3 py-1">
-                  ⭐ Flagship Monorepo
+                  {t('projects.flagshipBadge', {}, '⭐ Flagship Monorepo')}
                 </Badge>
 
                 <ProjectStatusBadge status={status} />
@@ -102,11 +104,11 @@ export default function FlagshipProjectCard({ project }) {
                 )}
               </div>
 
-              {/* Title & Category */}
-              <div className="mt-2 space-y-1">
+              {/* Project Title & Category */}
+              <div>
                 <Link
                   to={`/projects/${id}`}
-                  className="group-hover:text-accent-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary rounded-md"
+                  className="group-hover:text-accent-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary rounded"
                 >
                   <Typography
                     variant="h3"
@@ -132,7 +134,7 @@ export default function FlagshipProjectCard({ project }) {
               {highlights.length > 0 && (
                 <div className="mt-4 space-y-2 border-t border-default/40 pt-3">
                   <p className="text-[11px] font-bold uppercase tracking-wider text-muted">
-                    Key Architectural Highlights:
+                    {t('projects.keyHighlights', {}, 'Key Engineering Highlights:')}
                   </p>
                   <ul className="space-y-1.5 text-xs text-secondary">
                     {highlights.map((highlight) => (
@@ -174,10 +176,10 @@ export default function FlagshipProjectCard({ project }) {
                 variant="primary"
                 size="sm"
                 icon={FaArrowRight}
-                iconPosition="right"
+                iconPosition={isRTL ? 'left' : 'right'}
                 className="shadow-md shadow-accent-primary/25"
               >
-                Case Study
+                {t('common.caseStudy', {}, 'Case Study')}
               </Button>
 
               {liveUrl && (
@@ -186,10 +188,10 @@ export default function FlagshipProjectCard({ project }) {
                   variant="outline"
                   size="sm"
                   icon={FaExternalLinkAlt}
-                  iconPosition="right"
+                  iconPosition={isRTL ? 'left' : 'right'}
                   className="text-accent-secondary hover:text-cyan-400 hover:border-accent-secondary/50"
                 >
-                  Live Demo
+                  {t('common.liveDemo', {}, 'Live Demo')}
                 </Button>
               )}
 
@@ -201,7 +203,7 @@ export default function FlagshipProjectCard({ project }) {
                   icon={FaGithub}
                   className="text-secondary hover:text-accent-primary hover:border-accent-primary/50"
                 >
-                  GitHub
+                  {t('common.sourceCode', {}, 'GitHub')}
                 </Button>
               )}
             </div>

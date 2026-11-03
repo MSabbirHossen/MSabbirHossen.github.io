@@ -3,6 +3,7 @@ import { FaCheck, FaCopy, FaServer } from 'react-icons/fa';
 import Card from '../common/Card';
 import Typography from '../common/Typography';
 import Badge from '../common/Badge';
+import { useTranslation } from '../../i18n';
 
 const METHOD_STYLES = {
   GET: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30',
@@ -32,6 +33,7 @@ const parseEndpoint = (raw) => {
 };
 
 const EndpointItem = ({ endpoint }) => {
+  const { t } = useTranslation();
   const [copied, setCopied] = useState(false);
   const { method, path, description } = parseEndpoint(endpoint);
 
@@ -65,8 +67,8 @@ const EndpointItem = ({ endpoint }) => {
           type="button"
           onClick={handleCopy}
           className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-default bg-surface/80 text-muted opacity-80 transition-all hover:border-accent-primary hover:text-accent-primary group-hover:opacity-100"
-          aria-label={copied ? 'Copied' : `Copy endpoint ${path}`}
-          title={copied ? 'Copied!' : 'Copy path'}
+          aria-label={copied ? t('common.copied') : `${t('common.copy')} endpoint ${path}`}
+          title={copied ? t('common.copied') : t('common.copy')}
         >
           {copied ? (
             <FaCheck className="h-3 w-3 text-emerald-500" />
@@ -84,7 +86,13 @@ const EndpointItem = ({ endpoint }) => {
 };
 
 const ProjectApiEndpoints = ({ endpoints }) => {
+  const { t } = useTranslation();
   if (!endpoints?.length) return null;
+
+  const countBadge =
+    endpoints.length === 1
+      ? t('projectDetails.endpointCount', { count: endpoints.length })
+      : t('projectDetails.endpointCountPlural', { count: endpoints.length });
 
   return (
     <Card spotlight hover className="space-y-4 border-default p-5 sm:p-6">
@@ -94,15 +102,19 @@ const ProjectApiEndpoints = ({ endpoints }) => {
             <FaServer className="h-4 w-4" aria-hidden="true" />
           </span>
           <Typography variant="subtitle" className="text-base font-bold text-primary sm:text-lg">
-            API Surface
+            {t('projectDetails.apiSurface')}
           </Typography>
         </div>
         <Badge variant="neutral" className="text-xs">
-          {endpoints.length} {endpoints.length === 1 ? 'Endpoint' : 'Endpoints'}
+          {countBadge}
         </Badge>
       </div>
 
-      <div className="space-y-2.5" role="list" aria-label="API endpoints">
+      <div
+        className="space-y-2.5"
+        role="list"
+        aria-label={t('projectDetails.apiSurface', {}, 'API endpoints')}
+      >
         {endpoints.map((endpoint) => (
           <EndpointItem key={endpoint} endpoint={endpoint} />
         ))}
