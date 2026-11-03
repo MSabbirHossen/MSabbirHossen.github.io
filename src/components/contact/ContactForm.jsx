@@ -3,22 +3,24 @@ import { FaCheck, FaExternalLinkAlt, FaUserCheck, FaPaperPlane } from 'react-ico
 import Typography from '../common/Typography';
 import Button from '../common/Button';
 import Card from '../common/Card';
+import { useTranslation } from '../../i18n';
 
 const WHATSAPP_NUMBER = '8801773511874';
 
-const TOPIC_OPTIONS = [
-  { label: 'Freelance / Hire', emoji: '🤝' },
-  { label: 'Job Opportunity', emoji: '💼' },
-  { label: 'Project Collab', emoji: '🚀' },
-  { label: 'General Feedback', emoji: '💡' },
-];
-
 const ContactForm = () => {
+  const { t } = useTranslation();
   const [senderName, setSenderName] = useState('');
   const [senderEmail, setSenderEmail] = useState('');
   const [feedbackText, setFeedbackText] = useState('');
   const [selectedTopic, setSelectedTopic] = useState(null);
   const [feedbackSent, setFeedbackSent] = useState(false);
+
+  const topicOptions = [
+    { key: 'topicFreelance', label: t('contact.topicFreelance'), emoji: '🤝' },
+    { key: 'topicJob', label: t('contact.topicJob'), emoji: '💼' },
+    { key: 'topicCollab', label: t('contact.topicCollab'), emoji: '🚀' },
+    { key: 'topicFeedback', label: t('contact.topicFeedback'), emoji: '💡' },
+  ];
 
   const getWhatsAppUrl = (text, name = '', email = '') => {
     const lines = [];
@@ -63,16 +65,14 @@ const ContactForm = () => {
           </div>
           <div className="min-w-0">
             <Typography variant="subtitle" className="text-primary font-bold text-base truncate">
-              Send a Note to MS Hossen
+              {t('contact.sendNoteTitle')}
             </Typography>
-            <p className="text-xs text-secondary truncate">
-              Direct inquiries delivered straight via WhatsApp
-            </p>
+            <p className="text-xs text-secondary truncate">{t('contact.sendNoteSubtitle')}</p>
           </div>
         </div>
         <span className="shrink-0 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-[#25D366]/10 text-[#25D366] border border-[#25D366]/25">
           <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
-          WhatsApp Direct
+          {t('contact.whatsAppDirect')}
         </span>
       </div>
 
@@ -81,10 +81,9 @@ const ContactForm = () => {
           <div className="w-12 h-12 rounded-full bg-emerald-500 text-white flex items-center justify-center shadow-md shadow-emerald-500/30">
             <FaCheck className="w-6 h-6" />
           </div>
-          <h4 className="text-base font-bold text-primary">Opening WhatsApp...</h4>
+          <h4 className="text-base font-bold text-primary">{t('contact.openingWhatsApp')}</h4>
           <p className="text-xs text-secondary max-w-sm">
-            Your message is ready to send directly to Sabbir Hossen (
-            <strong className="text-primary font-semibold">sabb1rhossen</strong>).
+            {t('contact.readyToSend', { handle: 'sabb1rhossen' })}
           </p>
           <a
             href={getWhatsAppUrl(feedbackText, senderName, senderEmail)}
@@ -92,8 +91,7 @@ const ContactForm = () => {
             rel="noopener noreferrer"
             className="mt-2 text-xs font-bold text-emerald-500 hover:underline flex items-center gap-1.5"
           >
-            Click here if WhatsApp didn&apos;t open automatically{' '}
-            <FaExternalLinkAlt className="w-3.5 h-3.5" />
+            {t('contact.clickIfNotOpened')} <FaExternalLinkAlt className="w-3.5 h-3.5" />
           </a>
           <button
             type="button"
@@ -106,7 +104,7 @@ const ContactForm = () => {
             }}
             className="mt-3 text-xs text-secondary hover:text-primary transition-colors underline cursor-pointer"
           >
-            Send another note
+            {t('contact.sendAnotherNote')}
           </button>
         </div>
       ) : (
@@ -119,7 +117,7 @@ const ContactForm = () => {
             <div>
               <div className="flex items-center justify-between mb-2">
                 <label className="text-xs font-bold text-secondary uppercase tracking-wider">
-                  Select a Topic
+                  {t('contact.selectTopic')}
                 </label>
                 {selectedTopic && (
                   <span className="text-[11px] text-accent-primary font-medium">
@@ -128,11 +126,11 @@ const ContactForm = () => {
                 )}
               </div>
               <div className="grid grid-cols-2 gap-2.5">
-                {TOPIC_OPTIONS.map((topic) => {
+                {topicOptions.map((topic) => {
                   const isSelected = selectedTopic === topic.label;
                   return (
                     <button
-                      key={topic.label}
+                      key={topic.key}
                       type="button"
                       onClick={() => handleTopicClick(topic.label, topic.emoji)}
                       className={`group flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl text-xs font-semibold border transition-all duration-200 cursor-pointer ${
@@ -153,12 +151,14 @@ const ContactForm = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
                 <label className="block text-xs font-bold text-secondary uppercase tracking-wider mb-1.5">
-                  Your Name{' '}
-                  <span className="text-muted text-[10px] font-normal normal-case">(optional)</span>
+                  {t('contact.yourName')}{' '}
+                  <span className="text-muted text-[10px] font-normal normal-case">
+                    {t('contact.optional')}
+                  </span>
                 </label>
                 <input
                   type="text"
-                  placeholder="e.g. Alex Johnson"
+                  placeholder={t('contact.namePlaceholder')}
                   value={senderName}
                   onChange={(e) => setSenderName(e.target.value)}
                   className="w-full rounded-xl border border-default bg-surface/70 px-3.5 py-2.5 text-sm text-primary placeholder:text-muted focus:border-accent-primary focus:ring-2 focus:ring-accent-primary/20 outline-none transition-all"
@@ -166,12 +166,14 @@ const ContactForm = () => {
               </div>
               <div>
                 <label className="block text-xs font-bold text-secondary uppercase tracking-wider mb-1.5">
-                  Email / Handle{' '}
-                  <span className="text-muted text-[10px] font-normal normal-case">(optional)</span>
+                  {t('contact.emailHandle')}{' '}
+                  <span className="text-muted text-[10px] font-normal normal-case">
+                    {t('contact.optional')}
+                  </span>
                 </label>
                 <input
                   type="text"
-                  placeholder="e.g. alex@example.com"
+                  placeholder={t('contact.emailPlaceholder')}
                   value={senderEmail}
                   onChange={(e) => setSenderEmail(e.target.value)}
                   className="w-full rounded-xl border border-default bg-surface/70 px-3.5 py-2.5 text-sm text-primary placeholder:text-muted focus:border-accent-primary focus:ring-2 focus:ring-accent-primary/20 outline-none transition-all"
@@ -182,12 +184,12 @@ const ContactForm = () => {
             {/* Message Area */}
             <div>
               <label className="block text-xs font-bold text-secondary uppercase tracking-wider mb-1.5">
-                Your Message / Inquiry <span className="text-accent-secondary">*</span>
+                {t('contact.yourMessage')} <span className="text-accent-secondary">*</span>
               </label>
               <textarea
                 rows={4}
                 required
-                placeholder="Share your thoughts, project inquiries, request collaboration, or say hello..."
+                placeholder={t('contact.messagePlaceholder')}
                 value={feedbackText}
                 onChange={(e) => setFeedbackText(e.target.value)}
                 className="w-full rounded-xl border border-default bg-surface/70 px-4 py-3 text-sm text-primary placeholder:text-muted focus:border-accent-primary focus:ring-2 focus:ring-accent-primary/20 outline-none transition-all resize-y"
@@ -199,7 +201,7 @@ const ContactForm = () => {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-default/50">
             <div className="flex items-center gap-2 text-xs text-secondary font-medium">
               <FaUserCheck className="w-4 h-4 text-[#25D366]" />
-              <span>Direct Creator Channel via WhatsApp</span>
+              <span>{t('contact.directChannelNote')}</span>
             </div>
             <Button
               type="submit"
@@ -208,7 +210,7 @@ const ContactForm = () => {
               icon={FaPaperPlane}
               className="shadow-sm shadow-accent-primary/20 w-full sm:w-auto"
             >
-              Send Note to Developer
+              {t('contact.sendNoteBtn')}
             </Button>
           </div>
         </form>

@@ -3,6 +3,7 @@ import Reveal from '../animations/Reveal';
 import Card from '../common/Card';
 import Typography from '../common/Typography';
 import { categoryMeta } from './categoryIcons';
+import { useTranslation } from '../../i18n';
 
 export default function SkillCategoryCard({
   category,
@@ -11,10 +12,11 @@ export default function SkillCategoryCard({
   selectedSkill,
   onSelectSkill,
 }) {
+  const { t } = useTranslation();
   const meta = categoryMeta[category.category] || {
     icon: null,
     subIcon: null,
-    subtitle: category.description || 'Core Competency',
+    subtitle: category.description || t('skills.coreCompetency', {}, 'Core Competency'),
   };
 
   const Icon = meta.icon;
@@ -131,8 +133,12 @@ export default function SkillCategoryCard({
 
         {/* Footer Hint */}
         <div className="mt-4 pt-3 border-t border-default/30 flex items-center justify-between text-[11px] text-muted">
-          <span>Click any skill to reveal verified project evidence</span>
-          <span className="text-accent-secondary font-medium">Interactive</span>
+          <span>
+            {t('skills.clickSkillHint', {}, 'Click any skill to reveal verified project evidence')}
+          </span>
+          <span className="text-accent-secondary font-medium">
+            {t('common.interactive', {}, 'Interactive')}
+          </span>
         </div>
       </Card>
     </Reveal>

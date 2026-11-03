@@ -3,15 +3,17 @@ import SectionWrapper from '../common/SectionWrapper';
 import JourneyCard from './JourneyCard';
 import LanguagesCard from './LanguagesCard';
 import QuickFactsCard from './QuickFactsCard';
+import { useTranslation } from '../../i18n';
 
 export default function About() {
+  const { t } = useTranslation();
   const { personalInfo } = portfolioData;
   const { title, journey, languages, studyingAt, location } = personalInfo;
 
   return (
     <SectionWrapper
       id="about"
-      title="About Me"
+      title={t('about.title', {}, 'About Me')}
       innerClassName="space-y-10"
       className="mx-auto max-w-6xl px-4 sm:px-6"
     >

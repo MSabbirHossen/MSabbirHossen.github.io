@@ -6,8 +6,10 @@ import SkillCategoryCard from './SkillCategoryCard';
 import SkillEvidencePanel from './SkillEvidencePanel';
 import SectionWrapper from '../common/SectionWrapper';
 import { portfolioData } from '../../data';
+import { useTranslation } from '../../i18n';
 
 export default function Skills({ limit }) {
+  const { t } = useTranslation();
   const { skills } = portfolioData;
   const displayedSkills = limit ? skills.slice(0, limit) : skills;
 
@@ -32,9 +34,13 @@ export default function Skills({ limit }) {
   return (
     <SectionWrapper
       id="skills"
-      eyebrow="Core Competencies"
-      title="Technical Stack & Architecture"
-      description="An evidence-based directory of full-stack technologies with verified real-world project applications."
+      eyebrow={t('skills.eyebrow', {}, 'Core Competencies')}
+      title={t('skills.title', {}, 'Technical Stack & Architecture')}
+      description={t(
+        'skills.description',
+        {},
+        'An evidence-based directory of full-stack technologies with verified real-world project applications.'
+      )}
       className="mx-auto max-w-5xl px-4 sm:px-6"
     >
       {/* Recruiter Instruction & Filter Bar */}
@@ -44,13 +50,19 @@ export default function Skills({ limit }) {
           <span>
             {selectedSkill ? (
               <span>
-                Filtering by{' '}
-                <strong className="text-primary font-semibold">{selectedSkill.name}</strong> —
-                inspecting real-world applications below.
+                {t(
+                  'skills.filterActive',
+                  { name: selectedSkill.name },
+                  `Filtering by ${selectedSkill.name} — inspecting real-world applications below.`
+                )}
               </span>
             ) : (
               <span>
-                Click any technology chip to inspect verified project implementation evidence.
+                {t(
+                  'skills.filterPrompt',
+                  {},
+                  'Click any technology chip to inspect verified project implementation evidence.'
+                )}
               </span>
             )}
           </span>
@@ -61,9 +73,9 @@ export default function Skills({ limit }) {
             type="button"
             onClick={handleClear}
             className="inline-flex items-center gap-1.5 rounded-lg border border-default bg-surface px-2.5 py-1 text-xs font-medium text-secondary hover:text-primary hover:border-accent-primary/50 transition-colors cursor-pointer"
-            aria-label="Clear skill filter"
+            aria-label={t('skills.resetAria', {}, 'Clear skill filter')}
           >
-            <span>Reset</span>
+            <span>{t('skills.resetFilter', {}, 'Reset')}</span>
             <FaTimes className="h-3 w-3" />
           </button>
         )}

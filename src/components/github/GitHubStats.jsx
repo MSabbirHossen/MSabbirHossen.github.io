@@ -13,10 +13,12 @@ import Reveal from '../animations/Reveal';
 import Snake from './Snake';
 import ProfileViews from './ProfileViews';
 import GitHubAnalytics from './GitHubAnalytics';
+import { useTranslation } from '../../i18n';
 
 const REFERENCE_NOW = Date.now();
 
 export default function GitHubStats() {
+  const { t } = useTranslation();
   const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -47,25 +49,31 @@ export default function GitHubStats() {
     const diff = REFERENCE_NOW - new Date(date).getTime();
     const hours = Math.floor(diff / 3600000);
 
-    if (hours < 1) return 'Updated recently';
-    if (hours < 24) return `Updated ${hours} hour${hours > 1 ? 's' : ''} ago`;
+    if (hours < 1) return t('github.updatedRecently');
+    if (hours < 24) {
+      return hours === 1
+        ? t('github.updatedHoursAgo', { hours })
+        : t('github.updatedHoursAgoPlural', { hours });
+    }
 
     const days = Math.floor(hours / 24);
-    return `Updated ${days} day${days > 1 ? 's' : ''} ago`;
+    return days === 1
+      ? t('github.updatedDaysAgo', { days })
+      : t('github.updatedDaysAgoPlural', { days });
   }
 
   if (loading) {
     return (
       <SectionWrapper
         id="github-stats"
-        eyebrow="Open-Source Engineering"
-        title="GitHub Activity & Code Metrics"
-        description="Transparent repository metrics, language distribution, and version-controlled software delivery."
+        eyebrow={t('github.eyebrow')}
+        title={t('github.title')}
+        description={t('github.description')}
         className="mx-auto max-w-6xl px-4 sm:px-6"
       >
         <Card className="p-8 text-center text-secondary border-default bg-surface/50">
           <Typography variant="body" className="text-sm">
-            Loading verified GitHub metrics snapshot...
+            {t('github.loadingSnapshot')}
           </Typography>
         </Card>
       </SectionWrapper>
@@ -76,14 +84,14 @@ export default function GitHubStats() {
     return (
       <SectionWrapper
         id="github-stats"
-        eyebrow="Open-Source Engineering"
-        title="GitHub Activity & Code Metrics"
-        description="Transparent repository metrics, language distribution, and version-controlled software delivery."
+        eyebrow={t('github.eyebrow')}
+        title={t('github.title')}
+        description={t('github.description')}
         className="mx-auto max-w-6xl px-4 sm:px-6"
       >
         <Card className="p-8 text-center border-default bg-surface/50 space-y-4">
           <Typography variant="body" className="text-sm text-secondary">
-            Cached activity snapshot is currently unavailable.
+            {t('github.unavailableSnapshot')}
           </Typography>
           <Button
             href="https://github.com/MSabbirHossen"
@@ -91,7 +99,7 @@ export default function GitHubStats() {
             size="sm"
             icon={FaGithub}
           >
-            Visit GitHub Profile
+            {t('github.visitProfile')}
           </Button>
         </Card>
       </SectionWrapper>
@@ -101,9 +109,9 @@ export default function GitHubStats() {
   return (
     <SectionWrapper
       id="github-stats"
-      eyebrow="Open-Source Engineering"
-      title="GitHub Activity & Code Metrics"
-      description="Transparent repository metrics, language distribution, and version-controlled software delivery."
+      eyebrow={t('github.eyebrow')}
+      title={t('github.title')}
+      description={t('github.description')}
       className="mx-auto max-w-6xl px-4 sm:px-6"
     >
       <Reveal>

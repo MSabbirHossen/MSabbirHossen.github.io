@@ -6,6 +6,7 @@ import Badge from '../common/Badge';
 import Reveal from '../animations/Reveal';
 import { FaLaptopCode, FaGraduationCap, FaUsers, FaCertificate } from 'react-icons/fa';
 import { scrollToSection } from '../../lib/navigation';
+import { useTranslation } from '../../i18n';
 
 const HIGHLIGHT_ICONS = {
   projects: FaLaptopCode,
@@ -15,6 +16,7 @@ const HIGHLIGHT_ICONS = {
 };
 
 export default function Highlights() {
+  const { t } = useTranslation();
   const { highlights } = portfolioData.personalInfo;
 
   if (!highlights || highlights.length === 0) return null;
@@ -26,12 +28,46 @@ export default function Highlights() {
     if (category === 'community') scrollToSection('experience');
   };
 
+  const getHighlightText = (item) => {
+    switch (item.category) {
+      case 'projects':
+        return {
+          title: t('highlights.shippedTitle', {}, item.title),
+          desc: t('highlights.shippedDesc', {}, item.desc),
+        };
+      case 'education':
+        return {
+          title: t('highlights.academicsTitle', {}, item.title),
+          desc: t('highlights.academicsDesc', {}, item.desc),
+        };
+      case 'community':
+        return {
+          title: t('highlights.communityTitle', {}, item.title),
+          desc: t('highlights.communityDesc', {}, item.desc),
+        };
+      case 'certifications':
+        return {
+          title: t('highlights.credentialsTitle', {}, item.title),
+          desc: t('highlights.credentialsDesc', {}, item.desc),
+        };
+      default:
+        return {
+          title: item.title,
+          desc: item.desc,
+        };
+    }
+  };
+
   return (
     <SectionWrapper
       id="highlights"
-      eyebrow="PROVEN TRACK RECORD"
-      title="Professional Highlights"
-      description="Verified milestones across practical full-stack software delivery, computer science academics, and community leadership."
+      eyebrow={t('highlights.eyebrow', {}, 'PROVEN TRACK RECORD')}
+      title={t('highlights.title', {}, 'Professional Highlights')}
+      description={t(
+        'highlights.description',
+        {},
+        'Verified milestones across practical full-stack software delivery, computer science academics, and community leadership.'
+      )}
       className="mx-auto max-w-6xl px-4 sm:px-6"
     >
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -40,6 +76,7 @@ export default function Highlights() {
           const isInteractive = ['projects', 'education', 'certifications', 'community'].includes(
             item.category
           );
+          const localized = getHighlightText(item);
 
           return (
             <Reveal key={item.title} delay={idx * 0.08} duration={0.45} className="h-full">
@@ -83,13 +120,13 @@ export default function Highlights() {
                     variant="h4"
                     className="mt-2 text-base font-bold text-primary sm:text-lg"
                   >
-                    {item.title}
+                    {localized.title}
                   </Typography>
                 </div>
 
                 <div className="mt-4 border-t border-default/40 pt-3">
                   <Typography variant="body" className="text-xs leading-relaxed text-muted">
-                    {item.desc}
+                    {localized.desc}
                   </Typography>
                 </div>
               </Card>

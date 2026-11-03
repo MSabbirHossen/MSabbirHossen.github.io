@@ -16,8 +16,10 @@ import Button from '../common/Button';
 import Badge from '../common/Badge';
 import { portfolioData } from '../../data';
 import { EASINGS } from '../../lib/motion';
+import { useTranslation } from '../../i18n';
 
 export default function SkillEvidencePanel({ selectedSkill, onClear }) {
+  const { t, isRTL } = useTranslation();
   const panelRef = useRef(null);
   const shouldReduceMotion = useReducedMotion();
   const { projects } = portfolioData;
@@ -53,7 +55,11 @@ export default function SkillEvidencePanel({ selectedSkill, onClear }) {
       transition={{ duration: 0.3, ease: EASINGS.smooth }}
       className="mt-8"
       role="region"
-      aria-label={`Evidence and project applications for ${selectedSkill.name}`}
+      aria-label={t(
+        'skills.evidenceRegionAria',
+        { name: selectedSkill.name },
+        `Evidence and project applications for ${selectedSkill.name}`
+      )}
     >
       <Card
         spotlight
@@ -84,8 +90,18 @@ export default function SkillEvidencePanel({ selectedSkill, onClear }) {
                   className="text-xs font-semibold"
                 >
                   {isDemonstrated
-                    ? `${associatedProjects.length} Verified Project${associatedProjects.length > 1 ? 's' : ''}`
-                    : 'Active Study Topic'}
+                    ? associatedProjects.length > 1
+                      ? t(
+                          'skills.verifiedProjectsCountPlural',
+                          { count: associatedProjects.length },
+                          `${associatedProjects.length} Verified Projects`
+                        )
+                      : t(
+                          'skills.verifiedProjectsCount',
+                          { count: associatedProjects.length },
+                          `${associatedProjects.length} Verified Project`
+                        )
+                    : t('skills.activeStudyTopic', {}, 'Active Study Topic')}
                 </Badge>
               </div>
 
@@ -99,10 +115,10 @@ export default function SkillEvidencePanel({ selectedSkill, onClear }) {
             type="button"
             onClick={onClear}
             className="rounded-lg p-2 text-muted hover:bg-surface-hover hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary transition-colors cursor-pointer"
-            aria-label="Clear selected skill filter"
+            aria-label={t('skills.closeEvidenceAria', {}, 'Clear selected skill filter')}
           >
             <span className="flex items-center gap-1.5 text-xs font-medium">
-              <span className="hidden sm:inline">Close</span>
+              <span className="hidden sm:inline">{t('common.close', {}, 'Close')}</span>
               <FaTimes className="h-4 w-4" />
             </span>
           </button>
@@ -113,10 +129,14 @@ export default function SkillEvidencePanel({ selectedSkill, onClear }) {
           <div className="mt-6 space-y-4">
             <div className="flex items-center justify-between">
               <p className="text-xs font-bold uppercase tracking-wider text-muted">
-                Demonstrated In Real Applications ({associatedProjects.length})
+                {t(
+                  'skills.demonstratedInHeader',
+                  { count: associatedProjects.length },
+                  `Demonstrated In Real Applications (${associatedProjects.length})`
+                )}
               </p>
               <span className="text-xs text-secondary hidden sm:inline">
-                Click any project to inspect its case study
+                {t('skills.clickProjectHint', {}, 'Click any project to inspect its case study')}
               </span>
             </div>
 
@@ -179,7 +199,7 @@ export default function SkillEvidencePanel({ selectedSkill, onClear }) {
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-1 text-[11px] font-medium text-accent-secondary hover:underline"
                           >
-                            <span>Live Demo</span>
+                            <span>{t('common.liveDemo', {}, 'Live Demo')}</span>
                             <FaExternalLinkAlt className="h-2.5 w-2.5" />
                           </a>
                         )}
@@ -189,10 +209,10 @@ export default function SkillEvidencePanel({ selectedSkill, onClear }) {
                             href={project.githubUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 text-[11px] font-medium text-secondary hover:text-primary hover:underline ml-2"
+                            className="inline-flex items-center gap-1 text-[11px] font-medium text-secondary hover:text-primary hover:underline ms-2"
                           >
                             <FaGithub className="h-3 w-3" />
-                            <span>GitHub</span>
+                            <span>{t('common.sourceCode', {}, 'GitHub')}</span>
                           </a>
                         )}
                       </div>
@@ -204,8 +224,8 @@ export default function SkillEvidencePanel({ selectedSkill, onClear }) {
                         size="sm"
                         className="text-xs py-1 px-3"
                       >
-                        <span>Case Study</span>
-                        <FaArrowRight className="h-2.5 w-2.5" />
+                        <span>{t('common.caseStudy', {}, 'Case Study')}</span>
+                        <FaArrowRight className={`h-2.5 w-2.5 ${isRTL ? 'rotate-180' : ''}`} />
                       </Button>
                     </div>
                   </div>
@@ -221,18 +241,20 @@ export default function SkillEvidencePanel({ selectedSkill, onClear }) {
             </div>
 
             <Typography variant="h4" className="text-base font-bold text-primary">
-              Active Learning & Exploration Topic
+              {t('skills.activeLearningTitle', {}, 'Active Learning & Exploration Topic')}
             </Typography>
 
             <Typography variant="body" className="max-w-md text-xs leading-relaxed text-secondary">
-              {selectedSkill.name} is an active focus area in my continuous learning roadmap. In
-              accordance with strict portfolio integrity, it is not artificially associated with
-              unverified production code.
+              {t(
+                'skills.activeLearningDesc',
+                { name: selectedSkill.name },
+                `${selectedSkill.name} is an active focus area in my continuous learning roadmap. In accordance with strict portfolio integrity, it is not artificially associated with unverified production code.`
+              )}
             </Typography>
 
             <div className="flex items-center gap-1.5 text-xs text-emerald-400 font-semibold pt-1">
               <FaCheckCircle className="h-3.5 w-3.5" />
-              <span>Evidence-based portfolio standard</span>
+              <span>{t('skills.standardBadge', {}, 'Evidence-based portfolio standard')}</span>
             </div>
           </div>
         )}

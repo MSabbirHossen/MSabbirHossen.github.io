@@ -6,8 +6,10 @@ import Button from '../common/Button';
 import Badge from '../common/Badge';
 import HeroActions from './HeroActions';
 import { heroContainerVariants, heroItemVariants } from './heroVariants';
+import { useTranslation } from '../../i18n';
 
 const HeroContent = ({ personalInfo, onContact, onProjects }) => {
+  const { t } = useTranslation();
   const shouldReduceMotion = useReducedMotion();
   const { name, title, secondaryTitle, mission, github, linkedin, resumeUrl, shortLocation } =
     personalInfo;
@@ -16,7 +18,7 @@ const HeroContent = ({ personalInfo, onContact, onProjects }) => {
 
   return (
     <motion.div
-      className="space-y-6 text-center lg:text-left"
+      className="space-y-6 text-center lg:text-left rtl:lg:text-right"
       variants={heroContainerVariants}
       initial={shouldReduceMotion ? false : 'hidden'}
       animate="visible"
@@ -27,12 +29,12 @@ const HeroContent = ({ personalInfo, onContact, onProjects }) => {
         className="flex flex-wrap items-center justify-center gap-2.5 lg:justify-start"
       >
         <Badge variant="success" presentation="dot" className="px-3.5 py-1 text-xs">
-          Available for new opportunities
+          {t('hero.availability', {}, 'Available for new opportunities')}
         </Badge>
 
         <span className="inline-flex items-center gap-1.5 rounded-full border border-default bg-surface/70 px-3 py-1 text-xs font-medium text-secondary">
           <FaMapMarkerAlt className="h-3 w-3 text-accent-secondary" aria-hidden="true" />
-          <span>{shortLocation}</span>
+          <span>{t('hero.location', {}, shortLocation)}</span>
         </span>
       </motion.div>
 
@@ -47,13 +49,13 @@ const HeroContent = ({ personalInfo, onContact, onProjects }) => {
             variant="h2"
             className="text-2xl font-bold tracking-tight text-primary sm:text-3xl"
           >
-            {title}
+            {t('hero.title', {}, title)}
           </Typography>
           <Typography
             variant="subtitle"
             className="text-sm font-medium uppercase tracking-wider text-accent-secondary sm:text-base"
           >
-            {secondaryTitle}
+            {t('hero.secondaryTitle', {}, secondaryTitle)}
           </Typography>
         </div>
       </motion.div>
@@ -64,7 +66,7 @@ const HeroContent = ({ personalInfo, onContact, onProjects }) => {
           variant="body"
           className="max-w-2xl text-base leading-relaxed text-secondary sm:text-lg"
         >
-          {mission}
+          {t('hero.mission', {}, mission)}
         </Typography>
       </motion.div>
 
@@ -73,8 +75,8 @@ const HeroContent = ({ personalInfo, onContact, onProjects }) => {
         variants={heroItemVariants}
         className="flex flex-wrap items-center justify-center gap-2 lg:justify-start"
       >
-        <span className="text-xs font-semibold uppercase tracking-wider text-muted mr-1">
-          Stack:
+        <span className="text-xs font-semibold uppercase tracking-wider text-muted me-1">
+          {t('hero.stackLabel', {}, 'Stack:')}
         </span>
         {['React 19', 'TypeScript', 'Node.js', 'Express', 'MongoDB Atlas', 'Tailwind CSS'].map(
           (tech) => (
@@ -101,7 +103,7 @@ const HeroContent = ({ personalInfo, onContact, onProjects }) => {
           icon={FaArrowDown}
           className="shadow-lg shadow-accent-primary/25"
         >
-          View Projects
+          {t('hero.viewProjects', {}, 'View Projects')}
         </Button>
 
         {/* Secondary CTA */}
@@ -113,7 +115,7 @@ const HeroContent = ({ personalInfo, onContact, onProjects }) => {
           icon={FaDownload}
           className="border-default hover:border-accent-primary/50"
         >
-          Download CV
+          {t('hero.downloadCv', {}, 'Download CV')}
         </Button>
 
         {/* Tertiary CTA */}
@@ -124,7 +126,7 @@ const HeroContent = ({ personalInfo, onContact, onProjects }) => {
           icon={FaEnvelope}
           className="border-default hover:border-accent-secondary/50 text-secondary hover:text-accent-secondary"
         >
-          Contact Me
+          {t('hero.contactMe', {}, 'Contact Me')}
         </Button>
 
         {/* Social Quick Links */}

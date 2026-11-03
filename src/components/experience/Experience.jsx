@@ -18,8 +18,10 @@ import Badge from '../common/Badge';
 import Typography from '../common/Typography';
 import Reveal from '../animations/Reveal';
 import { EASINGS } from '../../lib/motion';
+import { useTranslation } from '../../i18n';
 
 export default function Experience({ limit = 3 }) {
+  const { t, isRTL } = useTranslation();
   const { experience, education } = portfolioData;
   const displayedExperience = limit ? experience.slice(0, limit) : experience;
   const shouldReduceMotion = useReducedMotion();
@@ -27,16 +29,18 @@ export default function Experience({ limit = 3 }) {
   return (
     <SectionWrapper
       id="experience"
-      eyebrow="Chronological Engineering Journey"
-      title="Experience & Milestones"
-      description="A structured timeline of production systems, architecture decisions, and verified full-stack deliveries."
+      eyebrow={t('experience.eyebrow')}
+      title={t('experience.title')}
+      description={t('experience.description')}
       className="mx-auto max-w-5xl px-4 sm:px-6"
     >
-      {/* Timeline Container with Left Spine */}
-      <div className="relative pl-6 sm:pl-10 md:pl-14">
+      {/* Timeline Container with Spine */}
+      <div className={`relative ${isRTL ? 'pr-6 sm:pr-10 md:pr-14' : 'pl-6 sm:pl-10 md:pl-14'}`}>
         {/* Continuous Vertical Glowing Line */}
         <div
-          className="absolute left-2.5 sm:left-4 md:left-6 top-3 bottom-6 w-0.5 bg-linear-to-b from-accent-primary via-accent-secondary to-accent-primary/20"
+          className={`absolute top-3 bottom-6 w-0.5 bg-linear-to-b from-accent-primary via-accent-secondary to-accent-primary/20 ${
+            isRTL ? 'right-2.5 sm:right-4 md:right-6' : 'left-2.5 sm:left-4 md:left-6'
+          }`}
           aria-hidden="true"
         />
 
@@ -51,7 +55,9 @@ export default function Experience({ limit = 3 }) {
             >
               {/* Animated Timeline Marker Node */}
               <motion.div
-                className={`absolute -left-6 sm:-left-10 md:-left-14 top-1.5 z-10 flex h-7 w-7 sm:h-8 sm:w-8 md:h-9 md:w-9 items-center justify-center rounded-full border-2 bg-surface shadow-md ${
+                className={`absolute top-1.5 z-10 flex h-7 w-7 sm:h-8 sm:w-8 md:h-9 md:w-9 items-center justify-center rounded-full border-2 bg-surface shadow-md ${
+                  isRTL ? '-right-6 sm:-right-10 md:-right-14' : '-left-6 sm:-left-10 md:-left-14'
+                } ${
                   isLatest
                     ? 'border-accent-primary text-accent-primary shadow-accent-primary/30'
                     : 'border-accent-secondary/70 text-accent-secondary shadow-accent-secondary/20'
@@ -97,8 +103,8 @@ export default function Experience({ limit = 3 }) {
                         to={`/projects/${role.projectSlug}`}
                         className="text-xs font-semibold text-accent-primary hover:underline inline-flex items-center gap-1"
                       >
-                        <span>Case Study</span>
-                        <span aria-hidden="true">&rarr;</span>
+                        <span>{t('common.caseStudy')}</span>
+                        <span aria-hidden="true">{isRTL ? '←' : '→'}</span>
                       </Link>
                     )}
                   </div>
@@ -132,7 +138,7 @@ export default function Experience({ limit = 3 }) {
                   {role.outcomes && role.outcomes.length > 0 && (
                     <div className="space-y-2 pt-1">
                       <p className="text-[11px] font-bold uppercase tracking-wider text-accent-secondary">
-                        Key Engineering Outcomes
+                        {t('experience.keyOutcomes')}
                       </p>
                       <ul className="space-y-1.5">
                         {role.outcomes.map((outcome, oIdx) => (
@@ -171,7 +177,7 @@ export default function Experience({ limit = 3 }) {
                         variant="primary"
                         size="sm"
                       >
-                        Case Study
+                        {t('common.caseStudy')}
                       </Button>
                     )}
 
@@ -183,13 +189,13 @@ export default function Experience({ limit = 3 }) {
                         icon={FaExternalLinkAlt}
                         iconPosition="right"
                       >
-                        Live Demo
+                        {t('common.liveDemo')}
                       </Button>
                     )}
 
                     {role.githubUrl && (
                       <Button href={role.githubUrl} variant="ghost" size="sm" icon={FaGithub}>
-                        Source Code
+                        {t('common.sourceCode')}
                       </Button>
                     )}
                   </div>
@@ -202,7 +208,9 @@ export default function Experience({ limit = 3 }) {
         {/* Foundational Milestone (Academic Origin) */}
         <div className="relative">
           <motion.div
-            className="absolute -left-6 sm:-left-10 md:-left-14 top-1.5 z-10 flex h-7 w-7 sm:h-8 sm:w-8 md:h-9 md:w-9 items-center justify-center rounded-full border-2 border-emerald-400 bg-surface shadow-md shadow-emerald-400/20 text-emerald-400"
+            className={`absolute top-1.5 z-10 flex h-7 w-7 sm:h-8 sm:w-8 md:h-9 md:w-9 items-center justify-center rounded-full border-2 border-emerald-400 bg-surface shadow-md shadow-emerald-400/20 text-emerald-400 ${
+              isRTL ? '-right-6 sm:-right-10 md:-right-14' : '-left-6 sm:-left-10 md:-left-14'
+            }`}
             initial={shouldReduceMotion ? false : { scale: 0.7, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true, amount: 0.3 }}
@@ -220,14 +228,14 @@ export default function Experience({ limit = 3 }) {
             >
               <div className="flex flex-wrap items-center gap-2">
                 <Badge variant="neutral" className="text-xs">
-                  Academic Foundation
+                  {t('experience.academicOriginBadge')}
                 </Badge>
-                <span className="text-xs text-muted">Continuous Learning & CS Rigor</span>
+                <span className="text-xs text-muted">{t('experience.academicOriginSubtitle')}</span>
               </div>
 
               <div>
                 <Typography variant="h3" className="text-base sm:text-lg font-bold text-primary">
-                  Computer Science Studies & Core Foundations
+                  {t('experience.csStudiesTitle')}
                 </Typography>
                 <Typography
                   variant="body"
@@ -242,8 +250,7 @@ export default function Experience({ limit = 3 }) {
                 variant="body"
                 className="text-xs sm:text-sm leading-relaxed text-secondary"
               >
-                Rigorous focus on computer science theory, algorithmic problem solving, data
-                structures, and defensive secure coding that powers scalable MERN architectures.
+                {t('experience.csStudiesDesc')}
               </Typography>
             </Card>
           </Reveal>
@@ -260,9 +267,11 @@ export default function Experience({ limit = 3 }) {
             size="md"
             icon={FaArrowRight}
             iconPosition="right"
-            className="group border-default shadow-sm hover:border-accent-primary hover:text-accent-primary"
+            className={`group border-default shadow-sm hover:border-accent-primary hover:text-accent-primary ${
+              isRTL ? '[&>svg]:rotate-180' : ''
+            }`}
           >
-            Explore Complete Engineering Timeline ({experience.length})
+            {t('experience.exploreCompleteTimeline', { count: experience.length })}
           </Button>
         </div>
       )}

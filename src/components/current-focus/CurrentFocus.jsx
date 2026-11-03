@@ -1,15 +1,17 @@
 import { portfolioData } from '../../data';
 import SectionWrapper from '../common/SectionWrapper';
 import FocusCard from './FocusCard';
+import { useTranslation } from '../../i18n';
 
 export default function CurrentFocus({ limit = 4 }) {
+  const { t } = useTranslation();
   const { currentFocus } = portfolioData;
   const displayedFocus = limit ? currentFocus.slice(0, limit) : currentFocus;
 
   return (
     <SectionWrapper
       id="current-focus"
-      title="Current Focus"
+      title={t('about.currentFocus', {}, 'Current Focus')}
       className="mx-auto max-w-5xl px-4 sm:px-6"
     >
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">

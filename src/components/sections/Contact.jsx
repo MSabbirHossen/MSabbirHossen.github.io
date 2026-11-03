@@ -2,10 +2,13 @@ import Reveal from '../animations/Reveal';
 import ContactForm from '../contact/ContactForm';
 import ContactInfo from '../contact/ContactInfo';
 import SectionWrapper from '../common/SectionWrapper';
+import { useTranslation } from '../../i18n';
 
 export default function Contact() {
+  const { t } = useTranslation();
+
   return (
-    <SectionWrapper id="contact" title="Get In Touch">
+    <SectionWrapper id="contact" title={t('contact.title')}>
       <div className="mx-auto max-w-6xl px-4">
         <div className="grid gap-6 lg:grid-cols-2 items-stretch">
           <Reveal y={18} className="h-full">

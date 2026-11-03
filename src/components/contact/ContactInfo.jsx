@@ -4,6 +4,7 @@ import Typography from '../common/Typography';
 import Card from '../common/Card';
 import ContactItem from './ContactItem';
 import CollaborationCard from './CollaborationCard';
+import { useTranslation } from '../../i18n';
 
 const WhatsAppIcon = () => (
   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
@@ -12,6 +13,7 @@ const WhatsAppIcon = () => (
 );
 
 const ContactInfo = () => {
+  const { t } = useTranslation();
   const { personalInfo } = portfolioData;
 
   const standardItems = [
@@ -45,16 +47,14 @@ const ContactInfo = () => {
           </div>
           <div className="min-w-0">
             <Typography variant="subtitle" className="text-primary font-bold text-base truncate">
-              Direct Contact & Channels
+              {t('contact.directContactChannels')}
             </Typography>
-            <p className="text-xs text-secondary truncate">
-              Reach out via instant messaging, email, or socials
-            </p>
+            <p className="text-xs text-secondary truncate">{t('contact.directSubtitle')}</p>
           </div>
         </div>
         <span className="shrink-0 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-accent-secondary/10 text-accent-secondary border border-accent-secondary/25">
           <span className="w-2 h-2 rounded-full bg-accent-secondary animate-pulse" />
-          Available
+          {t('contact.availableBadge')}
         </span>
       </div>
 
@@ -70,7 +70,7 @@ const ContactInfo = () => {
                 <div className="flex items-center gap-2">
                   <span className="font-bold text-primary text-sm">WhatsApp</span>
                   <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-[#25D366]/10 text-[#25D366] border border-[#25D366]/25">
-                    Direct Chat
+                    {t('contact.directChat')}
                   </span>
                 </div>
                 <p className="text-xs text-secondary font-mono truncate">
@@ -84,7 +84,7 @@ const ContactInfo = () => {
               rel="noopener noreferrer"
               className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-[#25D366] text-white hover:bg-[#20ba59] transition-all shadow-sm shadow-[#25D366]/20 cursor-pointer"
             >
-              Chat Now <FaExternalLinkAlt className="w-2.5 h-2.5" />
+              {t('contact.chatNow')} <FaExternalLinkAlt className="w-2.5 h-2.5" />
             </a>
           </div>
         </div>

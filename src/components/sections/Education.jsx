@@ -13,17 +13,19 @@ import Badge from '../common/Badge';
 import Button from '../common/Button';
 import SectionWrapper from '../common/SectionWrapper';
 import Reveal from '../animations/Reveal';
+import { useTranslation } from '../../i18n';
 
 export default function Education({ limit = 2 }) {
+  const { t, isRTL } = useTranslation();
   const { education } = portfolioData;
   const displayedEducation = limit ? education.slice(0, limit) : education;
 
   return (
     <SectionWrapper
       id="education"
-      eyebrow="Academic Foundations"
-      title="Education & Degrees"
-      description="Rigorous computer science undergraduate studies and academic language qualifications from the Islamic University of Madinah."
+      eyebrow={t('education.eyebrow')}
+      title={t('education.title')}
+      description={t('education.description')}
       className="mx-auto max-w-5xl px-4 sm:px-6"
     >
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -109,12 +111,12 @@ export default function Education({ limit = 2 }) {
                       {isCurrent ? (
                         <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/25 bg-emerald-500/10 px-2.5 py-0.5 text-xs font-semibold text-emerald-400">
                           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
-                          In Progress · Undergraduate
+                          {t('education.inProgressBadge')}
                         </span>
                       ) : (
                         <span className="inline-flex items-center gap-1.5 rounded-full border border-accent-secondary/25 bg-accent-secondary/10 px-2.5 py-0.5 text-xs font-semibold text-accent-secondary">
                           <FaCheckCircle className="h-3 w-3" />
-                          Completed Qualification
+                          {t('education.completedBadge')}
                         </span>
                       )}
                     </div>
@@ -144,9 +146,11 @@ export default function Education({ limit = 2 }) {
             size="md"
             icon={FaArrowRight}
             iconPosition="right"
-            className="group border-default shadow-sm hover:border-accent-primary hover:text-accent-primary"
+            className={`group border-default shadow-sm hover:border-accent-primary hover:text-accent-primary ${
+              isRTL ? '[&>svg]:rotate-180' : ''
+            }`}
           >
-            Explore Complete Academic Timeline ({education.length})
+            {t('education.exploreCompleteTimeline', { count: education.length })}
           </Button>
         </div>
       )}

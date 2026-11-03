@@ -1,9 +1,12 @@
 import { portfolioData } from '../../data';
 import Typography from '../common/Typography';
 import { FaCheckCircle, FaHandshake } from 'react-icons/fa';
+import { useTranslation } from '../../i18n';
 
 const CollaborationCard = () => {
+  const { t } = useTranslation();
   const { preferredCollaboration } = portfolioData;
+
   return (
     <div className="rounded-xl border border-default bg-surface/60 p-3.5">
       <Typography
@@ -11,7 +14,7 @@ const CollaborationCard = () => {
         className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-secondary mb-2"
       >
         <FaHandshake className="h-4 w-4 text-accent-secondary" />
-        Preferred Collaboration
+        {t('contact.preferredCollabTitle')}
       </Typography>
       <div className="flex flex-wrap gap-1.5">
         {preferredCollaboration.map((item, index) => (

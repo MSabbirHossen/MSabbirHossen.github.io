@@ -3,8 +3,10 @@ import HeroImage from '../hero/HeroImage';
 import HeroContent from '../hero/HeroContent';
 import { FaArrowDown } from 'react-icons/fa';
 import { scrollToSection } from '../../lib/navigation';
+import { useTranslation } from '../../i18n';
 
 export default function Hero() {
+  const { t } = useTranslation();
   const { personalInfo } = portfolioData;
 
   const scrollToContact = () => {
@@ -41,10 +43,10 @@ export default function Hero() {
         type="button"
         onClick={scrollToHighlights}
         className="animate-float absolute bottom-4 left-1/2 -translate-x-1/2 text-xs font-semibold uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent-primary cursor-pointer hidden md:block"
-        aria-label="Scroll to explore highlights"
+        aria-label={t('hero.exploreAria', {}, 'Scroll to explore highlights')}
       >
         <span className="flex flex-col items-center gap-1.5">
-          <span className="text-[11px]">Explore</span>
+          <span className="text-[11px]">{t('hero.exploreScroll', {}, 'Explore')}</span>
           <FaArrowDown className="h-3 w-3" aria-hidden="true" />
         </span>
       </button>

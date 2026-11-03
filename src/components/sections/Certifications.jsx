@@ -7,17 +7,19 @@ import Badge from '../common/Badge';
 import Button from '../common/Button';
 import SectionWrapper from '../common/SectionWrapper';
 import Reveal from '../animations/Reveal';
+import { useTranslation } from '../../i18n';
 
 export default function Certifications({ limit = 2 }) {
+  const { t, isRTL } = useTranslation();
   const { certifications } = portfolioData;
   const displayedCertifications = limit ? certifications.slice(0, limit) : certifications;
 
   return (
     <SectionWrapper
       id="certifications"
-      eyebrow="Continuous Learning & Credentials"
-      title="Certifications & Training"
-      description="Verified professional credentials in MERN full-stack development, modern web architecture, and developer workflows."
+      eyebrow={t('certifications.eyebrow')}
+      title={t('certifications.title')}
+      description={t('certifications.description')}
       className="mx-auto max-w-5xl px-4 sm:px-6"
     >
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -66,7 +68,7 @@ export default function Certifications({ limit = 2 }) {
                                 className="inline-block max-w-[200px] truncate align-bottom font-mono text-[11px] text-muted sm:max-w-[260px]"
                                 title={cert.id}
                               >
-                                ID: {cert.id}
+                                {t('certifications.idLabel')} {cert.id}
                               </span>
                             </>
                           )}
@@ -101,7 +103,7 @@ export default function Certifications({ limit = 2 }) {
 
                 <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-default/40 pt-3.5">
                   <Typography variant="body" className="text-xs font-medium text-secondary">
-                    Issued by <span className="font-semibold text-primary">{cert.issuer}</span>
+                    {t('certifications.issuedBy', { issuer: cert.issuer })}
                   </Typography>
 
                   {cert.link && (
@@ -113,7 +115,7 @@ export default function Certifications({ limit = 2 }) {
                       iconPosition="right"
                       className="text-xs py-1.5 px-3"
                     >
-                      Verify Credential
+                      {t('common.verifyCredential')}
                     </Button>
                   )}
                 </div>
@@ -133,9 +135,11 @@ export default function Certifications({ limit = 2 }) {
             size="md"
             icon={FaArrowRight}
             iconPosition="right"
-            className="group border-default shadow-sm hover:border-accent-primary hover:text-accent-primary"
+            className={`group border-default shadow-sm hover:border-accent-primary hover:text-accent-primary ${
+              isRTL ? '[&>svg]:rotate-180' : ''
+            }`}
           >
-            Explore All Certifications ({certifications.length})
+            {t('certifications.exploreAllCertifications', { count: certifications.length })}
           </Button>
         </div>
       )}
