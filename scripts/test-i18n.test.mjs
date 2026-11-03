@@ -541,3 +541,27 @@ test('multilingual AI: card badges and action labels support RTL and localized c
   assert.equal(labelsBn.liveDemo, 'লাইভ ডেমো');
   assert.equal(labelsBn.githubCode, 'গিটহাব কোড');
 });
+
+test('portfolio guide: getGuideSteps provides 8 structured onboarding steps', async () => {
+  const { getGuideSteps } = await import('../src/data/guideData.js');
+  const steps = getGuideSteps();
+  assert.equal(steps.length, 8);
+  for (let i = 0; i < steps.length; i++) {
+    assert.ok(steps[i].id, `Step ${i} must have an ID`);
+    assert.ok(steps[i].title, `Step ${i} must have a title`);
+    assert.ok(steps[i].badge, `Step ${i} must have a badge`);
+    assert.ok(steps[i].description, `Step ${i} must have a description`);
+  }
+});
+
+test('portfolio guide: localization parity for guide keys across all languages', () => {
+  for (const lang of ['en', 'ar', 'bn']) {
+    const dict = lang === 'en' ? en : lang === 'ar' ? ar : bn;
+    assert.ok(dict.guide, `Language ${lang} must have guide section`);
+    assert.ok(dict.guide.startTour, `Language ${lang} must have guide.startTour`);
+    assert.ok(dict.guide.nextStep, `Language ${lang} must have guide.nextStep`);
+    assert.ok(dict.guide.back, `Language ${lang} must have guide.back`);
+    assert.ok(dict.guide.finishTour, `Language ${lang} must have guide.finishTour`);
+    assert.ok(dict.guide.restart, `Language ${lang} must have guide.restart`);
+  }
+});
