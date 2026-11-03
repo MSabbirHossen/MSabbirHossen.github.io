@@ -56,7 +56,15 @@ const Card = forwardRef(function Card(
     [spotlight, onMouseLeave]
   );
 
-  const base = 'relative rounded-2xl transition-all duration-300 overflow-hidden';
+  const hasPositionClass = /\b(?:[a-z]+:)?(static|fixed|absolute|relative|sticky)\b/.test(
+    className
+  );
+  const hasOverflowClass = /\b(?:[a-z]+:)?overflow-(auto|hidden|clip|visible|scroll)\b/.test(
+    className
+  );
+  const positionBase = hasPositionClass ? '' : 'relative';
+  const overflowBase = hasOverflowClass ? '' : 'overflow-hidden';
+  const base = `${positionBase} rounded-2xl transition-all duration-300 ${overflowBase}`.trim();
   const surface = glass ? 'glass' : 'surface border-default';
   const hoverStyle = hover ? 'surface-hover' : '';
   const gradientBorder = gradient ? 'gradient-border' : '';

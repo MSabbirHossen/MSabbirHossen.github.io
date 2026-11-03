@@ -48,6 +48,7 @@ export default function PortfolioGuideModal() {
 
   const shouldReduceMotion = useReducedMotion();
   const dialogRef = useRef(null);
+  const scrollContainerRef = useRef(null);
   const previousActiveElementRef = useRef(null);
 
   const steps = useMemo(() => getGuideSteps(), []);
@@ -55,14 +56,25 @@ export default function PortfolioGuideModal() {
   const isFirstStep = currentStep === 0;
   const isLastStep = currentStep === steps.length - 1;
 
-  // Body scroll lock
+  // Reset scroll position on step transition
+  useEffect(() => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTop = 0;
+    }
+  }, [currentStep]);
+
+  // Robust document scroll lock with cleanup
   useEffect(() => {
     if (!isOpen) return;
-    const originalOverflow = document.body.style.overflow;
+    const originalBodyOverflow = document.body.style.overflow;
+    const originalHtmlOverflow = document.documentElement.style.overflow;
+
     document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
 
     return () => {
-      document.body.style.overflow = originalOverflow;
+      document.body.style.overflow = originalBodyOverflow;
+      document.documentElement.style.overflow = originalHtmlOverflow;
     };
   }, [isOpen]);
 
@@ -77,7 +89,7 @@ export default function PortfolioGuideModal() {
     dialogRef.current?.focus();
   }, [isOpen]);
 
-  // Keyboard navigation: Escape, ArrowLeft, ArrowRight
+  // Keyboard navigation: Escape, ArrowLeft, ArrowRight, ArrowUp, ArrowDown, PageUp, PageDown, Home, End
   const handleKeyDown = (e) => {
     if (e.key === 'Escape') {
       e.stopPropagation();
@@ -95,6 +107,49 @@ export default function PortfolioGuideModal() {
       e.preventDefault();
       prevStep();
       return;
+    }
+
+    // Keyboard scrolling support for modal content
+    const isFocusOnDialogOrBody =
+      document.activeElement === dialogRef.current ||
+      document.activeElement === scrollContainerRef.current;
+
+    if (isFocusOnDialogOrBody) {
+      if (e.key === 'PageDown' || e.key === 'ArrowDown') {
+        e.preventDefault();
+        scrollContainerRef.current?.scrollBy({
+          top: e.key === 'PageDown' ? 240 : 60,
+          behavior: shouldReduceMotion ? 'auto' : 'smooth',
+        });
+        return;
+      }
+
+      if (e.key === 'PageUp' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        scrollContainerRef.current?.scrollBy({
+          top: e.key === 'PageUp' ? -240 : -60,
+          behavior: shouldReduceMotion ? 'auto' : 'smooth',
+        });
+        return;
+      }
+
+      if (e.key === 'Home') {
+        e.preventDefault();
+        scrollContainerRef.current?.scrollTo({
+          top: 0,
+          behavior: shouldReduceMotion ? 'auto' : 'smooth',
+        });
+        return;
+      }
+
+      if (e.key === 'End') {
+        e.preventDefault();
+        scrollContainerRef.current?.scrollTo({
+          top: scrollContainerRef.current.scrollHeight,
+          behavior: shouldReduceMotion ? 'auto' : 'smooth',
+        });
+        return;
+      }
     }
 
     // Focus trapping inside modal
@@ -147,6 +202,7 @@ export default function PortfolioGuideModal() {
           transition={{ duration: 0.2 }}
           className="fixed inset-0 bg-slate-950/75 backdrop-blur-md"
           onClick={closeGuide}
+          onTouchMove={(e) => e.preventDefault()}
           aria-hidden="true"
         />
 
@@ -161,7 +217,7 @@ export default function PortfolioGuideModal() {
           className="relative z-10 flex flex-col w-full max-w-2xl max-h-[92vh] sm:max-h-[88vh] rounded-3xl border border-default bg-surface shadow-2xl shadow-black/40 overflow-hidden outline-none"
         >
           {/* Top Progress Spine */}
-          <div className="h-1 w-full bg-surface-hover" aria-hidden="true">
+          <div className="h-1 w-full shrink-0 bg-surface-hover" aria-hidden="true">
             <motion.div
               className="h-full bg-gradient-to-r from-accent-primary via-indigo-500 to-accent-secondary transition-all duration-300"
               style={{ width: `${progressPercent}%` }}
@@ -169,7 +225,7 @@ export default function PortfolioGuideModal() {
           </div>
 
           {/* Modal Header */}
-          <div className="flex items-center justify-between border-b border-default/50 px-5 py-3.5 sm:px-7 sm:py-4 bg-surface/80">
+          <div className="flex shrink-0 items-center justify-between border-b border-default/50 px-5 py-3.5 sm:px-7 sm:py-4 bg-surface/80">
             <div className="flex items-center gap-2.5">
               <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-accent-primary/10 text-accent-primary">
                 <Icon className="h-4 w-4" aria-hidden="true" />
@@ -198,7 +254,11 @@ export default function PortfolioGuideModal() {
           </div>
 
           {/* Scrollable Body with Directional Transitions */}
-          <div className="grow overflow-y-auto px-5 py-5 sm:px-7 sm:py-6">
+          <div
+            ref={scrollContainerRef}
+            tabIndex={0}
+            className="grow min-h-0 overflow-y-auto overscroll-contain touch-pan-y px-5 py-5 sm:px-7 sm:py-6 outline-none focus-visible:ring-1 focus-visible:ring-accent-primary/20"
+          >
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={step.id}
@@ -427,7 +487,7 @@ export default function PortfolioGuideModal() {
           </div>
 
           {/* Modal Footer Controls */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3.5 border-t border-default/50 px-5 py-4 sm:px-7 sm:py-4 bg-surface/80">
+          <div className="flex shrink-0 flex-col sm:flex-row items-center justify-between gap-3.5 border-t border-default/50 px-5 py-4 sm:px-7 sm:py-4 bg-surface/80">
             {/* Step Dots & Restart */}
             <div className="flex items-center gap-1.5">
               {steps.map((s, idx) => (

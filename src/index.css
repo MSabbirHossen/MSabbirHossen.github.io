@@ -75,7 +75,7 @@
   html {
     scroll-behavior: smooth;
     font-family: var(--font-sans);
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   html[lang='ar'],
@@ -97,7 +97,7 @@
 
   body {
     @apply transition-colors duration-300 antialiased;
-    overflow-x: hidden;
+    overflow-x: clip;
     background-color: var(--color-dark-bg);
     background-image:
       radial-gradient(circle at top left, rgba(99, 102, 241, 0.1), transparent 32%),
@@ -211,7 +211,7 @@ html.light .surface {
   border-color: var(--color-accent-primary);
 }
 
-.card-spotlight {
+.card-spotlight:not([class*='sticky']):not([class*='fixed']):not([class*='absolute']) {
   position: relative;
 }
 

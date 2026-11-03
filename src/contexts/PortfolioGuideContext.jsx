@@ -20,9 +20,20 @@ export function PortfolioGuideProvider({ children }) {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const [prevSearch, setPrevSearch] = useState(location.search);
   const [isOpen, setIsOpen] = useState(() => parseSearchForGuide(location.search).isOpen);
   const [currentStep, setCurrentStep] = useState(() => parseSearchForGuide(location.search).step);
   const [direction, setDirection] = useState(1);
+
+  // Synchronize when URL search parameters change during rendering
+  if (prevSearch !== location.search) {
+    setPrevSearch(location.search);
+    const parsed = parseSearchForGuide(location.search);
+    if (parsed.isOpen) {
+      setIsOpen(true);
+      setCurrentStep(parsed.step);
+    }
+  }
 
   const [hasCompleted, setHasCompleted] = useState(() => {
     if (typeof window === 'undefined') return false;

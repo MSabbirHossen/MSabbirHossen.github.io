@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useReducedMotion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import {
@@ -106,6 +107,7 @@ function Accordion({ title, children, defaultOpen = false, badge = null, icon: I
 
 export default function GuidePage() {
   const { t, isRTL } = useTranslation();
+  const shouldReduceMotion = useReducedMotion();
   const { personalInfo, projects, skills, certifications } = portfolioData;
   const { openGuide } = usePortfolioGuide();
   const [activeSection, setActiveSection] = useState('welcome');
@@ -118,23 +120,39 @@ export default function GuidePage() {
   const socialImage = `${siteUrl}/og-image.svg`;
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
-      if (totalScroll > 0) {
-        const currentProgress = (window.scrollY / totalScroll) * 100;
-        setScrollProgress(Math.min(100, Math.max(0, currentProgress)));
-      }
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const docEl = document.documentElement;
+          const totalScroll = docEl.scrollHeight - window.innerHeight;
+          if (totalScroll > 0) {
+            const currentProgress = Math.min(
+              100,
+              Math.max(0, (window.scrollY / totalScroll) * 100)
+            );
+            setScrollProgress((prev) =>
+              Math.abs(prev - currentProgress) >= 0.5 ? currentProgress : prev
+            );
+          }
 
-      const sectionElements = GUIDE_SECTIONS.map((sec) => document.getElementById(sec.id)).filter(
-        Boolean
-      );
+          const sectionElements = GUIDE_SECTIONS.map((sec) =>
+            document.getElementById(sec.id)
+          ).filter(Boolean);
 
-      for (let i = sectionElements.length - 1; i >= 0; i--) {
-        const rect = sectionElements[i].getBoundingClientRect();
-        if (rect.top <= 200) {
-          setActiveSection(GUIDE_SECTIONS[i].id);
-          break;
-        }
+          for (let i = sectionElements.length - 1; i >= 0; i--) {
+            const rect = sectionElements[i].getBoundingClientRect();
+            if (rect.top <= 200) {
+              const newActive = GUIDE_SECTIONS[i].id;
+              setActiveSection((prev) => (prev !== newActive ? newActive : prev));
+              break;
+            }
+          }
+
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
@@ -147,8 +165,10 @@ export default function GuidePage() {
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      const topOffset = element.getBoundingClientRect().top + window.scrollY - 100;
-      window.scrollTo({ top: topOffset, behavior: 'smooth' });
+      element.scrollIntoView({
+        behavior: shouldReduceMotion ? 'auto' : 'smooth',
+        block: 'start',
+      });
     }
   };
 
@@ -181,7 +201,7 @@ export default function GuidePage() {
       </Helmet>
 
       {/* Reading Progress Indicator */}
-      <div className="fixed top-0 left-0 right-0 z-50 h-1 bg-surface-hover">
+      <div className="fixed top-0 left-0 right-0 z-50 h-1 bg-surface-hover pointer-events-none">
         <div
           className="h-full bg-gradient-to-r from-accent-primary to-indigo-500 transition-all duration-150"
           style={{ width: `${scrollProgress}%` }}
@@ -341,7 +361,7 @@ export default function GuidePage() {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
           {/* Table of Contents Sticky Sidebar */}
           <aside className="lg:col-span-4 xl:col-span-3">
-            <Card spotlight className="sticky top-24 space-y-4 border-default p-5 shadow-lg">
+            <Card spotlight className="lg:sticky lg:top-24 space-y-4 border-default p-5 shadow-lg">
               <div className="flex items-center justify-between border-b border-default pb-3">
                 <span className="text-xs font-bold uppercase tracking-wider text-muted">
                   Guide Sections
@@ -351,7 +371,7 @@ export default function GuidePage() {
                 </span>
               </div>
 
-              <nav className="space-y-1 max-h-[calc(100vh-14rem)] overflow-y-auto pr-1">
+              <nav className="space-y-1 lg:max-h-[calc(100vh-14rem)] lg:overflow-y-auto pr-1">
                 {GUIDE_SECTIONS.map((sec) => {
                   const Icon = sec.icon;
                   const isActive = activeSection === sec.id;
