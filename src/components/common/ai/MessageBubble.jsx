@@ -10,8 +10,11 @@ import {
 } from 'react-icons/fa';
 import Button from '../Button';
 import Card from '../Card';
+import { useTranslation } from '../../../i18n';
 
 function ResponseCard({ card, onAction }) {
+  const { t } = useTranslation();
+
   if (card.type === 'project') {
     return (
       <Card className="mt-3 space-y-3 border-default p-4" hover={false}>
@@ -32,7 +35,8 @@ function ResponseCard({ card, onAction }) {
           </ul>
         )}
         <p className="text-xs text-muted">
-          <span className="font-semibold text-secondary">Tech:</span> {card.techStack.join(', ')}
+          <span className="font-semibold text-secondary">{t('skills.title', {}, 'Tech')}:</span>{' '}
+          {card.techStack.join(', ')}
         </p>
         <div className="flex flex-wrap gap-2 pt-1">
           <Button
@@ -40,7 +44,7 @@ function ResponseCard({ card, onAction }) {
             variant="outline"
             onClick={() => onAction({ kind: 'route', target: card.links.details })}
           >
-            Case Study
+            {t('common.caseStudy', {}, 'Case Study')}
           </Button>
           {card.links.live && (
             <Button
@@ -49,7 +53,7 @@ function ResponseCard({ card, onAction }) {
               icon={FaExternalLinkAlt}
               onClick={() => onAction({ kind: 'external', target: card.links.live })}
             >
-              Live Demo
+              {t('common.liveDemo', {}, 'Live Demo')}
             </Button>
           )}
           {card.links.github && (
@@ -59,7 +63,7 @@ function ResponseCard({ card, onAction }) {
               icon={FaGithub}
               onClick={() => onAction({ kind: 'external', target: card.links.github })}
             >
-              GitHub Code
+              {t('common.sourceCode', {}, 'GitHub Code')}
             </Button>
           )}
         </div>
@@ -86,23 +90,32 @@ function ResponseCard({ card, onAction }) {
     return (
       <Card className="mt-3 space-y-3 border-default p-4" hover={false}>
         <div className="flex items-center justify-between">
-          <p className="text-sm font-semibold text-primary">Get in Touch with Sabbir</p>
+          <p className="text-sm font-semibold text-primary">
+            {t('ai.getInTouch', {}, 'Get in Touch with Sabbir')}
+          </p>
           <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-[11px] font-medium text-emerald-500">
-            Available for Hire
+            {t('ai.availableForHire', {}, 'Available for Hire')}
           </span>
         </div>
         <div className="space-y-1 text-xs text-secondary">
           <p>
-            <span className="font-medium text-muted">Email:</span> {card.email}
+            <span className="font-medium text-muted">{t('contact.emailHandle', {}, 'Email')}:</span>{' '}
+            {card.email}
           </p>
           {card.whatsapp && (
             <p>
-              <span className="font-medium text-muted">WhatsApp:</span> {card.whatsapp}
+              <span className="font-medium text-muted">
+                {t('contact.whatsAppDirect', {}, 'WhatsApp')}:
+              </span>{' '}
+              {card.whatsapp}
             </p>
           )}
           {card.location && (
             <p>
-              <span className="font-medium text-muted">Location:</span> {card.location}
+              <span className="font-medium text-muted">
+                {t('contact.collabLocation', {}, 'Location')}:
+              </span>{' '}
+              {card.location}
             </p>
           )}
         </div>
@@ -124,7 +137,7 @@ function ResponseCard({ card, onAction }) {
             icon={FaCopy}
             onClick={() => onAction({ kind: 'copy-email', value: card.email })}
           >
-            Copy Email
+            {t('ai.copyEmail', {}, 'Copy Email')}
           </Button>
           <Button
             size="sm"
@@ -140,7 +153,7 @@ function ResponseCard({ card, onAction }) {
             icon={FaDownload}
             onClick={() => onAction({ kind: 'external', target: card.resumePath })}
           >
-            Resume (PDF)
+            {t('ai.resumePdf', {}, 'Resume (PDF)')}
           </Button>
         </div>
       </Card>
@@ -160,7 +173,7 @@ function ResponseCard({ card, onAction }) {
             icon={FaExternalLinkAlt}
             onClick={() => onAction({ kind: 'external', target: card.link })}
           >
-            Verify Credential
+            {t('common.verifyCredential', {}, 'Verify Credential')}
           </Button>
         )}
       </Card>
@@ -170,11 +183,15 @@ function ResponseCard({ card, onAction }) {
   if (card.type === 'backend') {
     return (
       <Card className="mt-3 space-y-2 border-default p-4" hover={false}>
-        <p className="text-sm font-semibold text-primary">{card.title} Backend Architecture</p>
+        <p className="text-sm font-semibold text-primary">
+          {card.title} {t('ai.quickArchitecture', {}, 'Backend Architecture')}
+        </p>
         <p className="text-xs text-secondary">{card.stack.join(', ')}</p>
         {!!card.endpoints?.length && (
           <div className="pt-1">
-            <p className="text-[11px] font-semibold text-muted">Sample API Endpoints:</p>
+            <p className="text-[11px] font-semibold text-muted">
+              {t('projectDetails.apiSurface', {}, 'Sample API Endpoints')}:
+            </p>
             <ul className="mt-1 space-y-1 font-mono text-[11px] text-secondary">
               {card.endpoints.map((endpoint) => (
                 <li key={endpoint} className="rounded bg-subtle px-1.5 py-0.5">
@@ -246,7 +263,7 @@ function MessageBubble({ message, onAction, showInteractiveControls = false }) {
                   key={`${message.id}-${label}-${index}`}
                   type="button"
                   onClick={() => onAction(action)}
-                  className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary/35 ${
+                  className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary/35 cursor-pointer ${
                     isAction
                       ? 'bg-accent-primary text-white hover:bg-accent-primary-dark'
                       : 'border border-default/80 text-muted hover:border-accent-primary/40 hover:text-accent-primary'

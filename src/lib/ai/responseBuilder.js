@@ -1,35 +1,34 @@
-import { detectIntent } from './intentMatcher';
-
-const QUICK_FOLLOW_UPS = {
-  projects: [
-    'Tell me about Report BD',
-    'Tell me about ETA (LMS)',
-    'What architecture do you use?',
-    'Show GitHub code',
-  ],
-  skills: ['Show MERN stack projects', 'Do you use TypeScript and Zod?', 'Why hire Sabbir?'],
-  default: [
-    'Tell me about Report BD',
-    'Why should we hire Sabbir?',
-    'Show MERN skills',
-    'How can I contact Sabbir on WhatsApp?',
-  ],
-};
+import { detectIntent } from './intentMatcher.js';
+import {
+  getTemplate,
+  getActionLabels,
+  getFollowUps,
+  getCardBadge,
+  getSafeLanguage,
+} from './responseTemplates.js';
 
 function directFollowUp(label, actionConfig) {
   return { label, action: actionConfig };
 }
 
-function contactFollowUps(portfolio) {
+function contactFollowUps(portfolio, language = 'en') {
+  const labels = getActionLabels(language);
+
   const followUps = [
-    directFollowUp('Copy email', { kind: 'copy-email', value: portfolio.contact.email }),
-    directFollowUp('Open LinkedIn', { kind: 'external', target: portfolio.contact.linkedin }),
-    directFollowUp('Download resume', { kind: 'external', target: portfolio.resume.publicPath }),
+    directFollowUp(labels.copyEmail, { kind: 'copy-email', value: portfolio.contact.email }),
+    directFollowUp(labels.openLinkedIn, {
+      kind: 'external',
+      target: portfolio.contact.linkedin,
+    }),
+    directFollowUp(labels.downloadResume, {
+      kind: 'external',
+      target: portfolio.resume.publicPath,
+    }),
   ];
 
   if (portfolio.contact.whatsappUrl) {
     followUps.unshift(
-      directFollowUp('Chat on WhatsApp', {
+      directFollowUp(labels.chatWhatsApp, {
         kind: 'external',
         target: portfolio.contact.whatsappUrl,
       })
@@ -39,14 +38,14 @@ function contactFollowUps(portfolio) {
   return followUps;
 }
 
-function createProjectCard(project) {
+function createProjectCard(project, language = 'en') {
   const isFlagship = project.featuredOrder === 1;
   const isFeatured = project.featured;
 
   return {
     type: 'project',
     title: project.title,
-    badge: isFlagship ? '🌟 Flagship MERN' : isFeatured ? '🚀 Top Featured' : project.category,
+    badge: getCardBadge(isFlagship, isFeatured, project.category, language),
     description: project.overview,
     highlights: (project.keyFeatures ?? []).slice(0, 2),
     techStack: (project.technologies ?? []).slice(0, 6).map((tech) => tech.name),
@@ -89,72 +88,80 @@ function action(label, config) {
   };
 }
 
-function defaultUnknownResponse() {
+export function defaultUnknownResponse(language = 'en') {
+  const tpl = getTemplate(language);
+  const labels = getActionLabels(language);
+  const followUps = getFollowUps('default', language);
+
   return {
-    text: "I can guide you through Sabbir's MERN projects (like Report BD & ETA), technical skills, system architecture, certifications, or direct contact options. What would you like to explore?",
+    text: tpl.unknown,
     actions: [
-      action('🌟 Report BD (Flagship)', { kind: 'prompt', prompt: 'Tell me about Report BD' }),
-      action('🚀 Top Projects', { kind: 'prompt', prompt: 'Best projects' }),
-      action('💡 Why Hire Sabbir?', { kind: 'prompt', prompt: 'Why should we hire Sabbir?' }),
-      action('📞 Contact Sabbir', { kind: 'prompt', prompt: 'How can I contact Sabbir?' }),
+      action(labels.reportBdPrompt, { kind: 'prompt', prompt: followUps[0] }),
+      action(labels.topProjectsPrompt, { kind: 'prompt', prompt: followUps[1] }),
+      action(labels.whyHirePrompt, { kind: 'prompt', prompt: followUps[2] }),
+      action(labels.contactPrompt, { kind: 'prompt', prompt: followUps[3] }),
     ],
-    followUps: QUICK_FOLLOW_UPS.default,
+    followUps,
   };
 }
 
-function buildSingleProjectResponse(project, portfolio) {
+export function getErrorFallbackResponse(language = 'en') {
+  const tpl = getTemplate(language);
+  const labels = getActionLabels(language);
+  const followUps = getFollowUps('default', language);
+
+  return {
+    text: tpl.errorFallback,
+    actions: [
+      action(labels.topProjectsPrompt, {
+        kind: 'prompt',
+        prompt: followUps[0] || 'Report BD',
+      }),
+      action(labels.contactPrompt, {
+        kind: 'prompt',
+        prompt: followUps[3] || 'Contact Sabbir',
+      }),
+    ],
+  };
+}
+
+function buildSingleProjectResponse(project, portfolio, language = 'en') {
   const isReportBd = project.id === 'report-bd';
   const isEta = project.id === 'eta-digital-education-platform';
+  const tpl = getTemplate(language);
+  const labels = getActionLabels(language);
 
   let intro = `Here is a detailed breakdown of **${project.title}**:`;
 
   if (isReportBd) {
-    intro =
-      '🌟 **Report BD (BPS Report)** is Sabbir’s flagship MERN stack application — an institutional mentorship and multi-tenant personal reporting platform built with TypeScript, React 19, Express 4, and MongoDB Atlas.\n\n' +
-      '• **Architecture:** npm workspaces monorepo separating shared validation schemas (`@reportbd/shared`), an Express REST API, and a Vite React 19 SPA.\n' +
-      '• **Data Integrity & Concurrency:** Optimistic revision locking prevents stale overwrites (HTTP 409 Conflict) and deterministic formula engines handle variable month calculations.\n' +
-      '• **Zero-Trust Security:** Firebase Admin token verification, multi-tenant RBAC (4 system roles, 7 tiers), and recursive server-side audit log sanitization.\n' +
-      '• **Production Features:** Trilingual i18n (Bengali, English, Arabic RTL) and dedicated A4 printable report layouts with dual signatures.';
+    intro = tpl.reportBd;
   } else if (isEta) {
-    intro =
-      '🎓 **Exploratory Training Academy (ETA)** is Sabbir’s second featured MERN application — a comprehensive digital education management platform (LMS).\n\n' +
-      '• **Role-Based Dashboards:** Distinct tailored interfaces for Students, Instructors, and System Administrators.\n' +
-      '• **Course Management:** Curriculum authoring, lesson videos, interactive quizzes, and student progress tracking.\n' +
-      '• **Modern Tech Stack:** React 19, Redux Toolkit for complex state, Framer Motion for smooth micro-interactions, Express, and MongoDB.\n' +
-      '• **Live Deployment:** Deployed on Vercel with responsive, accessible UI across mobile and desktop.';
+    intro = tpl.eta;
   }
 
-  const actions = [action('Case Study', { kind: 'route', target: `/projects/${project.id}` })];
+  const actions = [action(labels.caseStudy, { kind: 'route', target: `/projects/${project.id}` })];
 
   if (project.liveUrl) {
-    actions.push(action('Live Demo', { kind: 'external', target: project.liveUrl }));
+    actions.push(action(labels.liveDemo, { kind: 'external', target: project.liveUrl }));
   }
 
   if (project.githubUrl) {
-    actions.push(action('GitHub Code', { kind: 'external', target: project.githubUrl }));
+    actions.push(action(labels.githubCode, { kind: 'external', target: project.githubUrl }));
   }
 
   actions.push(
-    action('Open Projects Section', { kind: 'scroll', target: portfolio.sections.projects })
+    action(labels.openProjects, { kind: 'scroll', target: portfolio.sections.projects })
   );
 
   const followUps = isReportBd
-    ? [
-        'What backend tech is used in Report BD?',
-        'Tell me about ETA (LMS)',
-        'Why should we hire Sabbir?',
-        'How can I contact Sabbir on WhatsApp?',
-      ]
-    : [
-        'Tell me about Report BD',
-        'Show MERN stack skills',
-        'Why should we hire Sabbir?',
-        'How can I contact Sabbir?',
-      ];
+    ? getFollowUps('reportBd', language)
+    : isEta
+      ? getFollowUps('eta', language)
+      : getFollowUps('projects', language);
 
   return {
     text: intro,
-    cards: [createProjectCard(project)],
+    cards: [createProjectCard(project, language)],
     actions,
     followUps,
     memory: {
@@ -164,11 +171,11 @@ function buildSingleProjectResponse(project, portfolio) {
   };
 }
 
-function buildProjectResponse(message, intent, knowledge, portfolio, memory) {
+function buildProjectResponse(message, intent, knowledge, portfolio, memory, language = 'en') {
   const queryMatch = knowledge.findProjectByQuery(message);
 
   if (queryMatch) {
-    return buildSingleProjectResponse(queryMatch, portfolio);
+    return buildSingleProjectResponse(queryMatch, portfolio, language);
   }
 
   const rememberedProject =
@@ -178,9 +185,12 @@ function buildProjectResponse(message, intent, knowledge, portfolio, memory) {
 
   if (
     rememberedProject &&
-    (message.toLowerCase().includes('this project') || message.toLowerCase().includes('about it'))
+    (message.toLowerCase().includes('this project') ||
+      message.toLowerCase().includes('about it') ||
+      message.includes('هذا المشروع') ||
+      message.includes('এই প্রজেক্ট'))
   ) {
-    return buildSingleProjectResponse(rememberedProject, portfolio);
+    return buildSingleProjectResponse(rememberedProject, portfolio, language);
   }
 
   const aiRelatedProjects = knowledge.getProjectsByTopic('ai');
@@ -200,13 +210,17 @@ function buildProjectResponse(message, intent, knowledge, portfolio, memory) {
   const projects =
     matchedProjects.length > 0 ? matchedProjects.slice(0, 3) : knowledge.getFeaturedProjects(3);
 
+  const tpl = getTemplate(language);
+  const labels = getActionLabels(language);
+  const followUps = getFollowUps('projects', language);
+
   if (!projects.length) {
     return {
-      text: 'I could not find matching project data for that request yet. You can open the Projects section to browse all available work.',
+      text: tpl.headlines.notFound,
       actions: [
-        action('Open Projects Section', { kind: 'scroll', target: portfolio.sections.projects }),
+        action(labels.openProjects, { kind: 'scroll', target: portfolio.sections.projects }),
       ],
-      followUps: ['Best projects', 'Show skills', 'How can I contact Sabbir?'],
+      followUps,
       memory: {
         lastProjectId: null,
         lastTopic: 'projects',
@@ -214,23 +228,23 @@ function buildProjectResponse(message, intent, knowledge, portfolio, memory) {
     };
   }
 
-  const cards = projects.map(createProjectCard);
+  const cards = projects.map((p) => createProjectCard(p, language));
   const headline =
     intent === 'mern'
-      ? 'Here are Sabbir’s flagship MERN stack applications, demonstrating end-to-end architecture from MongoDB and Express up to React 19:'
+      ? tpl.headlines.mern
       : intent === 'security'
-        ? 'Here are projects where Sabbir implemented zero-trust authentication, audit log sanitization, and optimistic concurrency locking:'
-        : 'Here are Sabbir’s top featured projects, prioritized by technical complexity and production readiness:';
+        ? tpl.headlines.security
+        : tpl.headlines.default;
 
   return {
     text: headline,
     cards,
     actions: [
-      action('🌟 Explore Report BD', { kind: 'prompt', prompt: 'Tell me about Report BD' }),
-      action('Open Projects Section', { kind: 'scroll', target: portfolio.sections.projects }),
-      action('Open GitHub Stats', { kind: 'scroll', target: portfolio.sections.githubStats }),
+      action(labels.exploreReportBd, { kind: 'prompt', prompt: followUps[0] }),
+      action(labels.openProjects, { kind: 'scroll', target: portfolio.sections.projects }),
+      action(labels.openGithubStats, { kind: 'scroll', target: portfolio.sections.githubStats }),
     ],
-    followUps: QUICK_FOLLOW_UPS.projects,
+    followUps,
     memory: {
       lastProjectId: projects[0]?.id ?? null,
       lastTopic: 'projects',
@@ -238,156 +252,132 @@ function buildProjectResponse(message, intent, knowledge, portfolio, memory) {
   };
 }
 
-function buildWhyHireResponse(portfolio) {
-  const text =
-    '💡 **Why consider Md. Sabbir Hossen for your engineering team?**\n\n' +
-    '1. **Production-Minded MERN Depth:** He architects complete full-stack web applications with clean separation of concerns, robust REST APIs (Express/Node.js), and modern React 19 frontends.\n' +
-    '2. **Type Safety & Data Contracts:** Experienced with TypeScript and Zod validation across shared monorepo packages (as demonstrated in Report BD).\n' +
-    '3. **Concurrency & Defensive Security:** Proven implementation of optimistic revision locking (preventing stale writes with HTTP 409), zero-trust Firebase token checks, and recursive audit log sanitization.\n' +
-    '4. **Modern UI & State Management:** Skilled in Tailwind CSS v4, Redux Toolkit, TanStack Query, Framer Motion, and responsive accessibility.\n' +
-    '5. **Disciplined Problem Solver:** 7 verified technical certifications (Phitron Web Development, CS fundamentals) and rigorous Git commit habits.';
+function buildWhyHireResponse(portfolio, language = 'en') {
+  const tpl = getTemplate(language);
+  const labels = getActionLabels(language);
+  const followUps = getFollowUps('whyHire', language);
 
   return {
-    text,
+    text: tpl.whyHire,
     cards: [createContactCard(portfolio)],
     actions: [
-      action('🌟 View Report BD', { kind: 'prompt', prompt: 'Tell me about Report BD' }),
-      action('🛠 View Skills', { kind: 'scroll', target: portfolio.sections.skills }),
-      action('📄 Download Resume', { kind: 'external', target: portfolio.resume.publicPath }),
+      action(labels.viewReportBd, { kind: 'prompt', prompt: followUps[0] }),
+      action(labels.openSkills, { kind: 'scroll', target: portfolio.sections.skills }),
+      action(labels.downloadResume, {
+        kind: 'external',
+        target: portfolio.resume.publicPath,
+      }),
     ],
-    followUps: [
-      'Tell me about Report BD',
-      'What architecture do you use?',
-      'How can I contact Sabbir on WhatsApp?',
-      'Show certifications',
-    ],
+    followUps,
     memory: {
       lastTopic: 'why_hire',
     },
   };
 }
 
-function buildArchitectureResponse(portfolio) {
-  const text =
-    '🏛️ **Sabbir’s System Architecture Standards:**\n\n' +
-    '• **Monorepo Separation:** Packages split cleanly into shared domain logic (`@reportbd/shared`), Express REST APIs, and client SPAs.\n' +
-    '• **Contract-First Validation:** Shared Zod schemas ensure client-side forms and server-side endpoints validate against the exact same rules without logic drift.\n' +
-    '• **Optimistic Concurrency Control:** Uses revision counters on sensitive records to reject stale edits with explicit HTTP 409 Conflict instead of silent data loss.\n' +
-    '• **Defensive Security & RBAC:** Multi-tenant role tiers, zero-trust token decoding, and recursive sanitization of audit logs before database insertion.\n' +
-    '• **Performance & Accessibility:** Mobile-first responsive layouts, dynamic typography scaling (1.0x–1.30x), trilingual LTR/RTL support, and clean A4 print formatting.';
+function buildArchitectureResponse(portfolio, language = 'en') {
+  const tpl = getTemplate(language);
+  const labels = getActionLabels(language);
+  const followUps = getFollowUps('architecture', language);
 
   return {
-    text,
+    text: tpl.architecture,
     actions: [
-      action('🌟 Report BD Deep Dive', { kind: 'prompt', prompt: 'Tell me about Report BD' }),
-      action('Open Projects Section', { kind: 'scroll', target: portfolio.sections.projects }),
-      action('Contact Sabbir', { kind: 'prompt', prompt: 'How can I contact Sabbir?' }),
+      action(labels.reportBdDeepDive, { kind: 'prompt', prompt: followUps[0] }),
+      action(labels.openProjects, { kind: 'scroll', target: portfolio.sections.projects }),
+      action(labels.contactPrompt, { kind: 'prompt', prompt: followUps[2] }),
     ],
-    followUps: [
-      'Tell me about Report BD',
-      'Do you use TypeScript and Zod?',
-      'Why should we hire Sabbir?',
-    ],
+    followUps,
     memory: {
       lastTopic: 'architecture',
     },
   };
 }
 
-function buildTypeScriptResponse(portfolio) {
-  const text =
-    '📘 **TypeScript & Schema Validation:**\n\n' +
-    'Sabbir leverages TypeScript and Zod to guarantee end-to-end type safety in production:\n' +
-    '• In **Report BD**, data schemas, mathematical calculation formulas, and validation rules are centralized in a shared workspace package (`@reportbd/shared`).\n' +
-    '• Both the Vite React 19 frontend and Node.js/Express API consume these contracts directly, eliminating runtime contract drift.\n' +
-    '• Zod schema validation guards all mutating endpoints against invalid payloads before hitting MongoDB Atlas.';
+function buildTypeScriptResponse(portfolio, language = 'en') {
+  const tpl = getTemplate(language);
+  const labels = getActionLabels(language);
+  const followUps = getFollowUps('typescript', language);
 
   return {
-    text,
+    text: tpl.typescript,
     actions: [
-      action('🌟 View Report BD', { kind: 'prompt', prompt: 'Tell me about Report BD' }),
-      action('Open Skills Section', { kind: 'scroll', target: portfolio.sections.skills }),
-      action('Contact Sabbir', { kind: 'prompt', prompt: 'How can I contact Sabbir?' }),
+      action(labels.viewReportBd, { kind: 'prompt', prompt: followUps[0] }),
+      action(labels.openSkills, { kind: 'scroll', target: portfolio.sections.skills }),
+      action(labels.contactPrompt, { kind: 'prompt', prompt: followUps[2] }),
     ],
-    followUps: ['What architecture do you use?', 'Tell me about ETA (LMS)', 'Why hire Sabbir?'],
+    followUps,
     memory: {
       lastTopic: 'typescript',
     },
   };
 }
 
-function buildSkillsResponse(knowledge, portfolio) {
+function buildSkillsResponse(knowledge, portfolio, language = 'en') {
   const topSkills = knowledge.getSkillSummary().slice(0, 4);
+  const tpl = getTemplate(language);
+  const labels = getActionLabels(language);
+  const followUps = getFollowUps('skills', language);
 
   return {
-    text:
-      '🛠️ **Technical Stack & Skills:**\n' +
-      'Sabbir specializes in the MERN stack with modern full-stack tooling:\n' +
-      '• **Frontend:** React 19, JavaScript (ES6+), TypeScript, Tailwind CSS v4, Redux Toolkit, TanStack Query, Framer Motion.\n' +
-      '• **Backend & DB:** Node.js, Express.js, MongoDB Atlas, Mongoose, RESTful APIs, Firebase Auth, JWT, Zod Validation.\n' +
-      '• **Tools & Workflow:** Git, GitHub, Vite, Vercel, Docker basics, Postman, Linux environments.',
+    text: tpl.skills,
     cards: topSkills.map(createSkillCard),
     actions: [
-      action('🌟 See Skills in Report BD', { kind: 'prompt', prompt: 'Tell me about Report BD' }),
-      action('Open Skills Section', { kind: 'scroll', target: portfolio.sections.skills }),
-      action('📄 View Resume', { kind: 'external', target: portfolio.resume.publicPath }),
+      action(labels.seeSkillsReportBd, { kind: 'prompt', prompt: followUps[0] }),
+      action(labels.openSkills, { kind: 'scroll', target: portfolio.sections.skills }),
+      action(labels.viewResume, { kind: 'external', target: portfolio.resume.publicPath }),
     ],
-    followUps: QUICK_FOLLOW_UPS.skills,
+    followUps,
     memory: {
       lastTopic: 'skills',
     },
   };
 }
 
-function buildContactResponse(portfolio) {
+function buildContactResponse(portfolio, language = 'en') {
+  const tpl = getTemplate(language);
+  const labels = getActionLabels(language);
+
   return {
-    text:
-      '📞 **Get in Touch with Sabbir:**\n' +
-      'He is actively available for Junior MERN Stack Developer, Full-Stack, Backend, or Frontend roles, internships, and freelance projects.\n' +
-      'Feel free to connect directly via WhatsApp or email!',
+    text: tpl.contact,
     cards: [createContactCard(portfolio)],
     actions: [
-      action('Open Contact Form', { kind: 'scroll', target: portfolio.sections.contact }),
-      action('Open LinkedIn', { kind: 'external', target: portfolio.contact.linkedin }),
+      action(labels.openContact, { kind: 'scroll', target: portfolio.sections.contact }),
+      action(labels.openLinkedIn, { kind: 'external', target: portfolio.contact.linkedin }),
     ],
-    followUps: contactFollowUps(portfolio),
+    followUps: contactFollowUps(portfolio, language),
     memory: {
       lastTopic: 'contact',
     },
   };
 }
 
-function buildExperienceResponse(portfolio) {
-  const text =
-    '💼 **Experience & Milestones:**\n\n' +
-    '• **Solo Full-Stack Developer — Report BD (BPS Report):**\n' +
-    'Architected multi-tenant personal reporting & mentorship platform using TypeScript, React 19, Express 4 REST API, MongoDB Atlas, Firebase Auth, and Zod.\n\n' +
-    '• **Full-Stack Developer & Mentorship — Exploratory Training Academy (ETA):**\n' +
-    'Engineered comprehensive LMS with student enrollment, interactive quizzes, video progress tracking, and Redux Toolkit state management.\n\n' +
-    '• **Open-Source & Project Work:**\n' +
-    'Active contributor with disciplined version control, atomic commits, and continuous testing.';
+function buildExperienceResponse(portfolio, language = 'en') {
+  const tpl = getTemplate(language);
+  const labels = getActionLabels(language);
+  const followUps = getFollowUps('experience', language);
 
   return {
-    text,
+    text: tpl.experience,
     actions: [
-      action('🌟 Explore Report BD', { kind: 'prompt', prompt: 'Tell me about Report BD' }),
-      action('Open About Section', { kind: 'scroll', target: portfolio.sections.about }),
-      action('📄 Resume (PDF)', { kind: 'external', target: portfolio.resume.publicPath }),
+      action(labels.exploreReportBd, { kind: 'prompt', prompt: followUps[0] }),
+      action(labels.openAbout, { kind: 'scroll', target: portfolio.sections.about }),
+      action(labels.resumePdf, { kind: 'external', target: portfolio.resume.publicPath }),
     ],
-    followUps: [
-      'Tell me about Report BD',
-      'Why should we hire Sabbir?',
-      'How can I contact Sabbir on WhatsApp?',
-    ],
+    followUps,
     memory: {
       lastTopic: 'experience',
     },
   };
 }
 
-function buildCurrentFocusResponse(portfolio) {
+function buildCurrentFocusResponse(portfolio, language = 'en') {
+  const tpl = getTemplate(language);
+  const labels = getActionLabels(language);
+  const followUps = getFollowUps('currentFocus', language);
+
   return {
-    text: '⚡ **What Sabbir is Actively Building & Learning Right Now:**',
+    text: tpl.currentFocus,
     cards: portfolio.currentFocus.map((item) => ({
       type: 'focus',
       title: item.title,
@@ -396,39 +386,43 @@ function buildCurrentFocusResponse(portfolio) {
       description: item.description,
     })),
     actions: [
-      action('Open Current Focus', { kind: 'scroll', target: portfolio.sections.currentFocus }),
-      action('🌟 View Latest Project', { kind: 'prompt', prompt: 'Tell me about Report BD' }),
+      action(labels.openFocus, { kind: 'scroll', target: portfolio.sections.currentFocus }),
+      action(labels.viewLatestProject, { kind: 'prompt', prompt: followUps[0] }),
     ],
-    followUps: ['Show projects', 'Show skills', 'How can I contact Sabbir?'],
+    followUps,
     memory: {
       lastTopic: 'current_focus',
     },
   };
 }
 
-function buildEducationResponse(portfolio) {
+function buildEducationResponse(portfolio, language = 'en') {
   const latest = portfolio.education[0];
+  const tpl = getTemplate(language);
+  const labels = getActionLabels(language);
+  const followUps = getFollowUps('education', language);
 
   return {
-    text: latest
-      ? `🎓 **Academic Background:**\nCurrently studying **${latest.degree}** at **${latest.institution}** (${latest.period}).\nSpecializing in computer science fundamentals, software engineering, and web systems.`
-      : 'Education details are available in the Education section.',
+    text: tpl.education(latest),
     actions: [
-      action('Open Education Section', { kind: 'scroll', target: portfolio.sections.education }),
-      action('Education Timeline', { kind: 'navigate', target: '/education' }),
+      action(labels.openEducation, { kind: 'scroll', target: portfolio.sections.education }),
+      action(labels.educationTimeline, { kind: 'navigate', target: '/education' }),
     ],
-    followUps: ['Show certifications', 'Show current focus', 'Contact Sabbir'],
+    followUps,
     memory: {
       lastTopic: 'education',
     },
   };
 }
 
-function buildCertificationResponse(knowledge, portfolio) {
+function buildCertificationResponse(knowledge, portfolio, language = 'en') {
   const certs = knowledge.getCertifications(4);
+  const tpl = getTemplate(language);
+  const labels = getActionLabels(language);
+  const followUps = getFollowUps('certifications', language);
 
   return {
-    text: `🏆 **Verified Certifications & Credentials:**\nSabbir holds **${portfolio.certifications.length} verified certifications** covering full-stack web development, computer science fundamentals, and programming foundations (including Phitron Complete Web Development).`,
+    text: tpl.certifications(portfolio.certifications.length),
     cards: certs.map((cert) => ({
       type: 'certification',
       title: cert.title,
@@ -437,139 +431,119 @@ function buildCertificationResponse(knowledge, portfolio) {
       link: cert.link,
     })),
     actions: [
-      action('Open Certifications Section', {
-        kind: 'scroll',
-        target: portfolio.sections.certifications,
-      }),
-      action('View All Certifications', { kind: 'navigate', target: '/certifications' }),
+      action(labels.openCerts, { kind: 'scroll', target: portfolio.sections.certifications }),
+      action(labels.viewAllCerts, { kind: 'navigate', target: '/certifications' }),
     ],
-    followUps: ['Show skills', 'Tell me about Report BD', 'How to contact Sabbir'],
+    followUps,
     memory: {
       lastTopic: 'certifications',
     },
   };
 }
 
-function buildResumeResponse(portfolio) {
+function buildResumeResponse(portfolio, language = 'en') {
+  const tpl = getTemplate(language);
+  const labels = getActionLabels(language);
+  const followUps = getFollowUps('resume', language);
+
   return {
-    text: '📄 **Resume & Credentials:**\nYou can review Sabbir’s latest software engineering resume instantly via the links below:',
+    text: tpl.resume,
     actions: [
-      action('Open Resume (PDF)', { kind: 'external', target: portfolio.resume.publicPath }),
-      action('Open Resume (Drive)', { kind: 'external', target: portfolio.resume.driveUrl }),
-      action('Why Hire Sabbir?', { kind: 'prompt', prompt: 'Why should we hire Sabbir?' }),
+      action(labels.resumePdf, { kind: 'external', target: portfolio.resume.publicPath }),
+      action(labels.resumeDrive, { kind: 'external', target: portfolio.resume.driveUrl }),
+      action(labels.whyHirePrompt, { kind: 'prompt', prompt: followUps[0] }),
     ],
-    followUps: ['Why should we hire Sabbir?', 'Show best projects', 'Contact Sabbir'],
+    followUps,
     memory: {
       lastTopic: 'resume',
     },
   };
 }
 
-function buildLlmsTxtResponse(portfolio) {
+function buildLlmsTxtResponse(portfolio, language = 'en') {
   const path = portfolio.llmsTxt?.path || '/llms.txt';
+  const tpl = getTemplate(language);
+  const labels = getActionLabels(language);
+  const followUps = getFollowUps('llmsTxt', language);
 
   return {
-    text:
-      '🤖 **Machine-Readable AI Profile (/llms.txt):**\n\n' +
-      'Sabbir has published an official `/llms.txt` file at the root of his portfolio according to the machine-readable standard.\n' +
-      'It contains a structured markdown summary of his technical background, project architectures, technology stack, and contact links designed specifically for AI models, coding assistants, and automated web crawlers.',
+    text: tpl.llmsTxt,
     actions: [
-      action('Open /llms.txt', { kind: 'external', target: path }),
-      action('🌟 Explore Report BD', { kind: 'prompt', prompt: 'Tell me about Report BD' }),
-      action('Contact Sabbir', { kind: 'prompt', prompt: 'How can I contact Sabbir?' }),
+      action(labels.openLlmsTxt, { kind: 'external', target: path }),
+      action(labels.exploreReportBd, { kind: 'prompt', prompt: followUps[0] }),
+      action(labels.contactPrompt, { kind: 'prompt', prompt: followUps[2] }),
     ],
-    followUps: ['Tell me about Report BD', 'Show skills', 'How can I contact Sabbir?'],
+    followUps,
     memory: {
       lastTopic: 'llms_txt',
     },
   };
 }
 
-function buildGithubResponse(portfolio) {
+function buildGithubResponse(portfolio, language = 'en') {
+  const tpl = getTemplate(language);
+  const labels = getActionLabels(language);
+  const followUps = getFollowUps('github', language);
+
   return {
-    text:
-      '📈 **GitHub Activity & Codebase Evidence:**\n' +
-      'Sabbir maintains active GitHub activity with disciplined atomic commits, clear documentation, and open-source monorepos.\n' +
-      'Explore his GitHub stats dashboard or visit his profile directly:',
+    text: tpl.github,
     actions: [
-      action('Open GitHub Stats', { kind: 'scroll', target: portfolio.sections.githubStats }),
-      action('Open GitHub Profile', { kind: 'external', target: portfolio.github.profileUrl }),
+      action(labels.openGithubStats, { kind: 'scroll', target: portfolio.sections.githubStats }),
+      action(labels.openGithubProfile, { kind: 'external', target: portfolio.github.profileUrl }),
     ],
-    followUps: [
-      'Tell me about Report BD',
-      'Which stack is strongest?',
-      'How can I contact Sabbir?',
-    ],
+    followUps,
     memory: {
       lastTopic: 'github',
     },
   };
 }
 
-function buildGuideResponse() {
+function buildGuideResponse(language = 'en') {
+  const tpl = getTemplate(language);
+  const labels = getActionLabels(language);
+  const followUps = getFollowUps('guide', language);
+
   return {
-    text:
-      '📖 **Interactive Portfolio Guide:**\n\n' +
-      'Sabbir has built an interactive **Portfolio Guide** at /guide designed to help recruiters, engineering leads, and visitors get the most out of their exploration.\n\n' +
-      'It provides an in-depth walkthrough covering:\n' +
-      '• 01. Welcome & Engineering Ethos\n' +
-      '• 02. Quick Start Paths (Recruiter, Architect, Credentials)\n' +
-      '• 03. Complete Route & Keyboard Navigation\n' +
-      '• 04. Flagship Projects & Architecture (Report BD & ETA)\n' +
-      '• 05. Technology Breakdown (React 19, Zod, MongoDB, TypeScript)\n' +
-      '• 06. Verified Credentials & Experience\n' +
-      '• 07. Interactive Tools & Dark/Light Themes\n' +
-      '• 08. Direct WhatsApp & Contact Channels\n' +
-      '• 09. Frequently Asked Questions (FAQ)\n' +
-      '• 10. Accessibility & Troubleshooting',
+    text: tpl.guide,
     actions: [
-      action('Open Full Guide', { kind: 'route', target: '/guide' }),
-      action('🌟 Explore Report BD', { kind: 'prompt', prompt: 'Tell me about Report BD' }),
+      action(labels.openFullGuide, { kind: 'route', target: '/guide' }),
+      action(labels.exploreReportBd, { kind: 'prompt', prompt: followUps[0] }),
     ],
-    followUps: [
-      'Tell me about Report BD',
-      'Why should we hire Sabbir?',
-      'How can I contact Sabbir on WhatsApp?',
-    ],
+    followUps,
     memory: {
       lastTopic: 'guide',
     },
   };
 }
 
-function buildGreetingResponse(portfolio) {
+function buildGreetingResponse(portfolio, language = 'en') {
+  const tpl = getTemplate(language);
+  const labels = getActionLabels(language);
+  const followUps = getFollowUps('default', language);
+
   return {
-    text:
-      `👋 **Assalamu Alaikum! I'm Sabbir's Portfolio Guide.**\n` +
-      `I can give you an executive recruiter walkthrough of ${portfolio.name}’s latest MERN stack projects, technical architecture, and skill set.\n\n` +
-      `Where would you like to begin?`,
+    text: tpl.greeting(portfolio.name),
     actions: [
-      action('🌟 Report BD (Flagship)', { kind: 'prompt', prompt: 'Tell me about Report BD' }),
-      action('🚀 Top Projects', { kind: 'prompt', prompt: 'Best projects' }),
-      action('💡 Why Hire Sabbir?', { kind: 'prompt', prompt: 'Why should we hire Sabbir?' }),
-      action('🛠 Tech Stack', { kind: 'prompt', prompt: 'Show skills' }),
+      action(labels.reportBdPrompt, { kind: 'prompt', prompt: followUps[0] }),
+      action(labels.topProjectsPrompt, { kind: 'prompt', prompt: followUps[1] }),
+      action(labels.whyHirePrompt, { kind: 'prompt', prompt: followUps[2] }),
+      action(labels.skillsPrompt, { kind: 'prompt', prompt: followUps[3] }),
     ],
-    followUps: [
-      'Tell me about Report BD',
-      'Why should we hire Sabbir?',
-      'Show MERN stack skills',
-      'How can I contact Sabbir on WhatsApp?',
-    ],
+    followUps,
   };
 }
 
-function buildThanksResponse() {
+function buildThanksResponse(language = 'en') {
+  const tpl = getTemplate(language);
+  const followUps = getFollowUps('whyHire', language);
+
   return {
-    text: 'Happy to help! Feel free to ask about specific projects, system design, code samples, or direct contact whenever you are ready.',
-    followUps: [
-      'Tell me about Report BD',
-      'Why hire Sabbir?',
-      'How can I contact Sabbir on WhatsApp?',
-    ],
+    text: tpl.thanks,
+    followUps,
   };
 }
 
-function buildContextualFollowUp(message, memory, knowledge, conversation = []) {
+function buildContextualFollowUp(message, memory, knowledge, conversation = [], language = 'en') {
   const normalizedMessage = message.toLowerCase();
 
   const recentConversationText = conversation
@@ -580,12 +554,16 @@ function buildContextualFollowUp(message, memory, knowledge, conversation = []) 
 
   const hasProjectContext =
     memory.lastProjectId ||
-    /project|built|technolog|report|eta|life-os/.test(recentConversationText);
+    /project|built|technolog|report|eta|life-os|مشروع|مشاريع|প্রজেক্ট/.test(recentConversationText);
 
   if (
     (normalizedMessage.includes('backend') ||
       normalizedMessage.includes('api') ||
-      normalizedMessage.includes('server')) &&
+      normalizedMessage.includes('server') ||
+      normalizedMessage.includes('خلفية') ||
+      normalizedMessage.includes('سيرفر') ||
+      normalizedMessage.includes('ব্যাকএন্ড') ||
+      normalizedMessage.includes('এপিআই')) &&
     hasProjectContext
   ) {
     const targetId = memory.lastProjectId || 'report-bd';
@@ -602,8 +580,12 @@ function buildContextualFollowUp(message, memory, knowledge, conversation = []) 
           ? `\n\n• ${backend.architecture.join('\n• ')}`
           : '';
 
+      const tpl = getTemplate(language);
+      const labels = getActionLabels(language);
+      const followUps = getFollowUps('backend', language);
+
       return {
-        text: `⚡ **${backend.title} Backend Architecture:**\n**Core Stack:** ${backendTechText}${architectureText}`,
+        text: tpl.contextualBackend(backend.title, backendTechText, architectureText),
         cards: [
           {
             type: 'backend',
@@ -613,10 +595,10 @@ function buildContextualFollowUp(message, memory, knowledge, conversation = []) 
           },
         ],
         actions: [
-          action('Case Study', { kind: 'route', target: `/projects/${targetId}` }),
-          action('Why Hire Sabbir?', { kind: 'prompt', prompt: 'Why should we hire Sabbir?' }),
+          action(labels.caseStudy, { kind: 'route', target: `/projects/${targetId}` }),
+          action(labels.whyHirePrompt, { kind: 'prompt', prompt: followUps[0] }),
         ],
-        followUps: ['Tell me about ETA (LMS)', 'What about security?', 'How can I contact Sabbir?'],
+        followUps,
       };
     }
   }
@@ -624,8 +606,22 @@ function buildContextualFollowUp(message, memory, knowledge, conversation = []) 
   return null;
 }
 
-export function generateLocalResponse({ message, knowledge, portfolio, memory, conversation }) {
-  const contextResponse = buildContextualFollowUp(message, memory, knowledge, conversation);
+export function generateLocalResponse({
+  message,
+  knowledge,
+  portfolio,
+  memory,
+  conversation,
+  language = 'en',
+}) {
+  const safeLang = getSafeLanguage(language);
+  const contextResponse = buildContextualFollowUp(
+    message,
+    memory,
+    knowledge,
+    conversation,
+    safeLang
+  );
 
   if (contextResponse) {
     return {
@@ -639,82 +635,84 @@ export function generateLocalResponse({ message, knowledge, portfolio, memory, c
   if (queryMatch) {
     return {
       intent: 'projects',
-      ...buildSingleProjectResponse(queryMatch, portfolio),
+      ...buildSingleProjectResponse(queryMatch, portfolio, safeLang),
     };
   }
 
   const { intent } = detectIntent(message);
+  const tpl = getTemplate(safeLang);
+  const labels = getActionLabels(safeLang);
+  const followUps = getFollowUps('availability', safeLang);
 
   switch (intent) {
     case 'greeting':
-      return { intent, ...buildGreetingResponse(portfolio) };
+      return { intent, ...buildGreetingResponse(portfolio, safeLang) };
     case 'thanks':
-      return { intent, ...buildThanksResponse() };
+      return { intent, ...buildThanksResponse(safeLang) };
     case 'project_reportbd': {
       const reportBd = knowledge.getProjectById('report-bd') ?? knowledge.getFeaturedProjects(1)[0];
-      return { intent: 'projects', ...buildSingleProjectResponse(reportBd, portfolio) };
+      return { intent: 'projects', ...buildSingleProjectResponse(reportBd, portfolio, safeLang) };
     }
     case 'project_eta': {
       const eta = knowledge.getProjectById('eta-digital-education-platform');
-      return { intent: 'projects', ...buildSingleProjectResponse(eta, portfolio) };
+      return { intent: 'projects', ...buildSingleProjectResponse(eta, portfolio, safeLang) };
     }
     case 'project_lifeos': {
       const lifeOs = knowledge.getProjectById('life-os');
-      return { intent: 'projects', ...buildSingleProjectResponse(lifeOs, portfolio) };
+      return { intent: 'projects', ...buildSingleProjectResponse(lifeOs, portfolio, safeLang) };
     }
     case 'why_hire':
-      return { intent, ...buildWhyHireResponse(portfolio) };
+      return { intent, ...buildWhyHireResponse(portfolio, safeLang) };
     case 'architecture':
-      return { intent, ...buildArchitectureResponse(portfolio) };
+      return { intent, ...buildArchitectureResponse(portfolio, safeLang) };
     case 'typescript':
-      return { intent, ...buildTypeScriptResponse(portfolio) };
+      return { intent, ...buildTypeScriptResponse(portfolio, safeLang) };
     case 'projects':
     case 'react':
     case 'mern':
     case 'ai':
     case 'security':
-      return { intent, ...buildProjectResponse(message, intent, knowledge, portfolio, memory) };
+      return {
+        intent,
+        ...buildProjectResponse(message, intent, knowledge, portfolio, memory, safeLang),
+      };
     case 'skills':
-      return { intent, ...buildSkillsResponse(knowledge, portfolio) };
+      return { intent, ...buildSkillsResponse(knowledge, portfolio, safeLang) };
     case 'contact':
     case 'social_links':
-      return { intent, ...buildContactResponse(portfolio) };
+      return { intent, ...buildContactResponse(portfolio, safeLang) };
     case 'experience':
     case 'about':
-      return { intent, ...buildExperienceResponse(portfolio) };
+      return { intent, ...buildExperienceResponse(portfolio, safeLang) };
     case 'current_focus':
-      return { intent, ...buildCurrentFocusResponse(portfolio) };
+      return { intent, ...buildCurrentFocusResponse(portfolio, safeLang) };
     case 'education':
-      return { intent, ...buildEducationResponse(portfolio) };
+      return { intent, ...buildEducationResponse(portfolio, safeLang) };
     case 'certifications':
-      return { intent, ...buildCertificationResponse(knowledge, portfolio) };
+      return { intent, ...buildCertificationResponse(knowledge, portfolio, safeLang) };
     case 'resume':
-      return { intent, ...buildResumeResponse(portfolio) };
+      return { intent, ...buildResumeResponse(portfolio, safeLang) };
     case 'llms_txt':
-      return { intent, ...buildLlmsTxtResponse(portfolio) };
+      return { intent, ...buildLlmsTxtResponse(portfolio, safeLang) };
     case 'guide':
-      return { intent, ...buildGuideResponse() };
+      return { intent, ...buildGuideResponse(safeLang) };
     case 'github':
-      return { intent, ...buildGithubResponse(portfolio) };
+      return { intent, ...buildGithubResponse(portfolio, safeLang) };
     case 'availability':
       return {
         intent,
-        text: `💼 **Availability:**\n${portfolio.availability}\nAvailable immediately for full-time, remote, internship, or freelance opportunities.`,
+        text: tpl.availability(portfolio.availability),
         actions: [
-          action('Open Contact Form', { kind: 'scroll', target: portfolio.sections.contact }),
-          action('📄 Download Resume', {
+          action(labels.openContact, { kind: 'scroll', target: portfolio.sections.contact }),
+          action(labels.downloadResume, {
             kind: 'external',
             target: portfolio.resume.publicPath,
           }),
         ],
-        followUps: [
-          'How can I contact Sabbir on WhatsApp?',
-          'Why should we hire Sabbir?',
-          'Show best projects',
-        ],
+        followUps,
       };
     default:
-      return { intent: 'unknown', ...defaultUnknownResponse() };
+      return { intent: 'unknown', ...defaultUnknownResponse(safeLang) };
   }
 }
 

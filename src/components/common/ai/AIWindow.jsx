@@ -6,6 +6,7 @@ import Typography from '../Typography';
 import MessageList from './MessageList';
 import InputArea from './InputArea';
 import TypingIndicator from './TypingIndicator';
+import { useTranslation } from '../../../i18n';
 
 export default function AIWindow({
   isOpen,
@@ -21,6 +22,7 @@ export default function AIWindow({
   onSend,
   onAction,
 }) {
+  const { t } = useTranslation();
   const shouldReduceMotion = useReducedMotion();
   const messageListRef = useRef(null);
   const dialogRef = useRef(null);
@@ -131,16 +133,22 @@ export default function AIWindow({
                     <FaRobot className="h-4 w-4" aria-hidden="true" />
                     <span
                       className="absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full border-2 border-surface bg-emerald-400"
-                      aria-label="Online"
+                      aria-label={t('common.online', {}, 'Online')}
                     />
                   </span>
                   <div>
                     <Typography id="ai-chat-title" variant="subtitle" className="text-primary">
-                      Portfolio Guide
+                      {t('ai.guideTitle', {}, 'Portfolio Guide')}
                     </Typography>
-                    <p className="mt-0.5 text-[11px] font-medium text-emerald-500">Online guide</p>
+                    <p className="mt-0.5 text-[11px] font-medium text-emerald-500">
+                      {t('ai.onlineStatus', {}, 'Online guide')}
+                    </p>
                     <Typography id="ai-chat-description" variant="caption" className="text-muted">
-                      Your guided recruiter view of projects, skills, and contact options.
+                      {t(
+                        'ai.guideSubtitle',
+                        {},
+                        'Your guided recruiter view of projects, skills, and contact options.'
+                      )}
                     </Typography>
                   </div>
                 </div>
@@ -148,17 +156,17 @@ export default function AIWindow({
                   <button
                     type="button"
                     onClick={onNewChat}
-                    className="rounded-full p-2 text-muted transition-colors hover:bg-accent-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary/40 disabled:cursor-not-allowed disabled:opacity-40"
-                    aria-label="Start a new chat"
-                    title="New chat"
+                    className="rounded-full p-2 text-muted transition-colors hover:bg-accent-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary/40 disabled:cursor-not-allowed disabled:opacity-40 cursor-pointer"
+                    aria-label={t('ai.newChat', {}, 'Start a new chat')}
+                    title={t('ai.newChat', {}, 'New chat')}
                   >
                     <FaPlus className="h-3.5 w-3.5" aria-hidden="true" />
                   </button>
                   <button
                     type="button"
                     onClick={onClose}
-                    className="rounded-full p-2 text-muted transition-colors hover:bg-accent-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary/40"
-                    aria-label="Close Portfolio Guide"
+                    className="rounded-full p-2 text-muted transition-colors hover:bg-accent-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary/40 cursor-pointer"
+                    aria-label={t('ai.closeChat', {}, 'Close Portfolio Guide')}
                   >
                     <FaTimes className="h-4 w-4" aria-hidden="true" />
                   </button>

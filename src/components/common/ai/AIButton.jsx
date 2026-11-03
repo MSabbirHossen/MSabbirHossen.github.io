@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { FaRobot } from 'react-icons/fa';
+import { useTranslation } from '../../../i18n';
 
 export default function AIButton({ onClick, isOpen }) {
+  const { t } = useTranslation();
   const shouldReduceMotion = useReducedMotion();
   const [showAttention, setShowAttention] = useState(false);
 
@@ -21,11 +23,17 @@ export default function AIButton({ onClick, isOpen }) {
     <motion.button
       type="button"
       onClick={onClick}
-      aria-label={isOpen ? 'Close Portfolio Guide' : 'Open Portfolio Guide'}
+      aria-label={
+        isOpen
+          ? t('ai.closeChat', {}, 'Close Portfolio Guide')
+          : t('ai.openChat', {}, 'Open Portfolio Guide')
+      }
       aria-expanded={isOpen}
       aria-controls="ai-assistant-dialog"
       aria-keyshortcuts="Control+K Meta+K"
-      className={`fixed bottom-5 right-4 z-40 inline-flex items-center gap-3 rounded-full border border-default surface px-4 py-3 text-sm font-semibold text-primary shadow-2xl shadow-black/20 backdrop-blur-xl transition-colors hover:bg-accent-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg sm:bottom-6 sm:right-6 ${showAttention && !shouldReduceMotion ? 'animate-[pulse_1.5s_ease-in-out_1]' : ''}`}
+      className={`fixed bottom-5 right-4 rtl:right-auto rtl:left-4 z-40 inline-flex items-center gap-3 rounded-full border border-default surface px-4 py-3 text-sm font-semibold text-primary shadow-2xl shadow-black/20 backdrop-blur-xl transition-colors hover:bg-accent-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg dark:focus-visible:ring-offset-dark-bg sm:bottom-6 sm:right-6 sm:rtl:left-6 cursor-pointer ${
+        showAttention && !shouldReduceMotion ? 'animate-[pulse_1.5s_ease-in-out_1]' : ''
+      }`}
       initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: shouldReduceMotion ? 0 : 0.4, ease: 'easeOut' }}
@@ -35,8 +43,10 @@ export default function AIButton({ onClick, isOpen }) {
       <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-accent-primary to-accent-secondary text-white">
         <FaRobot className="h-4 w-4" aria-hidden="true" />
       </span>
-      <span className="hidden sm:inline">Portfolio Guide</span>
-      <span className="sr-only">Shortcut: Control or Command plus K</span>
+      <span className="hidden sm:inline">{t('ai.guideTitle', {}, 'Portfolio Guide')}</span>
+      <span className="sr-only">
+        {t('guide.shortcutHint', {}, 'Shortcut: Control or Command plus K')}
+      </span>
     </motion.button>
   );
 }

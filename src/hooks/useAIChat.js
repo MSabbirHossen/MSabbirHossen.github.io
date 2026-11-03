@@ -2,9 +2,10 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { assistantPortfolioData } from '../data/assistantPortfolioData';
 import { createKnowledgeEngine } from '../lib/ai/knowledgeEngine';
-import { generateAIResponse } from '../lib/ai/responseBuilder';
+import { generateAIResponse, getErrorFallbackResponse } from '../lib/ai/responseBuilder';
+import { useTranslation } from '../i18n';
 
-const WELCOME_MESSAGE = {
+const DEFAULT_WELCOME = {
   id: 1,
   role: 'assistant',
   content:
@@ -16,55 +17,6 @@ const WELCOME_MESSAGE = {
     'How can I contact Sabbir on WhatsApp?',
   ],
 };
-
-const QUICK_ACTIONS = [
-  {
-    id: 'quick-reportbd',
-    kind: 'prompt',
-    label: '🌟 Report BD (Latest)',
-    prompt: 'Tell me about Report BD',
-  },
-  { id: 'quick-projects', kind: 'prompt', label: '🚀 Top Projects', prompt: 'Best projects' },
-  {
-    id: 'quick-why-hire',
-    kind: 'prompt',
-    label: '💡 Why Hire Sabbir?',
-    prompt: 'Why should we hire Sabbir?',
-  },
-  { id: 'quick-skills', kind: 'prompt', label: '⚡ MERN Stack', prompt: 'Show skills' },
-  {
-    id: 'quick-architecture',
-    kind: 'prompt',
-    label: '🏛 Architecture',
-    prompt: 'What architecture do you use?',
-  },
-  {
-    id: 'quick-experience',
-    kind: 'prompt',
-    label: '💼 Experience',
-    prompt: 'Show experience',
-  },
-  {
-    id: 'quick-llms',
-    kind: 'prompt',
-    label: '🤖 AI Profile (llms.txt)',
-    prompt: 'Tell me about llms.txt',
-  },
-  {
-    id: 'quick-certs',
-    kind: 'prompt',
-    label: '🏆 Certifications',
-    prompt: 'Show certifications',
-  },
-  {
-    id: 'quick-contact',
-    kind: 'prompt',
-    label: '📞 WhatsApp & Contact',
-    prompt: 'How can I contact Sabbir on WhatsApp?',
-  },
-  { id: 'quick-resume', kind: 'prompt', label: '📄 Resume', prompt: 'Show resume' },
-  { id: 'quick-guide', kind: 'route', target: '/guide?tour=true', label: '📖 Interactive Guide' },
-];
 
 const CHAT_HISTORY_KEY = 'portfolio-guide-history';
 const MAX_HISTORY_MESSAGES = 24;
@@ -80,6 +32,7 @@ function createMessage(role, content, extras = {}) {
 }
 
 export default function useAIChat() {
+  const { t, language } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
@@ -97,6 +50,32 @@ export default function useAIChat() {
   const pendingScrollTargetRef = useRef(null);
 
   const knowledge = useMemo(() => createKnowledgeEngine(assistantPortfolioData), []);
+
+  const welcomeMessage = useMemo(
+    () => ({
+      id: 1,
+      role: 'assistant',
+      content: t(
+        'ai.welcomeMessage',
+        {},
+        "👋 Assalamu Alaikum! I'm Sabbir's Portfolio Guide.\nI can walk you through his latest MERN stack projects (like Report BD & ETA), technical architecture, skills, and direct contact options.\n\nChoose a topic below or ask me any question!"
+      ),
+      followUps: [
+        'Tell me about Report BD',
+        'Why should we hire Sabbir?',
+        'Show MERN stack skills',
+        'How can I contact Sabbir on WhatsApp?',
+      ],
+    }),
+    [t]
+  );
+
+  const displayedMessages = useMemo(() => {
+    if (messages.length === 1 && messages[0].id === 1) {
+      return [welcomeMessage];
+    }
+    return messages;
+  }, [messages, welcomeMessage]);
 
   useEffect(() => {
     messagesRef.current = messages;
@@ -125,11 +104,11 @@ export default function useAIChat() {
 
   const startNewChat = useCallback(() => {
     generationRef.current += 1;
-    messagesRef.current = [WELCOME_MESSAGE];
+    messagesRef.current = [welcomeMessage];
     if (typeof window !== 'undefined') {
       window.sessionStorage.removeItem(CHAT_HISTORY_KEY);
     }
-    setMessages([WELCOME_MESSAGE]);
+    setMessages([welcomeMessage]);
     setInput('');
     setIsTyping(false);
     setMemory({
@@ -138,7 +117,7 @@ export default function useAIChat() {
       lastTopic: null,
     });
     setAnnouncement('New portfolio guide chat started.');
-  }, []);
+  }, [welcomeMessage]);
 
   const scrollToSection = useCallback((sectionId) => {
     const element = document.getElementById(sectionId);
@@ -243,6 +222,7 @@ export default function useAIChat() {
           portfolio: assistantPortfolioData,
           memory,
           conversation,
+          language,
         });
 
         await streamResponse(response.text, (content) => {
@@ -286,30 +266,16 @@ export default function useAIChat() {
           return;
         }
 
-        const fallbackText =
-          'I ran into an issue preparing that response. Please try again, or use the quick actions to navigate projects, skills, or contact details.';
+        const fallback = getErrorFallbackResponse(language);
 
         setMessages((currentMessages) =>
           currentMessages.map((message) =>
             message.id === assistantMessageId
               ? {
                   ...message,
-                  content: fallbackText,
+                  content: fallback.text,
                   isStreaming: false,
-                  actions: [
-                    {
-                      id: 'prompt-best-projects-fallback',
-                      kind: 'prompt',
-                      label: 'Best Projects',
-                      prompt: 'Best projects',
-                    },
-                    {
-                      id: 'prompt-contact-fallback',
-                      kind: 'prompt',
-                      label: 'Contact',
-                      prompt: 'How can I contact Sabbir?',
-                    },
-                  ],
+                  actions: fallback.actions,
                 }
               : message
           )
@@ -319,7 +285,7 @@ export default function useAIChat() {
         setIsTyping(false);
       }
     },
-    [input, isTyping, knowledge, memory]
+    [input, isTyping, knowledge, language, memory]
   );
 
   const triggerAction = useCallback(
@@ -375,7 +341,78 @@ export default function useAIChat() {
     };
   }, [closeChat, isOpen, openChat]);
 
-  const quickPrompts = useMemo(() => QUICK_ACTIONS, []);
+  const quickPrompts = useMemo(
+    () => [
+      {
+        id: 'quick-reportbd',
+        kind: 'prompt',
+        label: t('ai.quickReportBd', {}, '🌟 Report BD (Latest)'),
+        prompt: 'Tell me about Report BD',
+      },
+      {
+        id: 'quick-projects',
+        kind: 'prompt',
+        label: t('ai.quickProjects', {}, '🚀 Top Projects'),
+        prompt: 'Best projects',
+      },
+      {
+        id: 'quick-why-hire',
+        kind: 'prompt',
+        label: t('ai.quickWhyHire', {}, '💡 Why Hire Sabbir?'),
+        prompt: 'Why should we hire Sabbir?',
+      },
+      {
+        id: 'quick-skills',
+        kind: 'prompt',
+        label: t('ai.quickSkills', {}, '⚡ MERN Stack'),
+        prompt: 'Show skills',
+      },
+      {
+        id: 'quick-architecture',
+        kind: 'prompt',
+        label: t('ai.quickArchitecture', {}, '🏛 Architecture'),
+        prompt: 'What architecture do you use?',
+      },
+      {
+        id: 'quick-experience',
+        kind: 'prompt',
+        label: t('ai.quickExperience', {}, '💼 Experience'),
+        prompt: 'Show experience',
+      },
+      {
+        id: 'quick-llms',
+        kind: 'prompt',
+        label: t('ai.quickLlms', {}, '🤖 AI Profile (llms.txt)'),
+        prompt: 'Tell me about llms.txt',
+      },
+      {
+        id: 'quick-certs',
+        kind: 'prompt',
+        label: t('ai.quickCerts', {}, '🏆 Certifications'),
+        prompt: 'Show certifications',
+      },
+      {
+        id: 'quick-contact',
+        kind: 'prompt',
+        label: t('ai.quickContact', {}, '📞 WhatsApp & Contact'),
+        prompt: 'How can I contact Sabbir on WhatsApp?',
+      },
+      {
+        id: 'quick-resume',
+        kind: 'prompt',
+        label: t('ai.quickResume', {}, '📄 Resume'),
+        prompt: 'Show resume',
+      },
+      {
+        id: 'quick-guide',
+        kind: 'route',
+        target: '/guide?tour=true',
+        label: t('ai.quickGuide', {}, '📖 Interactive Guide'),
+      },
+    ],
+    [t]
+  );
+
   const featuredProjectHighlights = useMemo(
     () =>
       assistantPortfolioData.featuredProjects.slice(0, 3).map((project) => ({
@@ -385,6 +422,7 @@ export default function useAIChat() {
       })),
     []
   );
+
   const recentWorkHighlights = useMemo(
     () =>
       assistantPortfolioData.currentFocus.slice(0, 3).map((item) => ({
@@ -394,11 +432,12 @@ export default function useAIChat() {
       })),
     []
   );
+
   const hasConversation = messages.some((message) => message.role === 'user');
 
   return {
     isOpen,
-    messages,
+    messages: displayedMessages,
     input,
     isTyping,
     announcement,
@@ -429,7 +468,7 @@ async function streamResponse(text, onChunk) {
 
 function loadChatHistory() {
   if (typeof window === 'undefined') {
-    return [WELCOME_MESSAGE];
+    return [DEFAULT_WELCOME];
   }
 
   try {
@@ -437,8 +476,8 @@ function loadChatHistory() {
 
     return Array.isArray(savedMessages) && savedMessages.length > 0
       ? savedMessages
-      : [WELCOME_MESSAGE];
+      : [DEFAULT_WELCOME];
   } catch {
-    return [WELCOME_MESSAGE];
+    return [DEFAULT_WELCOME];
   }
 }
