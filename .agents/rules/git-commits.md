@@ -1,265 +1,76 @@
-# Master Prompt: Git Commit Guidelines, Conventional Commits & Development Discipline
+# Master Prompt: Git Commit Discipline & Conventional Commits Enforcement
 
 ## 1. Objective
 
-Follow a disciplined, transparent, and professional Git workflow throughout every development task in this repository.
+Maintain a clean, professional, transparent, and auditable Git history throughout the entire development lifecycle.
 
-Every logical code change must be properly validated, reviewed, staged, and committed using the **Conventional Commits specification**.
+Every meaningful change must be reviewed, staged, and committed separately using the **Conventional Commits specification**.
 
-The Git history must serve as a reliable development record, allowing me or another developer to understand:
+Do not treat Git commits as a final cleanup activity. Git discipline must be an integral part of the development workflow, from the first modification to the final delivery.
 
-- What changed.
-- Why it changed.
-- Which part of the application was affected.
-- How the project evolved over time.
-- Which features, fixes, and improvements were introduced.
+**Core principle: One logical change = One atomic commit.**
 
-**Core principle: Small, meaningful, independently understandable commits are mandatory.**
-
-Do not treat Git commits as a final administrative step. Git discipline must be part of the entire development workflow.
+The Git history should clearly communicate what changed, why it changed, and how the project evolved.
 
 ---
 
-## 2. Conventional Commits Specification
+## 2. Mandatory Conventional Commits Format
 
 Every commit message MUST follow this structure:
 
 ```text
-<type>(<scope>): <short summary>
+<type>(<scope>): <short summary in imperative present tense>
 ```
-
-The scope is recommended and should be included whenever a meaningful scope can be identified.
 
 ### Allowed Commit Types
 
-| Type | Purpose |
-|---|---|
-| `feat` | Introduces new functionality or a user-facing feature. |
-| `fix` | Resolves a bug or incorrect behavior. |
-| `refactor` | Restructures code without changing external behavior. |
-| `style` | Changes formatting, CSS, visual styling, or code presentation without functional changes. |
-| `docs` | Updates documentation, README, guides, or comments. |
-| `test` | Adds, modifies, or fixes tests. |
-| `chore` | Handles maintenance, tooling, configuration, or dependencies. |
-| `perf` | Improves application performance or resource efficiency. |
-
-Choose the type that best represents the actual purpose of the change.
-
-Do not misuse commit types to make the history appear more impressive.
+| Type       | Purpose                                                                              |
+| ---------- | ------------------------------------------------------------------------------------ |
+| `feat`     | Introduce a new feature or functionality                                             |
+| `fix`      | Correct a bug or unintended behavior                                                 |
+| `refactor` | Restructure code without changing external behavior                                  |
+| `style`    | Modify UI styling, formatting, or visual presentation without changing functionality |
+| `docs`     | Update documentation, README, guides, or comments                                    |
+| `test`     | Add, update, or fix tests                                                            |
+| `chore`    | Update tooling, dependencies, configuration, or maintenance tasks                    |
+| `perf`     | Improve application performance                                                      |
 
 ### Commit Message Examples
 
 ```text
-feat(projects): add featured project showcase
+feat(projects): add featured project details
 
-feat(guide): introduce interactive portfolio onboarding
+feat(guide): introduce interactive onboarding steps
 
-fix(navigation): resolve mobile menu overflow
+fix(navigation): preserve active route after modal dismissal
 
 refactor(projects): centralize project metadata
 
-style(guide): improve modal spacing and transitions
+style(guide): improve responsive modal layout
 
 test(projects): verify featured project ordering
 
-docs(readme): document current portfolio architecture
+docs(readme): document portfolio architecture
 
 chore(deps): update development dependencies
 
 perf(images): optimize project thumbnail loading
 ```
 
-### Commit Message Writing Rules
+### Commit Message Requirements
 
-- Use present-tense, imperative-style summaries.
-- Start the summary with a lowercase letter.
-- Keep summaries concise and descriptive.
-- Identify the affected feature or module through the scope.
-- Explain the actual change rather than the development activity.
+- Use lowercase commit types and scopes.
+- Use a clear, specific scope representing the affected module or functionality.
+- Write concise, meaningful summaries.
+- Use imperative present-tense wording.
+- Start the summary with an action verb where practical.
 - Avoid unnecessary punctuation at the end.
-- Never include vague or meaningless summaries.
+- Keep messages understandable without inspecting the source code.
+- Never use vague or generic messages.
 
----
+### Prohibited Commit Messages
 
-## 3. Atomic Commit Discipline
-
-Every commit must represent one logical, independently understandable change.
-
-### Mandatory Rules
-
-1. Never combine unrelated changes into a single commit.
-2. Avoid massive commits containing multiple unrelated features.
-3. Separate implementation, bug fixes, refactoring, tests, and documentation when they represent distinct logical changes.
-4. Group tightly coupled changes together when separating them would leave the project in an inconsistent or broken state.
-5. Every commit should be understandable without examining unrelated commits.
-
-### Example: Portfolio Project Integration
-
-Instead of creating one giant commit:
-
-```text
-feat(portfolio): update everything
-```
-
-Break the work into logical commits:
-
-```text
-feat(projects): register latest portfolio project
-
-feat(projects): prioritize new project in featured ordering
-
-feat(technologies): add project technology icons
-
-style(projects): improve featured project presentation
-
-docs(readme): document latest featured project
-
-docs(llms): update portfolio project discovery metadata
-
-test(projects): verify project registration and ordering
-```
-
-The actual number and scope of commits must reflect the real implementation. Do not artificially split tightly coupled changes merely to increase commit counts.
-
----
-
-## 4. Mandatory Development Workflow
-
-Follow this workflow for every meaningful implementation task.
-
-### Step 1 — Inspect Repository State
-
-Before making changes:
-
-```bash
-git status
-git branch --show-current
-git log -5 --oneline
-```
-
-Understand:
-
-- Current branch.
-- Existing uncommitted changes.
-- Recent commit-message conventions.
-- Repository state.
-- Whether previous work is incomplete.
-
-**Never assume the working tree is clean.**
-
-Do not overwrite, discard, reset, or commit pre-existing user changes without authorization.
-
-### Step 2 — Implement One Logical Change
-
-- Make a focused modification.
-- Follow existing architecture and coding conventions.
-- Avoid unrelated refactoring.
-- Keep the change independently reviewable.
-
-### Step 3 — Validate the Change
-
-Run relevant checks before committing.
-
-Depending on the change, this may include:
-
-- Unit tests.
-- Integration tests.
-- Linting.
-- Type checking.
-- Production build.
-- Relevant manual verification.
-
-Do not claim a check passed unless it was actually executed successfully.
-
-### Step 4 — Inspect the Diff
-
-Before staging:
-
-```bash
-git diff
-git status
-```
-
-Review for:
-
-- Unintended modifications.
-- Unrelated files.
-- Debugging statements.
-- Temporary files.
-- Exposed credentials or secrets.
-- Generated artifacts.
-- Formatting inconsistencies.
-- Incomplete implementation.
-
-For staged changes, also inspect:
-
-```bash
-git diff --cached
-```
-
-### Step 5 — Stage Intentionally
-
-Prefer explicitly staging relevant files:
-
-```bash
-git add <file-path>
-```
-
-Avoid blindly staging the entire repository with:
-
-```bash
-git add .
-```
-
-Especially when unrelated or user-owned changes are present.
-
-### Step 6 — Commit
-
-Create a descriptive Conventional Commit:
-
-```bash
-git commit -m "feat(projects): add featured project showcase"
-```
-
-Each commit must represent a validated logical change.
-
-### Step 7 — Verify the Commit
-
-After committing:
-
-```bash
-git status
-git log -1 --oneline
-```
-
-Confirm:
-
-- The intended files were committed.
-- The commit message follows the specification.
-- No unrelated changes were included.
-- The working tree remains in the expected state.
-
-Then proceed to the next logical change.
-
----
-
-## 5. Git History Quality Standards
-
-Maintain a clean and transparent development history.
-
-The Git log should communicate project progress naturally.
-
-### Good History
-
-```text
-feat(guide): introduce interactive onboarding flow
-feat(guide): add contextual portfolio navigation
-style(guide): improve responsive modal presentation
-test(guide): verify onboarding navigation behavior
-docs(guide): update portfolio guide documentation
-```
-
-### Bad History
+Never use:
 
 ```text
 update
@@ -267,194 +78,334 @@ changes
 final
 done
 fix stuff
-more updates
+misc
+cleanup
 phase complete
-latest changes
+latest update
+bug fixes
 ```
 
-Never use vague messages, even for small changes.
-
-### History Integrity
-
-- Do not rewrite existing shared history without authorization.
-- Do not amend previous commits unless explicitly requested or clearly authorized.
-- Do not force-push.
-- Do not delete branches or tags without authorization.
-- Do not use `git reset --hard` or destructive cleanup commands to resolve ordinary working-tree issues.
-- Do not hide failed checks or incomplete changes.
-- Do not fabricate commits or commit hashes in reports.
+These messages do not communicate meaningful development history.
 
 ---
 
-## 6. Handling Existing User Changes
+## 3. File-by-File Staging Discipline
 
-This is a critical safety requirement.
+**Every file must be reviewed and staged individually.**
 
-Before modifying or committing anything, inspect the existing working tree.
+Do not blindly stage the entire working directory using:
 
-If unrelated modifications already exist:
+```bash
+git add .
+git add -A
+git commit -am "update"
+```
 
-1. Identify them.
-2. Preserve them.
-3. Do not include them in your commits.
-4. Work only on the files and changes relevant to the current task.
-5. Report any conflicts that prevent safe implementation.
+Instead, follow this process:
 
-Never assume all uncommitted changes belong to the current task.
+1. Inspect the modified files.
+2. Identify the logical purpose of each change.
+3. Review the contents of each file.
+4. Stage individual files using explicit paths.
+5. Verify the staged changes.
+6. Commit the corresponding logical change.
 
-If a task requires modifying a file that already contains user changes, preserve those changes and inspect the complete diff before proceeding.
+Example:
 
----
+```bash
+git status --short
 
-## 7. Commit Scope Guidelines
+git diff -- src/data/projects.js
 
-Use meaningful scopes based on the actual portfolio architecture.
+git add src/data/projects.js
 
-Examples:
+git diff --cached
 
-| Scope | Typical usage |
-|---|---|
-| `projects` | Project registry, cards, details, ordering |
-| `guide` | Portfolio Guide and onboarding |
-| `technologies` | Technology registry and icons |
-| `skills` | Skills and expertise sections |
-| `navigation` | Navbar, routing, navigation |
-| `ui` | Shared UI components |
-| `animations` | Motion and transition systems |
-| `i18n` | Localization and language support |
-| `seo` | Metadata and search optimization |
-| `docs` | General documentation |
-| `readme` | README.md |
-| `llms` | llms.txt |
-| `config` | Application configuration |
-| `tests` | General test infrastructure |
+git commit -m "feat(projects): register latest portfolio project"
+```
 
-These are examples, not a mandatory fixed list. Use the most accurate scope for each change.
+Repeat this process for other files.
+
+**Important distinction:** File-by-file staging does not mean every file must automatically receive its own commit.
+
+Files that collectively implement one coherent logical change may belong in the same atomic commit, but each file must be individually reviewed and explicitly staged.
+
+If a single file contains multiple unrelated changes, use interactive staging (`git add -p`) to separate the logical changes where practical.
 
 ---
 
-## 8. Testing and Commit Boundaries
+## 4. Atomic Commit Rules
 
-A commit must not knowingly introduce a broken application state.
+Every meaningful change must be committed separately.
 
-### Required discipline
+### What qualifies as a meaningful change?
 
-- Run focused tests after implementing each logical feature.
-- Run broader tests when changes affect shared functionality.
-- Run the production build after major implementation tasks.
-- Keep tests synchronized with relevant functionality.
-- Do not commit knowingly failing or incomplete code as a completed feature.
+Examples include:
 
-If an existing unrelated test fails:
+- Adding a new component.
+- Introducing a new feature.
+- Updating project metadata.
+- Adding a technology or icon definition.
+- Changing featured project ordering.
+- Improving a modal or page layout.
+- Fixing responsive behavior.
+- Updating application navigation.
+- Refactoring shared utilities.
+- Updating documentation.
+- Adding or modifying tests.
+- Changing build or deployment configuration.
 
-1. Identify whether the failure predates your changes.
-2. Do not silently modify unrelated functionality.
-3. Document the failure.
-4. Clearly distinguish pre-existing failures from newly introduced failures.
+### Atomic Commit Principles
 
-If a change cannot be fully validated, report that limitation honestly before proceeding.
+- One commit should represent one coherent purpose.
+- Do not combine unrelated frontend, backend, documentation, and configuration changes.
+- Do not accumulate multiple completed tasks into one giant commit.
+- Do not create artificial commits for trivial changes that are inseparable from their parent task.
+- Preserve dependencies between commits so the history remains understandable.
+- Ensure each commit leaves the repository in a valid, understandable state.
+
+If a feature requires several independent steps, commit those steps separately in their natural implementation order.
 
 ---
 
-## 9. Documentation and Git Consistency
+## 5. Mandatory Development Workflow
 
-Documentation changes must also follow Conventional Commits.
+Follow this workflow continuously.
+
+### Step 1 — Inspect
+
+Before starting a logical task:
+
+```bash
+git status --short
+git branch --show-current
+```
+
+Understand existing modifications before making new ones.
+
+Never overwrite, discard, or commit unrelated user changes without authorization.
+
+### Step 2 — Implement a Small Logical Change
+
+Make one focused modification.
+
+Avoid mixing unrelated tasks.
+
+### Step 3 — Validate
+
+Run the most relevant checks for the change:
+
+- Unit tests.
+- Integration tests.
+- Linting.
+- Type checking.
+- Build checks.
+- Relevant manual verification.
+
+Do not run unnecessary expensive checks after every tiny edit if a focused check is sufficient. Run the complete required validation before final delivery.
+
+### Step 4 — Review the Diff
+
+Inspect both unstaged and staged changes:
+
+```bash
+git diff
+git diff --check
+git status --short
+```
+
+Check for:
+
+- Unintended modifications.
+- Debugging statements.
+- Temporary files.
+- Secrets or credentials.
+- Unnecessary formatting changes.
+- Unrelated changes.
+- Incomplete implementations.
+
+### Step 5 — Stage Files Individually
+
+Explicitly stage each intended file:
+
+```bash
+git add path/to/file1
+git add path/to/file2
+```
+
+Do not stage files that belong to unrelated work.
+
+### Step 6 — Review the Staged Changes
+
+```bash
+git diff --cached
+git diff --cached --check
+git status --short
+```
+
+Confirm that the staged changes represent exactly one logical purpose.
+
+### Step 7 — Commit
+
+Create a descriptive Conventional Commit:
+
+```bash
+git commit -m "type(scope): describe the meaningful change"
+```
+
+### Step 8 — Verify
+
+After committing:
+
+```bash
+git status --short
+git log -1 --oneline
+```
+
+Confirm that the commit succeeded and no unintended changes were included.
+
+Then proceed to the next logical task.
+
+---
+
+## 6. Documentation and Non-Code Changes
+
+Documentation changes must also follow atomic commit discipline.
 
 Examples:
 
 ```text
-docs(readme): update project showcase
-docs(llms): synchronize featured project information
-docs(architecture): document component structure
-docs(guide): describe onboarding experience
+docs(readme): document current portfolio features
+
+docs(llms): describe featured projects and technologies
+
+docs(guide): update portfolio onboarding instructions
 ```
 
-When implementation changes affect documented functionality, update relevant documentation in the appropriate logical commit.
-
-Avoid committing documentation that describes features not yet implemented.
+Do not combine unrelated documentation updates with application feature commits unless they are inseparable parts of the same change.
 
 ---
 
-## 10. Remote Repository Safety
+## 7. Git Safety and Repository Protection
 
-Unless explicitly authorized:
+The following rules are mandatory:
 
-- Do not push commits to GitHub.
-- Do not merge branches.
-- Do not create pull requests.
-- Do not publish releases.
-- Do not modify remote repository settings.
-- Do not force-push or rewrite remote history.
-
-Local commits are permitted as part of the authorized development workflow, provided existing user changes remain protected.
-
-If remote synchronization is necessary, explain why and request authorization.
+1. Never use destructive Git commands without explicit authorization.
+2. Never overwrite existing uncommitted user work.
+3. Never reset, rebase, amend, force-push, or delete branches without authorization.
+4. Never commit `.env` files, credentials, private keys, or sensitive information.
+5. Respect the existing branch and repository workflow.
+6. Do not silently skip failing tests or checks.
+7. Do not push to the remote repository unless explicitly authorized.
+8. Never rewrite existing commit history merely to make it look cleaner.
+9. If unexpected changes appear, investigate before proceeding.
+10. If a commit contains an error, report it and follow a safe corrective workflow rather than silently rewriting history.
 
 ---
 
-## 11. Final Git Report
+## 8. Handling Multiple Changes and Dependencies
 
-At the end of every development task, provide a concise Git summary.
+When a task involves multiple files or modules:
 
-Include:
+1. Identify all affected files.
+2. Group them by logical functionality.
+3. Determine implementation dependencies.
+4. Establish a sensible commit sequence.
+5. Implement and validate one logical group at a time.
+6. Stage the relevant files individually.
+7. Commit each meaningful change separately.
 
-### A. Commits Created
+Example: Integrating a new featured project.
 
-| Commit | Type | Description |
-|---|---|---|
-| Actual short hash | `feat` | Actual commit summary |
-| Actual short hash | `fix` | Actual commit summary |
+```text
+feat(projects): register latest portfolio project
+feat(projects): add project detail metadata
+feat(technologies): register project technology icons
+style(projects): enhance featured project presentation
+test(projects): verify featured project ordering
+docs(readme): document latest featured project
+docs(llms): add latest project information
+```
 
-Only report commits that actually exist.
+These are illustrative commit boundaries. Adapt the actual commits to the real architecture and changes.
 
-### B. Validation
+Do not create empty or artificial commits just to match an example.
 
-- Tests: Passed / Failed / Not run.
-- Lint: Passed / Failed / Not run.
-- Type checking: Passed / Failed / Not run.
-- Production build: Passed / Failed / Not run.
+---
 
-### C. Repository State
+## 9. Git History Quality Standards
+
+The Git log must function as a readable development timeline.
+
+A developer, reviewer, or project manager should be able to understand:
+
+- What functionality was introduced.
+- Which bugs were corrected.
+- Which modules were refactored.
+- Which visual improvements were made.
+- Which tests were added.
+- Which documentation was updated.
+
+The history should demonstrate disciplined engineering practices rather than a collection of arbitrary snapshots.
+
+---
+
+## 10. Final Delivery Report
+
+At the end of the development task, provide:
+
+### A. Commit Summary
+
+List every commit created during the task:
+
+| Commit   | Type    | Scope      | Description                   |
+| -------- | ------- | ---------- | ----------------------------- |
+| `<hash>` | `feat`  | `projects` | Register latest project       |
+| `<hash>` | `style` | `projects` | Improve featured presentation |
+| `<hash>` | `docs`  | `readme`   | Update project documentation  |
+
+Use actual commit hashes and messages.
+
+### B. Validation Summary
+
+Report:
+
+- Tests executed and results.
+- Lint status.
+- Type-check status.
+- Production build status.
+- Any unresolved issues.
+
+### C. Repository Status
+
+Confirm:
 
 - Current branch.
-- Working tree status.
-- Any remaining uncommitted changes.
+- Whether the working tree is clean.
+- Whether any pre-existing changes remain uncommitted.
 - Whether commits were pushed.
 
-### D. Outstanding Issues
-
-Clearly identify:
-
-- Failed checks.
-- Uncommitted work.
-- Pre-existing modifications.
-- Any manual actions required.
+Never claim a clean working tree if unrelated or intentionally uncommitted modifications remain.
 
 ---
 
 # Non-Negotiable Rules
 
-1. Every commit MUST follow Conventional Commits.
-2. Every commit MUST represent a meaningful logical change.
-3. Every meaningful change MUST be validated before committing.
-4. Always inspect diffs before staging and committing.
-5. Never commit unrelated user changes.
-6. Never use vague commit messages.
-7. Never hide errors or failing tests.
-8. Never rewrite history or perform destructive Git operations without authorization.
-9. Never push to the remote repository without explicit authorization.
-10. Maintain a readable, auditable, professional Git history.
+1. Every meaningful change must be committed separately.
+2. Every file must be reviewed and explicitly staged by path.
+3. Every commit must follow Conventional Commits.
+4. Every commit must have a meaningful, specific message.
+5. Never accumulate unrelated work into a giant commit.
+6. Review the diff before every commit.
+7. Validate changes before committing.
+8. Preserve existing user changes.
+9. Never push without authorization.
+10. Maintain a transparent and understandable Git history.
 
-# Definition of Done
+## Final Instruction
 
-A development task is not considered fully completed until:
+Treat Git discipline as part of the implementation itself, not an optional final step.
 
-- Implementation is complete.
-- Relevant checks have been executed.
-- Changes have been reviewed.
-- Logical changes have been committed separately.
-- All commit messages follow Conventional Commits.
-- Existing user changes remain protected.
-- The final Git state is accurately reported.
+**Work incrementally. Review every file. Stage explicitly. Test appropriately. Commit every meaningful logical change separately.**
 
-**Final instruction: Work like a disciplined senior software engineer. Treat every commit as a permanent piece of project history. Prioritize clarity, traceability, code quality, and repository safety over commit speed.**
+The quality of the Git history must reflect the same engineering standards as the application code.
