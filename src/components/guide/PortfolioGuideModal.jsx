@@ -110,11 +110,13 @@ export default function PortfolioGuideModal() {
     }
 
     // Keyboard scrolling support for modal content
-    const isFocusOnDialogOrBody =
-      document.activeElement === dialogRef.current ||
-      document.activeElement === scrollContainerRef.current;
+    const isInputFocused = ['INPUT', 'TEXTAREA', 'SELECT'].includes(
+      document.activeElement?.tagName
+    );
+    const isFocusInsideModal =
+      dialogRef.current && dialogRef.current.contains(document.activeElement);
 
-    if (isFocusOnDialogOrBody) {
+    if (isFocusInsideModal && !isInputFocused) {
       if (e.key === 'PageDown' || e.key === 'ArrowDown') {
         e.preventDefault();
         scrollContainerRef.current?.scrollBy({
@@ -174,6 +176,12 @@ export default function PortfolioGuideModal() {
     }
   };
 
+  const handleWheel = (e) => {
+    if (scrollContainerRef.current && !scrollContainerRef.current.contains(e.target)) {
+      scrollContainerRef.current.scrollTop += e.deltaY;
+    }
+  };
+
   if (!isOpen) return null;
 
   const Icon = step.icon;
@@ -214,6 +222,7 @@ export default function PortfolioGuideModal() {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.95, y: 15 }}
           transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+          onWheel={handleWheel}
           className="relative z-10 flex flex-col w-full max-w-2xl max-h-[92vh] sm:max-h-[88vh] rounded-3xl border border-default bg-surface shadow-2xl shadow-black/40 overflow-hidden outline-none"
         >
           {/* Top Progress Spine */}
