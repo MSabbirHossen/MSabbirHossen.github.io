@@ -78,6 +78,23 @@
     overflow-x: hidden;
   }
 
+  html[lang='ar'],
+  [dir='rtl'] {
+    font-family: 'Noto Sans Arabic', var(--font-sans);
+  }
+
+  html[lang='bn'] {
+    font-family: 'Hind Siliguri', var(--font-sans);
+  }
+
+  [dir='rtl'] .rtl-flip {
+    transform: scaleX(-1);
+  }
+
+  [dir='rtl'] .rtl-rotate-180 {
+    transform: rotate(180deg);
+  }
+
   body {
     @apply transition-colors duration-300 antialiased;
     overflow-x: hidden;
