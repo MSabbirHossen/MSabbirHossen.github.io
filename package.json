@@ -11,6 +11,7 @@
     "lint": "eslint src/",
     "format": "prettier --write .",
     "preview": "vite preview",
+    "test": "node --import \"data:text/javascript,import{register}from'node:module';import{pathToFileURL}from'node:url';register('./scripts/resolve-src-imports.mjs',pathToFileURL('./'))\" --test scripts/test-i18n.test.mjs",
     "update-stats": "node scripts/update-stats.js"
   },
   "dependencies": {
