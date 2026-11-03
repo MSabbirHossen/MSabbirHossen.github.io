@@ -90,7 +90,7 @@ const Card = forwardRef(function Card(
           aria-hidden="true"
         />
       )}
-      <div className={spotlight ? 'relative z-10' : undefined}>{children}</div>
+      {children}
     </Tag>
   );
 });
