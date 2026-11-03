@@ -36,6 +36,7 @@ import Button from '../components/common/Button';
 import Card from '../components/common/Card';
 import Reveal from '../components/animations/Reveal';
 import { usePortfolioGuide } from '../contexts/PortfolioGuideContext';
+import { useTranslation } from '../i18n';
 
 const GUIDE_SECTIONS = [
   { id: 'welcome', title: '01. Welcome & Introduction', icon: FaCompass, badge: 'Overview' },
@@ -104,6 +105,7 @@ function Accordion({ title, children, defaultOpen = false, badge = null, icon: I
 }
 
 export default function GuidePage() {
+  const { t, isRTL } = useTranslation();
   const { personalInfo, projects, skills, certifications } = portfolioData;
   const { openGuide } = usePortfolioGuide();
   const [activeSection, setActiveSection] = useState('welcome');
@@ -111,9 +113,8 @@ export default function GuidePage() {
 
   const siteUrl = personalInfo.website.replace(/\/$/, '');
   const canonicalUrl = `${siteUrl}/guide`;
-  const pageTitle = `Interactive Portfolio Guide | ${personalInfo.name}`;
-  const pageDescription =
-    "Complete interactive walkthrough and user guide for exploring the projects, skills, architecture, and features of Md. Sabbir Hossen's MERN stack portfolio.";
+  const pageTitle = t('guide.pageTitle', { name: personalInfo.name });
+  const pageDescription = t('guide.pageDescription');
   const socialImage = `${siteUrl}/og-image.svg`;
 
   useEffect(() => {
@@ -191,8 +192,15 @@ export default function GuidePage() {
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         {/* Top Breadcrumb & Actions */}
         <div className="mb-8 flex flex-wrap items-center justify-between gap-3">
-          <Button as={Link} to="/" variant="ghost" size="sm" icon={FaArrowLeft} className="px-0">
-            Back to Home
+          <Button
+            as={Link}
+            to="/"
+            variant="ghost"
+            size="sm"
+            icon={FaArrowLeft}
+            className={`px-0 ${isRTL ? '[&>svg]:rotate-180' : ''}`}
+          >
+            {t('common.backToHome')}
           </Button>
 
           <div className="flex flex-wrap items-center gap-2">
@@ -204,7 +212,7 @@ export default function GuidePage() {
               title="Launch Guided Onboarding Tour (8 Steps)"
               className="shadow-sm shadow-accent-primary/20"
             >
-              Start Interactive Tour
+              {t('guide.startTour')}
             </Button>
             <Button
               variant="outline"

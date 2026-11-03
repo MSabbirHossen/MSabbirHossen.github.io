@@ -8,6 +8,7 @@ import Typography from '../components/common/Typography';
 import Badge from '../components/common/Badge';
 import Button from '../components/common/Button';
 import Reveal from '../components/animations/Reveal';
+import { useTranslation } from '../i18n';
 
 import ProjectHero from '../components/project-details/ProjectHero';
 import ProjectLinks from '../components/project-details/ProjectLinks';
@@ -19,6 +20,7 @@ import ProjectApiEndpoints from '../components/project-details/ProjectApiEndpoin
 
 export default function ProjectDetails() {
   const { slug } = useParams();
+  const { t, isRTL } = useTranslation();
 
   const allProjects = portfolioData.projects;
   const project = allProjects.find((item) => item.id === slug);
@@ -97,11 +99,11 @@ export default function ProjectDetails() {
                       variant="subtitle"
                       className="text-base font-bold text-primary sm:text-lg"
                     >
-                      Project Overview
+                      {t('projectDetails.projectOverview')}
                     </Typography>
                   </div>
                   <Badge variant="neutral" className="text-xs">
-                    Case Study
+                    {t('projectDetails.caseStudyBadge')}
                   </Badge>
                 </div>
                 <Typography
@@ -118,25 +120,41 @@ export default function ProjectDetails() {
             </Reveal>
 
             <Reveal delay={0.1}>
-              <ProjectBulletList title="Key Features" items={project.features} columns />
+              <ProjectBulletList
+                title={t('projectDetails.keyFeatures')}
+                items={project.features}
+                columns
+              />
             </Reveal>
 
             <Reveal delay={0.15}>
-              <ProjectBulletList title="Architecture" items={project.architecture} />
+              <ProjectBulletList
+                title={t('projectDetails.architecture')}
+                items={project.architecture}
+              />
             </Reveal>
 
             <Reveal delay={0.2}>
-              <ProjectBulletList title="Challenges & Solutions" items={project.challenges} />
+              <ProjectBulletList
+                title={t('projectDetails.challengesSolutions')}
+                items={project.challenges}
+              />
             </Reveal>
 
             {project.developmentProcess?.length > 0 && (
               <Reveal delay={0.25}>
-                <ProjectBulletList title="Development Process" items={project.developmentProcess} />
+                <ProjectBulletList
+                  title={t('projectDetails.developmentProcess')}
+                  items={project.developmentProcess}
+                />
               </Reveal>
             )}
 
             <Reveal delay={0.3}>
-              <ProjectBulletList title="Lessons Learned" items={project.lessonsLearned} />
+              <ProjectBulletList
+                title={t('projectDetails.lessonsLearned')}
+                items={project.lessonsLearned}
+              />
             </Reveal>
 
             <Reveal delay={0.35}>
@@ -151,7 +169,10 @@ export default function ProjectDetails() {
 
             {project.futureImprovements?.length > 0 && (
               <Reveal delay={0.1}>
-                <ProjectBulletList title="Future Improvements" items={project.futureImprovements} />
+                <ProjectBulletList
+                  title={t('projectDetails.futureImprovements')}
+                  items={project.futureImprovements}
+                />
               </Reveal>
             )}
 
@@ -177,8 +198,14 @@ export default function ProjectDetails() {
                     className="flex h-full flex-col justify-between border-default p-5 transition-all duration-300 group-hover:border-accent-primary/40"
                   >
                     <div className="flex items-center gap-2 text-xs font-semibold text-muted group-hover:text-accent-primary transition-colors">
-                      <FaArrowLeft className="h-3 w-3 transition-transform duration-200 group-hover:-translate-x-1" />
-                      <span>Previous Project</span>
+                      <FaArrowLeft
+                        className={`h-3 w-3 transition-transform duration-200 ${
+                          isRTL
+                            ? 'rotate-180 group-hover:translate-x-1'
+                            : 'group-hover:-translate-x-1'
+                        }`}
+                      />
+                      <span>{t('projectDetails.previousProject')}</span>
                     </div>
                     <div className="mt-3">
                       <Typography
@@ -202,11 +229,23 @@ export default function ProjectDetails() {
                   <Card
                     spotlight
                     hover
-                    className="flex h-full flex-col justify-between border-default p-5 transition-all duration-300 group-hover:border-accent-primary/40 text-right sm:items-end"
+                    className={`flex h-full flex-col justify-between border-default p-5 transition-all duration-300 group-hover:border-accent-primary/40 ${
+                      isRTL ? 'text-left sm:items-start' : 'text-right sm:items-end'
+                    }`}
                   >
-                    <div className="flex items-center justify-end gap-2 text-xs font-semibold text-muted group-hover:text-accent-primary transition-colors">
-                      <span>Next Project</span>
-                      <FaArrowRight className="h-3 w-3 transition-transform duration-200 group-hover:translate-x-1" />
+                    <div
+                      className={`flex items-center gap-2 text-xs font-semibold text-muted group-hover:text-accent-primary transition-colors ${
+                        isRTL ? 'justify-start' : 'justify-end'
+                      }`}
+                    >
+                      <span>{t('projectDetails.nextProject')}</span>
+                      <FaArrowRight
+                        className={`h-3 w-3 transition-transform duration-200 ${
+                          isRTL
+                            ? 'rotate-180 group-hover:-translate-x-1'
+                            : 'group-hover:translate-x-1'
+                        }`}
+                      />
                     </div>
                     <div className="mt-3">
                       <Typography
@@ -230,18 +269,16 @@ export default function ProjectDetails() {
             spotlight
             className="mt-8 border-accent-primary/30 bg-gradient-to-br from-surface via-surface to-accent-primary/5 p-6 sm:p-8"
           >
-            <div className="flex flex-col items-center justify-between gap-6 md:flex-row text-center md:text-left">
+            <div className="flex flex-col items-center justify-between gap-6 md:flex-row text-center md:text-left rtl:md:text-right">
               <div className="space-y-2">
                 <Badge variant="primary" className="text-xs">
-                  Ready to Collaborate
+                  {t('projectDetails.readyToCollaborate')}
                 </Badge>
                 <Typography variant="h2" className="text-xl sm:text-2xl font-bold text-primary">
-                  Interested in discussing this project or hiring me?
+                  {t('projectDetails.interestedTitle')}
                 </Typography>
                 <Typography variant="body" className="max-w-2xl text-xs sm:text-sm text-secondary">
-                  I am actively seeking Junior MERN Stack Developer opportunities. Let&apos;s talk
-                  about how my full-stack capabilities, clean code habits, and problem-solving
-                  mindset can contribute to your engineering team.
+                  {t('projectDetails.interestedDesc')}
                 </Typography>
               </div>
 
@@ -254,10 +291,10 @@ export default function ProjectDetails() {
                   icon={FaComments}
                   className="shadow-md shadow-accent-primary/20"
                 >
-                  Discuss This Project
+                  {t('projectDetails.discussBtn')}
                 </Button>
                 <Button as={Link} to="/recruiter" variant="outline" size="md" icon={FaBriefcase}>
-                  Recruiter Dossier
+                  {t('projectDetails.recruiterDossierBtn')}
                 </Button>
               </div>
             </div>

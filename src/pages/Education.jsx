@@ -18,15 +18,16 @@ import Badge from '../components/common/Badge';
 import Button from '../components/common/Button';
 import Card from '../components/common/Card';
 import Reveal from '../components/animations/Reveal';
+import { useTranslation } from '../i18n';
 
 export default function EducationPage() {
+  const { t, isRTL } = useTranslation();
   const { education, personalInfo } = portfolioData;
 
   const siteUrl = personalInfo.website.replace(/\/$/, '');
   const canonicalUrl = `${siteUrl}/education`;
-  const pageTitle = `Academic Background & Education Timeline | ${personalInfo.name}`;
-  const pageDescription =
-    'Explore the complete academic timeline, computer science degree, language studies, and foundational science qualifications of Md. Sabbir Hossen.';
+  const pageTitle = t('education.pageTitle', { name: personalInfo.name });
+  const pageDescription = t('education.pageDescription');
   const socialImage = `${siteUrl}/og-image.svg`;
 
   const educationSchema = {
@@ -69,16 +70,18 @@ export default function EducationPage() {
               variant="ghost"
               size="sm"
               icon={FaArrowLeft}
-              className="mb-6 px-0 text-secondary hover:text-accent-primary"
+              className={`mb-6 px-0 text-secondary hover:text-accent-primary ${
+                isRTL ? '[&>svg]:rotate-180' : ''
+              }`}
             >
-              Back to Education Section
+              {t('education.backToEducation')}
             </Button>
           </Reveal>
 
           <div className="space-y-3">
             <Reveal delay={0.05}>
               <Badge variant="primary" className="text-xs">
-                Academic Foundations
+                {t('education.eyebrow')}
               </Badge>
             </Reveal>
 
@@ -87,7 +90,7 @@ export default function EducationPage() {
                 variant="h1"
                 className="text-balance text-3xl sm:text-4xl md:text-5xl font-extrabold text-primary"
               >
-                Academic Background & Qualifications
+                {t('education.pageHeading')}
               </Typography>
             </Reveal>
 
@@ -96,9 +99,7 @@ export default function EducationPage() {
                 variant="body"
                 className="max-w-3xl text-sm sm:text-base leading-relaxed text-secondary"
               >
-                Formal education in Computer Science, scientific rigor, and academic language
-                studies providing the theoretical foundation and analytical discipline for
-                full-stack software engineering.
+                {t('education.pageIntro')}
               </Typography>
             </Reveal>
           </div>
@@ -112,8 +113,10 @@ export default function EducationPage() {
                 <FaGraduationCap className="h-6 w-6" aria-hidden="true" />
               </div>
               <div className="min-w-0">
-                <p className="text-sm font-bold text-primary truncate">Bachelor of Science</p>
-                <p className="text-xs text-muted truncate">Islamic University of Madinah</p>
+                <p className="text-sm font-bold text-primary truncate">
+                  {t('education.ribbonDegree')}
+                </p>
+                <p className="text-xs text-muted truncate">{t('education.ribbonInstitution')}</p>
               </div>
             </Card>
 
@@ -122,8 +125,10 @@ export default function EducationPage() {
                 <FaAward className="h-6 w-6" aria-hidden="true" />
               </div>
               <div className="min-w-0">
-                <p className="text-sm font-bold text-primary truncate">GPA 5.00 / 5.00</p>
-                <p className="text-xs text-muted truncate">Science & Secondary Excellence</p>
+                <p className="text-sm font-bold text-primary truncate">
+                  {t('education.ribbonGpa')}
+                </p>
+                <p className="text-xs text-muted truncate">{t('education.ribbonGpaDesc')}</p>
               </div>
             </Card>
 
@@ -132,8 +137,12 @@ export default function EducationPage() {
                 <FaBookOpen className="h-6 w-6" aria-hidden="true" />
               </div>
               <div className="min-w-0">
-                <p className="text-sm font-bold text-primary truncate">Arabic & Linguistics</p>
-                <p className="text-xs text-muted truncate">Academic Fluency & Translation</p>
+                <p className="text-sm font-bold text-primary truncate">
+                  {t('education.ribbonLinguistics')}
+                </p>
+                <p className="text-xs text-muted truncate">
+                  {t('education.ribbonLinguisticsDesc')}
+                </p>
               </div>
             </Card>
           </div>
@@ -197,7 +206,7 @@ export default function EducationPage() {
                         {isCurrent ? (
                           <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/25 bg-emerald-500/10 px-2.5 py-0.5 text-xs font-semibold text-emerald-400">
                             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
-                            In Progress · Undergraduate
+                            {t('education.inProgressBadge')}
                           </span>
                         ) : (
                           <Badge variant="primary" className="text-xs">
@@ -277,7 +286,7 @@ export default function EducationPage() {
                 icon={FaBriefcase}
                 className="w-full sm:w-auto"
               >
-                Engineering Experience
+                {t('education.crossEngineering')}
               </Button>
               <Button
                 as={Link}
@@ -287,7 +296,7 @@ export default function EducationPage() {
                 icon={FaCertificate}
                 className="w-full sm:w-auto"
               >
-                Certifications
+                {t('education.crossCertifications')}
               </Button>
             </div>
 
@@ -299,9 +308,11 @@ export default function EducationPage() {
               size="md"
               icon={FaArrowRight}
               iconPosition="right"
-              className="w-full sm:w-auto shadow-md shadow-accent-primary/20"
+              className={`w-full sm:w-auto shadow-md shadow-accent-primary/20 ${
+                isRTL ? '[&>svg]:rotate-180' : ''
+              }`}
             >
-              Explore Featured Projects
+              {t('education.crossFeaturedProjects')}
             </Button>
           </div>
         </Reveal>

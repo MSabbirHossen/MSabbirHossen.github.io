@@ -19,17 +19,18 @@ import Button from '../components/common/Button';
 import Card from '../components/common/Card';
 import Reveal from '../components/animations/Reveal';
 import { EASINGS } from '../lib/motion';
+import { useTranslation } from '../i18n';
 
 export default function ExperiencePage() {
+  const { t, isRTL } = useTranslation();
   const { experience, education, personalInfo } = portfolioData;
   const [activeFilter, setActiveFilter] = useState('All');
   const shouldReduceMotion = useReducedMotion();
 
   const siteUrl = personalInfo.website.replace(/\/$/, '');
   const canonicalUrl = `${siteUrl}/experience`;
-  const pageTitle = `Experience & Project Timeline | ${personalInfo.name}`;
-  const pageDescription =
-    'Explore the complete chronological engineering timeline and project milestones of Md. Sabbir Hossen.';
+  const pageTitle = t('experience.pageTitle', { name: personalInfo.name });
+  const pageDescription = t('experience.pageDescription');
   const socialImage = `${siteUrl}/og-image.svg`;
 
   const filterOptions = useMemo(() => {
@@ -82,16 +83,16 @@ export default function ExperiencePage() {
               variant="ghost"
               size="sm"
               icon={FaArrowLeft}
-              className="mb-8 px-0"
+              className={`mb-8 px-0 ${isRTL ? '[&>svg]:rotate-180' : ''}`}
             >
-              Back to Home
+              {t('common.backToHome')}
             </Button>
           </Reveal>
 
           <div className="space-y-2">
             <Reveal delay={0.05}>
               <Typography variant="h1" className="text-balance text-3xl sm:text-4xl md:text-5xl">
-                Engineering Journey & Timeline
+                {t('experience.pageHeading')}
               </Typography>
             </Reveal>
           </div>
@@ -106,7 +107,7 @@ export default function ExperiencePage() {
               </div>
               <div>
                 <p className="text-2xl font-bold text-primary">{experience.length}+</p>
-                <p className="text-xs text-muted">Shipped Product Milestones</p>
+                <p className="text-xs text-muted">{t('experience.shippedMilestones')}</p>
               </div>
             </Card>
 
@@ -115,8 +116,10 @@ export default function ExperiencePage() {
                 <FaLayerGroup className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-sm font-semibold text-primary">TypeScript & MERN</p>
-                <p className="text-xs text-muted">PostgreSQL · Docker · Cloud</p>
+                <p className="text-sm font-semibold text-primary">
+                  {t('experience.techStackLabel')}
+                </p>
+                <p className="text-xs text-muted">{t('experience.techStackSub')}</p>
               </div>
             </Card>
 
@@ -125,8 +128,10 @@ export default function ExperiencePage() {
                 <FaBriefcase className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-sm font-semibold text-primary">100% Deployed</p>
-                <p className="text-xs text-muted">Live Demonstrable Systems</p>
+                <p className="text-sm font-semibold text-primary">
+                  {t('experience.deployedLabel')}
+                </p>
+                <p className="text-xs text-muted">{t('experience.deployedSub')}</p>
               </div>
             </Card>
           </div>
@@ -143,7 +148,7 @@ export default function ExperiencePage() {
                 onClick={() => setActiveFilter(option)}
                 aria-pressed={activeFilter === option}
               >
-                {option}
+                {option === 'All' ? t('common.all') : option}
               </Button>
             ))}
           </div>
@@ -152,7 +157,11 @@ export default function ExperiencePage() {
         {/* The Chain of Time Timeline */}
         <div className="relative">
           {/* Continuous Vertical Glowing Line */}
-          <div className="absolute left-4 top-0 h-full w-0.5 bg-linear-to-b from-accent-primary via-accent-secondary to-accent-primary/20 md:left-6" />
+          <div
+            className={`absolute top-0 h-full w-0.5 bg-linear-to-b from-accent-primary via-accent-secondary to-accent-primary/20 ${
+              isRTL ? 'right-4 md:right-6' : 'left-4 md:left-6'
+            }`}
+          />
 
           {/* Project & Experience Nodes */}
           {filteredTimeline.map((item, index) => (
@@ -166,7 +175,9 @@ export default function ExperiencePage() {
             >
               {/* Timeline Chain Node */}
               <motion.div
-                className="relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 border-accent-primary bg-surface shadow-md shadow-accent-primary/20 md:left-2 md:-translate-x-1/2"
+                className={`relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 border-accent-primary bg-surface shadow-md shadow-accent-primary/20 ${
+                  isRTL ? 'md:right-2 md:translate-x-1/2' : 'md:left-2 md:-translate-x-1/2'
+                }`}
                 initial={shouldReduceMotion ? false : { scale: 0.7, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true, amount: 0.3 }}
@@ -196,9 +207,10 @@ export default function ExperiencePage() {
                     {item.projectSlug && (
                       <Link
                         to={`/projects/${item.projectSlug}`}
-                        className="text-xs font-semibold text-accent-primary hover:underline"
+                        className="text-xs font-semibold text-accent-primary hover:underline inline-flex items-center gap-1"
                       >
-                        Explore Case Study &rarr;
+                        <span>{t('common.caseStudy')}</span>
+                        <span aria-hidden="true">{isRTL ? '←' : '→'}</span>
                       </Link>
                     )}
                   </div>
@@ -223,7 +235,7 @@ export default function ExperiencePage() {
                   {item.outcomes && (
                     <div className="space-y-2 pt-1">
                       <p className="text-xs font-semibold uppercase tracking-wider text-accent-secondary">
-                        Key Engineering Outcomes
+                        {t('experience.keyOutcomes')}
                       </p>
                       <ul className="space-y-2">
                         {item.outcomes.map((outcome) => (
@@ -259,7 +271,7 @@ export default function ExperiencePage() {
                         variant="primary"
                         size="sm"
                       >
-                        Case Study
+                        {t('common.caseStudy')}
                       </Button>
                     )}
 
@@ -271,13 +283,13 @@ export default function ExperiencePage() {
                         icon={FaExternalLinkAlt}
                         iconPosition="right"
                       >
-                        Live Demo
+                        {t('common.liveDemo')}
                       </Button>
                     )}
 
                     {item.githubUrl && (
                       <Button href={item.githubUrl} variant="ghost" size="sm" icon={FaGithub}>
-                        Source Code
+                        {t('common.sourceCode')}
                       </Button>
                     )}
                   </div>
@@ -295,7 +307,9 @@ export default function ExperiencePage() {
             amount={0.15}
           >
             <motion.div
-              className="relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 border-emerald-400 bg-surface shadow-md shadow-emerald-400/20 md:left-2 md:-translate-x-1/2"
+              className={`relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 border-emerald-400 bg-surface shadow-md shadow-emerald-400/20 ${
+                isRTL ? 'md:right-2 md:translate-x-1/2' : 'md:left-2 md:-translate-x-1/2'
+              }`}
               initial={shouldReduceMotion ? false : { scale: 0.7, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               viewport={{ once: true, amount: 0.3 }}
@@ -312,12 +326,12 @@ export default function ExperiencePage() {
                 className="space-y-4 border-dashed border-accent-secondary/30 bg-surface/50"
               >
                 <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="neutral">Foundations</Badge>
-                  <span className="text-xs text-muted">Continuous Learning & CS Academics</span>
+                  <Badge variant="neutral">{t('experience.foundationsBadge')}</Badge>
+                  <span className="text-xs text-muted">{t('experience.foundationsSub')}</span>
                 </div>
 
                 <Typography variant="h3" className="text-primary font-bold">
-                  Computer Science Studies & Core Foundations
+                  {t('experience.csStudiesTitle')}
                 </Typography>
 
                 <Typography variant="body" className="text-secondary font-medium">
@@ -326,9 +340,7 @@ export default function ExperiencePage() {
                 </Typography>
 
                 <Typography variant="body" className="text-muted text-sm leading-relaxed">
-                  Established core computer science fundamentals, data structures, algorithms, and
-                  continuous self-driven practice that paved the path for full-stack MERN,
-                  TypeScript, and modern system development.
+                  {t('experience.foundationsDesc')}
                 </Typography>
               </Card>
             </div>

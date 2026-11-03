@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { FaArrowUp } from 'react-icons/fa';
+import { useTranslation } from '../../i18n';
 
 export default function BackToTopButton() {
+  const { t } = useTranslation();
   const [visible, setVisible] = useState(false);
   const shouldReduceMotion = useReducedMotion();
 
@@ -24,19 +26,22 @@ export default function BackToTopButton() {
     });
   };
 
+  const label = t('common.backToTop', {}, 'Back to top');
+
   return (
     <AnimatePresence>
       {visible && (
         <motion.button
           type="button"
           onClick={scrollToTop}
-          aria-label="Back to top"
+          aria-label={label}
+          title={label}
           initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.8, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={shouldReduceMotion ? undefined : { opacity: 0, scale: 0.8, y: 20 }}
           transition={{ duration: shouldReduceMotion ? 0 : 0.25 }}
           className="
-            fixed bottom-5 left-4 z-40 sm:bottom-6 sm:left-6
+            fixed bottom-5 left-4 rtl:left-auto rtl:right-4 z-40 sm:bottom-6 sm:left-6 sm:rtl:right-6
             flex h-12 w-12 items-center justify-center
             rounded-full
             bg-accent-primary text-white
@@ -49,9 +54,10 @@ export default function BackToTopButton() {
             focus-visible:ring-offset-2
             focus-visible:ring-offset-light-bg
             dark:focus-visible:ring-offset-dark-bg
+            cursor-pointer
           "
         >
-          <FaArrowUp className="h-4 w-4" title="Back to Top" />
+          <FaArrowUp className="h-4 w-4" aria-hidden="true" />
         </motion.button>
       )}
     </AnimatePresence>

@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import Hero from '../components/sections/Hero';
 import Highlights from '../components/sections/Highlights';
 import About from '../components/about/About';
+import { useTranslation } from '../i18n';
 
 const Skills = lazy(() => import('../components/skills/Skills'));
 const Experience = lazy(() => import('../components/experience/Experience'));
@@ -13,9 +14,9 @@ const Certifications = lazy(() => import('../components/sections/Certifications'
 const Contact = lazy(() => import('../components/sections/Contact'));
 
 export default function Home() {
-  const pageTitle = 'Md. Sabbir Hossen | Junior MERN Stack Developer Portfolio';
-  const pageDescription =
-    'Junior MERN Stack Developer portfolio of Md. Sabbir Hossen showcasing practical full-stack JavaScript applications, React engineering, and secure development practices.';
+  const { t } = useTranslation();
+  const pageTitle = t('home.pageTitle');
+  const pageDescription = t('home.pageDescription');
   const canonicalUrl = 'https://msabbirhossen.github.io/';
   const socialImage = 'https://msabbirhossen.github.io/og-image.svg';
 
@@ -96,32 +97,40 @@ export default function Home() {
       <Highlights />
 
       {/* 3. Featured Projects (Primary Evidence) */}
-      <Suspense fallback={<div className="sr-only">Loading Featured Projects...</div>}>
+      <Suspense fallback={<div className="sr-only">{t('home.loadingProjects')}</div>}>
         <Projects />
       </Suspense>
 
-      {/* 4. About Me (Personal Narrative, Background, Languages) */}
+      {/* 4. About Sabbir & Practical Experience */}
       <About />
 
-      {/* 5. Experience & Leadership */}
-      <Suspense fallback={null}>
-        <Experience />
+      {/* 5. Chronological Experience & Milestones */}
+      <Suspense fallback={<div className="sr-only">Loading Experience...</div>}>
+        <Experience limit={3} />
       </Suspense>
 
-      {/* 6. Technical Skills & Stack */}
-      <Suspense fallback={null}>
+      {/* 6. Technical Stack & Evidence-Based Competencies */}
+      <Suspense fallback={<div className="sr-only">Loading Skills...</div>}>
         <Skills />
       </Suspense>
 
-      {/* 7. Education, Certifications & Supporting Activity */}
-      <Suspense fallback={<div className="sr-only">Loading supporting portfolio sections...</div>}>
-        <Education />
-        <Certifications />
+      {/* 7. Academic Foundations & Degrees */}
+      <Suspense fallback={<div className="sr-only">Loading Education...</div>}>
+        <Education limit={2} />
+      </Suspense>
+
+      {/* 8. Professional Certifications & Training */}
+      <Suspense fallback={<div className="sr-only">Loading Certifications...</div>}>
+        <Certifications limit={2} />
+      </Suspense>
+
+      {/* 9. GitHub Activity & Verified Metrics */}
+      <Suspense fallback={<div className="sr-only">Loading GitHub Metrics...</div>}>
         <GitHubStats />
       </Suspense>
 
-      {/* 8. Contact / Recruiter Conversion */}
-      <Suspense fallback={null}>
+      {/* 10. Direct Contact & Collaboration Form */}
+      <Suspense fallback={<div className="sr-only">Loading Contact...</div>}>
         <Contact />
       </Suspense>
     </div>

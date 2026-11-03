@@ -17,15 +17,16 @@ import Card from '../components/common/Card';
 import Badge from '../components/common/Badge';
 import Button from '../components/common/Button';
 import Reveal from '../components/animations/Reveal';
+import { useTranslation } from '../i18n';
 
 export default function Recruiter() {
+  const { t, isRTL } = useTranslation();
   const { personalInfo, projects, experience, education, certifications } = portfolioData;
 
   const siteUrl = personalInfo.website.replace(/\/$/, '');
   const canonicalUrl = `${siteUrl}/recruiter`;
-  const pageTitle = `Recruiter Quick Scan & Hiring Overview | ${personalInfo.name} - Junior MERN Stack Developer`;
-  const pageDescription =
-    'Concise, high-signal recruiter evaluation overview for Md. Sabbir Hossen: verified top MERN projects, demonstrated skills, computer science education, and direct CV download.';
+  const pageTitle = t('recruiter.pageTitle', { name: personalInfo.name });
+  const pageDescription = t('recruiter.pageDescription');
   const socialImage = `${siteUrl}/og-image.svg`;
 
   // Top 3 Flagship Projects in approved ranking
@@ -131,15 +132,13 @@ export default function Recruiter() {
             variant="ghost"
             size="sm"
             icon={FaArrowLeft}
-            className="px-0 hover:text-accent-primary"
+            className={`px-0 hover:text-accent-primary ${isRTL ? '[&>svg]:rotate-180' : ''}`}
           >
-            Back to Full Portfolio
+            {t('recruiter.backToPortfolio')}
           </Button>
 
           <div className="flex flex-wrap items-center gap-2.5">
-            <span className="text-xs text-muted hidden sm:inline">
-              Time-Constrained Recruiter Scan
-            </span>
+            <span className="text-xs text-muted hidden sm:inline">{t('recruiter.scanBadge')}</span>
             <Button
               href={personalInfo.resumeUrl}
               variant="primary"
@@ -147,7 +146,7 @@ export default function Recruiter() {
               icon={FaDownload}
               className="text-xs shadow-sm"
             >
-              Download CV (PDF)
+              {t('recruiter.downloadCvPdf')}
             </Button>
           </div>
         </div>
@@ -164,10 +163,10 @@ export default function Recruiter() {
                 <div className="flex flex-wrap items-center gap-2.5">
                   <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-400">
                     <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-                    Available for Full-time Roles
+                    {t('recruiter.availableFullTime')}
                   </span>
                   <Badge variant="neutral" className="text-xs">
-                    Target: Junior MERN Stack Developer
+                    {t('recruiter.targetRoleBadge')}
                   </Badge>
                 </div>
 
@@ -179,7 +178,7 @@ export default function Recruiter() {
                     {personalInfo.name}
                   </Typography>
                   <p className="mt-1 text-base sm:text-lg font-semibold text-accent-primary">
-                    Junior MERN Stack Developer · Full-Stack & Frontend Engineering
+                    {t('recruiter.titleLine')}
                   </p>
                 </div>
 
@@ -189,24 +188,21 @@ export default function Recruiter() {
                     <span>{personalInfo.location}</span>
                   </span>
                   <span>•</span>
-                  <span>Remote Worldwide & On-site Relocation Ready</span>
+                  <span>{t('recruiter.remoteWorldwide')}</span>
                 </div>
 
                 <Typography
                   variant="body"
                   className="text-sm sm:text-base leading-relaxed text-secondary pt-2"
                 >
-                  Computer Science undergraduate at the Islamic University of Madinah with practical
-                  experience engineering full-stack MERN and TypeScript applications. Demonstrated
-                  record of delivering multi-tenant monorepos, optimistic revision locking, atomic
-                  transactions, and clean RESTful APIs.
+                  {t('recruiter.candidateSummary')}
                 </Typography>
               </div>
 
               {/* Direct Fast Actions */}
               <div className="flex flex-col gap-2.5 shrink-0 min-w-[200px] border-t border-default/40 pt-4 md:border-t-0 md:pt-0">
                 <p className="text-[11px] font-bold uppercase tracking-wider text-muted">
-                  Direct Contact & Files
+                  {t('recruiter.directContactHeading')}
                 </p>
 
                 <Button
@@ -216,7 +212,7 @@ export default function Recruiter() {
                   icon={FaDownload}
                   className="w-full justify-center"
                 >
-                  Download CV (PDF)
+                  {t('recruiter.downloadCvPdf')}
                 </Button>
 
                 <Button
@@ -226,7 +222,7 @@ export default function Recruiter() {
                   icon={FaEnvelope}
                   className="w-full justify-center"
                 >
-                  Email Sabbir
+                  {t('recruiter.emailSabbir')}
                 </Button>
 
                 {personalInfo.whatsappUrl && (
@@ -237,7 +233,7 @@ export default function Recruiter() {
                     icon={FaWhatsapp}
                     className="w-full justify-center text-emerald-400 hover:text-emerald-300"
                   >
-                    WhatsApp Chat
+                    {t('recruiter.whatsappChat')}
                   </Button>
                 )}
 
@@ -248,7 +244,7 @@ export default function Recruiter() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="p-2 text-secondary hover:text-primary transition-colors"
-                      aria-label="GitHub Profile"
+                      aria-label={t('github.visitProfile', {}, 'GitHub Profile')}
                     >
                       <FaGithub className="h-5 w-5" />
                     </a>
@@ -259,7 +255,7 @@ export default function Recruiter() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="p-2 text-secondary hover:text-accent-primary transition-colors"
-                      aria-label="LinkedIn Profile"
+                      aria-label="LinkedIn"
                     >
                       <FaLinkedin className="h-5 w-5" />
                     </a>
@@ -275,19 +271,19 @@ export default function Recruiter() {
           <div className="mt-8 grid grid-cols-2 gap-3.5 sm:grid-cols-4">
             <Card spotlight hover className="p-4 text-center border-default">
               <p className="text-2xl sm:text-3xl font-extrabold text-primary">8+</p>
-              <p className="text-xs text-muted mt-0.5">Shipped Full-Stack Apps</p>
+              <p className="text-xs text-muted mt-0.5">{t('recruiter.metricShipped')}</p>
             </Card>
             <Card spotlight hover className="p-4 text-center border-default">
               <p className="text-2xl sm:text-3xl font-extrabold text-primary">BS CS</p>
-              <p className="text-xs text-muted mt-0.5">Islamic Univ. of Madinah</p>
+              <p className="text-xs text-muted mt-0.5">{t('recruiter.metricDegree')}</p>
             </Card>
             <Card spotlight hover className="p-4 text-center border-default">
               <p className="text-2xl sm:text-3xl font-extrabold text-primary">8,000+</p>
-              <p className="text-xs text-muted mt-0.5">Community Members</p>
+              <p className="text-xs text-muted mt-0.5">{t('recruiter.metricMembers')}</p>
             </Card>
             <Card spotlight hover className="p-4 text-center border-default">
               <p className="text-2xl sm:text-3xl font-extrabold text-emerald-400">100%</p>
-              <p className="text-xs text-muted mt-0.5">Verified Public Proof</p>
+              <p className="text-xs text-muted mt-0.5">{t('recruiter.metricVerified')}</p>
             </Card>
           </div>
         </Reveal>
@@ -297,16 +293,15 @@ export default function Recruiter() {
           <div className="flex flex-wrap items-center justify-between gap-3 border-b border-default/40 pb-4">
             <div>
               <Typography variant="h2" className="text-2xl font-bold text-primary">
-                Top 3 Flagship Projects
+                {t('recruiter.topProjectsTitle')}
               </Typography>
               <p className="text-xs sm:text-sm text-secondary mt-0.5">
-                Evaluated by architectural complexity, codebase maturity, and verified business
-                problem solutions.
+                {t('recruiter.topProjectsDesc')}
               </p>
             </div>
 
             <Button as={Link} to="/projects" variant="outline" size="sm" className="text-xs">
-              Browse All Projects (8)
+              {t('recruiter.browseAllBtn', { count: projects.length })}
             </Button>
           </div>
 
@@ -377,7 +372,7 @@ export default function Recruiter() {
                         {project.highlights && project.highlights.length > 0 && (
                           <div className="space-y-1.5 border-t border-default/40 pt-2.5">
                             <p className="text-[11px] font-bold uppercase tracking-wider text-accent-secondary">
-                              Key Architectural Contribution
+                              {t('recruiter.keyArchitecturalContribution')}
                             </p>
                             <ul className="space-y-1 text-xs text-secondary">
                               {project.highlights.slice(0, 2).map((item, hIdx) => (
@@ -413,7 +408,7 @@ export default function Recruiter() {
                                 iconPosition="right"
                                 className="text-xs py-1 px-2.5"
                               >
-                                Demo
+                                {t('recruiter.demoBtn')}
                               </Button>
                             )}
                             {project.githubUrl && (
@@ -424,7 +419,7 @@ export default function Recruiter() {
                                 icon={FaGithub}
                                 className="text-xs py-1 px-2.5"
                               >
-                                Code
+                                {t('recruiter.codeBtn')}
                               </Button>
                             )}
                             <Button
@@ -434,7 +429,7 @@ export default function Recruiter() {
                               size="sm"
                               className="text-xs py-1 px-3"
                             >
-                              Case Study
+                              {t('recruiter.caseStudyBtn')}
                             </Button>
                           </div>
                         </div>
@@ -451,11 +446,10 @@ export default function Recruiter() {
         <div className="mt-12 space-y-4">
           <div className="border-b border-default/40 pb-3">
             <Typography variant="h2" className="text-2xl font-bold text-primary">
-              Demonstrated Technical Stack
+              {t('recruiter.demonstratedStackTitle')}
             </Typography>
             <p className="text-xs sm:text-sm text-secondary mt-0.5">
-              Verified technologies actively implemented in deployed production systems and case
-              studies.
+              {t('recruiter.demonstratedStackDesc')}
             </p>
           </div>
 
@@ -478,10 +472,10 @@ export default function Recruiter() {
         <div className="mt-12 space-y-4">
           <div className="border-b border-default/40 pb-3">
             <Typography variant="h2" className="text-2xl font-bold text-primary">
-              Practical Experience & Leadership
+              {t('recruiter.practicalExperienceTitle')}
             </Typography>
             <p className="text-xs sm:text-sm text-secondary mt-0.5">
-              Software delivery track record and verified voluntary community management.
+              {t('recruiter.practicalExperienceDesc')}
             </p>
           </div>
 
@@ -528,11 +522,9 @@ export default function Recruiter() {
           <div className="space-y-4">
             <div className="border-b border-default/40 pb-3">
               <Typography variant="h3" className="text-xl font-bold text-primary">
-                Academic Foundations
+                {t('recruiter.academicTitle')}
               </Typography>
-              <p className="text-xs text-muted mt-0.5">
-                University degree & formal language studies
-              </p>
+              <p className="text-xs text-muted mt-0.5">{t('recruiter.academicSubtitle')}</p>
             </div>
 
             <div className="space-y-3">
@@ -560,9 +552,9 @@ export default function Recruiter() {
           <div className="space-y-4">
             <div className="border-b border-default/40 pb-3">
               <Typography variant="h3" className="text-xl font-bold text-primary">
-                Verified Full-Stack Credential
+                {t('recruiter.credentialTitle')}
               </Typography>
-              <p className="text-xs text-muted mt-0.5">Comprehensive development training</p>
+              <p className="text-xs text-muted mt-0.5">{t('recruiter.credentialSubtitle')}</p>
             </div>
 
             {primaryCert && (
@@ -571,11 +563,12 @@ export default function Recruiter() {
                   <div>
                     <h4 className="text-sm font-bold text-primary">{primaryCert.title}</h4>
                     <p className="text-xs text-accent-secondary font-medium mt-0.5">
-                      Issued by {primaryCert.issuer} ({primaryCert.date})
+                      {t('certifications.issuedBy', { issuer: primaryCert.issuer })} (
+                      {primaryCert.date})
                     </p>
                   </div>
                   <Badge variant="primary" className="text-[10px]">
-                    Certified
+                    {t('recruiter.certifiedBadge')}
                   </Badge>
                 </div>
 
@@ -600,7 +593,7 @@ export default function Recruiter() {
                       iconPosition="right"
                       className="text-xs py-1 px-2.5"
                     >
-                      Verify Certificate PDF
+                      {t('recruiter.verifyPdfBtn')}
                     </Button>
                   </div>
                 )}
@@ -613,17 +606,16 @@ export default function Recruiter() {
         <Reveal delay={0.2}>
           <div className="mt-14 rounded-2xl border border-accent-primary/40 bg-surface/90 p-6 sm:p-8 text-center space-y-4 shadow-xl shadow-accent-primary/5">
             <Typography variant="h2" className="text-xl sm:text-2xl font-bold text-primary">
-              Ready to Discuss Junior Full-Stack Roles?
+              {t('recruiter.readyToDiscussTitle')}
             </Typography>
 
             <p className="mx-auto max-w-xl text-xs sm:text-sm text-secondary leading-relaxed">
-              I am actively interviewing for Junior MERN Stack Developer, Frontend Engineer, and
-              Full-Stack JavaScript opportunities. Reach out directly or download my CV.
+              {t('recruiter.readyToDiscussDesc')}
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
               <Button href={personalInfo.resumeUrl} variant="primary" size="md" icon={FaDownload}>
-                Download CV (PDF)
+                {t('recruiter.downloadCvPdf')}
               </Button>
 
               <Button
@@ -632,11 +624,18 @@ export default function Recruiter() {
                 size="md"
                 icon={FaEnvelope}
               >
-                Send Email
+                {t('recruiter.sendEmailBtn')}
               </Button>
 
-              <Button as={Link} to="/" variant="ghost" size="md" icon={FaArrowLeft}>
-                Explore Full Interactive Portfolio
+              <Button
+                as={Link}
+                to="/"
+                variant="ghost"
+                size="md"
+                icon={FaArrowLeft}
+                className={isRTL ? '[&>svg]:rotate-180' : ''}
+              >
+                {t('recruiter.exploreFullPortfolioBtn')}
               </Button>
             </div>
           </div>

@@ -10,17 +10,18 @@ import Card from '../components/common/Card';
 import Reveal from '../components/animations/Reveal';
 import ProjectFilters from '../components/projects/ProjectFilters';
 import ProjectGrid from '../components/projects/ProjectGrid';
+import { useTranslation } from '../i18n';
 
 export default function ProjectsPage() {
+  const { t, isRTL } = useTranslation();
   const { projects, personalInfo } = portfolioData;
   const [activeCategory, setActiveCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
 
   const siteUrl = personalInfo.website.replace(/\/$/, '');
   const canonicalUrl = `${siteUrl}/projects`;
-  const pageTitle = `All Projects | ${personalInfo.name} - Junior MERN Stack Developer`;
-  const pageDescription =
-    'Browse all full-stack web applications, MERN platforms, and software engineering projects by Md. Sabbir Hossen.';
+  const pageTitle = t('projects.pageTitle', { name: personalInfo.name });
+  const pageDescription = t('projects.pageDescription');
   const socialImage = `${siteUrl}/og-image.svg`;
 
   const categories = useMemo(
@@ -102,16 +103,16 @@ export default function ProjectsPage() {
               variant="ghost"
               size="sm"
               icon={FaArrowLeft}
-              className="mb-8 px-0"
+              className={`mb-8 px-0 ${isRTL ? 'flex-row-reverse' : ''}`}
             >
-              Back to Home
+              {t('projects.backToHome', {}, 'Back to Home')}
             </Button>
           </Reveal>
 
           <div className="space-y-2">
             <Reveal delay={0.05}>
               <Typography variant="h1" className="text-balance text-3xl sm:text-4xl md:text-5xl">
-                All Projects
+                {t('navigation.allProjects', {}, 'All Projects')}
               </Typography>
             </Reveal>
           </div>
@@ -123,20 +124,20 @@ export default function ProjectsPage() {
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               {/* Search input */}
               <div className="relative w-full sm:max-w-xs">
-                <FaSearch className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-muted text-sm" />
+                <FaSearch className="pointer-events-none absolute left-3.5 rtl:left-auto rtl:right-3.5 top-1/2 -translate-y-1/2 text-muted text-sm" />
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search projects or stack..."
-                  className="w-full rounded-xl border border-default bg-surface/70 py-2.5 pl-9 pr-8 text-sm text-primary placeholder:text-muted focus:border-accent-primary focus:outline-none focus:ring-2 focus:ring-accent-primary/20 transition-colors"
+                  placeholder={t('projects.searchPlaceholder', {}, 'Search projects or stack...')}
+                  className="w-full rounded-xl border border-default bg-surface/70 py-2.5 pl-9 pr-8 rtl:pl-8 rtl:pr-9 text-sm text-primary placeholder:text-muted focus:border-accent-primary focus:outline-none focus:ring-2 focus:ring-accent-primary/20 transition-colors"
                 />
                 {searchQuery && (
                   <button
                     type="button"
                     onClick={() => setSearchQuery('')}
-                    className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-muted hover:text-primary transition-colors"
-                    aria-label="Clear search"
+                    className="absolute right-2.5 rtl:right-auto rtl:left-2.5 top-1/2 -translate-y-1/2 p-1 text-muted hover:text-primary transition-colors cursor-pointer"
+                    aria-label={t('projects.clearSearchAria', {}, 'Clear search')}
                   >
                     <FaTimes className="h-3 w-3" />
                   </button>
@@ -145,9 +146,11 @@ export default function ProjectsPage() {
 
               {/* Project count indicator */}
               <div className="text-xs font-medium text-muted">
-                Showing{' '}
-                <span className="font-semibold text-primary">{filteredProjects.length}</span> of{' '}
-                <span className="font-semibold text-primary">{projects.length}</span> projects
+                {t(
+                  'projects.showingCount',
+                  { count: filteredProjects.length, total: projects.length },
+                  `Showing ${filteredProjects.length} of ${projects.length} projects`
+                )}
               </div>
             </div>
 
@@ -169,10 +172,25 @@ export default function ProjectsPage() {
         ) : (
           <Reveal delay={0.1}>
             <Card className="py-16 text-center space-y-4 border-dashed">
-              <Typography variant="h3">No projects found</Typography>
+              <Typography variant="h3">
+                {t('projects.noProjectsTitle', {}, 'No projects found')}
+              </Typography>
               <Typography variant="body" className="text-muted max-w-md mx-auto">
-                No projects matched your search criteria &quot;{searchQuery}&quot; in{' '}
-                {activeCategory === 'All' ? 'any category' : `the ${activeCategory} category`}.
+                {t(
+                  'projects.noProjectsDesc',
+                  {
+                    query: searchQuery,
+                    category:
+                      activeCategory === 'All'
+                        ? t('projects.inAnyCategory', {}, 'any category')
+                        : t(
+                            'projects.inSpecificCategory',
+                            { category: activeCategory },
+                            `the ${activeCategory} category`
+                          ),
+                  },
+                  `No projects matched your search criteria "${searchQuery}".`
+                )}
               </Typography>
               <div className="pt-2">
                 <Button
@@ -183,7 +201,7 @@ export default function ProjectsPage() {
                     setActiveCategory('All');
                   }}
                 >
-                  Clear Filters
+                  {t('projects.clearFilters', {}, 'Clear Filters')}
                 </Button>
               </div>
             </Card>

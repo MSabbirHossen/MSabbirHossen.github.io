@@ -11,6 +11,7 @@ import {
 
 import { usePortfolioGuide } from '../../contexts/PortfolioGuideContext';
 import { getGuideSteps } from '../../data/guideData';
+import { useTranslation } from '../../i18n';
 import Button from '../common/Button';
 import Badge from '../common/Badge';
 import Typography from '../common/Typography';
@@ -31,6 +32,7 @@ const stepVariants = {
 };
 
 export default function PortfolioGuideModal() {
+  const { t, isRTL } = useTranslation();
   const {
     isOpen,
     currentStep,
@@ -188,8 +190,8 @@ export default function PortfolioGuideModal() {
               type="button"
               onClick={closeGuide}
               className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-default/60 text-muted transition-all hover:border-accent-primary hover:bg-surface-hover hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary"
-              aria-label="Close Guide (Esc)"
-              title="Close Guide (Esc)"
+              aria-label={`${t('common.close')} (Esc)`}
+              title={`${t('common.close')} (Esc)`}
             >
               <FaTimes className="h-3.5 w-3.5" />
             </button>
@@ -447,10 +449,10 @@ export default function PortfolioGuideModal() {
                   type="button"
                   onClick={restartGuide}
                   className="ml-2 inline-flex items-center gap-1 text-[11px] font-semibold text-muted hover:text-accent-primary transition-colors"
-                  title="Restart Guide from Beginning"
+                  title={t('guide.restart')}
                 >
                   <FaRedo className="h-2.5 w-2.5" />
-                  <span>Restart</span>
+                  <span>{t('guide.restart')}</span>
                 </button>
               )}
             </div>
@@ -463,9 +465,9 @@ export default function PortfolioGuideModal() {
                   size="sm"
                   icon={FaArrowLeft}
                   onClick={prevStep}
-                  className="text-xs px-3"
+                  className={`text-xs px-3 ${isRTL ? '[&>svg]:rotate-180' : ''}`}
                 >
-                  Back
+                  {t('guide.back')}
                 </Button>
               )}
 
@@ -477,7 +479,7 @@ export default function PortfolioGuideModal() {
                   onClick={finishGuide}
                   className="text-xs px-4 shadow-md shadow-accent-primary/25"
                 >
-                  Finish Exploring
+                  {t('guide.finishTour')}
                 </Button>
               ) : (
                 <Button
@@ -486,9 +488,11 @@ export default function PortfolioGuideModal() {
                   icon={FaArrowRight}
                   iconPosition="right"
                   onClick={nextStep}
-                  className="text-xs px-4 shadow-md shadow-accent-primary/25"
+                  className={`text-xs px-4 shadow-md shadow-accent-primary/25 ${
+                    isRTL ? '[&>svg]:rotate-180' : ''
+                  }`}
                 >
-                  {isFirstStep ? 'Start Tour' : 'Next Step'}
+                  {isFirstStep ? t('guide.startTour') : t('guide.nextStep')}
                 </Button>
               )}
             </div>

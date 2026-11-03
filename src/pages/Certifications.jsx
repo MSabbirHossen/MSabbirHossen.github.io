@@ -22,14 +22,7 @@ import Badge from '../components/common/Badge';
 import Button from '../components/common/Button';
 import Card from '../components/common/Card';
 import Reveal from '../components/animations/Reveal';
-
-const CATEGORIES = [
-  { id: 'all', label: 'All Credentials' },
-  { id: 'fullstack', label: 'Full-Stack & MERN' },
-  { id: 'frontend', label: 'Frontend & UI' },
-  { id: 'tooling', label: 'Tooling & Workflow' },
-  { id: 'productivity', label: 'Productivity & Data' },
-];
+import { useTranslation } from '../i18n';
 
 const getCertCategory = (cert) => {
   if (
@@ -71,24 +64,33 @@ const renderCertIcon = (category) => {
   }
 };
 
-const getCategoryBadgeLabel = (category) => {
-  switch (category) {
-    case 'fullstack':
-      return 'Full-Stack MERN';
-    case 'frontend':
-      return 'Frontend & UI';
-    case 'tooling':
-      return 'Tooling & Git';
-    case 'productivity':
-      return 'Productivity';
-    default:
-      return 'Certification';
-  }
-};
-
 export default function CertificationsPage() {
+  const { t, isRTL } = useTranslation();
   const { certifications, personalInfo } = portfolioData;
   const [selectedCategory, setSelectedCategory] = useState('all');
+
+  const categories = [
+    { id: 'all', label: t('certifications.catAll') },
+    { id: 'fullstack', label: t('certifications.catFullstack') },
+    { id: 'frontend', label: t('certifications.catFrontend') },
+    { id: 'tooling', label: t('certifications.catTooling') },
+    { id: 'productivity', label: t('certifications.catProductivity') },
+  ];
+
+  const getCategoryBadgeLabel = (category) => {
+    switch (category) {
+      case 'fullstack':
+        return t('certifications.catFullstack');
+      case 'frontend':
+        return t('certifications.catFrontend');
+      case 'tooling':
+        return t('certifications.catTooling');
+      case 'productivity':
+        return t('certifications.catProductivity');
+      default:
+        return t('certifications.ribbonMern');
+    }
+  };
 
   const filteredCertifications = useMemo(() => {
     if (selectedCategory === 'all') return certifications;
@@ -97,9 +99,8 @@ export default function CertificationsPage() {
 
   const siteUrl = personalInfo.website.replace(/\/$/, '');
   const canonicalUrl = `${siteUrl}/certifications`;
-  const pageTitle = `Certifications & Professional Training | ${personalInfo.name}`;
-  const pageDescription =
-    'Verified certifications in full-stack web development, MERN architecture, Git workflows, and front-end engineering earned by Md. Sabbir Hossen.';
+  const pageTitle = t('certifications.pageTitle', { name: personalInfo.name });
+  const pageDescription = t('certifications.pageDescription');
   const socialImage = `${siteUrl}/og-image.svg`;
 
   const certificationsSchema = {
@@ -142,16 +143,18 @@ export default function CertificationsPage() {
               variant="ghost"
               size="sm"
               icon={FaArrowLeft}
-              className="mb-6 px-0 text-secondary hover:text-accent-primary"
+              className={`mb-6 px-0 text-secondary hover:text-accent-primary ${
+                isRTL ? '[&>svg]:rotate-180' : ''
+              }`}
             >
-              Back to Certifications Section
+              {t('certifications.backToCertifications')}
             </Button>
           </Reveal>
 
           <div className="space-y-3">
             <Reveal delay={0.05}>
               <Badge variant="primary" className="text-xs">
-                Verified Credentials
+                {t('certifications.eyebrow')}
               </Badge>
             </Reveal>
 
@@ -160,7 +163,7 @@ export default function CertificationsPage() {
                 variant="h1"
                 className="text-balance text-3xl sm:text-4xl md:text-5xl font-extrabold text-primary"
               >
-                Certifications & Training
+                {t('certifications.pageHeading')}
               </Typography>
             </Reveal>
 
@@ -169,8 +172,7 @@ export default function CertificationsPage() {
                 variant="body"
                 className="max-w-3xl text-sm sm:text-base leading-relaxed text-secondary"
               >
-                Structured professional certifications reinforcing modern full-stack development,
-                component engineering, collaborative Git workflows, and engineering tooling.
+                {t('certifications.pageIntro')}
               </Typography>
             </Reveal>
           </div>
@@ -184,8 +186,10 @@ export default function CertificationsPage() {
                 <FaLaptopCode className="h-6 w-6" aria-hidden="true" />
               </div>
               <div className="min-w-0">
-                <p className="text-sm font-bold text-primary truncate">MERN Full-Stack</p>
-                <p className="text-xs text-muted truncate">Programming Hero Certified</p>
+                <p className="text-sm font-bold text-primary truncate">
+                  {t('certifications.ribbonMern')}
+                </p>
+                <p className="text-xs text-muted truncate">{t('certifications.ribbonMernDesc')}</p>
               </div>
             </Card>
 
@@ -195,9 +199,11 @@ export default function CertificationsPage() {
               </div>
               <div className="min-w-0">
                 <p className="text-sm font-bold text-primary truncate">
-                  {certifications.length} Credentials
+                  {t('certifications.ribbonCredentials', { count: certifications.length })}
                 </p>
-                <p className="text-xs text-muted truncate">MERN, Git, UI & Tooling</p>
+                <p className="text-xs text-muted truncate">
+                  {t('certifications.ribbonCredentialsDesc')}
+                </p>
               </div>
             </Card>
 
@@ -206,8 +212,12 @@ export default function CertificationsPage() {
                 <FaCheckCircle className="h-6 w-6" aria-hidden="true" />
               </div>
               <div className="min-w-0">
-                <p className="text-sm font-bold text-primary truncate">100% Verifiable</p>
-                <p className="text-xs text-muted truncate">Authentic Public Links</p>
+                <p className="text-sm font-bold text-primary truncate">
+                  {t('certifications.ribbonVerifiable')}
+                </p>
+                <p className="text-xs text-muted truncate">
+                  {t('certifications.ribbonVerifiableDesc')}
+                </p>
               </div>
             </Card>
           </div>
@@ -216,7 +226,7 @@ export default function CertificationsPage() {
         {/* Category Filters */}
         <Reveal delay={0.22}>
           <div className="mb-8 flex flex-wrap items-center gap-2">
-            {CATEGORIES.map((cat) => {
+            {categories.map((cat) => {
               const isActive = selectedCategory === cat.id;
               const count =
                 cat.id === 'all'
@@ -294,7 +304,9 @@ export default function CertificationsPage() {
 
                     {cert.id && (
                       <div className="mb-4 flex items-center gap-1.5 text-xs text-muted">
-                        <span className="font-semibold text-secondary">ID:</span>
+                        <span className="font-semibold text-secondary">
+                          {t('certifications.idLabel')}
+                        </span>
                         <code
                           className="max-w-[240px] truncate font-mono text-[11px] rounded bg-surface/80 px-2 py-0.5 border border-default/60"
                           title={cert.id}
@@ -324,7 +336,7 @@ export default function CertificationsPage() {
                       variant="body"
                       className="text-xs font-medium text-secondary sm:text-sm"
                     >
-                      Issued by <span className="font-semibold text-primary">{cert.issuer}</span>
+                      {t('certifications.issuedBy', { issuer: cert.issuer })}
                     </Typography>
 
                     {cert.link && (
@@ -336,7 +348,7 @@ export default function CertificationsPage() {
                         iconPosition="right"
                         className="shadow-sm shadow-accent-primary/20"
                       >
-                        Verify Credential
+                        {t('common.verifyCredential')}
                       </Button>
                     )}
                   </div>
@@ -358,7 +370,7 @@ export default function CertificationsPage() {
                 icon={FaGraduationCap}
                 className="w-full sm:w-auto"
               >
-                Academic Background
+                {t('certifications.crossAcademic')}
               </Button>
               <Button
                 as={Link}
@@ -368,7 +380,7 @@ export default function CertificationsPage() {
                 icon={FaBriefcase}
                 className="w-full sm:w-auto"
               >
-                Engineering Journey
+                {t('certifications.crossJourney')}
               </Button>
             </div>
 
@@ -380,9 +392,11 @@ export default function CertificationsPage() {
               size="md"
               icon={FaArrowRight}
               iconPosition="right"
-              className="w-full sm:w-auto shadow-md shadow-accent-primary/20"
+              className={`w-full sm:w-auto shadow-md shadow-accent-primary/20 ${
+                isRTL ? '[&>svg]:rotate-180' : ''
+              }`}
             >
-              Explore Featured Projects
+              {t('certifications.crossFeaturedProjects')}
             </Button>
           </div>
         </Reveal>

@@ -30,6 +30,7 @@ import Badge from '../components/common/Badge';
 import Button from '../components/common/Button';
 import Card from '../components/common/Card';
 import Reveal from '../components/animations/Reveal';
+import { useTranslation } from '../i18n';
 
 export const DEVELOPER_CHANNELS = [
   // Direct Contacts
@@ -232,6 +233,7 @@ const CORE_TOOLKIT = [
 ];
 
 export default function DeveloperPage() {
+  const { t, isRTL } = useTranslation();
   const { personalInfo } = portfolioData;
   const [copiedLink, setCopiedLink] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
@@ -241,9 +243,8 @@ export default function DeveloperPage() {
 
   const siteUrl = personalInfo.website.replace(/\/$/, '');
   const canonicalUrl = `${siteUrl}/developer`;
-  const pageTitle = `Developer & Creator Hub | ${personalInfo.name}`;
-  const pageDescription =
-    'Official developer hub, direct communication channels, venture platforms, and social profiles of Md. Sabbir Hossen (Part-Time Coder), creator of Report BD, ETA, and Life OS.';
+  const pageTitle = t('developer.pageTitle', { name: personalInfo.name });
+  const pageDescription = t('developer.pageDescription');
   const socialImage = `${siteUrl}/og-image.svg`;
 
   const handleCopyProfile = () => {
@@ -312,12 +313,14 @@ export default function DeveloperPage() {
                 variant="ghost"
                 size="sm"
                 icon={FaArrowLeft}
-                className="px-0 text-secondary hover:text-accent-primary"
+                className={`px-0 text-secondary hover:text-accent-primary ${
+                  isRTL ? '[&>svg]:rotate-180' : ''
+                }`}
               >
-                Back to Home
+                {t('common.backToHome')}
               </Button>
               <Badge variant="outline" size="sm">
-                ✦ Creator &amp; Channels
+                {t('developer.creatorBadge')}
               </Badge>
             </div>
           </Reveal>
@@ -326,7 +329,7 @@ export default function DeveloperPage() {
             <Reveal delay={0.05}>
               <div className="inline-flex items-center gap-2 rounded-full border border-accent-primary/25 bg-accent-primary/10 px-3 py-1 text-xs font-semibold text-accent-primary">
                 <HiSparkles className="h-3.5 w-3.5" />
-                <span>Developer &amp; Community Hub</span>
+                <span>{t('developer.hubBadge')}</span>
               </div>
             </Reveal>
 
@@ -335,7 +338,7 @@ export default function DeveloperPage() {
                 variant="h1"
                 className="text-balance text-3xl sm:text-4xl md:text-5xl font-extrabold text-primary"
               >
-                Connect with Md. Sabbir Hossen
+                {t('developer.connectTitle')}
               </Typography>
             </Reveal>
 
@@ -344,10 +347,7 @@ export default function DeveloperPage() {
                 variant="body"
                 className="max-w-3xl text-sm sm:text-base leading-relaxed text-secondary"
               >
-                Junior MERN Stack Developer, software builder, and creator of Report BD, Exploratory
-                Training Academy (ETA), and Life OS. Reach out directly via WhatsApp, explore
-                developer profiles, inspect machine-readable AI context, or share collaboration
-                ideas.
+                {t('developer.introText')}
               </Typography>
             </Reveal>
 
@@ -370,10 +370,10 @@ export default function DeveloperPage() {
                   icon={copiedEmail ? FaCheck : FaCopy}
                   onClick={() => handleCopyEmail(personalInfo.email)}
                 >
-                  {copiedEmail ? 'Email Copied!' : 'Copy Email'}
+                  {copiedEmail ? t('common.copied') : t('ai.copyEmail')}
                 </Button>
                 <Button size="sm" variant="ghost" icon={FaGlobe} onClick={handleCopyProfile}>
-                  {copiedLink ? 'Link Copied!' : 'Share Profile'}
+                  {copiedLink ? t('developer.linkCopied') : t('developer.copyProfileLink')}
                 </Button>
                 <Button
                   size="sm"
@@ -407,7 +407,7 @@ export default function DeveloperPage() {
                   </div>
                   <span
                     className="absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full border-2 border-surface bg-emerald-500 animate-pulse"
-                    title="Active Developer"
+                    title={t('common.online', {}, 'Active Developer')}
                   />
                 </div>
 
@@ -509,7 +509,7 @@ export default function DeveloperPage() {
             {/* Core Toolkit Chips */}
             <div className="mt-6 border-t border-default/70 pt-5 flex flex-wrap items-center gap-2 text-xs">
               <span className="text-[11px] font-bold uppercase tracking-wider text-muted mr-1">
-                Core Toolkit:
+                {t('developer.coreToolkitTitle')}:
               </span>
               {CORE_TOOLKIT.map((tech) => (
                 <span
@@ -538,20 +538,26 @@ export default function DeveloperPage() {
 
               {/* Category Filter Tabs */}
               <div className="flex flex-wrap self-start rounded-xl border border-default bg-surface/80 p-1 sm:self-auto gap-1">
-                {['All', 'Direct Chat', 'Platforms', 'Ventures', 'Social Media'].map((cat) => {
-                  const isActive = filterCategory === cat;
+                {[
+                  { id: 'All', label: t('developer.allChannels') },
+                  { id: 'Direct Chat', label: t('developer.directChat') },
+                  { id: 'Platforms', label: t('developer.platforms') },
+                  { id: 'Ventures', label: t('developer.ventures') },
+                  { id: 'Social Media', label: t('developer.socialMedia') },
+                ].map((cat) => {
+                  const isActive = filterCategory === cat.id;
                   return (
                     <button
-                      key={cat}
+                      key={cat.id}
                       type="button"
-                      onClick={() => setFilterCategory(cat)}
+                      onClick={() => setFilterCategory(cat.id)}
                       className={`cursor-pointer rounded-lg px-3 py-1.5 text-xs font-bold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary ${
                         isActive
                           ? 'bg-accent-primary text-white shadow-md shadow-accent-primary/20'
                           : 'text-secondary hover:text-primary hover:bg-surface'
                       }`}
                     >
-                      {cat}
+                      {cat.label}
                     </button>
                   );
                 })}
@@ -599,7 +605,7 @@ export default function DeveloperPage() {
                               type="button"
                               onClick={() => handleCopyEmail(item.email)}
                               className="cursor-pointer rounded-xl p-1.5 text-muted transition-colors hover:bg-accent-primary/10 hover:text-accent-primary"
-                              title="Copy Email"
+                              title={t('ai.copyEmail', {}, 'Copy Email')}
                             >
                               {copiedEmail ? (
                                 <FaCheck className="h-4 w-4 text-emerald-500" />
@@ -635,7 +641,7 @@ export default function DeveloperPage() {
                       <span className="text-[11px] font-semibold text-muted">{item.subHandle}</span>
                       {item.isUpcoming ? (
                         <span className="text-xs font-semibold italic text-muted">
-                          {item.statusText || 'Coming Soon'}
+                          {item.statusText || t('common.comingSoon', {}, 'Coming Soon')}
                         </span>
                       ) : item.isEmail ? (
                         <button
@@ -643,7 +649,10 @@ export default function DeveloperPage() {
                           onClick={() => handleCopyEmail(item.email)}
                           className="cursor-pointer inline-flex items-center gap-1 text-xs font-bold text-accent-primary hover:underline"
                         >
-                          {copiedEmail ? 'Copied' : 'Copy Email'} <FaCopy className="h-3 w-3" />
+                          {copiedEmail
+                            ? t('common.copied', {}, 'Copied')
+                            : t('ai.copyEmail', {}, 'Copy Email')}{' '}
+                          <FaCopy className="h-3 w-3" />
                         </button>
                       ) : (
                         <a
@@ -696,19 +705,17 @@ export default function DeveloperPage() {
 
             {/* Direct Message Form */}
             <Card spotlight className="border-default p-6 lg:col-span-2" hover={false}>
-              <h3 className="text-sm font-bold text-primary">Send a Note to Sabbir Hossen</h3>
-              <p className="mt-0.5 text-xs text-muted">
-                Pre-fill your message and deliver it directly via WhatsApp.
-              </p>
+              <h3 className="text-sm font-bold text-primary">{t('developer.sendFeedbackTitle')}</h3>
+              <p className="mt-0.5 text-xs text-muted">{t('developer.sendFeedbackDesc')}</p>
 
               {feedbackSent ? (
                 <div className="my-4 flex flex-col items-center justify-center space-y-2 rounded-2xl border border-emerald-500/25 bg-emerald-500/10 p-6 text-center">
                   <div className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-500 text-white shadow-md shadow-emerald-500/30">
                     <FaCheck className="h-5 w-5" />
                   </div>
-                  <h4 className="text-sm font-bold text-primary">Opening WhatsApp...</h4>
+                  <h4 className="text-sm font-bold text-primary">{t('contact.openingWhatsApp')}</h4>
                   <p className="max-w-sm text-xs text-secondary">
-                    Your message has been pre-formatted for Md. Sabbir Hossen (+8801773511874).
+                    {t('contact.readyToSend', { handle: '+8801773511874' })}
                   </p>
                   <a
                     href={getWhatsAppUrl(feedbackText)}
@@ -716,8 +723,7 @@ export default function DeveloperPage() {
                     rel="noopener noreferrer"
                     className="mt-2 inline-flex items-center gap-1 text-xs font-bold text-emerald-500 hover:underline"
                   >
-                    Click here if WhatsApp didn’t launch automatically{' '}
-                    <FaExternalLinkAlt className="h-3 w-3" />
+                    {t('contact.clickIfNotOpened')} <FaExternalLinkAlt className="h-3 w-3" />
                   </a>
                 </div>
               ) : (
@@ -746,12 +752,12 @@ export default function DeveloperPage() {
 
                   <div>
                     <label className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-muted">
-                      Your Message
+                      {t('contact.yourMessage')}
                     </label>
                     <textarea
                       rows={4}
                       required
-                      placeholder="Share project details, inquiry topics, or say hello..."
+                      placeholder={t('developer.messagePlaceholder')}
                       value={feedbackText}
                       onChange={(e) => setFeedbackText(e.target.value)}
                       className="w-full resize-none rounded-2xl border border-default bg-surface px-4 py-3 text-sm text-primary placeholder:text-muted focus:border-accent-primary focus:outline-none focus:ring-2 focus:ring-accent-primary/20"
@@ -759,11 +765,9 @@ export default function DeveloperPage() {
                   </div>
 
                   <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:items-center sm:justify-between">
-                    <span className="text-xs text-muted">
-                      Delivered straight to Sabbir’s WhatsApp (+8801773511874)
-                    </span>
+                    <span className="text-xs text-muted">{t('contact.directChannelNote')}</span>
                     <Button type="submit" variant="primary" size="md" icon={FaPaperPlane}>
-                      Send via WhatsApp
+                      {t('developer.sendWhatsAppBtn')}
                     </Button>
                   </div>
                 </form>
