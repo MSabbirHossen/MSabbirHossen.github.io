@@ -83,7 +83,7 @@ function MessageList({
   return (
     <div
       ref={messageListRef}
-      className="flex-1 space-y-3 overflow-y-auto px-4 py-4 sm:px-5"
+      className="flex-1 min-h-0 space-y-3 overflow-y-auto overscroll-contain touch-pan-y px-4 py-4 sm:px-5"
       role="log"
       aria-live="polite"
       aria-relevant="additions text"

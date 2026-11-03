@@ -94,6 +94,12 @@ export default function AIWindow({
     }
   };
 
+  const handleWheel = (event) => {
+    if (messageListRef.current && !messageListRef.current.contains(event.target)) {
+      messageListRef.current.scrollTop += event.deltaY;
+    }
+  };
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -113,6 +119,7 @@ export default function AIWindow({
             transition={{ duration: shouldReduceMotion ? 0 : 0.25, ease: 'easeOut' }}
             onMouseDown={(event) => event.stopPropagation()}
             onKeyDown={handleKeyDown}
+            onWheel={handleWheel}
             role="dialog"
             id="ai-assistant-dialog"
             aria-modal="true"
@@ -122,12 +129,12 @@ export default function AIWindow({
             className="w-full max-w-xl"
           >
             <Card
-              className="flex h-[calc(100dvh-0.75rem)] max-h-[calc(100dvh-0.75rem)] flex-col overflow-hidden p-0 sm:h-auto sm:max-h-[84vh]"
+              className="flex h-[calc(100dvh-0.75rem)] max-h-[calc(100dvh-0.75rem)] flex-col overflow-hidden p-0 sm:h-[620px] sm:max-h-[85vh]"
               style={{
                 paddingBottom: 'env(safe-area-inset-bottom)',
               }}
             >
-              <div className="flex items-start justify-between border-b border-default px-5 py-4">
+              <div className="flex shrink-0 items-start justify-between border-b border-default px-5 py-4">
                 <div className="flex items-start gap-3">
                   <span className="relative mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-accent-primary to-accent-secondary text-white shadow-md">
                     <FaRobot className="h-4 w-4" aria-hidden="true" />
@@ -184,7 +191,7 @@ export default function AIWindow({
               />
 
               <div
-                className="border-t border-default bg-surface/70 px-4 pb-4 pt-3 sm:px-5"
+                className="shrink-0 border-t border-default bg-surface/70 px-4 pb-4 pt-3 sm:px-5"
                 style={{ paddingBottom: 'max(1rem, env(safe-area-inset-bottom))' }}
               >
                 <InputArea
