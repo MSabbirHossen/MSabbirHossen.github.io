@@ -19,6 +19,7 @@
 - [Key Features](#-key-features)
 - [Technology Stack](#-technology-stack)
 - [Repository Structure](#-repository-structure)
+- [Internationalization (i18n) Architecture](#-internationalization-i18n-architecture)
 - [Featured Projects](#-featured-projects)
 - [Getting Started & Local Setup](#-getting-started--local-setup)
 - [Environment Configuration](#-environment-configuration)
@@ -68,6 +69,7 @@ Rather than relying on generic landing-page templates or synthetic wireframes, t
 - **Accessible Motion Design:** Framer Motion animations with native `prefers-reduced-motion` handling, custom entrance reveals, and responsive transitions.
 - **Zero-Flash Theme Switching:** System-aware theme state (`dark` / `light` / `system`) persisting in `localStorage` with inline script injection to prevent FOUC (flash of unstyled content).
 - **Interactive Onboarding Modal:** Centralized 8-stage guided tour modal with step spine, keyboard accessibility (`Escape`, arrow keys), and URL deep-linking support (`?tour=true`).
+- **Centralized Multilingual Localization:** Zero-dependency i18n architecture with instant client-side switching, automated browser language detection, English fallback, native Arabic RTL (`dir="rtl"`), and multilingual typography (`Noto Sans Arabic`, `Hind Siliguri`).
 - **Direct WhatsApp Communication:** Structured form serialization launching directly into WhatsApp with zero middleman mailer failure points or quota restrictions.
 
 ---
@@ -104,6 +106,13 @@ Rather than relying on generic landing-page templates or synthetic wireframes, t
 ### 6. Developer Hub & WhatsApp Note Generator (`/developer`)
 
 - Interactive note builder allowing visitors to pre-compose inquiries by topic (Recruiter, Collaboration, Mentorship, Feedback) and launch directly into WhatsApp.
+
+### 7. Comprehensive Multilingual System & Native Arabic RTL (`en` / `ar` / `bn`)
+
+- **Centralized UI Localization:** Zero hardcoded UI strings; all navigational labels, hero copy, metric milestones, skill evidence states, case study tabs, recruiter dossiers, and modal controls are localized across English, Arabic, and Bengali.
+- **Native RTL Engine:** Seamless bidirectional switching dynamically toggling `dir="rtl"`, flipping mobile menu drawer slide directions, repositioning fixed floating controls (AI Assistant vs Back-to-Top), and adapting timeline spines.
+- **Typography Engine:** Tailored font stacks with `Noto Sans Arabic` for Arabic, `Hind Siliguri` for Bengali, and modern system geometric sans for English.
+- **Intelligent Detection & Persistence:** Automatically detects browser locale on first visit (`ar`, `bn`, `en`), provides instant UI switcher dropdown in native scripts, and preserves manual preferences independently from Light/Dark/System themes in `localStorage`.
 
 ---
 
@@ -195,6 +204,15 @@ Portfolio/
 │   │   ├── index.js                     # Unified portfolioData export
 │   │   └── navigation.js                # Canonical route registry
 │   ├── hooks/                           # Custom React hooks (useAIChat, useCountAnimation)
+│   ├── i18n/                            # Centralized Multilingual Localization System
+│   │   ├── config.js                    # Supported languages, directions, locales, storage config
+│   │   ├── languageDetector.js          # Browser language detection & localStorage resolver
+│   │   ├── LanguageContext.jsx          # LanguageProvider & useTranslation React hook
+│   │   ├── translationUtils.js          # Nested key lookup, template interpolation & fallbacks
+│   │   └── locales/                     # Modular translation dictionaries
+│   │       ├── en/                      # English dictionary (default & ultimate fallback)
+│   │       ├── ar/                      # Arabic dictionary (complete RTL)
+│   │       └── bn/                      # Bengali dictionary (complete LTR)
 │   ├── layouts/                         # MainLayout shell
 │   ├── lib/                             # Utility helpers, motion libraries, and AI helpers
 │   ├── pages/                           # Application route views
@@ -217,6 +235,46 @@ Portfolio/
 ├── vite.config.js                       # Vite 8 build and chunk splitting configuration
 └── README.md                            # Comprehensive project documentation
 ```
+
+---
+
+## 🌐 Internationalization (i18n) Architecture
+
+The portfolio implements a zero-dependency, scalable, and centralized Internationalization (i18n) system designed around React 19 Context and modern browser standards. Every user-facing string across every route, modal, card, and interaction is localized.
+
+### Supported Languages & Scripts
+
+| Code | Language | Native Name | Direction           | Font Family          | Locale Format |
+| :--- | :------- | :---------- | :------------------ | :------------------- | :------------ |
+| `en` | English  | English     | Left-to-Right (LTR) | Sans-serif geometric | `en-US`       |
+| `ar` | Arabic   | العربية     | Right-to-Left (RTL) | Noto Sans Arabic     | `ar-SA`       |
+| `bn` | Bengali  | বাংলা       | Left-to-Right (LTR) | Hind Siliguri        | `bn-BD`       |
+
+### Key Capabilities
+
+1. **Intelligent Language Detection:**
+   - On the visitor's first visit, `src/i18n/languageDetector.js` analyzes `navigator.languages` and `navigator.language`.
+   - Regional variants (`ar-SA`, `ar-EG`, `bn-BD`, `en-US`, `en-GB`) automatically resolve to their primary supported dictionary.
+   - If an unsupported language is detected, the portfolio gracefully defaults to English (`en`).
+   - Stored preferences in `localStorage` (`portfolio_language`) always take precedence over browser detection.
+
+2. **Native Right-to-Left (RTL) Layout Engine:**
+   - Switching to Arabic immediately updates `<html lang="ar" dir="rtl">` and adds the `rtl` class.
+   - Mobile navigation drawer dynamically anchors and slides from `left-0` (`-100%`) instead of `right-0`.
+   - Symmetrical floating action buttons swap corners: AI Assistant floats on `left-4` while Back-to-Top floats on `right-4` in RTL mode.
+   - Directional navigation arrows, chevron indicators, and timeline spines invert automatically.
+
+3. **Multilingual Typography Integration:**
+   - Arabic text automatically renders with Google Font `Noto Sans Arabic` with optimized font smoothing.
+   - Bengali text automatically renders with Google Font `Hind Siliguri`.
+   - English renders with clean, modern sans-serif system typography.
+
+4. **Decoupled Theme & Localization Preferences:**
+   - Visitors can combine any supported language with Light, Dark, or System mode without interference.
+   - All theme tokens and glassmorphism styling remain visually consistent in both RTL and LTR modes.
+
+5. **English Fallback Guarantee:**
+   - If any translation key is missing or undefined in a locale dictionary, `translationUtils.js` safely resolves to the English key, preventing blank UI elements or raw key exposures.
 
 ---
 
@@ -334,6 +392,7 @@ npm run preview
 | `npm run prebuild`     | Generates updated `sitemap.xml`, `llms.txt`, and `robots.txt` before bundling.          |
 | `npm run build`        | Runs `prebuild` and compiles the production client into `dist/`.                        |
 | `npm run preview`      | Serves the local `dist/` build for production verification.                             |
+| `npm test`             | Runs the Node.js native test suite for i18n, dictionary parity, and multilingual AI.    |
 | `npm run lint`         | Runs ESLint 9 across all `src/` files to ensure clean code quality.                     |
 | `npm run format`       | Formats all codebase files according to Prettier guidelines.                            |
 | `npm run update-stats` | Fetches verified GitHub contributions, stars, and PRs via GitHub API into `stats.json`. |
@@ -356,9 +415,44 @@ The portfolio is deployed to **GitHub Pages** using an automated GitHub Actions 
 
 ---
 
-## 🤖 AI Agents & LLM Integration
+## 🤖 AI Agents, LLM Integration & Multilingual AI Assistant
 
-This portfolio adopts modern web standards for AI coding assistants, agents, and scrapers:
+This portfolio incorporates an interactive, client-side AI Guide and adopts modern web standards for AI coding assistants:
+
+### 1. Interactive Multilingual AI Assistant Architecture
+
+The portfolio features a zero-latency, local AI Assistant (`Portfolio Guide`) designed to answer questions about architecture, flagship projects, technical competencies, and contact options.
+
+```text
+src/lib/ai/
+├── intentMatcher.js       # Unicode-aware regex classifier detecting 20+ intents across EN, AR, BN
+├── knowledgeEngine.js     # Query resolver, topic indexer & multilingual alias lookup
+├── responseBuilder.js     # Orchestrates intent dispatching, cards, follow-ups & context memory
+└── responseTemplates.js   # Localized Markdown response templates, card badges & action labels
+```
+
+#### Key Capabilities
+
+- **Supported Languages:** English (`en`, default/fallback), Arabic (`ar`, RTL), Bengali (`bn`, LTR).
+- **Default Response Language:** Always matches the active portfolio language selected in the UI (`LanguageContext`).
+- **Initial Welcome Message:** Automatically displays in the visitor's selected language.
+- **Unicode-Aware Intent Classification:** `intentMatcher.js` uses Unicode property lookarounds (`(?<![\p{L}\p{N}])pattern(?![\p{L}\p{N}])`) and native language stems to accurately classify user queries typed in Arabic (`"مشاريع"`, `"لماذا نوظف صابر"`, `"تواصل"`) or Bengali (`"প্রজেক্ট"`, `"দক্ষতা"`, `"কেন নিয়োগ করবেন"`).
+- **Technical Terminology & BiDi Preservation:** English proper nouns and technical identifiers (such as `React 19`, `TypeScript`, `Node.js`, `Express 4`, `MongoDB Atlas`, `Zod`, `HTTP 409 Conflict`, `@reportbd/shared`) are strictly preserved in their original form and protected with bidirectional code wrappers.
+- **Language Switching Behavior During Chat:**
+  - Conversation history is **never lost or overwritten**. Existing turns remain in the language in which they were originally submitted and responded to.
+  - Active UI labels (input placeholder, quick prompts, section headings) update immediately upon language change.
+  - Subsequent questions and replies are generated in the newly chosen active language.
+
+#### How to Add or Modify Localized AI Response Templates
+
+All conversational text and interactive actions are centralized in `src/lib/ai/responseTemplates.js`:
+
+1. **Response Text:** Edit or add intent keys to `AI_RESPONSE_TEMPLATES[language]`. Ensure technical identifiers remain in code blocks (`` `...` ``).
+2. **Interactive Action Labels:** Update `AI_ACTION_LABELS[language]` with localized button text.
+3. **Suggested Follow-Ups:** Update `AI_FOLLOW_UPS[language]` with conversational follow-up suggestions.
+4. **Verification:** Run `npm test` to automatically validate template parity, keyword preservation, and intent resolution.
+
+### 2. Machine-Readable Profile (`/llms.txt`)
 
 - **`public/llms.txt`:** Standardized plaintext markdown profile generated automatically during `prebuild` via `scripts/generate-llms-txt.mjs`.
 - **Structured Content:** LLM agents (ChatGPT, Claude, Gemini, Antigravity) can read `https://msabbirhossen.github.io/llms.txt` directly to ingest Sabbir's verified technical competencies, flagship projects, and architectural highlights without parsing client-rendered JavaScript.
