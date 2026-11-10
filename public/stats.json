@@ -1,5 +1,5 @@
 {
-  "publicRepos": 64,
+  "publicRepos": 65,
   "followers": 4,
   "following": 7,
   "totalStars": 5,
@@ -15,7 +15,7 @@
     },
     {
       "name": "TypeScript",
-      "count": 4
+      "count": 5
     },
     {
       "name": "CSS",
@@ -24,13 +24,22 @@
   ],
   "recentRepos": [
     {
+      "name": "Assignment-1-TypeScript",
+      "description": "No description available",
+      "language": "TypeScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/Assignment-1-TypeScript",
+      "updated": "2026-11-10T13:45:21Z"
+    },
+    {
       "name": "MSabbirHossen.github.io",
       "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
       "language": "JavaScript",
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
-      "updated": "2026-11-09T22:07:24Z"
+      "updated": "2026-11-10T06:43:10Z"
     },
     {
       "name": "personalreport",
@@ -67,16 +76,7 @@
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/Tea_House_Project",
       "updated": "2026-10-14T22:51:26Z"
-    },
-    {
-      "name": "Payoo-MFS",
-      "description": "No description available",
-      "language": "HTML",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/Payoo-MFS",
-      "updated": "2026-10-14T22:44:06Z"
     }
   ],
-  "updatedAt": "2026-11-10T06:43:04.322Z"
+  "updatedAt": "2026-11-10T19:29:43.559Z"
 }
