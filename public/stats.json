@@ -24,6 +24,15 @@
   ],
   "recentRepos": [
     {
+      "name": "MSabbirHossen.github.io",
+      "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
+      "updated": "2026-11-10T21:48:33Z"
+    },
+    {
       "name": "Assignment-1-TypeScript",
       "description": "No description available",
       "language": "TypeScript",
@@ -31,15 +40,6 @@
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/Assignment-1-TypeScript",
       "updated": "2026-11-10T13:45:21Z"
-    },
-    {
-      "name": "MSabbirHossen.github.io",
-      "description": "Building the future where Faith, Knowledge & Technology empower the Ummah.",
-      "language": "JavaScript",
-      "stars": 0,
-      "forks": 0,
-      "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
-      "updated": "2026-11-10T06:43:10Z"
     },
     {
       "name": "personalreport",
@@ -78,5 +78,5 @@
       "updated": "2026-10-14T22:51:26Z"
     }
   ],
-  "updatedAt": "2026-11-10T19:29:43.559Z"
+  "updatedAt": "2026-11-11T05:29:09.613Z"
 }
