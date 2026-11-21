@@ -1,18 +1,20 @@
 import fs from 'fs';
 
 const username = 'MSabbirHossen';
-const token = process.env.GH_TOKEN;
+const token = (process.env.GH_TOKEN || process.env.GITHUB_TOKEN || '').trim();
 
 const headers = {
   Accept: 'application/vnd.github+json',
-  Authorization: `Bearer ${token}`,
+  'User-Agent': 'Portfolio-Stats-Updater',
+  ...(token ? { Authorization: `Bearer ${token}` } : {}),
 };
 
 async function fetchJSON(url) {
   const res = await fetch(url, { headers });
 
   if (!res.ok) {
-    throw new Error(`${url}\n${res.status}`);
+    const errorBody = await res.text().catch(() => '');
+    throw new Error(`${url}\nStatus: ${res.status} ${res.statusText}\n${errorBody}`);
   }
 
   return res.json();
