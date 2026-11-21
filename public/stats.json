@@ -1,6 +1,8 @@
 {
   "publicRepos": 65,
   "followers": 6,
+  "publicRepos": 65,
+  "followers": 6,
   "following": 7,
   "totalStars": 5,
   "totalForks": 0,
@@ -15,6 +17,7 @@
     },
     {
       "name": "TypeScript",
+      "count": 5
       "count": 5
     },
     {
@@ -31,6 +34,15 @@
       "forks": 0,
       "url": "https://github.com/MSabbirHossen/MSabbirHossen.github.io",
       "updated": "2026-11-12T07:34:26Z"
+    },
+    {
+      "name": "Assignment-1-TypeScript",
+      "description": "No description available",
+      "language": "TypeScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/MSabbirHossen/Assignment-1-TypeScript",
+      "updated": "2026-11-10T13:45:21Z""updated": "2026-11-12T07:34:26Z"
     },
     {
       "name": "Assignment-1-TypeScript",
